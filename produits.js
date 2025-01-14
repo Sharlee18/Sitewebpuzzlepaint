@@ -30,6 +30,7 @@ function displayCartSummary() {
                 <div class="popup-buttons">
                     <button id="close-cart">Continuer mon achat</button>
                     <button id="validate-cart">Valider mon panier</button>
+                    <button id="empty-cart">Vider mon panier</button> <!-- Nouveau bouton -->
                 </div>
             </div>
         </div>
@@ -45,6 +46,24 @@ function displayCartSummary() {
     // Écouteur pour "Valider mon panier" (rediriger vers la page checkout.html)
     document.getElementById('validate-cart').addEventListener('click', () => {
         window.location.href = 'checkout.html';
+    });
+
+    // Écouteur pour "Vider mon panier"
+    document.getElementById('empty-cart').addEventListener('click', () => {
+        // Vider le panier dans localStorage
+        localStorage.removeItem('cart');
+        
+        // Réinitialiser le tableau `cart`
+        cart = [];
+
+        // Mettre à jour le compteur du panier
+        updateCartCount();
+
+        // Afficher un message confirmant que le panier a été vidé
+        alert("Votre panier a été vidé.");
+        
+        // Fermer le pop-up
+        cartSummary.remove();
     });
 }
 
@@ -101,5 +120,3 @@ document.addEventListener('DOMContentLoaded', () => {
         console.error('Erreur lors du chargement du panier depuis localStorage:', error);
     }
 });
-
-
