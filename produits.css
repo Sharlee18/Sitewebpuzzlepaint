@@ -66,7 +66,7 @@ header p {
 
 /* Style général du menu */
 .navbar {
-    background-color: #0c855f; /* Couleur de fond */
+    background-color: #000000; /* Couleur de fond */
     padding: 1rem 0; /* Espacement vertical */
     text-align: center; /* Centre les éléments horizontalement */
 }
@@ -96,6 +96,23 @@ header p {
 .nav-list a:hover {
     background-color: #555; /* Couleur au survol */
     color: #fff; /* Couleur du texte au survol */
+}
+
+/* Responsive menu */
+@media (max-width: 768px) {
+    .navbar {
+        padding: 10px 0;
+    }
+
+    .nav-list {
+        flex-wrap: wrap; /* Permet au menu de s'empiler si nécessaire */
+        gap: 10px;
+    }
+
+    .nav-list a {
+        font-size: 1rem; /* Réduire légèrement la taille de la police */
+        padding: 0.5rem;
+    }
 }
 
 /* Section Introduction avec une image au-dessus du texte */
@@ -188,7 +205,7 @@ header p {
 
 /* Footer avec bande de fond */
 footer {
-    background-color: #0c855f;
+    background-color: #02100b;
     color: white;
     text-align: center;
     padding: 1.5rem 1rem;
@@ -801,4 +818,20 @@ body {
 
 #validate-cart:hover {
     background-color: #218838; /* Couleur au survol */
+}
+
+#clear-cart {
+    margin-right: 10px;/* marge a droite du bouton*/
+    background-color: #000000 !important;
+    color: white !important;
+    padding: 10px 15px; /* Espacement intérieur */
+    border: none; /* Pas de bordure */
+    border-radius: 5px; /* Coins arrondis */
+    font-size: 1rem; /* Taille de la police */
+    cursor: pointer; /* Curseur pointer au survol */
+    
+}
+
+#clear-cart:hover {
+    background-color: #333333; /* Couleur noire légèrement éclaircie au survol */
 }
