@@ -53,7 +53,7 @@ header p {
 
 /* Style général du menu */
 .navbar {
-    background-color: #16af7f; /* Couleur de fond */
+    background-color: #0c855f; /* Couleur de fond */
     padding: 1rem 0; /* Espacement vertical */
     text-align: center; /* Centre les éléments horizontalement */
 }
@@ -128,12 +128,12 @@ header p {
     font-weight: bold;
     text-decoration: none;
     transition: all 0.3s ease;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 4px 6px #11ab6a;
 }
 
 .btn:hover {
     background-color:rgba(8, 163, 93, 0.696);
-    box-shadow: 0 6px 8px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 6px 8px rgba#11ab6a;
 }
 
 /* Section Témoignages et Pourquoi Nous Choisir */
@@ -175,7 +175,7 @@ header p {
 
 /* Footer avec bande de fond */
 footer {
-    background-color: #333;
+    background-color: #17985c;
     color: white;
     text-align: center;
     padding: 1.5rem 1rem;
@@ -243,21 +243,21 @@ footer p {
 
 .video h2 {
     margin-bottom: 1rem;
-    color: #333;
+    color: #02120b;
     font-size: 2rem;
 }
 
 .video p {
     margin-bottom: 1rem;
     font-size: 1.2rem;
-    color: #555;
+    color: #06291a;
 }
 
 .video video {
     max-width: 100%;
     height: auto;
     border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 4px 8px rgba(18, 210, 120, 0.548);
 }
 
 
