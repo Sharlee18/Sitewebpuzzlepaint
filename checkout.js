@@ -24,3 +24,15 @@ document.addEventListener('DOMContentLoaded', () => {
     // Afficher le total
     totalPriceElement.textContent = `Total : ${total.toFixed(2).replace('.', ',')} €`;
 });
+
+document.getElementById('confirm-order').addEventListener('click', () => {
+    // Récupérer le total du panier
+    const total = document.getElementById('total-price').textContent.replace('Total : ', '').replace('€', '').trim();
+    
+    // Stocker le montant total dans localStorage
+    localStorage.setItem('cartTotal', total);
+
+    // Rediriger vers la page de paiement
+    window.location.href = 'payment.html';
+});
+

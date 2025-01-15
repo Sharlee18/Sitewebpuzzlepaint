@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Page de Paiement</title>
+    <style>
+        body {
+            font-family: 'Roboto', sans-serif;
+            background-color: #f9f9f9;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+        .payment-container {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+        .payment-container h1 {
+            margin-bottom: 20px;
+            color: #333;
+        }
+        .payment-container input {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        .payment-container button {
+            padding: 10px 20px;
+            background-color: #28a745;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 1rem;
+        }
+        .payment-container button:hover {
+            background-color: #218838;
+        }
+    </style>
+</head>
+<body>
+    <div class="payment-container">
+        <h1>Confirmation du Paiement</h1>
+        <p>Montant Total : <span id="total-amount">0 €</span></p>
+        <form>
+            <input type="text" placeholder="Numéro de carte" required>
+            <input type="text" placeholder="Nom du titulaire" required>
+            <input type="text" placeholder="Date d'expiration (MM/YY)" required>
+            <input type="text" placeholder="CVC" required>
+            <button type="submit">Payer</button>
+        </form>
+    </div>
+    <script>
+        // Récupérer le montant total depuis localStorage
+        const totalAmount = localStorage.getItem('cartTotal') || '0.00';
+        document.getElementById('total-amount').textContent = `${totalAmount} €`;
+    </script>
+</body>
+</html>
