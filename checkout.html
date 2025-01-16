@@ -35,11 +35,37 @@
                 <label for="phone">Numéro de téléphone :</label>
                 <input type="tel" id="phone" name="phone" required>
 
-                <button type="submit" id="confirm-order">Confirmer la commande</button>
-                <!-- Nouveau bouton Annuler -->
-                <button type="button" id="cancel-order" onclick="window.location.href='produits.html'">Annuler la commande</button>
+                <form id="order-form" onsubmit="return handleOrderSubmit(event)">
+                    <button type="onsubmit" id="confirm-order">Confirmer la commande</button>
+                    <button type="button" id="cancel-order" onclick="window.location.href='produits.html'">Annuler la commande</button>
             </form>
-        </section>
+
+        <script>
+            function handleOrderSubmit(e) {
+                e.preventDefault(); // Empêche le comportement par défaut du formulaire
+        
+                // Vérification des champs
+                const fullName = document.getElementById('full-name').value.trim();
+                const email = document.getElementById('email').value.trim();
+        
+                if (!fullName || !email) {
+                    alert('Veuillez remplir tous les champs obligatoires.');
+                    return false;
+                }
+        
+                // Récupérer le total du panier
+                const total = document.getElementById('total-price').textContent.replace('Total : ', '').replace('€', '').trim();
+        
+                // Stocker le montant total dans localStorage
+                localStorage.setItem('cartTotal', total);
+        
+                // Rediriger vers la page de paiement
+                window.location.href = 'payment.html';
+        
+                return false; // Empêche le rechargement du formulaire
+            }
+        </script>
+        
     </main>
 
     <script src="checkout.js"></script>

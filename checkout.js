@@ -25,14 +25,23 @@ document.addEventListener('DOMContentLoaded', () => {
     totalPriceElement.textContent = `Total : ${total.toFixed(2).replace('.', ',')} €`;
 });
 
-document.getElementById('confirm-order').addEventListener('click', () => {
-    // Récupérer le total du panier
-    const total = document.getElementById('total-price').textContent.replace('Total : ', '').replace('€', '').trim();
-    
-    // Stocker le montant total dans localStorage
-    localStorage.setItem('cartTotal', total);
+document.addEventListener('DOMContentLoaded', () => {
+    const confirmButton = document.getElementById('confirm-order');
+    const form = document.getElementById('checkout-form');
 
-    // Rediriger vers la page de paiement
-    window.location.href = 'payment.html';
+    // Ajouter un écouteur d'événement au bouton "Confirmer la commande"
+    confirmButton.addEventListener('click', (e) => {
+        // Empêcher le comportement par défaut (soumission du formulaire)
+        e.preventDefault();
+
+        // Vérifier si le formulaire est valide
+        if (form.checkValidity()) {
+            // Si le formulaire est valide, rediriger vers la page de paiement
+            window.location.href = 'payment.html';
+        } else {
+            // Si le formulaire n'est pas valide, afficher les messages d'erreur HTML5 intégrés
+            form.reportValidity();
+        }
+    });
 });
 

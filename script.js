@@ -60,11 +60,15 @@ function updateCartCount() {
 
 // Fonction pour afficher le résumé du panier (dans un pop-up)
 function displayCartSummary() {
+    // Si le pop-up existe déjà, on ne le recrée pas
+    if (document.getElementById('cart-summary')) return;
+
     const cartSummary = document.createElement('div');
     cartSummary.id = 'cart-summary';
     cartSummary.innerHTML = `
         <div class="cart-overlay">
             <div class="cart-content">
+                <button class="close-cart" id="close-cart">✖</button> <!-- Crois pour fermer -->
                 <h2>Votre Panier</h2>
                 <ul>
                     ${cart.map(item => `
@@ -73,9 +77,8 @@ function displayCartSummary() {
                 </ul>
                 <p>Total : ${cart.reduce((sum, item) => sum + item.price * item.quantity, 0).toFixed(2)}€</p>
                 <div class="popup-buttons">
-                    <button id="close-cart">Continuer mon achat</button>
+                    <button id="clear-cart">Vider mon panier</button>
                     <button id="validate-cart">Valider mon panier</button>
-                    <button id="empty-cart">Vider mon panier</button> <!-- Nouveau bouton -->
                 </div>
             </div>
         </div>
@@ -83,9 +86,10 @@ function displayCartSummary() {
 
     document.body.appendChild(cartSummary);
 
-    // Écouteur pour "Continuer mon achat" (fermer le pop-up)
+    // Écouteur pour fermer le pop-up via la croix
     document.getElementById('close-cart').addEventListener('click', () => {
-        cartSummary.remove();
+        const popup = document.getElementById('cart-summary');
+        if (popup) popup.remove();
     });
 
     // Écouteur pour "Valider mon panier" (rediriger vers la page checkout.html)
@@ -94,10 +98,10 @@ function displayCartSummary() {
     });
 
     // Écouteur pour "Vider mon panier"
-    document.getElementById('empty-cart').addEventListener('click', () => {
+    document.getElementById('clear-cart').addEventListener('click', () => {
         // Vider le panier dans localStorage
         localStorage.removeItem('cart');
-        
+
         // Réinitialiser le tableau `cart`
         cart = [];
 
@@ -106,9 +110,10 @@ function displayCartSummary() {
 
         // Afficher un message confirmant que le panier a été vidé
         alert("Votre panier a été vidé.");
-        
+
         // Fermer le pop-up
-        cartSummary.remove();
+        const popup = document.getElementById('cart-summary');
+        if (popup) popup.remove();
     });
 }
 
