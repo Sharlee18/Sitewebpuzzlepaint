@@ -455,56 +455,58 @@ body {
 }
 
 .product-card {
-    background: white;
+    display: flex;
+    flex-direction: column; /* Organise les éléments en colonne */
+    justify-content: space-between; /* Assure une répartition uniforme */
+    align-items: center;
+    width: 300px; /* Ajustez selon vos besoins */
+    height: 450px; /* Ajustez selon la taille du contenu */
+    border: 1px solid #ddd;
     border-radius: 10px;
+    padding: 15px;
+    background: white;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     overflow: hidden;
-    width: 300px;
-    text-align: center;
-    padding: 1rem;
-    transition: transform 0.3s ease;
-}
-
-.product-card:hover {
-    transform: translateY(-5px);
 }
 
 .product-card img {
     width: 100%;
-    height: auto;
-    border-bottom: 2px solid #f0f0f0;
+    max-height: 200px; /* Ajustez selon la taille souhaitée */
+    object-fit: contain; /* Évite que l’image ne déborde */
+    margin-bottom: 10px;
 }
 
-.product-card h2 {
-    margin: 1rem 0;
-    font-size: 1.5rem;
-}
-
+.product-card h2, 
 .product-card p {
-    font-size: 1rem;
-    color: #555;
+    text-align: center;
+    margin: 5px 0;
 }
 
 .product-card .price {
     font-size: 1.2rem;
     font-weight: bold;
-    margin: 1rem 0;
+    margin: 10px 0;
 }
 
 .product-card .btn {
-    padding: 0.8rem 1.5rem;
+    display: block;
+    width: 80%; /* Ajuste la taille du bouton */
+    padding: 10px;
     background: #4caf50;
     color: white;
     border: none;
     border-radius: 5px;
     cursor: pointer;
+    text-align: center;
     font-size: 1rem;
     transition: background 0.3s ease;
+    margin-top: auto; /* Force le bouton à rester en bas */
 }
 
 .product-card .btn:hover {
     background: #388e3c;
 }
+
 
 #cart {
     border: 1px solid #ddd;
@@ -559,17 +561,18 @@ body {
 /* Conteneur principal de chaque produit */
 .product {
     display: flex;
-    flex-direction: column; /* Aligne les éléments verticalement */
-    align-items: center; /* Centre le contenu horizontalement */
-    justify-content: space-between; /* Espace uniforme entre les éléments */
-    border: 1px solid #ddd; /* Bordure légère */
-    border-radius: 10px; /* Coins arrondis */
+    flex-direction: column; /* Organise les éléments en colonne */
+    justify-content: space-between; /* Assure une répartition uniforme */
+    align-items: center;
+    width: 300px; /* Ajustez selon vos besoins */
+    height: 450px; /* Ajustez selon la taille du contenu */
+    border: 1px solid #ddd;
+    border-radius: 10px;
     padding: 15px;
-    margin: 15px;
-    width: 250px; /* Largeur fixe pour uniformiser les produits */
-    height: 400px; /* Hauteur fixe */
-    background-color: #ffffff; /* Fond blanc */
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Légère ombre */
+    background: white;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+
 }
 
 /* Images dans chaque produit */
@@ -835,3 +838,4 @@ body {
 #clear-cart:hover {
     background-color: #333333; /* Couleur noire légèrement éclaircie au survol */
 }
+
