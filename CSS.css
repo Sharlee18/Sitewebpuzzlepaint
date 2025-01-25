@@ -209,29 +209,6 @@ footer p {
     margin-top: 1rem;
 }
 
-
-/* Conteneur du carrousel */
-.carousel {
-    width: 100%; /* Adaptez à la largeur souhaitée */
-    max-width: 500px; /* Largeur maximale pour limiter la taille */
-    overflow: hidden; /* Masque les images qui dépassent du conteneur */
-    margin: 0 auto; /* Centre le carrousel */
-    position: relative;
-}
-
-/* Conteneur des images */
-.carousel-images {
-    display: flex; /* Les images sont alignées en ligne */
-    animation: slide 20s infinite; /* Animation de défilement */
-}
-
-/* Chaque image */
-.carousel-images img {
-    width: 100%; /* Chaque image occupe toute la largeur du conteneur */
-    flex-shrink: 0; /* Empêche les images de se réduire */
-}
-
-
 /* Section vidéo */
 .video {
     text-align: center;
@@ -260,68 +237,6 @@ footer p {
     box-shadow: 0 4px 8px rgba(18, 210, 120, 0.548);
 }
 
-
-.carousel {
-    position: relative;
-    max-width: 600px;
-    margin: auto;
-    overflow: hidden;
-}
-
-.carousel-track-container {
-    position: relative;
-    overflow: hidden;
-}
-
-.carousel-track {
-    display: flex;
-    transition: transform 0.5s ease-in-out;
-    list-style: none;
-    padding: 0;
-    margin: 0;
-}
-
-.carousel-slide {
-    min-width: 100%; /* Chaque image occupe 100% de la largeur visible */
-}
-
-.carousel img {
-    width: 100%; /* Ajuste la largeur au conteneur */
-    height: auto; /* Maintient le ratio d'aspect */
-    max-height: 300px; /* Limite la hauteur maximale */
-    object-fit: cover; /* Remplit le conteneur sans déformer l'image */
-}
-
-.carousel-nav {
-    position: absolute;
-    top: 50%;
-    width: 100%;
-    display: flex;
-    justify-content: space-between;
-    transform: translateY(-50%);
-}
-
-.carousel-btn {
-    background-color: rgba(0, 0, 0, 0.5);
-    color: white;
-    border: none;
-    padding: 10px;
-    cursor: pointer;
-    font-size: 18px;
-    border-radius: 50%;
-}
-
-.carousel-btn:hover {
-    background-color: rgba(0, 0, 0, 0.7);
-}
-
-.carousel-indicators {
-    position: absolute;
-    bottom: 10px;
-    display: flex;
-    justify-content: center;
-    width: 100%;
-}
 
 .indicator {
     height: 10px;
@@ -367,15 +282,6 @@ footer p {
         padding: 0.5rem;
     }
 
-    /* Adapter le carrousel */
-    .carousel {
-        max-width: 100%; /* Adapte la largeur au téléphone */
-    }
-
-    .carousel img {
-        max-height: 200px; /* Limite la hauteur des images */
-        object-fit: cover; /* Garde une bonne proportion sans déformer */
-    }
 
     /* Réduire les boutons */
     .btn {
@@ -390,12 +296,6 @@ footer p {
     }
 }
 
-.carousel img {
-    width: 100%; /* L'image occupe toute la largeur */
-    height: auto; /* Respecte les proportions */
-    object-fit: cover; /* Empêche les déformations */
-}
-
 footer {
     padding: 10px 20px; /* Réduit l'espacement interne */
     font-size: 0.8rem; /* Adapte la taille de la police */
@@ -406,106 +306,6 @@ img {
     height: auto; /* Conserve les proportions de l'image */
     display: block; /* Supprime les espaces blancs sous les images */
     margin: 0 auto; /* Centre l'image */
-}
-
-/* Conteneur principal pour le carrousel */
-.carousel {
-    position: relative;
-    width: 100%;
-    max-width: 600px; /* Largeur maximale pour limiter la taille */
-    margin: auto;
-    overflow: hidden; /* Masque les débordements */
-    background: #f9f9f9; /* Fond de sécurité pour les transitions */
-    border-radius: 10px; /* Coins arrondis pour un design moderne */
-}
-
-/* Conteneur pour les images */
-.carousel-track {
-    display: flex;
-    transition: transform 0.5s ease-in-out; /* Transition fluide */
-    list-style: none;
-    padding: 0;
-    margin: 0;
-}
-
-/* Images des carrousels */
-.carousel-track img {
-    width: 100%; /* L'image occupe toute la largeur */
-    height: 100%; /* S'adapte à la hauteur définie */
-    object-fit: contain; /* Maintient les proportions sans couper l'image */
-    flex-shrink: 0; /* Empêche les images de rétrécir */
-}
-
-/* Fixer la hauteur du conteneur */
-.carousel {
-    height: 300px; /* Hauteur fixe du carrousel */
-}
-
-/* Navigation - Boutons précédent/suivant */
-.carousel-btn {
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
-    background-color: rgba(0, 0, 0, 0.5);
-    color: white;
-    border: none;
-    cursor: pointer;
-    padding: 10px;
-    font-size: 18px;
-    border-radius: 50%;
-    z-index: 10;
-}
-
-.carousel-btn.prev-btn {
-    left: 10px;
-}
-
-.carousel-btn.next-btn {
-    right: 10px;
-}
-
-.carousel-btn:hover {
-    background-color: rgba(0, 0, 0, 0.7);
-}
-
-/* Indicateurs */
-.carousel-indicators {
-    position: absolute;
-    bottom: 10px;
-    display: flex;
-    justify-content: center;
-    width: 100%;
-}
-
-.indicator {
-    height: 10px;
-    width: 10px;
-    margin: 0 5px;
-    background-color: rgba(0, 0, 0, 0.5);
-    border-radius: 50%;
-    border: none;
-    cursor: pointer;
-}
-
-.current-indicator {
-    background-color: white;
-}
-
-/* Responsive design */
-@media (max-width: 768px) {
-    .carousel {
-        max-width: 100%; /* Adapte la largeur au téléphone */
-        height: 200px; /* Réduit la hauteur sur les petits écrans */
-    }
-
-    .carousel-track img {
-        object-fit: contain; /* Priorité au maintien des proportions */
-    }
-
-    .carousel-btn {
-        padding: 8px;
-        font-size: 16px;
-    }
 }
 
 /* Réinitialisation CSS de base */
@@ -750,27 +550,6 @@ footer p {
 }
 
 
-/* Conteneur du carrousel */
-.carousel {
-    width: 100%; /* Adaptez à la largeur souhaitée */
-    max-width: 500px; /* Largeur maximale pour limiter la taille */
-    overflow: hidden; /* Masque les images qui dépassent du conteneur */
-    margin: 0 auto; /* Centre le carrousel */
-    position: relative;
-}
-
-/* Conteneur des images */
-.carousel-images {
-    display: flex; /* Les images sont alignées en ligne */
-    animation: slide 20s infinite; /* Animation de défilement */
-}
-
-/* Chaque image */
-.carousel-images img {
-    width: 100%; /* Chaque image occupe toute la largeur du conteneur */
-    flex-shrink: 0; /* Empêche les images de se réduire */
-}
-
 
 /* Section vidéo */
 .video {
@@ -800,68 +579,6 @@ footer p {
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
 
-
-.carousel {
-    position: relative;
-    max-width: 600px;
-    margin: auto;
-    overflow: hidden;
-}
-
-.carousel-track-container {
-    position: relative;
-    overflow: hidden;
-}
-
-.carousel-track {
-    display: flex;
-    transition: transform 0.5s ease-in-out;
-    list-style: none;
-    padding: 0;
-    margin: 0;
-}
-
-.carousel-slide {
-    min-width: 100%; /* Chaque image occupe 100% de la largeur visible */
-}
-
-.carousel img {
-    width: 100%; /* Ajuste la largeur au conteneur */
-    height: auto; /* Maintient le ratio d'aspect */
-    max-height: 300px; /* Limite la hauteur maximale */
-    object-fit: cover; /* Remplit le conteneur sans déformer l'image */
-}
-
-.carousel-nav {
-    position: absolute;
-    top: 50%;
-    width: 100%;
-    display: flex;
-    justify-content: space-between;
-    transform: translateY(-50%);
-}
-
-.carousel-btn {
-    background-color: rgba(0, 0, 0, 0.5);
-    color: white;
-    border: none;
-    padding: 10px;
-    cursor: pointer;
-    font-size: 18px;
-    border-radius: 50%;
-}
-
-.carousel-btn:hover {
-    background-color: rgba(0, 0, 0, 0.7);
-}
-
-.carousel-indicators {
-    position: absolute;
-    bottom: 10px;
-    display: flex;
-    justify-content: center;
-    width: 100%;
-}
 
 .indicator {
     height: 10px;
@@ -907,15 +624,6 @@ footer p {
         padding: 0.5rem;
     }
 
-    /* Adapter le carrousel */
-    .carousel {
-        max-width: 100%; /* Adapte la largeur au téléphone */
-    }
-
-    .carousel img {
-        max-height: 200px; /* Limite la hauteur des images */
-        object-fit: cover; /* Garde une bonne proportion sans déformer */
-    }
 
     /* Réduire les boutons */
     .btn {
@@ -930,11 +638,6 @@ footer p {
     }
 }
 
-.carousel img {
-    width: 100%; /* L'image occupe toute la largeur */
-    height: auto; /* Respecte les proportions */
-    object-fit: cover; /* Empêche les déformations */
-}
 
 footer {
     padding: 10px 20px; /* Réduit l'espacement interne */
@@ -1415,3 +1118,248 @@ body {
     font-size: 20px;
     cursor: pointer;
 }
+
+/* Conteneur du carrousel */
+.carousel {
+    width: 100%; /* Adaptez à la largeur souhaitée */
+    max-width: 500px; /* Largeur maximale pour limiter la taille */
+    overflow: hidden; /* Masque les images qui dépassent du conteneur */
+    margin: 0 auto; /* Centre le carrousel */
+    position: relative;
+}
+
+/* Conteneur des images */
+.carousel-images {
+    display: flex; /* Les images sont alignées en ligne */
+    animation: slide 20s infinite; /* Animation de défilement */
+}
+
+/* Chaque image */
+.carousel-images img {
+    width: 100%; /* Chaque image occupe toute la largeur du conteneur */
+    flex-shrink: 0; /* Empêche les images de se réduire */
+}
+
+.carousel {
+    position: relative;
+    max-width: 600px;
+    margin: auto;
+    overflow: hidden;
+}
+
+.carousel-track-container {
+    position: relative;
+    overflow: hidden;
+}
+
+.carousel-track {
+    display: flex;
+    transition: transform 0.5s ease-in-out;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.carousel-slide {
+    min-width: 100%; /* Chaque image occupe 100% de la largeur visible */
+}
+
+.carousel img {
+    width: 100%; /* Ajuste la largeur au conteneur */
+    height: auto; /* Maintient le ratio d'aspect */
+    max-height: 300px; /* Limite la hauteur maximale */
+    object-fit: cover; /* Remplit le conteneur sans déformer l'image */
+}
+
+.carousel-nav {
+    position: absolute;
+    top: 50%;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    transform: translateY(-50%);
+}
+
+.carousel-btn {
+    background-color: rgba(0, 0, 0, 0.5);
+    color: white;
+    border: none;
+    padding: 10px;
+    cursor: pointer;
+    font-size: 18px;
+    border-radius: 50%;
+}
+
+.carousel-btn:hover {
+    background-color: rgba(0, 0, 0, 0.7);
+}
+
+.carousel-indicators {
+    position: absolute;
+    bottom: 10px;
+    display: flex;
+    justify-content: center;
+    width: 100%;
+}
+
+.indicator {
+    height: 10px;
+    width: 10px;
+    margin: 0 5px;
+    background-color: rgba(0, 0, 0, 0.5);
+    border-radius: 50%;
+    border: none;
+    cursor: pointer;
+}
+
+.current-indicator {
+    background-color: white;
+}
+
+/* Adapter le carrousel */
+    .carousel {
+        max-width: 100%; /* Adapte la largeur au téléphone */
+    }
+
+    .carousel img {
+        max-height: 200px; /* Limite la hauteur des images */
+        object-fit: cover; /* Garde une bonne proportion sans déformer */
+    }
+
+.carousel img {
+    width: 100%; /* L'image occupe toute la largeur */
+    height: auto; /* Respecte les proportions */
+    object-fit: cover; /* Empêche les déformations */
+}
+
+/* Conteneur principal pour le carrousel */
+.carousel {
+    position: relative;
+    width: 100%;
+    max-width: 600px; /* Largeur maximale pour limiter la taille */
+    margin: auto;
+    overflow: hidden; /* Masque les débordements */
+    background: #f9f9f9; /* Fond de sécurité pour les transitions */
+    border-radius: 10px; /* Coins arrondis pour un design moderne */
+}
+
+/* Conteneur pour les images */
+.carousel-track {
+    display: flex;
+    transition: transform 0.5s ease-in-out; /* Transition fluide */
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+/* Images des carrousels */
+.carousel-track img {
+    width: 100%; /* L'image occupe toute la largeur */
+    height: 100%; /* S'adapte à la hauteur définie */
+    object-fit: contain; /* Maintient les proportions sans couper l'image */
+    flex-shrink: 0; /* Empêche les images de rétrécir */
+}
+
+/* Fixer la hauteur du conteneur */
+.carousel {
+    height: 300px; /* Hauteur fixe du carrousel */
+}
+
+/* Navigation - Boutons précédent/suivant */
+.carousel-btn {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: rgba(0, 0, 0, 0.5);
+    color: white;
+    border: none;
+    cursor: pointer;
+    padding: 10px;
+    font-size: 18px;
+    border-radius: 50%;
+    z-index: 10;
+}
+
+.carousel-btn.prev-btn {
+    left: 10px;
+}
+
+.carousel-btn.next-btn {
+    right: 10px;
+}
+
+.carousel-btn:hover {
+    background-color: rgba(0, 0, 0, 0.7);
+}
+
+/* Indicateurs */
+.carousel-indicators {
+    position: absolute;
+    bottom: 10px;
+    display: flex;
+    justify-content: center;
+    width: 100%;
+}
+
+.indicator {
+    height: 10px;
+    width: 10px;
+    margin: 0 5px;
+    background-color: rgba(0, 0, 0, 0.5);
+    border-radius: 50%;
+    border: none;
+    cursor: pointer;
+}
+
+.current-indicator {
+    background-color: white;
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+    .carousel {
+        max-width: 100%; /* Adapte la largeur au téléphone */
+        height: 200px; /* Réduit la hauteur sur les petits écrans */
+    }
+
+    .carousel-track img {
+        object-fit: contain; /* Priorité au maintien des proportions */
+    }
+
+    .carousel-btn {
+        padding: 8px;
+        font-size: 16px;
+    }
+}
+
+/* ======= Ajustement des images du carrousel ======= */
+.carousel-track img {
+    width: 100%; /* L'image s'ajuste à la largeur du conteneur */
+    height: 100%; /* Ajuste la hauteur */
+    object-fit: contain; /* Assure que toute l’image soit visible sans la couper */
+    flex-shrink: 0;
+    display: block;
+    background-color: rgb(255, 255, 255); /* Optionnel : pour éviter un fond blanc derrière */
+}
+
+.carousel {
+    display: flex;
+    justify-content: center; /* Centre l’image horizontalement */
+    align-items: center; /* Centre verticalement */
+    width: 100%;
+    height: auto; /* La hauteur s'adapte à l'image */
+    overflow: hidden; /* Évite les débordements */
+}
+
+.carousel-track {
+    display: flex;
+    align-items: center; /* Centre les images verticalement */
+}
+
+.carousel-track img {
+    width: 100%; /* L’image prend toute la largeur */
+    height: auto; /* Garde les proportions originales */
+    object-fit: contain; /* L’image s’adapte sans être coupée */
+}
+
+
