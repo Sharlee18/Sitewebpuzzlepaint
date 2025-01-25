@@ -15,7 +15,7 @@ function updateCartCount() {
 
 // Fonction pour afficher le résumé du panier (dans un pop-up)
 function displayCartSummary() {
-    // Si le pop-up existe déjà, on ne le recrée pas
+    // Vérifier si le pop-up existe déjà pour éviter les doublons
     if (document.getElementById('cart-summary')) return;
 
     const cartSummary = document.createElement('div');
@@ -23,14 +23,22 @@ function displayCartSummary() {
     cartSummary.innerHTML = `
         <div class="cart-overlay">
             <div class="cart-content">
-                <button class="close-cart" id="close-cart">✖</button> <!-- Crois pour fermer -->
+                <button class="close-cart" id="close-cart">✖</button> <!-- Croix pour fermer -->
                 <h2>Votre Panier</h2>
-                <ul>
+                <ul class="cart-items-list">
                     ${cart.map(item => `
-                        <li>${item.name} - ${item.price.toFixed(2)}€ (Quantité: ${item.quantity})</li>
+                        <li class="cart-item">
+                            <img src="${item.image}" alt="${item.name}" class="cart-item-img" 
+                                 onerror="this.onerror=null;this.src='boxkit.png';">
+                            <div class="cart-item-details">
+                                <span>${item.name}</span>
+                                <span>${item.price.toFixed(2)} €</span>
+                                <span>(Quantité: ${item.quantity})</span>
+                            </div>
+                        </li>
                     `).join('')}
                 </ul>
-                <p>Total : ${cart.reduce((sum, item) => sum + item.price * item.quantity, 0).toFixed(2)}€</p>
+                <p class="cart-total">Total : ${cart.reduce((sum, item) => sum + item.price * item.quantity, 0).toFixed(2)} €</p>
                 <div class="popup-buttons">
                     <button id="clear-cart">Vider mon panier</button>
                     <button id="validate-cart">Valider mon panier</button>
@@ -43,8 +51,7 @@ function displayCartSummary() {
 
     // Écouteur pour fermer le pop-up via la croix
     document.getElementById('close-cart').addEventListener('click', () => {
-        const popup = document.getElementById('cart-summary');
-        if (popup) popup.remove();
+        document.getElementById('cart-summary')?.remove();
     });
 
     // Écouteur pour "Valider mon panier" (rediriger vers la page checkout.html)
@@ -67,8 +74,7 @@ function displayCartSummary() {
         alert("Votre panier a été vidé.");
 
         // Fermer le pop-up
-        const popup = document.getElementById('cart-summary');
-        if (popup) popup.remove();
+        document.getElementById('cart-summary')?.remove();
     });
 }
 
@@ -78,7 +84,11 @@ function addToCart(product) {
     if (existingProduct) {
         existingProduct.quantity += 1; // Augmente la quantité
     } else {
-        cart.push({ ...product, quantity: 1 }); // Ajoute un nouveau produit
+        cart.push({ 
+            ...product, 
+            quantity: 1, 
+            image: product.image || "images/default.png" // Ajout d'une image par défaut si aucune image n'est définie
+        }); 
     }
 
     // Sauvegarder le panier dans localStorage
@@ -98,7 +108,8 @@ document.querySelectorAll('.add-to-cart-btn').forEach(button => {
         const product = {
             id: productElement.getAttribute('data-id'),
             name: productElement.getAttribute('data-name'),
-            price: parseFloat(productElement.getAttribute('data-price'))
+            price: parseFloat(productElement.getAttribute('data-price')),
+            image: productElement.getAttribute('data-image') || "images/default.png" // Vérification de l'image
         };
 
         addToCart(product);

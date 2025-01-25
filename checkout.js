@@ -12,12 +12,16 @@ document.addEventListener('DOMContentLoaded', () => {
 
         cart.forEach((item, index) => {
             const listItem = document.createElement('li');
+            listItem.classList.add("cart-item");
             listItem.innerHTML = `
-                <span>${item.name} - ${item.price.toFixed(2)} €</span>
-                <div class="quantity-controls">
-                    <button class="minus-btn" data-index="${index}">-</button>
-                    <span>${item.quantity}</span>
-                    <button class="plus-btn" data-index="${index}">+</button>
+                <img src="${item.image || 'boxkit.png'}" alt="${item.name}" class="cart-item-img">
+                <div class="cart-item-info">
+                    <span class="product-name">${item.name} - ${item.price.toFixed(2)} €</span>
+                    <div class="quantity-controls">
+                        <button class="minus-btn" data-index="${index}">-</button>
+                        <span>${item.quantity}</span>
+                        <button class="plus-btn" data-index="${index}">+</button>
+                    </div>
                 </div>
             `;
             cartItemsElement.appendChild(listItem);

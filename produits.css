@@ -561,18 +561,17 @@ body {
 /* Conteneur principal de chaque produit */
 .product {
     display: flex;
-    flex-direction: column; /* Organise les éléments en colonne */
-    justify-content: space-between; /* Assure une répartition uniforme */
-    align-items: center;
-    width: 300px; /* Ajustez selon vos besoins */
-    height: 450px; /* Ajustez selon la taille du contenu */
-    border: 1px solid #ddd;
-    border-radius: 10px;
+    flex-direction: column; /* Aligne les éléments verticalement */
+    align-items: center; /* Centre le contenu horizontalement */
+    justify-content: space-between; /* Espace uniforme entre les éléments */
+    border: 1px solid #ddd; /* Bordure légère */
+    border-radius: 10px; /* Coins arrondis */
     padding: 15px;
-    background: white;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    overflow: hidden;
-
+    margin: 15px;
+    width: 250px; /* Largeur fixe pour uniformiser les produits */
+    height: 400px; /* Hauteur fixe */
+    background-color: #ffffff; /* Fond blanc */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Légère ombre */
 }
 
 /* Images dans chaque produit */
@@ -839,3 +838,70 @@ body {
     background-color: #333333; /* Couleur noire légèrement éclaircie au survol */
 }
 
+.cart-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between; /* Permet d'aérer */
+    padding: 10px;
+    border-bottom: 1px solid #ddd;
+    gap: 10px; /* Espacement entre l'image et le texte */
+}
+
+.cart-item-img {
+    width: 50px; /* Taille réduite de l'image */
+    height: 50px;
+    object-fit: cover; /* Empêche la déformation */
+    border-radius: 5px;
+}
+
+.cart-item-details {
+    flex: 1; /* Permet au texte de s'étendre */
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    font-size: 14px; /* Réduction de la taille du texte pour éviter trop d'espace */
+}
+
+.cart-content {
+    max-width: 400px; /* Taille du pop-up ajustée */
+    background: white;
+    padding: 20px;
+    border-radius: 10px;
+    text-align: center;
+    position: relative;
+}
+
+.popup-buttons {
+    display: flex;
+    justify-content: space-between;
+    gap: 10px; /* Ajoute de l'espace entre les boutons */
+    margin-top: 15px;
+}
+
+.popup-buttons button {
+    flex: 1;
+    padding: 8px 12px;
+    font-size: 14px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+#clear-cart {
+    background-color: #000000; /* Bouton noir */
+    color: white;
+}
+
+#validate-cart {
+    background-color: #28a745; /* Bouton vert */
+    color: white;
+}
+
+.close-cart {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background: none;
+    border: none;
+    font-size: 20px;
+    cursor: pointer;
+}
