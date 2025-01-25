@@ -3,71 +3,46 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Validation du Panier</title>
+    <title>Checkout - Puzzle-Paint</title>
     <link rel="stylesheet" href="checkout.css">
+    <script src="checkout.js" defer></script>
 </head>
 <body>
+
     <header>
-        <h1>Validation de votre commande</h1>
+        <h1>Votre Commande</h1>
     </header>
 
     <main>
-        <section id="order-summary">
+        <section class="cart-summary">
             <h2>Résumé de votre panier</h2>
-            <ul id="cart-items">
-                <!-- Les articles seront insérés ici par le JavaScript -->
-            </ul>
+            <ul id="cart-items"></ul>
             <p id="total-price">Total : 0 €</p>
         </section>
 
-        <section id="customer-info">
-            <h2>Vos informations</h2>
+        <section class="checkout-form">
+            <h2>Informations de facturation</h2>
             <form id="checkout-form">
                 <label for="name">Nom complet :</label>
-                <input type="text" id="name" name="name" required>
-
-                <label for="address">Adresse postale :</label>
-                <input type="text" id="address" name="address" required>
+                <input type="text" id="name" required>
 
                 <label for="email">Email :</label>
-                <input type="email" id="email" name="email" required>
+                <input type="email" id="email" required>
 
-                <label for="phone">Numéro de téléphone :</label>
-                <input type="tel" id="phone" name="phone" required>
+                <label for="address">Adresse :</label>
+                <input type="text" id="address" required>
 
-                <form id="order-form" onsubmit="return handleOrderSubmit(event)">
-                    <button type="onsubmit" id="confirm-order">Confirmer la commande</button>
-                    <button type="button" id="cancel-order" onclick="window.location.href='produits.html'">Annuler la commande</button>
+                <label for="phone">Téléphone :</label>
+                <input type="tel" id="phone" required>
+
+                <button type="submit" id="pay-button">Payer par carte bancaire</button>
             </form>
-
-        <script>
-            function handleOrderSubmit(e) {
-                e.preventDefault(); // Empêche le comportement par défaut du formulaire
-        
-                // Vérification des champs
-                const fullName = document.getElementById('full-name').value.trim();
-                const email = document.getElementById('email').value.trim();
-        
-                if (!fullName || !email) {
-                    alert('Veuillez remplir tous les champs obligatoires.');
-                    return false;
-                }
-        
-                // Récupérer le total du panier
-                const total = document.getElementById('total-price').textContent.replace('Total : ', '').replace('€', '').trim();
-        
-                // Stocker le montant total dans localStorage
-                localStorage.setItem('cartTotal', total);
-        
-                // Rediriger vers la page de paiement
-                window.location.href = 'payment.html';
-        
-                return false; // Empêche le rechargement du formulaire
-            }
-        </script>
-        
+        </section>
     </main>
 
-    <script src="checkout.js"></script>
+    <footer>
+        <p>&copy; 2025 Puzzle-Paint. Tous droits réservés.</p>
+    </footer>
+
 </body>
 </html>

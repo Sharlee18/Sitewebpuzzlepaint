@@ -1,0 +1,108 @@
+/* Réinitialisation de base */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Roboto', sans-serif;
+}
+
+/* Style du corps */
+body {
+    background-color: #f9f9f9;
+    color: #333;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    padding: 20px;
+}
+
+/* Conteneur principal */
+.payment-container {
+    background-color: white;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    width: 100%;
+    max-width: 450px;
+    text-align: center;
+}
+
+/* Titre de la page */
+.payment-container h1 {
+    font-size: 24px;
+    margin-bottom: 20px;
+}
+
+/* Section du montant total */
+.payment-summary {
+    font-size: 20px;
+    font-weight: bold;
+    color: #007bff;
+    margin-bottom: 20px;
+}
+
+/* Boutons de paiement */
+.payment-buttons {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+/* Style des boutons */
+.payment-button {
+    padding: 12px;
+    font-size: 16px;
+    font-weight: bold;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+}
+
+/* Bouton PayPal */
+.paypal-button {
+    background-color: #ffc439;
+    color: #333;
+}
+
+.paypal-button:hover {
+    background-color: #e0a800;
+}
+
+/* Bouton Carte Bancaire */
+.card-button {
+    background-color: #007bff;
+    color: white;
+}
+
+.card-button:hover {
+    background-color: #0056b3;
+}
+
+/* Icônes dans les boutons */
+.payment-button img {
+    width: 25px;
+    height: 25px;
+}
+
+/* Bouton Annuler */
+.cancel-button {
+    background-color: #dc3545;
+    color: white;
+}
+
+.cancel-button:hover {
+    background-color: #c82333;
+}
+
+/* Responsive */
+@media (max-width: 500px) {
+    .payment-container {
+        width: 90%;
+    }
+}
