@@ -8,7 +8,6 @@
     <!-- Intégration de la police Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
 </head>
-<script src="cart.js"defer></script>
 <body>
     <!-- Header avec image en arrière-plan -->
     <header class="header" style="background-image: url('background-header2.png');">
@@ -34,70 +33,57 @@
             </div>
         </nav>
 
-        
-    <main class="product-gallery">
-        <div class="product" data-id="1" data-name="Kit auto" data-price="49.99">
-            <img src="boxkit.png" alt="Produit 1">
-            <h3>Kit Auto</h3>
-            <p>Une maquette ludique à animer avec un kit électronique</p>
-            <p><strong>Prix : €49.99</strong></p>
-            <button class="btn add-to-cart-btn">Ajouter au panier</button>
-        </div>
-        <div class="product" data-id="2" data-name="Kit manuel" data-price="39.99">
-            <img src="boxkit2.png" alt="Produit 2">
-            <h3>Kit manuel</h3>
-            <p>Une maquette ludique à animer avec une petite manivelle </p>
-            <p><strong>Prix : €39.99</strong></p>
-            <button class="btn add-to-cart-btn">Ajouter au panier</button>
-        </div>
-   <!-- Nos produits -->
+          <!-- Nos produits -->
    <section class="features">
-        <div class="container">
-        <h2><span style="color: rgb(0, 0, 0);">Description de nos produits</span></h2>
-            </div>
-                <div class="image-wrapper">
-                    <img src="kit manuelvsauto.png"
-                    alt="Illustration éducative"
-                    width="600"
-                    height="400"
-                    class="intro-image">
-                    </div>
-                    <p>Le kit puzzle-paint est vendu en <span style="color: rgb(32, 172, 123);">2 versions : </span> <br>
-            <span style="color: rgb(32, 172, 123);">Un kit Auto</span>: qui s'anime à l'aide d'un kit électronique constitué d'un régulateur de vitesse, d'un servomoteur et d'un boitier à piles .<br>
-      <span style="color: rgb(32, 172, 123);">Un kit Manuel</span>: qui s'anime à l'aide d'une petite manivelle à placer à l'avant de la maquette au niveau du moteur de la voiture. <br>
-        </p><br><br>
-        <div class="container">
-        <h2><span style="color: rgb(0, 0, 0);">Contenu des kits</span></h2>
+    <div class="container">
+    <h2><span style="color: rgb(0, 0, 0);">Description des produits</span></h2>
         </div>
-        <div class="image-wrapper">
-            <img src="kit manuelvsauto2.png"
-            alt="Illustration éducative"
-            width="600"
-            height="400"
-            class="intro-image">
-            </div>
-    <p> <span style="color: rgb(32, 172, 123);">Quel que soit le kit (Auto ou manuel)</span> que vous achetez, vous aurez-toujours dans votre kit les éléments suivant: <br>
-        <span style="color: rgb(32, 172, 123);">Une soixantaine de pièces en PLA</span> à assembler<br>
-           <span style="color: rgb(32, 172, 123);">Une kit de peinture acrylique</span> à 8 couleurs (à base d'eau)<br>
-              <span style="color: rgb(32, 172, 123);">2 pinceaux </span>pour la peinture<br>
-                <span style="color: rgb(32, 172, 123);">Une notice d'assemblage</span> détaillée<br><br>
-            Cependant, <span style="color: rgb(32, 172, 123);">la différence majeure entre les 2 kits</span> est <span style="color: rgb(32, 172, 123);">le kit électronique </span> permettant de lancer les mécanismes de manière autonome (sans la main) qui est <br> <span style="color: rgb(32, 172, 123);">inclu uniquement dans le kit auto.</span>
-            Ce kit électronique est <span style="color: rgb(32, 172, 123);"> constitué: </span> <br>
             <div class="image-wrapper">
-                <img src="KITELECTRONIQUE.png"
+                <img src="kit manuelvsauto.png"
                 alt="Illustration éducative"
-                width="300"
-                height="100"
+                width="600"
+                height="400"
                 class="intro-image">
-                </div>  
-                 <span style="color: rgb(32, 172, 123);">D'un servomoteur </span> (petit moteur électronique à vitesse réglable)<br>
-                <span style="color: rgb(32, 172, 123);">D'un régulateur de vitesse à 3 modes </span> (Pour régler la vitesse du servomoteur)<br>
-                 <span style="color: rgb(32, 172, 123);">D'un boitier à piles </span>
-                 <span style="color: rgb(32, 172, 123);">De 4 piles</span> inlus 
-                </p><br>
-</section>
-       
-        <!-- Ajoutez d'autres produits ici -->
+                </div>
+                <p>Le kit puzzle-paint est vendu en <span style="color: rgb(32, 172, 123);">2 versions : </span> <br>
+        <span style="color: rgb(32, 172, 123);">Un kit Auto</span>: qui s'anime à l'aide d'un kit électronique constitué d'un régulateur de vitesse, d'un servomoteur et d'un boitier à piles .<br>
+<span style="color: rgb(32, 172, 123);">Un kit Manuel</span>: qui s'anime à l'aide d'une petite manivelle à placer à l'avant de la maquette au niveau du moteur de la voiture. <br>
+    </p>
+
+    <section class="features">
+        <div class="container">
+        <h2><span style="color: rgb(0, 0, 0);">Acheter votre kit</span></h2>
+            </div>
+        <main class="product-gallery">
+            <!-- Produit Kit Auto -->
+            <div class="product" data-id="1" data-name="Kit auto" data-price="49.99">
+                <img src="boxkit.png" alt="Produit 1">
+                <h3>Kit Auto</h3>
+                <p>Une maquette ludique à animer avec un kit électronique</p>
+                <p><strong>Prix : €49.99</strong></p>
+
+                <!-- Conteneur pour les boutons -->
+                <div class="btn-container">
+                    <button class="btn add-to-cart-btn">Ajouter au panier</button>
+                    <button class="btn detail-btn" data-id="1">Détail produit</button>
+                </div>
+            </div>
+
+            <!-- Produit Kit Manuel -->
+            <div class="product" data-id="2" data-name="Kit manuel" data-price="39.99">
+                <img src="boxkit2.png" alt="Produit 2">
+                <h3>Kit Manuel</h3>
+                <p>Une maquette ludique à animer avec une petite manivelle</p>
+                <p><strong>Prix : €39.99</strong></p>
+
+                <!-- Conteneur pour les boutons -->
+                <div class="btn-container">
+                    <button class="btn add-to-cart-btn">Ajouter au panier</button>
+                    <button class="btn detail-btn" data-id="2">Détail produit</button>
+                </div>
+            </div>
+        </main>
+    
     </main>
 
       <!-- Footer -->
@@ -114,6 +100,8 @@
             <p>&copy; 2025 Puzzle-Paint. Tous droits réservés.</p>
         </div>
     </footer>
+    <script src="cart.js"defer></script>
+    <script src="produits.js"defer></script> 
 </body>
 </html>
 

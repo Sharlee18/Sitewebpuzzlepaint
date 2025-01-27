@@ -956,3 +956,130 @@ body {
 .product .btn:hover {
     background: #388e3c;
 }
+
+/* Styles pour le pop-up */
+.product-popup {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+.popup-content {
+    background: white;
+    padding: 20px;
+    border-radius: 10px;
+    position: relative;
+    max-width: 80%;
+    max-height: 80%;
+    overflow: hidden;
+}
+
+.close-popup {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background: none;
+    border: none;
+    font-size: 20px;
+    cursor: pointer;
+}
+
+/* Styles du carrousel */
+.carousel {
+    position: relative;
+    width: 100%;
+    height: 400px; /* Ajuste la hauteur selon tes besoins */
+    overflow: hidden;
+}
+
+.carousel-track {
+    display: flex;
+    transition: transform 0.5s ease-in-out;
+}
+
+.carousel img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.carousel-nav {
+    position: absolute;
+    top: 50%;
+    left: 0;
+    right: 0;
+    display: flex;
+    justify-content: space-between;
+    transform: translateY(-50%);
+    z-index: 10;
+}
+
+.carousel-btn {
+    background-color: rgba(0, 0, 0, 0.5);
+    color: white;
+    border: none;
+    padding: 10px;
+    cursor: pointer;
+    font-size: 18px;
+    border-radius: 50%;
+}
+
+.carousel-btn:hover {
+    background-color: rgba(0, 0, 0, 0.7);
+}
+
+/* Conteneur des produits */
+.product {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    padding: 15px;
+    margin: 15px;
+    width: 250px; /* Largeur fixe pour uniformiser */
+    height: auto; /* Ajustable selon le contenu */
+    background-color: #ffffff;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* Conteneur des boutons */
+.btn-container {
+    display: flex;
+    flex-direction: column; /* Les boutons sont empilés */
+    align-items: center;
+    width: 100%;
+    margin-top: 10px;
+}
+
+/* Style des boutons */
+.btn {
+    width: 90%;
+    padding: 10px;
+    margin: 5px 0; /* Espacement entre les boutons */
+    text-align: center;
+    font-size: 1rem;
+    font-weight: bold;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+/* Style du bouton "Détail produit" */
+.detail-btn {
+    background-color: #007bff; /* Bleu */
+    color: white;
+    border: none;
+    transition: background-color 0.3s ease;
+}
+
+.detail-btn:hover {
+    background-color: #0056b3; /* Bleu plus foncé au survol */
+}

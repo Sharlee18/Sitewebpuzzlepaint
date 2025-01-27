@@ -1,138 +1,89 @@
-// Sélection des éléments du DOM pour le panier
-const cartIcon = document.getElementById('cart-icon');
-const cartCount = document.getElementById('cart-count');
+// Fonction pour ouvrir le pop-up avec le carrousel
+function openProductDetails(productId) {
+    // Définition des images en fonction de l'ID du produit
+    const productImages = {
+        1: ["PLA PARTS.png", "peintureacry.png", "pinceaux.png", "kitelectrique.png"], // Images du Kit Auto
+        2: ["PLA PARTS.png", "peintureacry.png", "pinceaux.png", "kitelectriquenon.png"] // Images du Kit Manuel
+    };
 
-// Charger le panier depuis localStorage ou initialiser un panier vide
-let cart = JSON.parse(localStorage.getItem('cart')) || [];
-
-// Fonction pour mettre à jour le compteur du panier
-function updateCartCount() {
-    const totalItems = cart.reduce((sum, item) => sum + item.quantity, 0);
-    if (cartCount) {
-        cartCount.textContent = totalItems;
+    // Vérifie si l'ID du produit a des images associées
+    if (!productImages[productId]) {
+        console.error("Aucune image trouvée pour le produit ID:", productId);
+        return;
     }
-}
 
-// Fonction pour afficher le résumé du panier (dans un pop-up)
-function displayCartSummary() {
-    // Vérifier si le pop-up existe déjà pour éviter les doublons
-    if (document.getElementById('cart-summary')) return;
-
-    const cartSummary = document.createElement('div');
-    cartSummary.id = 'cart-summary';
-    cartSummary.innerHTML = `
-        <div class="cart-overlay">
-            <div class="cart-content">
-                <button class="close-cart" id="close-cart">✖</button> <!-- Croix pour fermer -->
-                <h2>Votre Panier</h2>
-                <ul class="cart-items-list">
-                    ${cart.map(item => `
-                        <li class="cart-item">
-                            <img src="${item.image}" alt="${item.name}" class="cart-item-img" 
-                                 onerror="this.onerror=null;this.src='boxkit.png';">
-                            <div class="cart-item-details">
-                                <span>${item.name}</span>
-                                <span>${item.price.toFixed(2)} €</span>
-                                <span>(Quantité: ${item.quantity})</span>
-                            </div>
-                        </li>
-                    `).join('')}
-                </ul>
-                <p class="cart-total">Total : ${cart.reduce((sum, item) => sum + item.price * item.quantity, 0).toFixed(2)} €</p>
-                <div class="popup-buttons">
-                    <button id="clear-cart">Vider mon panier</button>
-                    <button id="validate-cart">Valider mon panier</button>
+    // Création du pop-up avec le carrousel
+    const popup = document.createElement('div');
+    popup.classList.add('product-popup');
+    popup.innerHTML = `
+        <div class="popup-content">
+            <button class="close-popup">✖</button>
+            <div class="carousel">
+                <div class="carousel-track">
+                    ${productImages[productId].map(img => `<img src="${img}" alt="Image produit ${productId}">`).join('')}
+                </div>
+                <div class="carousel-nav">
+                    <button class="carousel-btn prev-btn">◀</button>
+                    <button class="carousel-btn next-btn">▶</button>
                 </div>
             </div>
         </div>
     `;
 
-    document.body.appendChild(cartSummary);
+    document.body.appendChild(popup);
 
-    // Écouteur pour fermer le pop-up via la croix
-    document.getElementById('close-cart').addEventListener('click', () => {
-        document.getElementById('cart-summary')?.remove();
+    // Gestion de la fermeture du pop-up
+    const closeBtn = popup.querySelector('.close-popup');
+    closeBtn.addEventListener('click', () => {
+        popup.remove();
     });
 
-    // Écouteur pour "Valider mon panier" (rediriger vers la page checkout.html)
-    document.getElementById('validate-cart').addEventListener('click', () => {
-        window.location.href = 'checkout.html';
-    });
+    // Carrousel navigation
+    const prevBtn = popup.querySelector('.prev-btn');
+    const nextBtn = popup.querySelector('.next-btn');
+    const track = popup.querySelector('.carousel-track');
+    let currentSlide = 0;
 
-    // Écouteur pour "Vider mon panier"
-    document.getElementById('clear-cart').addEventListener('click', () => {
-        // Vider le panier dans localStorage
-        localStorage.removeItem('cart');
+    const slides = track.querySelectorAll('img');
+    const totalSlides = slides.length;
 
-        // Réinitialiser le tableau `cart`
-        cart = [];
-
-        // Mettre à jour le compteur du panier
-        updateCartCount();
-
-        // Afficher un message confirmant que le panier a été vidé
-        alert("Votre panier a été vidé.");
-
-        // Fermer le pop-up
-        document.getElementById('cart-summary')?.remove();
-    });
-}
-
-// Fonction pour ajouter un produit au panier
-function addToCart(product) {
-    const existingProduct = cart.find(item => item.id === product.id);
-    if (existingProduct) {
-        existingProduct.quantity += 1; // Augmente la quantité
-    } else {
-        cart.push({ 
-            ...product, 
-            quantity: 1, 
-            image: product.image || "images/default.png" // Ajout d'une image par défaut si aucune image n'est définie
-        }); 
-    }
-
-    // Sauvegarder le panier dans localStorage
-    localStorage.setItem('cart', JSON.stringify(cart));
-
-    // Mettre à jour l'affichage
-    updateCartCount();
-
-    // Message de confirmation
-    alert(`Produit "${product.name}" ajouté au panier.`);
-}
-
-// Ajout des événements sur les boutons "Ajouter au panier"
-document.querySelectorAll('.add-to-cart-btn').forEach(button => {
-    button.addEventListener('click', () => {
-        const productElement = button.parentElement;
-        const product = {
-            id: productElement.getAttribute('data-id'),
-            name: productElement.getAttribute('data-name'),
-            price: parseFloat(productElement.getAttribute('data-price')),
-            image: productElement.getAttribute('data-image') || "images/default.png" // Vérification de l'image
-        };
-
-        addToCart(product);
-    });
-});
-
-// Ouvrir le pop-up du panier
-if (cartIcon) {
-    cartIcon.addEventListener('click', () => {
-        if (cart.length > 0) {
-            displayCartSummary();
+    // Fonction pour aller au slide suivant
+    function goToNextSlide() {
+        if (currentSlide < totalSlides - 1) {
+            currentSlide++;
         } else {
-            alert('Votre panier est vide.');
+            currentSlide = 0;
         }
-    });
+        updateCarousel();
+    }
+
+    // Fonction pour aller au slide précédent
+    function goToPrevSlide() {
+        if (currentSlide > 0) {
+            currentSlide--;
+        } else {
+            currentSlide = totalSlides - 1;
+        }
+        updateCarousel();
+    }
+
+    // Fonction pour mettre à jour le carrousel
+    function updateCarousel() {
+        const slideWidth = slides[0].clientWidth;
+        track.style.transform = `translateX(-${currentSlide * slideWidth}px)`;
+    }
+
+    prevBtn.addEventListener('click', goToPrevSlide);
+    nextBtn.addEventListener('click', goToNextSlide);
+
+    // Initialisation du carrousel
+    updateCarousel();
 }
 
-// Charger le compteur du panier au chargement de la page
-document.addEventListener('DOMContentLoaded', () => {
-    try {
-        cart = JSON.parse(localStorage.getItem('cart')) || [];
-        updateCartCount();
-    } catch (error) {
-        console.error('Erreur lors du chargement du panier depuis localStorage:', error);
-    }
+// Attacher un événement au bouton "Détail produit"
+document.querySelectorAll('.detail-btn').forEach(button => {
+    button.addEventListener('click', () => {
+        const productId = button.getAttribute('data-id');
+        openProductDetails(productId);
+    });
 });
