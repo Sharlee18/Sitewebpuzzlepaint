@@ -2,8 +2,8 @@
 function openProductDetails(productId) {
     // Définition des images en fonction de l'ID du produit
     const productImages = {
-        1: ["PLA PARTS.png", "peintureacry.png", "pinceaux.png", "kitelectrique.png"], // Kit Auto
-        2: ["PLA PARTS.png", "peintureacry.png", "pinceaux.png", "kitelectriquenon.png"] // Kit Manuel
+        1: ["kitauto11.png","PLA PARTS.png", "peintureacry.png", "pinceaux.png", "kitelectrique.png"], // Kit Auto
+        2: ["kit manuel11.png","PLA PARTS.png", "peintureacry.png", "pinceaux.png", "kitelectriquenon.png"] // Kit Manuel
     };
 
     // Vérification des images du produit
