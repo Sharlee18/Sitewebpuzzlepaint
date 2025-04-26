@@ -1,0 +1,183 @@
+<!DOCTYPE html><html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Réserver un atelier</title>
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(to right, #74ebd5, #ACB6E5);
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }.container {
+        background: #fff;
+        padding: 40px;
+        border-radius: 12px;
+        box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+        width: 90%;
+        max-width: 450px;
+    }
+
+    h1 {
+        text-align: center;
+        color: #333;
+        margin-bottom: 25px;
+    }
+
+    form {
+        display: flex;
+        flex-direction: column;
+    }
+
+    label {
+        margin-top: 15px;
+        margin-bottom: 5px;
+        color: #555;
+        font-weight: 500;
+    }
+
+    input, select, textarea {
+        padding: 12px;
+        border: 1px solid #ccc;
+        border-radius: 8px;
+        font-size: 15px;
+        outline: none;
+        transition: border-color 0.3s;
+    }
+
+    input:focus, select:focus, textarea:focus {
+        border-color: #007BFF;
+    }
+
+    textarea {
+        resize: vertical;
+    }
+
+    button {
+        margin-top: 25px;
+        padding: 15px;
+        background-color: #007BFF;
+        color: #fff;
+        font-size: 17px;
+        border: none;
+        border-radius: 8px;
+        cursor: pointer;
+        transition: background-color 0.3s;
+        position: relative;
+    }
+
+    button.loading {
+        background-color: #0056b3;
+        cursor: not-allowed;
+    }
+
+    button.loading::after {
+        content: '';
+        position: absolute;
+        right: 20px;
+        top: 50%;
+        transform: translateY(-50%);
+        width: 16px;
+        height: 16px;
+        border: 2px solid #fff;
+        border-top: 2px solid transparent;
+        border-radius: 50%;
+        animation: spin 1s linear infinite;
+    }
+
+    @keyframes spin {
+        from { transform: translateY(-50%) rotate(0deg); }
+        to { transform: translateY(-50%) rotate(360deg); }
+    }
+
+    .confirmation {
+        display: none;
+        margin-top: 20px;
+        padding: 15px;
+        background-color: #d4edda;
+        border: 1px solid #c3e6cb;
+        color: #155724;
+        border-radius: 8px;
+        text-align: center;
+        opacity: 0;
+        transform: translateY(20px);
+        transition: opacity 0.6s ease, transform 0.6s ease;
+    }
+
+    .confirmation.show {
+        display: block;
+        opacity: 1;
+        transform: translateY(0);
+    }
+</style>
+
+</head>
+<body><div class="container">
+    <h1>Réserver un atelier</h1>
+    <form action="https://formspree.io/f/xkgrgvov" method="POST" id="reservation-form">
+        <input type="hidden" name="_subject" value="Nouvelle demande de réservation d'atelier">
+        <input type="hidden" name="_replyto" value="contact@kit-puzzlepaint.com"><label for="nom">Nom et Prénom :</label>
+    <input type="text" id="nom" name="nom" required>
+
+    <label for="participants">Nombre de participants :</label>
+    <input type="number" id="participants" name="participants" min="1" required>
+
+    <label for="date">Date et heure :</label>
+    <input type="datetime-local" id="date" name="date" required>
+
+    <label for="formule">Formule d'atelier :</label>
+    <select id="formule" name="formule" required>
+        <option value="">-- Sélectionner --</option>
+        <option value="initiation">Initiation Puzzle-Paint (2h)</option>
+        <option value="avance">Atelier avancé (4h)</option>
+        <option value="personnalise">Atelier personnalisé (sur mesure)</option>
+    </select>
+
+    <label for="souhaits">Souhaits particuliers :</label>
+    <textarea id="souhaits" name="souhaits" rows="4" placeholder="Décrivez vos attentes..."></textarea>
+
+    <button type="submit" id="submit-button">Envoyer la demande</button>
+</form>
+<div class="confirmation" id="confirmation-message">
+    Merci pour votre réservation ! Nous vous contacterons très bientôt.
+</div>
+
+</div><script>
+    const form = document.getElementById('reservation-form');
+    const confirmation = document.getElementById('confirmation-message');
+    const submitButton = document.getElementById('submit-button');
+
+    form.addEventListener('submit', function(event) {
+        event.preventDefault();
+
+        submitButton.classList.add('loading');
+        submitButton.disabled = true;
+
+        fetch(form.action, {
+            method: 'POST',
+            body: new FormData(form),
+            headers: { 'Accept': 'application/json' }
+        }).then(response => {
+            if (response.ok) {
+                form.style.display = 'none';
+                confirmation.classList.add('show');
+                setTimeout(() => {
+                    window.location.href = '/';
+                }, 5000); // redirection après 5 secondes
+            } else {
+                alert('Une erreur est survenue. Merci de réessayer.');
+                submitButton.classList.remove('loading');
+                submitButton.disabled = false;
+            }
+        }).catch(error => {
+            alert('Une erreur est survenue. Merci de réessayer.');
+            submitButton.classList.remove('loading');
+            submitButton.disabled = false;
+        });
+    });
+</script></body>
+</html>
