@@ -41,3 +41,26 @@ function initializeCarousel(carousel) {
 document.querySelectorAll('.carousel').forEach(carousel => {
     initializeCarousel(carousel);
 });
+
+const menuToggle = document.getElementById('menu-toggle');
+const sidebar = document.getElementById('sidebar');
+const overlay = document.getElementById('overlay');
+const closeMenu = document.getElementById('close-menu');
+
+// Ouvrir le menu
+menuToggle.addEventListener('click', () => {
+    sidebar.classList.add('active');
+    overlay.classList.add('active');
+});
+
+// Fermer le menu
+closeMenu.addEventListener('click', () => {
+    sidebar.classList.remove('active');
+    overlay.classList.remove('active');
+});
+
+// Cliquer sur l'overlay ferme aussi
+overlay.addEventListener('click', () => {
+    sidebar.classList.remove('active');
+    overlay.classList.remove('active');
+});

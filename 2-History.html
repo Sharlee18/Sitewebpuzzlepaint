@@ -33,26 +33,44 @@
             </ul>         
         </nav>
         <!-- Intro Ateliers -->
-        <section class="features">
+        <section class="features reveal">
             <div class="container">
                 <h2><span style="color: rgb(32, 172, 123);">Nos ateliers</span></h2>
-                    <p><Br>Les <b>“PZP Sessions” </b>(Puzzle-Paint Sessions) sont des ateliers éducatifs clés en main pour découvrir la science autrement.
-                        Encadrés par un coach passionné, les participants montent leur propre voiture intelligente, apprennent à la décorer, à la rendre interactive, et à la programmer simplement.
-                        <Br><p></p>
-      
-        </section>
-
-        <!-- Detail atelier -->
-        <section class="features">
-            <div class="container">
-                <h2><span style="color: rgb(32, 172, 123);">A quoi ressemble un atelier?</span></h2>
                 <div class="image-wrapper">
-                    <img src="Atelier1.png" 
+                    <img src="bookworkshop.png" 
                     alt="Illustration éducative" 
                     width="600"
                     height="400"
                     class="intro-image">
                     </div>
+                    <p><Br><span style="color: rgb(32, 172, 123);">Les <b>“PZP Sessions” </span></b>(Puzzle-Paint Sessions) sont des <span style="color: rgb(32, 172, 123);">ateliers éducatifs clés en main pour découvrir la science autrement.</span><br>
+                        Encadrés par un coach passionné, les participants montent leur propre voiture intelligente, apprennent à la décorer, à la rendre interactive, et à la programmer simplement.
+                        <Br><p></p>
+                            <a href="reservation.html" class="btn btn-premium">Fomulaire de réservation</a>
+      
+        </section>
+
+        <!-- Detail atelier -->
+        <section class="features reveal">
+            <div class="container">
+                <h2><span style="color: rgb(32, 172, 123);">A quoi ressemble un atelier?</span></h2>
+                <div id="carousel3" class="carousel">
+                    <div class="carousel-track-container">
+                        <ul class="carousel-track">
+                            <li class="carousel-slide current-slide">
+                                <img src="Atelier1.png" alt="Image 1">
+                            </li>
+                            <li class="carousel-slide">
+                                <img src="materiel fournit.png" alt="Image 2">
+                            </li>
+                            <li class="carousel-slide current-slide">
+                                <img src="anycubic atelier.png" alt="Image 1">
+                            </li>
+                        </ul>
+                    </div>
+                    <button class="carousel-btn prev-btn">◀</button>
+                    <button class="carousel-btn next-btn">▶</button>
+                </div>
                     <p><Br><b><u>Contenu type d’une session</b></u> :<Br>
                         1. Présentation du projet et des pièces<Br>
                         2. Assemblage pas à pas de la maquette imprimée en 3D<Br>
@@ -105,3 +123,17 @@
     </footer>
 </body>
 </html>
+
+<script>
+    const reveals = document.querySelectorAll('.reveal');
+    window.addEventListener('scroll', () => {
+        for (let i = 0; i < reveals.length; i++) {
+            const windowHeight = window.innerHeight;
+            const revealTop = reveals[i].getBoundingClientRect().top;
+            const revealPoint = 100;
+            if (revealTop < windowHeight - revealPoint) {
+                reveals[i].classList.add('active');
+            }
+        }
+    });
+</script>

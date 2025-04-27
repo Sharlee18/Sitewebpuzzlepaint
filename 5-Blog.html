@@ -48,15 +48,15 @@
                         </div><br>
                          </div>
                          <div class="text-zone">
-                    <p>Avec le programme Puzzle-Paint Coach Network, vous pouvez animer vos propres ateliers éducatifs, transmettre votre passion pour la science et la technologie… et générer un revenu à votre rythme.<Br>
+                    <p><span style="color: rgb(32, 172, 123);">Avec le programme Puzzle-Paint Coach Network, vous pouvez animer vos propres ateliers éducatifs, transmettre votre passion pour la science et la technologie… et générer un revenu à votre rythme.</span><Br>
                         Que vous soyez enseignant, animateur, maker, étudiant ou simplement passionné, nous vous accompagnons à chaque étape.
                          </p> </div>
       <!-- Reseau puzzle paint -->
-      <section class="features">
+      <section class="features reveal">
         <div class="container">
             <h2><span style="color: rgb(32, 172, 123);">Ce que vous propose le réseau Puzzle-Paint</span></h2>
                 </div>
-                <p><b><u>Un kit Pro "Coach" complet :</u></b>
+                <p><b><u>Un kit Pro "Coach" complet :</u></b><br>
                     1 ou plusieurs kits (mécanique + électronique)<br>
                     Guide d’animation et tutoriels détaillés<br>
                     Ressources pédagogiques en ligne<br><br>
@@ -70,7 +70,7 @@
                     Accès à notre communauté de coachs<br>
 
                     <!-- Reseau puzzle paint -->
-      <section class="features">
+      <section class="features reveal">
         <div class="container">
             <h2><span style="color: rgb(32, 172, 123);">Ce que vous pouvez faire en tant que coach :</span></h2>
                 </div>
@@ -105,3 +105,18 @@
     </footer>
 </body>
 </html>
+
+
+<script>
+    const reveals = document.querySelectorAll('.reveal');
+    window.addEventListener('scroll', () => {
+        for (let i = 0; i < reveals.length; i++) {
+            const windowHeight = window.innerHeight;
+            const revealTop = reveals[i].getBoundingClientRect().top;
+            const revealPoint = 100;
+            if (revealTop < windowHeight - revealPoint) {
+                reveals[i].classList.add('active');
+            }
+        }
+    });
+</script>

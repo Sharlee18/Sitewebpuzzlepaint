@@ -18,20 +18,32 @@
     </header>
 
     <main>
-        <nav class="navbar">
-            <ul class="nav-list">
+        <header class="topbar">
+            <div class="left-header">
+                <button id="menu-toggle" class="menu-icon">&#9776;</button>
+            </div>
+            <div class="right-header">
+                <div id="cart-icon" class="cart">
+                    🛒<span id="cart-count">0</span>
+                </div>
+            </div>
+        </header>
+        
+        
+        <div id="overlay"></div>
+        
+        <nav id="sidebar" class="sidebar">
+            <button id="close-menu" class="close-btn">&times;</button>
+            <ul>
                 <li><a href="index.html">Accueil</a></li>
                 <li><a href="2-History.html">Nos ateliers</a></li>
                 <li><a href="produits.html">Notre boutique</a></li>
                 <li><a href="5-Blog.html">Devenir coach</a></li>
-                <li><a href="3-APropos.html">À-propos</a></li>         
+                <li><a href="3-APropos.html">À-propos</a></li>
                 <li><a href="4-Contact.html">Contact</a></li>
-                <div id="cart-icon" class="cart">
-                    <span>🛒</span>
-                    <span id="cart-count">0</span>
-                </div> 
             </ul>
         </nav>
+        
 
         <!-- Section aventure éducative -->
         <section class="features reveal">
@@ -122,7 +134,7 @@
                 <span style="color: rgb(32, 172, 123);">5-Gère l'affichage en temps réel d'information</span> sur l'écran (vitesse moteur en Km/h, rapport de vitesse, distance obstacles, messages d'alertes...) <br> <br>
 
                 ces actions ci-dessus sont celles du programme de base fournit dans le boitier électronique, <br>
-                <b>mais vous pouvez aussi customiser de petits programmes simples pour changer le comportement de votre voiture intelligente</b> 
+                <span style="color: rgb(32, 172, 123);">mais vous pouvez aussi customiser de petits programmes simples pour changer le comportement de votre voiture intelligente</b> </span>
             </div>
         
             </p>
@@ -152,9 +164,7 @@
                     <button class="carousel-btn next-btn">▶</button>
                 </div>
             </div>
-            <p> <b> Pour enfants, ados, écoles ou passionnés<br>
-                Accompagnement par un coach<br>
-                De 2h à plusieurs séance </b>
+            <p> 
                 <div class="text-zone">
                 Le kit Puzzle-Paint regorge de <span style="color: rgb(32, 172, 123);">pleins de découvertes technologiques modernes</span>  (Mécanique, électronique, informatique, IA, impression 3D...) <br>
                 Et pour mieux apprendre et creuser chaque domaine: <span style="color: rgb(32, 172, 123);"> quoi de mieux que le faire en groupe accopmpagné et guidé par un coach passionné </span> ?
@@ -162,6 +172,33 @@
 <br>
 
 
+            </p>
+        </section>
+    </main>
+
+           
+         <!-- Section Pour qui? -->
+         <section class="features reveal">
+            <div class="container">
+                <h2><span style="color: rgb(32, 172, 123);">A qui sont destinés nos ateliers? </span></h2>
+                <div id="carousel2" class="carousel">
+                    <div class="carousel-track-container">
+                        <ul class="carousel-track">
+                            <li class="carousel-slide current-slide">
+                                <img src="curieux.png" alt="Image 1">
+                            </li>
+                            <li class="carousel-slide current-slide">
+                                <img src="client groupe.png" alt="Image 1">
+                            </li>
+                    </div>
+                    <button class="carousel-btn prev-btn">◀</button>
+                    <button class="carousel-btn next-btn">▶</button>
+                </div>
+            </div>
+            <div class="text-zone">
+            <p> Nos ateliers sont destinés aux <span style="color: rgb(32, 172, 123);">écoles, centre de loisirs, fablabs</span><br>
+                Mais aussi aux <span style="color: rgb(32, 172, 123);">enfants curieux et étudiants en sciences</span> (mécanique, électroniques...) <br>
+                <span style="color: rgb(32, 172, 123);">Les adultes curieux, bricoleurs</span> ou tout simplement interessé d'apprendre de manière ludiques des technologie modernes (CAO, IA, Impression 3D...) sont égalements les bienvenues<br>
             </p>
         </section>
     </main>
