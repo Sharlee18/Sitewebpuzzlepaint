@@ -1,183 +1,296 @@
 <!DOCTYPE html><html lang="fr">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Réserver un atelier</title>
-    <style>
-        body {
-            font-family: 'Poppins', sans-serif;
-            background: linear-gradient(to right, #74ebd5, #ACB6E5);
-            margin: 0;
-            padding: 0;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            min-height: 100vh;
-        }.container {
-        background: #fff;
-        padding: 40px;
-        border-radius: 12px;
-        box-shadow: 0 8px 20px rgba(0,0,0,0.2);
-        width: 90%;
-        max-width: 450px;
-    }
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Réserver un atelier - Puzzle-Paint</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+  <style>
+    body {
+      font-family: 'Poppins', sans-serif;
+      background: linear-gradient(to right, #74ebd5, #ACB6E5);
+      margin: 0;
+      padding: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+    }.container {
+  background: #fff;
+  padding: 40px;
+  border-radius: 12px;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+  width: 90%;
+  max-width: 500px;
+  position: relative;
+}
 
-    h1 {
-        text-align: center;
-        color: #333;
-        margin-bottom: 25px;
-    }
+.close-btn {
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  font-size: 24px;
+  text-decoration: none;
+  color: #333;
+}
 
-    form {
-        display: flex;
-        flex-direction: column;
-    }
+.close-btn:hover {
+  color: #007BFF;
+}
 
-    label {
-        margin-top: 15px;
-        margin-bottom: 5px;
-        color: #555;
-        font-weight: 500;
-    }
+h1 {
+  text-align: center;
+  color: #333;
+  margin-bottom: 25px;
+}
 
-    input, select, textarea {
-        padding: 12px;
-        border: 1px solid #ccc;
-        border-radius: 8px;
-        font-size: 15px;
-        outline: none;
-        transition: border-color 0.3s;
-    }
+form {
+  display: flex;
+  flex-direction: column;
+}
 
-    input:focus, select:focus, textarea:focus {
-        border-color: #007BFF;
-    }
+label {
+  margin-top: 15px;
+  margin-bottom: 5px;
+  color: #555;
+  font-weight: 500;
+}
 
-    textarea {
-        resize: vertical;
-    }
+input, select, textarea {
+  padding: 12px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  font-size: 15px;
+  outline: none;
+  transition: border-color 0.3s;
+}
 
-    button {
-        margin-top: 25px;
-        padding: 15px;
-        background-color: #007BFF;
-        color: #fff;
-        font-size: 17px;
-        border: none;
-        border-radius: 8px;
-        cursor: pointer;
-        transition: background-color 0.3s;
-        position: relative;
-    }
+input:focus, select:focus, textarea:focus {
+  border-color: #007BFF;
+}
 
-    button.loading {
-        background-color: #0056b3;
-        cursor: not-allowed;
-    }
+textarea {
+  resize: vertical;
+}
 
-    button.loading::after {
-        content: '';
-        position: absolute;
-        right: 20px;
-        top: 50%;
-        transform: translateY(-50%);
-        width: 16px;
-        height: 16px;
-        border: 2px solid #fff;
-        border-top: 2px solid transparent;
-        border-radius: 50%;
-        animation: spin 1s linear infinite;
-    }
+.adresse-group {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  margin-top: 10px;
+}
 
-    @keyframes spin {
-        from { transform: translateY(-50%) rotate(0deg); }
-        to { transform: translateY(-50%) rotate(360deg); }
-    }
+.adresse-group .champ {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
 
-    .confirmation {
-        display: none;
-        margin-top: 20px;
-        padding: 15px;
-        background-color: #d4edda;
-        border: 1px solid #c3e6cb;
-        color: #155724;
-        border-radius: 8px;
-        text-align: center;
-        opacity: 0;
-        transform: translateY(20px);
-        transition: opacity 0.6s ease, transform 0.6s ease;
-    }
+.input-icon {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
 
-    .confirmation.show {
-        display: block;
-        opacity: 1;
-        transform: translateY(0);
-    }
-</style>
+.input-icon i {
+  position: absolute;
+  left: 10px;
+  color: #007BFF;
+  font-size: 18px;
+  transition: color 0.3s ease;
+}
 
+.input-icon input {
+  padding-left: 35px;
+}
+
+@media (max-width: 600px) {
+  .adresse-group {
+    flex-direction: column;
+  }
+}
+
+button {
+  margin-top: 25px;
+  padding: 15px;
+  background-color: #007BFF;
+  color: #fff;
+  font-size: 17px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+  position: relative;
+}
+
+button.loading {
+  background-color: #0056b3;
+  cursor: not-allowed;
+}
+
+button.loading::after {
+  content: '';
+  position: absolute;
+  right: 20px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 16px;
+  height: 16px;
+  border: 2px solid #fff;
+  border-top: 2px solid transparent;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  from { transform: translateY(-50%) rotate(0deg); }
+  to { transform: translateY(-50%) rotate(360deg); }
+}
+
+.confirmation {
+  display: none;
+  margin-top: 20px;
+  padding: 15px;
+  background-color: #d4edda;
+  border: 1px solid #c3e6cb;
+  color: #155724;
+  border-radius: 8px;
+  text-align: center;
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+
+.confirmation.show {
+  display: block;
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.back-home {
+  text-align: center;
+  margin-top: 20px;
+  opacity: 0;
+  transform: translateY(10px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+
+.back-home.show {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.btn-home {
+  display: inline-block;
+  padding: 10px 20px;
+  background-color: #6c757d;
+  color: white;
+  text-decoration: none;
+  border-radius: 8px;
+  font-size: 16px;
+  transition: background-color 0.3s;
+}
+
+.btn-home:hover {
+  background-color: #5a6268;
+}
+
+  </style>
 </head>
 <body><div class="container">
-    <h1>Réserver un atelier</h1>
-    <form action="https://formspree.io/f/xkgrgvov" method="POST" id="reservation-form">
-        <input type="hidden" name="_subject" value="Nouvelle demande de réservation d'atelier">
-        <input type="hidden" name="_replyto" value="contact@kit-puzzlepaint.com"><label for="nom">Nom et Prénom :</label>
-    <input type="text" id="nom" name="nom" required>
+  <a href="/" class="close-btn">&times;</a>
+  <h1>Réserver un atelier</h1>
+  <form action="https://formspree.io/f/xkgrgvov" method="POST" id="reservation-form">
+    <input type="hidden" name="_subject" value="Nouvelle demande de réservation d'atelier">
+    <input type="hidden" name="_replyto" value="contact@kit-puzzlepaint.com"><label for="nom">Nom et Prénom :</label>
+<input type="text" id="nom" name="nom" required>
 
-    <label for="participants">Nombre de participants :</label>
-    <input type="number" id="participants" name="participants" min="1" required>
+<label for="participants">Nombre de participants :</label>
+<input type="number" id="participants" name="participants" min="1" required>
 
-    <label for="date">Date et heure :</label>
-    <input type="datetime-local" id="date" name="date" required>
-
-    <label for="formule">Formule d'atelier :</label>
-    <select id="formule" name="formule" required>
-        <option value="">-- Sélectionner --</option>
-        <option value="initiation">Initiation Puzzle-Paint (2h)</option>
-        <option value="avance">Atelier avancé (4h)</option>
-        <option value="personnalise">Atelier personnalisé (sur mesure)</option>
-    </select>
-
-    <label for="souhaits">Souhaits particuliers :</label>
-    <textarea id="souhaits" name="souhaits" rows="4" placeholder="Décrivez vos attentes..."></textarea>
-
-    <button type="submit" id="submit-button">Envoyer la demande</button>
-</form>
-<div class="confirmation" id="confirmation-message">
-    Merci pour votre réservation ! Nous vous contacterons très bientôt.
+<div class="adresse-group">
+  <div class="champ">
+    <label for="adresse">Adresse :</label>
+    <div class="input-icon">
+      <i class="fas fa-home"></i>
+      <input type="text" id="adresse" name="adresse" required>
+    </div>
+  </div>
+  <div class="champ">
+    <label for="ville">Ville :</label>
+    <div class="input-icon">
+      <i class="fas fa-city"></i>
+      <input type="text" id="ville" name="ville" required>
+    </div>
+  </div>
+  <div class="champ">
+    <label for="codepostal">Code postal :</label>
+    <div class="input-icon">
+      <i class="fas fa-map-pin"></i>
+      <input type="text" id="codepostal" name="codepostal" required>
+    </div>
+  </div>
 </div>
 
+<label for="date">Date et heure :</label>
+<input type="datetime-local" id="date" name="date" required>
+
+<label for="formule">Formule d'atelier :</label>
+<select id="formule" name="formule" required>
+  <option value="">-- Sélectionner --</option>
+  <option value="initiation">Initiation Puzzle-Paint (2h)</option>
+  <option value="avance">Atelier avancé (4h)</option>
+  <option value="personnalise">Atelier personnalisé (sur mesure)</option>
+</select>
+
+<label for="souhaits">Souhaits particuliers :</label>
+<textarea id="souhaits" name="souhaits" rows="4" placeholder="Décrivez vos attentes..."></textarea>
+
+<button type="submit" id="submit-button">Envoyer la demande</button>
+
+  </form>
+  <div class="back-home" id="back-home">
+    <a href="/" class="btn-home">&larr; Retour à l'accueil</a>
+  </div>
+  <div class="confirmation" id="confirmation-message">
+    Merci pour votre réservation ! Nous vous contacterons très bientôt.
+  </div>
 </div><script>
-    const form = document.getElementById('reservation-form');
-    const confirmation = document.getElementById('confirmation-message');
-    const submitButton = document.getElementById('submit-button');
+  window.addEventListener('DOMContentLoaded', () => {
+    document.getElementById('back-home').classList.add('show');
+  });
 
-    form.addEventListener('submit', function(event) {
-        event.preventDefault();
+  const form = document.getElementById('reservation-form');
+  const confirmation = document.getElementById('confirmation-message');
+  const submitButton = document.getElementById('submit-button');
 
-        submitButton.classList.add('loading');
-        submitButton.disabled = true;
+  form.addEventListener('submit', function(event) {
+    event.preventDefault();
 
-        fetch(form.action, {
-            method: 'POST',
-            body: new FormData(form),
-            headers: { 'Accept': 'application/json' }
-        }).then(response => {
-            if (response.ok) {
-                form.style.display = 'none';
-                confirmation.classList.add('show');
-                setTimeout(() => {
-                    window.location.href = '/';
-                }, 5000); // redirection après 5 secondes
-            } else {
-                alert('Une erreur est survenue. Merci de réessayer.');
-                submitButton.classList.remove('loading');
-                submitButton.disabled = false;
-            }
-        }).catch(error => {
-            alert('Une erreur est survenue. Merci de réessayer.');
-            submitButton.classList.remove('loading');
-            submitButton.disabled = false;
-        });
+    submitButton.classList.add('loading');
+    submitButton.disabled = true;
+
+    fetch(form.action, {
+      method: 'POST',
+      body: new FormData(form),
+      headers: { 'Accept': 'application/json' }
+    }).then(response => {
+      if (response.ok) {
+        form.style.display = 'none';
+        document.getElementById('back-home').style.display = 'none';
+        confirmation.classList.add('show');
+        setTimeout(() => {
+          window.location.href = '/';
+        }, 5000);
+      } else {
+        alert('Une erreur est survenue. Merci de réessayer.');
+        submitButton.classList.remove('loading');
+        submitButton.disabled = false;
+      }
+    }).catch(error => {
+      alert('Une erreur est survenue. Merci de réessayer.');
+      submitButton.classList.remove('loading');
+      submitButton.disabled = false;
     });
+  });
 </script></body>
 </html>
