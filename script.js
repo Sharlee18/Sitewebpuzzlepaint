@@ -1,45 +1,43 @@
 function initializeCarousel(carousel) {
-    const track = carousel.querySelector('.carousel-track');
-    const slides = Array.from(track.children);
-    const prevButton = carousel.querySelector('.prev-btn');
-    const nextButton = carousel.querySelector('.next-btn');
+    const track = carousel.querySelector('.carousel-track'); // La bande contenant toutes les images
+    const slides = Array.from(track.children); // Toutes les slides
+    const prevButton = carousel.querySelector('.prev-btn'); // Bouton précédent
+    const nextButton = carousel.querySelector('.next-btn'); // Bouton suivant
+    const slideWidth = slides[0].getBoundingClientRect().width; // Largeur d'une slide
 
-    const slideWidth = slides[0].getBoundingClientRect().width;
-
-    // Positionner les slides côte à côte
+    // Positionner toutes les slides côte à côte
     slides.forEach((slide, index) => {
         slide.style.left = `${slideWidth * index}px`;
     });
 
+    // Fonction pour bouger vers une slide spécifique
     const moveToSlide = (track, currentSlide, targetSlide) => {
-        track.style.transform = `translateX(-${targetSlide.style.left})`;
-        currentSlide.classList.remove('current-slide');
-        targetSlide.classList.add('current-slide');
+        const targetLeft = parseFloat(targetSlide.style.left); // On récupère juste le nombre sans "px"
+        track.style.transform = `translateX(-${targetLeft}px)`; // Déplacer la bande
+        currentSlide.classList.remove('current-slide'); // Retire la classe active de l'ancienne slide
+        targetSlide.classList.add('current-slide'); // Ajoute la classe active à la nouvelle slide
     };
 
-    // Écouteur pour le bouton "Suivant"
+    // Clic sur "Suivant"
     nextButton.addEventListener('click', () => {
         const currentSlide = track.querySelector('.current-slide');
         const nextSlide = currentSlide.nextElementSibling;
-
         if (nextSlide) {
             moveToSlide(track, currentSlide, nextSlide);
         }
     });
 
-    // Écouteur pour le bouton "Précédent"
+    // Clic sur "Précédent"
     prevButton.addEventListener('click', () => {
         const currentSlide = track.querySelector('.current-slide');
         const prevSlide = currentSlide.previousElementSibling;
-
         if (prevSlide) {
             moveToSlide(track, currentSlide, prevSlide);
         }
     });
 }
 
-// Initialisation des carrousels
+// Initialiser tous les carrousels de la page
 document.querySelectorAll('.carousel').forEach(carousel => {
     initializeCarousel(carousel);
 });
-

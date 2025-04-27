@@ -51,38 +51,73 @@ header p {
     text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
 }
 
-/* Style général du menu */
+
+/* Animation fade-in pour le menu */
 .navbar {
-    background-color: #000000; /* Couleur de fond */
-    padding: 1rem 0; /* Espacement vertical */
-    text-align: center; /* Centre les éléments horizontalement */
+    background: rgba(0, 0, 0, 0.7);
+    position: sticky;
+    top: 0;
+    width: 100%;
+    z-index: 1000;
+    padding: 10px 0;
+    backdrop-filter: blur(10px);
+    display: flex;
+    justify-content: center;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+
+    /* Animation */
+    opacity: 0;
+    transform: translateY(-20px);
+    animation: fadeInNavbar 1s ease forwards;
 }
 
+/* Animation keyframes */
+@keyframes fadeInNavbar {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+
+/* Liste du menu */
 .nav-list {
-    list-style-type: none; /* Supprime les puces */
-    margin: 0;
-    padding: 0;
-    display: inline-flex; /* Met les éléments en ligne */
-    gap: 20px; /* Ajoute de l'espace entre les éléments */
+    list-style: none;
+    display: flex;
+    gap: 30px;
 }
 
-.nav-list li {
-    display: inline; /* Chaque élément est en ligne */
-}
-
+/* Liens du menu */
 .nav-list a {
-    text-decoration: none; /* Supprime le soulignement */
-    color: white; /* Couleur du texte */
-    font-size: 1.2rem; /* Taille du texte */
-    font-weight: bold; /* Texte en gras */
-    padding: 0.5rem 1rem; /* Espacement intérieur */
-    transition: background-color 0.3s ease; /* Animation fluide pour le survol */
-    border-radius: 5px; /* Coins arrondis */
+    color: white;
+    text-decoration: none;
+    font-size: 1.2rem;
+    font-weight: bold;
+    padding: 10px 15px;
+    border-radius: 5px;
+    position: relative;
+    transition: color 0.3s ease;
+}
+
+/* Effet spécial au survol */
+.nav-list a::after {
+    content: '';
+    position: absolute;
+    width: 0%;
+    height: 3px;
+    background: #20c997;
+    left: 0;
+    bottom: 0;
+    transition: width 0.3s ease;
+    border-radius: 2px;
+}
+
+.nav-list a:hover::after {
+    width: 100%;
 }
 
 .nav-list a:hover {
-    background-color: #555; /* Couleur au survol */
-    color: #fff; /* Couleur du texte au survol */
+    color: #20c997; /* Change la couleur du texte au hover */
 }
 
 /* Section Introduction avec une image au-dessus du texte */
@@ -122,7 +157,7 @@ header p {
     padding: 0.8rem 1.5rem;
     margin: 0.5rem;
     border-radius: 30px;
-    background-color:rgba(18, 228, 134, 0.696);
+    background-color:rgba(39, 229, 143, 0.696);
     color: white;
     font-size: 1rem;
     font-weight: bold;
@@ -1121,12 +1156,17 @@ body {
 
 /* Conteneur du carrousel */
 .carousel {
-    width: 100%; /* Adaptez à la largeur souhaitée */
-    max-width: 500px; /* Largeur maximale pour limiter la taille */
-    overflow: hidden; /* Masque les images qui dépassent du conteneur */
-    margin: 0 auto; /* Centre le carrousel */
-    position: relative;
+    width: 600px; /* ou 700px si tu veux encore plus grand */
+    height: 400px;
+    margin: auto;
+    overflow: hidden;
+    border-radius: 10px; /* coins arrondis sympa */
+    background: #ffffff; /* pour éviter un fond vide */
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
+
 
 /* Conteneur des images */
 .carousel-images {
@@ -1362,4 +1402,50 @@ body {
     object-fit: contain; /* L’image s’adapte sans être coupée */
 }
 
+/* Animation douce au scroll (sans casser ton code existant) */
+.reveal {
+    opacity: 0;
+    transform: translateY(50px);
+    transition: opacity 0.8s ease, transform 0.8s ease;
+}
+
+.reveal.active {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Bouton Premium */
+.btn-premium {
+    display: inline-block;
+    padding: 0.8rem 1.5rem;
+    margin: 0.5rem;
+    border-radius: 30px;
+    background: linear-gradient(135deg, #20c997, #38d39f);
+    color: white;
+    font-weight: bold;
+    text-decoration: none;
+    font-size: 1rem;
+    text-align: center;
+    transition: all 0.4s ease;
+    box-shadow: 0 4px 10px rgba(32, 201, 151, 0.3);
+}
+
+.btn-premium:hover {
+    background: linear-gradient(135deg, #38d39f, #20c997);
+    box-shadow: 0 6px 12px rgba(32, 201, 151, 0.5);
+    transform: translateY(-3px);
+}
+
+
+/* Zone de texte confortable */
+.text-zone {
+    max-width: 800px; /* Largeur maximale de la zone de lecture */
+    margin: 40px auto; /* Centre horizontalement + marge haut/bas */
+    padding: 20px 30px; /* Respiration intérieure */
+    background: rgba(255, 255, 255, 0.95); /* Fond blanc léger */
+    border-radius: 10px; /* Coins arrondis */
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05); /* Légère ombre douce */
+    line-height: 1.8; /* Meilleure lisibilité */
+    text-align: center; /* Texte justifié : propre sur les côtés */
+}
 
