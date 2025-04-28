@@ -64,3 +64,17 @@ overlay.addEventListener('click', () => {
     sidebar.classList.remove('active');
     overlay.classList.remove('active');
 });
+
+document.addEventListener('DOMContentLoaded', function() {
+    let slides = document.querySelectorAll('.background-slideshow img');
+    let currentSlide = 0;
+
+    function showNextSlide() {
+        slides[currentSlide].classList.remove('active');
+        currentSlide = (currentSlide + 1) % slides.length;
+        slides[currentSlide].classList.add('active');
+    }
+
+    setInterval(showNextSlide, 5000); // toutes les 5 secondes
+});
+
