@@ -1,3 +1,7 @@
+.navbar {
+    display: none;
+}
+
 /* Réinitialisation CSS de base */
 * {
     margin: 0;
@@ -52,24 +56,63 @@ header p {
 }
 
 
-/* Animation fade-in pour le menu */
-.navbar {
-    background: rgba(0, 0, 0, 0.7);
-    position: sticky;
+.topbar {
+    display: flex;
+    justify-content: space-between; /* Sépare la gauche et la droite */
+    align-items: center;
+    background-color: #000;
+    padding: 10px 20px;
+    height: 60px;
+    color: white;
+    position: fixed;
     top: 0;
     width: 100%;
-    z-index: 1000;
-    padding: 10px 0;
-    backdrop-filter: blur(10px);
-    display: flex;
-    justify-content: center;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
-
-    /* Animation */
-    opacity: 0;
-    transform: translateY(-20px);
-    animation: fadeInNavbar 1s ease forwards;
+    z-index: 1001;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.3);
 }
+
+/* Zone du bouton menu */
+.left-header {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+}
+
+/* Zone du panier */
+.right-header {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+}
+
+/* Icône menu burger */
+.menu-icon {
+    font-size: 2rem;
+    background: none;
+    border: none;
+    color: white;
+    cursor: pointer;
+}
+
+/* Panier */
+.cart {
+    position: relative;
+    font-size: 1.8rem;
+    cursor: pointer;
+}
+
+/* Compteur rouge du panier */
+#cart-count {
+    position: absolute;
+    top: -8px;
+    right: -10px;
+    background-color: red;
+    color: white;
+    border-radius: 50%;
+    padding: 2px 6px;
+    font-size: 0.8rem;
+}
+
 
 /* Animation keyframes */
 @keyframes fadeInNavbar {
@@ -79,46 +122,6 @@ header p {
     }
 }
 
-
-/* Liste du menu */
-.nav-list {
-    list-style: none;
-    display: flex;
-    gap: 30px;
-}
-
-/* Liens du menu */
-.nav-list a {
-    color: white;
-    text-decoration: none;
-    font-size: 1.2rem;
-    font-weight: bold;
-    padding: 10px 15px;
-    border-radius: 5px;
-    position: relative;
-    transition: color 0.3s ease;
-}
-
-/* Effet spécial au survol */
-.nav-list a::after {
-    content: '';
-    position: absolute;
-    width: 0%;
-    height: 3px;
-    background: #20c997;
-    left: 0;
-    bottom: 0;
-    transition: width 0.3s ease;
-    border-radius: 2px;
-}
-
-.nav-list a:hover::after {
-    width: 100%;
-}
-
-.nav-list a:hover {
-    color: #20c997; /* Change la couleur du texte au hover */
-}
 
 /* Section Introduction avec une image au-dessus du texte */
 .intro {
@@ -302,21 +305,6 @@ footer p {
         font-size: 1.5rem; /* Réduire la taille du sous-titre */
     }
 
-    /* Ajuster la navigation */
-    .navbar {
-        padding: 10px 0;
-    }
-
-    .nav-list {
-        flex-wrap: wrap; /* Permettre au menu de s'empiler si nécessaire */
-        gap: 10px;
-    }
-
-    .nav-list a {
-        font-size: 1rem; /* Réduire légèrement la taille de la police */
-        padding: 0.5rem;
-    }
-
 
     /* Réduire les boutons */
     .btn {
@@ -407,57 +395,6 @@ header p {
     line-height: 1.4;
     color: white;
     text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
-}
-
-/* Style général du menu */
-.navbar {
-    background-color: #000000; /* Couleur de fond */
-    padding: 1rem 0; /* Espacement vertical */
-    text-align: center; /* Centre les éléments horizontalement */
-}
-
-.nav-list {
-    list-style-type: none; /* Supprime les puces */
-    margin: 0;
-    padding: 0;
-    display: inline-flex; /* Met les éléments en ligne */
-    gap: 20px; /* Ajoute de l'espace entre les éléments */
-}
-
-.nav-list li {
-    display: inline; /* Chaque élément est en ligne */
-}
-
-.nav-list a {
-    text-decoration: none; /* Supprime le soulignement */
-    color: white; /* Couleur du texte */
-    font-size: 1.2rem; /* Taille du texte */
-    font-weight: bold; /* Texte en gras */
-    padding: 0.5rem 1rem; /* Espacement intérieur */
-    transition: background-color 0.3s ease; /* Animation fluide pour le survol */
-    border-radius: 5px; /* Coins arrondis */
-}
-
-.nav-list a:hover {
-    background-color: #3a3838; /* Couleur au survol */
-    color: #fff; /* Couleur du texte au survol */
-}
-
-/* Responsive menu */
-@media (max-width: 768px) {
-    .navbar {
-        padding: 10px 0;
-    }
-
-    .nav-list {
-        flex-wrap: wrap; /* Permet au menu de s'empiler si nécessaire */
-        gap: 10px;
-    }
-
-    .nav-list a {
-        font-size: 1rem; /* Réduire légèrement la taille de la police */
-        padding: 0.5rem;
-    }
 }
 
 /* Section Introduction avec une image au-dessus du texte */
@@ -642,21 +579,6 @@ footer p {
 
     header p {
         font-size: 1.5rem; /* Réduire la taille du sous-titre */
-    }
-
-    /* Ajuster la navigation */
-    .navbar {
-        padding: 10px 0;
-    }
-
-    .nav-list {
-        flex-wrap: wrap; /* Permettre au menu de s'empiler si nécessaire */
-        gap: 10px;
-    }
-
-    .nav-list a {
-        font-size: 1rem; /* Réduire légèrement la taille de la police */
-        padding: 0.5rem;
     }
 
 
@@ -850,33 +772,6 @@ body {
     margin-top: 10px;
 }
 
-/* Styles de la barre de navigation */
-.navbar {
-    display: flex;
-    justify-content: space-between; /* Espace entre le menu et le panier */
-    align-items: center;
-    padding: 10px 20px;
-    background-color: #000000;
-    color: white;
-}
-
-/* Liste des liens du menu */
-.nav-list {
-    list-style-type: none;
-    display: flex;
-    gap: 20px;
-}
-
-.nav-list li {
-    display: inline;
-}
-
-.nav-list a {
-    text-decoration: none;
-    color: white;
-    font-size: 1.2rem;
-    font-weight: bold;
-}
 
 /* Styles du panier */
 .cart {
@@ -962,28 +857,6 @@ body {
     margin: 0;
     padding: 0;
     background-color: #f9f9f9;
-}
-
-/* Navigation */
-.navbar {
-    background-color: #333;
-    color: white;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 10px 20px;
-}
-
-.nav-list {
-    list-style: none;
-    display: flex;
-    gap: 20px;
-}
-
-.nav-list a {
-    text-decoration: none;
-    color: white;
-    font-size: 1rem;
 }
 
 /* Panier */
@@ -1453,41 +1326,7 @@ img {
     border-radius: 15px; /* ou 10px ou 20px selon l'effet que tu veux */
 }
 
-.topbar {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    background-color: #000;
-    padding: 1rem;
-    color: white;
-    position: relative;
-    z-index: 1001;
-}
 
-.menu-icon {
-    font-size: 2rem;
-    background: none;
-    border: none;
-    color: white;
-    cursor: pointer;
-}
-
-.cart {
-    position: relative;
-    font-size: 1.8rem;
-    cursor: pointer;
-}
-
-#cart-count {
-    position: absolute;
-    top: -8px;
-    right: -8px;
-    background-color: red;
-    color: white;
-    border-radius: 50%;
-    padding: 2px 6px;
-    font-size: 0.8rem;
-}
 
 /* Overlay pour effet de fond sombre */
 #overlay {
@@ -1556,138 +1395,6 @@ img {
 #overlay.active {
     opacity: 1;
     pointer-events: all;
-}
-
-.topbar {
-    display: flex;
-    justify-content: space-between; /* sépare le menu burger et le panier */
-    align-items: center; /* centre verticalement */
-    background-color: #000;
-    padding: 10px 20px;
-    height: 60px;
-    color: white;
-    position: fixed; /* FIXE la topbar en haut de l'écran */
-    top: 0;
-    left: 0;
-    width: 100%;
-    z-index: 1001;
-    box-shadow: 0 2px 5px rgba(0,0,0,0.3); /* (optionnel) joli effet d'ombre sous la barre */
-}
-
-.menu-icon {
-    font-size: 2rem;
-    background: none;
-    border: none;
-    color: white;
-    cursor: pointer;
-    height: 40px; /* ajuste mieux l'icône burger */
-}
-
-.cart {
-    display: flex;
-    align-items: center;
-    position: relative;
-    font-size: 1.8rem;
-    cursor: pointer;
-    height: 40px; /* ajuste mieux l'icône panier */
-}
-
-.topbar {
-    display: flex;
-    justify-content: space-between; /* espace entre gauche et droite */
-    align-items: center;
-    background-color: #000;
-    padding: 10px 20px;
-    height: 60px;
-    color: white;
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    z-index: 1001;
-    box-shadow: 0 2px 5px rgba(0,0,0,0.3);
-}
-
-.left-header, .right-header {
-    display: flex;
-    align-items: center;
-}
-
-.menu-icon {
-    font-size: 2rem;
-    background: none;
-    border: none;
-    color: white;
-    cursor: pointer;
-    height: 40px;
-}
-
-.cart {
-    position: relative;
-    font-size: 1.8rem;
-    cursor: pointer;
-    height: 40px;
-}
-
-#cart-count {
-    position: absolute;
-    top: -8px;
-    right: -10px;
-    background-color: red;
-    color: white;
-    border-radius: 50%;
-    padding: 2px 6px;
-    font-size: 0.8rem;
-}
-
-.topbar {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    background-color: #000;
-    padding: 10px 20px;
-    height: 60px;
-    color: white;
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    z-index: 1001;
-    box-shadow: 0 2px 5px rgba(0,0,0,0.3);
-}
-
-.left-header, .right-header {
-    display: flex;
-    align-items: center;
-}
-
-.menu-icon {
-    font-size: 2rem;
-    background: none;
-    border: none;
-    color: white;
-    cursor: pointer;
-    height: 40px;
-}
-
-.cart {
-    display: flex;
-    align-items: center;
-    position: relative;
-    font-size: 1.8rem;
-    cursor: pointer;
-    height: 40px;
-}
-
-#cart-count {
-    position: absolute;
-    top: -8px;
-    right: -10px;
-    background-color: red;
-    color: white;
-    border-radius: 50%;
-    padding: 2px 6px;
-    font-size: 0.8rem;
 }
 
 /* Sidebar */

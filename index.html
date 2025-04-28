@@ -5,11 +5,23 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Puzzle-Paint Kit</title>
     <link rel="stylesheet" href="CSS.css">
-    <!-- Intégration de la police Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
 </head>
 <body>
-    <!-- Header avec image en arrière-plan -->
+
+    <!-- Topbar : Menu Burger + Panier -->
+    <div class="topbar">
+        <div class="left-header">
+            <button id="menu-toggle" class="menu-icon">&#9776;</button>
+        </div>
+        <div class="right-header">
+            <div id="cart-icon" class="cart">
+                🛒<span id="cart-count">0</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- Header principal avec image de fond -->
     <header class="header" style="background-image: url('famille2.png');">
         <div class="container">
             <h1>Assemblez, Peignez, Apprenez avec le Puzzle-Paint Kit !</h1>
@@ -18,20 +30,10 @@
     </header>
 
     <main>
-        <header class="topbar">
-            <div class="left-header">
-                <button id="menu-toggle" class="menu-icon">&#9776;</button>
-            </div>
-            <div class="right-header">
-                <div id="cart-icon" class="cart">
-                    🛒<span id="cart-count">0</span>
-                </div>
-            </div>
-        </header>
-        
-        
+
         <div id="overlay"></div>
-        
+
+        <!-- Sidebar du menu -->
         <nav id="sidebar" class="sidebar">
             <button id="close-menu" class="close-btn">&times;</button>
             <ul>
@@ -43,7 +45,6 @@
                 <li><a href="4-Contact.html">Contact</a></li>
             </ul>
         </nav>
-        
 
         <!-- Section aventure éducative -->
         <section class="features reveal">
@@ -52,211 +53,135 @@
                 <div id="carousel1" class="carousel">
                     <div class="carousel-track-container">
                         <ul class="carousel-track">
-                            <li class="carousel-slide current-slide">
-                                <img src="Famille1.png" alt="Image 1">
-                            </li>
-                            <li class="carousel-slide current-slide">
-                                <img src="intro-image.png" alt="Image 1">
-                            </li>
-                            <li class="carousel-slide">
-                                <img src="carroussel3.png" alt="Image 2">
-                            </li>
-                            <li class="carousel-slide">
-                                <img src="carroussel1.png" alt="Image 3">
-                            </li>
+                            <li class="carousel-slide current-slide"><img src="Famille1.png" alt="Image 1"></li>
+                            <li class="carousel-slide current-slide"><img src="intro-image.png" alt="Image 1"></li>
+                            <li class="carousel-slide"><img src="carroussel3.png" alt="Image 2"></li>
+                            <li class="carousel-slide"><img src="carroussel1.png" alt="Image 3"></li>
                         </ul>
                     </div>
                     <button class="carousel-btn prev-btn">◀</button>
                     <button class="carousel-btn next-btn">▶</button>
                 </div>
                 <div class="text-zone">
-                <p>Le Kit Puzzle-Paint, c'est <span style="color: rgb(32, 172, 123);">une expérience éducative complète mêlant mécanique, électronique, programmation et créativité.</span></p>
-                Construis ta propre voiture intelligente à partir d’un kit imprimé en 3D, peins-la à ton goût, connecte les composants électroniques (Capteur à ultrason, servomoteurs, Joystick, écran...), et programme ses réactions !
-                <span style="color: rgb(32, 172, 123);">En plus, tout ça sans aucune colle, aucun outil complexe : tout se clipse et s'assemble facilement</span> <br>
-        </div><br>
-    </div>
-            <a href="produits.html" class="btn btn-premium">Achetez maintenant</a>
-        </div>
-    </div>
-    </div>
-    <a href="reservation.html" class="btn btn-premium">Participer a un atelier</a>
-</div>
+                    <p>Le Kit Puzzle-Paint, c'est <span style="color: rgb(32, 172, 123);">une expérience éducative complète mêlant mécanique, électronique, programmation et créativité.</span></p>
+                    Construis ta propre voiture intelligente à partir d’un kit imprimé en 3D, peins-la à ton goût, connecte les composants électroniques (Capteur à ultrason, servomoteurs, Joystick, écran...), et programme ses réactions !
+                    <span style="color: rgb(32, 172, 123);">En plus, tout ça sans aucune colle, aucun outil complexe : tout se clipse et s'assemble facilement</span><br>
+                <a href="produits.html" class="btn btn-premium">Achetez maintenant</a><br>
             </div>
         </section>
 
-         <!-- Section Kit unique -->
-         <section class="features reveal">
+        <!-- Section Kit unique -->
+        <section class="features reveal">
             <div class="container">
-                <h2><span style="color: rgb(32, 172, 123);">Un kit unique au croisement de la science et du jeu: </span></h2>
+                <h2><span style="color: rgb(32, 172, 123);">Un kit unique au croisement de la science et du jeu :</span></h2>
                 <div id="carousel2" class="carousel">
                     <div class="carousel-track-container">
                         <ul class="carousel-track">
-                            <li class="carousel-slide current-slide">
-                                <img src="all mecanisme.png" alt="Image 1">
-                            </li>
-                            <li class="carousel-slide">
-                                <img src="default-image.jpg.png" alt="Image 2">
-                            </li>
-                            <li class="carousel-slide current-slide">
-                                <img src="mecanismeskit.png" alt="Image 1">
-                            </li>
-                            <li class="carousel-slide current-slide">
-                                <img src="Endtoend mecaelec.png" alt="Image 1">
-                            </li>
-                            <li class="carousel-slide">
-                                <img src="imageKIT.png" alt="Image 2">
-                            </li>
+                            <li class="carousel-slide current-slide"><img src="all mecanisme.png" alt="Image 1"></li>
+                            <li class="carousel-slide"><img src="default-image.jpg.png" alt="Image 2"></li>
+                            <li class="carousel-slide current-slide"><img src="mecanismeskit.png" alt="Image 3"></li>
+                            <li class="carousel-slide current-slide"><img src="Endtoend mecaelec.png" alt="Image 4"></li>
+                            <li class="carousel-slide"><img src="imageKIT.png" alt="Image 5"></li>
                         </ul>
                     </div>
                     <button class="carousel-btn prev-btn">◀</button>
                     <button class="carousel-btn next-btn">▶</button>
-                </div>
-            </div><br> 
-            <div class="text-zone">
-            <p>
-                <span style="color: rgb(32, 172, 123);">Manipuler plus de 50 pièces en mouvement </span> au sein de pleins de mécanismes ingénieux présents dans nos voitures (Le moteur, la boite de vitesse, le volant, les essuie-glaces...)<br>
-                <span style="color: rgb(32, 172, 123);">Apprennez les bases de l'électronique </span> en connectant la maquette à de nombreux composants électroniques (Capteur de distance, servomoteurs, Joystick, Ecran, Buzzer…)<br>
-                <span style="color: rgb(32, 172, 123);">Initier vous à la programmation simple de l'électronique (Arduino) </span> (assistée par l'intelligence artificielle)<br>
-                <span style="color: rgb(32, 172, 123);">Amuser-vous à contrôler votre maquette </span>  à l'aide joystick ou d'un smartphone à distance:<br><br>
-            </div>
-                <div class="image-wrapper">
-                    <img src="famille3.png" 
-                    alt="Illustration éducative" 
-                    width="600"
-                    height="400"
-                    class="intro-image">
-                    </div>
-        <div class="text-zone">
-                <span style="color: rgb(32, 172, 123);">1-Contrôle la vitesse du moteur</span> et observe bouger les composants du moteur (Pistons, bielles, arbre à cames...)<br>
-                <span style="color: rgb(32, 172, 123);">2-Contrôle (manuellement ou automatiquement) le passage des rapports de vitesses</span> (Point mort, 1ère ou 2ième) et observe les changements d'engrenages à chaque rapport <br> 
-                <span style="color: rgb(32, 172, 123);">3-Contrôle les obstacles</span> à l'avant de la voiture à l'aide du capteur à ultrason <br> 
-                <span style="color: rgb(32, 172, 123);">4-Déclenche des alertes automatiques</span> (Ex: Bip progressif du buzzer quand  obstacle s'approche de la maquette) <br> 
-                <span style="color: rgb(32, 172, 123);">5-Gère l'affichage en temps réel d'information</span> sur l'écran (vitesse moteur en Km/h, rapport de vitesse, distance obstacles, messages d'alertes...) <br> <br>
-
-                ces actions ci-dessus sont celles du programme de base fournit dans le boitier électronique, <br>
-                <span style="color: rgb(32, 172, 123);">mais vous pouvez aussi customiser de petits programmes simples pour changer le comportement de votre voiture intelligente</b> </span>
-            </div>
-        
-            </p>
-        </section>
-    </main>
-
-    
-         <!-- Section pour qui? -->
-         <section class="features reveal">
-            <div class="container">
-                <h2><span style="color: rgb(32, 172, 123);">Ateliers ludiques et pédagogiques </span></h2>
-                <div id="carousel2" class="carousel">
-                    <div class="carousel-track-container">
-                        <ul class="carousel-track">
-                            <li class="carousel-slide current-slide">
-                                <img src="Atelier1.png" alt="Image 1">
-                            </li>
-                            <li class="carousel-slide current-slide">
-                                <img src="mecanismeskit.png" alt="Image 1">
-                            </li>
-                            <li class="carousel-slide">
-                                <img src="imageKIT.png" alt="Image 2">
-                            </li>
-                        </ul>
-                    </div>
-                    <button class="carousel-btn prev-btn">◀</button>
-                    <button class="carousel-btn next-btn">▶</button>
-                </div>
-            </div>
-            <p> 
+                </div><br>
                 <div class="text-zone">
-                Le kit Puzzle-Paint regorge de <span style="color: rgb(32, 172, 123);">pleins de découvertes technologiques modernes</span>  (Mécanique, électronique, informatique, IA, impression 3D...) <br>
-                Et pour mieux apprendre et creuser chaque domaine: <span style="color: rgb(32, 172, 123);"> quoi de mieux que le faire en groupe accopmpagné et guidé par un coach passionné </span> ?
+                    <p><span style="color: rgb(32, 172, 123);">Manipuler plus de 50 pièces en mouvement</span> dans des mécanismes de voitures (moteur, boîte de vitesses, volant, essuie-glaces...)<br>
+                    <span style="color: rgb(32, 172, 123);">Apprenez l’électronique de base</span> en connectant des capteurs, servomoteurs, écrans, etc.<br>
+                    <span style="color: rgb(32, 172, 123);">Initiez-vous à la programmation Arduino</span> simple et ludique.<br>
+                    <span style="color: rgb(32, 172, 123);">Contrôlez votre voiture intelligente</span> par joystick ou smartphone.</p>
+                </div>
             </div>
-<br>
-
-
-            </p>
         </section>
-    </main>
 
-           
-         <!-- Section Pour qui? -->
-         <section class="features reveal">
+        <!-- Section Ateliers ludiques -->
+        <section class="features reveal">
             <div class="container">
-                <h2><span style="color: rgb(32, 172, 123);">A qui sont destinés nos ateliers? </span></h2>
-                <div id="carousel2" class="carousel">
+                <h2><span style="color: rgb(32, 172, 123);">Ateliers ludiques et pédagogiques</span></h2>
+                <div id="carousel3" class="carousel">
                     <div class="carousel-track-container">
                         <ul class="carousel-track">
-                            <li class="carousel-slide current-slide">
-                                <img src="curieux.png" alt="Image 1">
-                            </li>
-                            <li class="carousel-slide current-slide">
-                                <img src="client groupe.png" alt="Image 1">
-                            </li>
+                            <li class="carousel-slide current-slide"><img src="Atelier1.png" alt="Image 1"></li>
+                            <li class="carousel-slide current-slide"><img src="mecanismeskit.png" alt="Image 2"></li>
+                            <li class="carousel-slide"><img src="imageKIT.png" alt="Image 3"></li>
+                        </ul>
                     </div>
                     <button class="carousel-btn prev-btn">◀</button>
                     <button class="carousel-btn next-btn">▶</button>
                 </div>
+                <div class="text-zone">
+                    <p>Le kit Puzzle-Paint regorge de découvertes modernes : <span style="color: rgb(32, 172, 123);">mécanique, électronique, informatique, IA, impression 3D...</span> Venez les explorer en ateliers accompagnés de coachs passionnés !</p>
+                </div>
             </div>
-            <div class="text-zone">
-            <p> Nos ateliers sont destinés aux <span style="color: rgb(32, 172, 123);">écoles, centre de loisirs, fablabs</span><br>
-                Mais aussi aux <span style="color: rgb(32, 172, 123);">enfants curieux et étudiants en sciences</span> (mécanique, électroniques...) <br>
-                <span style="color: rgb(32, 172, 123);">Les adultes curieux, bricoleurs</span> ou tout simplement interessé d'apprendre de manière ludiques des technologie modernes (CAO, IA, Impression 3D...) sont égalements les bienvenues<br>
-            </p>
         </section>
-    </main>
 
-       
-         <!-- Section coach -->
-         <section class="features reveal">
+        <!-- Section Public ciblé -->
+        <section class="features reveal">
             <div class="container">
-                <h2><span style="color: rgb(32, 172, 123);">Vous aimez transmettre ? </span></h2>
-                <div id="carousel2" class="carousel">
+                <h2><span style="color: rgb(32, 172, 123);">À qui sont destinés nos ateliers ?</span></h2>
+                <div id="carousel4" class="carousel">
                     <div class="carousel-track-container">
                         <ul class="carousel-track">
-                            <li class="carousel-slide current-slide">
-                                <img src="atelier5.png" alt="Image 1">
-                            </li>
-                            <li class="carousel-slide current-slide">
-                                <img src="coach1.png" alt="Image 1">
-                            </li>
-                            <li class="carousel-slide current-slide">
-                                <img src="coach2.png" alt="Image 1">
+                            <li class="carousel-slide current-slide"><img src="curieux.png" alt="Image 1"></li>
+                            <li class="carousel-slide current-slide"><img src="client groupe.png" alt="Image 2"></li>
+                        </ul>
                     </div>
                     <button class="carousel-btn prev-btn">◀</button>
                     <button class="carousel-btn next-btn">▶</button>
                 </div>
+                <div class="text-zone">
+                    <p>Enfants curieux, étudiants en sciences, écoles, centres de loisirs, fablabs, bricoleurs passionnés... <span style="color: rgb(32, 172, 123);">tout le monde est le bienvenu</span> dans nos ateliers !</p>
+                </div>
             </div>
-            <p> Rejoignez notre réseau de coachs indépendants<br>
-                Formez-vous rapidement<br>
-                Animez vos propres ateliers<br>
-            </p>
-        </div>
-        <a href="coach-form.html" class="btn btn-premium">Devenir coach</a>
-    </div>
         </section>
+
+        <!-- Section devenir coach -->
+        <section class="features reveal">
+            <div class="container">
+                <h2><span style="color: rgb(32, 172, 123);">Vous aimez transmettre ?</span></h2>
+                <div id="carousel5" class="carousel">
+                    <div class="carousel-track-container">
+                        <ul class="carousel-track">
+                            <li class="carousel-slide current-slide"><img src="atelier5.png" alt="Image 1"></li>
+                            <li class="carousel-slide current-slide"><img src="coach1.png" alt="Image 2"></li>
+                            <li class="carousel-slide current-slide"><img src="coach2.png" alt="Image 3"></li>
+                        </ul>
+                    </div>
+                    <button class="carousel-btn prev-btn">◀</button>
+                    <button class="carousel-btn next-btn">▶</button>
+                </div>
+                <div class="text-zone">
+                    <p>Rejoignez notre réseau de coachs ! Animez vos propres ateliers Puzzle-Paint.</p>
+                <a href="coach-form.html" class="btn btn-premium">Devenir coach</a>
+            </div>
+        </section>
+
+        <!-- Section Vidéo -->
+        <section class="video reveal">
+            <div class="container">
+                <h2><span style="color: rgb(32, 172, 123);">Le kit en vidéo</span></h2>
+                <p>Découvrez le Puzzle-Paint Kit en action :</p>
+                <video controls>
+                    <source src="Kit-Video2.mp4" type="video/mp4">
+                    Votre navigateur ne prend pas en charge la lecture de vidéos.
+                </video>
+            </div>
+        </section>
+
+        <!-- Section Témoignages -->
+        <section class="testimonials reveal">
+            <div class="container">
+                <h2><span style="color: rgb(32, 172, 123);">Témoignages</span></h2>
+                <blockquote>
+                    <p>"Un jouet éducatif qui plaît autant aux enfants qu’aux parents !"</p>
+                    <cite>- Parent satisfait</cite>
+                </blockquote>
+            </div>
+        </section>
+
     </main>
-
-    
-       
- <!-- Section vidéo -->
- <section class="video">
-    <div class="container">
-        <h2><span style="color: rgb(32, 172, 123);">Le kit en vidéo</span></h2>
-        <p>Découvrez le kit en action avec notre vidéo de présentation :</p>
-        <video controls>
-            <source src="Kit-Video2.mp4" type="video/mp4">
-            Votre navigateur ne prend pas en charge la lecture de vidéos.
-        </video>
-    </div>
-
-      <!-- Section Témoignages -->
-      <section class="testimonials">
-        <div class="container">
-            <h2><span style="color: rgb(32, 172, 123);">Témoignages</span></h2>
-            <blockquote>
-                <p>"Un jouet éducatif qui plaît autant aux enfants qu’aux parents !"</p>
-                <cite>- Parent satisfait</cite>
-            </blockquote>
-        </div>
-    </section>
 
     <!-- Footer -->
     <footer class="footer">
@@ -272,21 +197,23 @@
             <p>&copy; 2025 Puzzle-Paint. Tous droits réservés.</p>
         </div>
     </footer>
+
     <script src="script.js" defer></script>
     <script src="cart.js" defer></script>
+
+    <script>
+        const reveals = document.querySelectorAll('.reveal');
+        window.addEventListener('scroll', () => {
+            for (let i = 0; i < reveals.length; i++) {
+                const windowHeight = window.innerHeight;
+                const revealTop = reveals[i].getBoundingClientRect().top;
+                const revealPoint = 100;
+                if (revealTop < windowHeight - revealPoint) {
+                    reveals[i].classList.add('active');
+                }
+            }
+        });
+    </script>
+
 </body>
 </html>
-
-<script>
-    const reveals = document.querySelectorAll('.reveal');
-    window.addEventListener('scroll', () => {
-        for (let i = 0; i < reveals.length; i++) {
-            const windowHeight = window.innerHeight;
-            const revealTop = reveals[i].getBoundingClientRect().top;
-            const revealPoint = 100;
-            if (revealTop < windowHeight - revealPoint) {
-                reveals[i].classList.add('active');
-            }
-        }
-    });
-</script>
