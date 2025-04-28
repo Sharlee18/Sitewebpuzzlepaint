@@ -1468,41 +1468,112 @@ main {
     margin-top: 60px;
 }
 
+.header-slider {
+    position: relative;
+    height: 100vh; /* ou 700px si tu veux plus petit */
+    overflow: hidden;
+}
+
+.slide {
+    position: absolute;
+    top: 0; left: 0;
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+    background-position: center;
+    opacity: 0;
+    animation: fadeSlides 15s infinite;
+}
+
+.slide1 {
+    background-image: url('Image1.png'); /* Mets ton chemin ici */
+    animation-delay: 0s;
+}
+
+.slide2 {
+    background-image: url('Image2.png');
+    animation-delay: 5s;
+}
+
+.slide3 {
+    background-image: url('image3.jpg');
+    animation-delay: 10s;
+}
+
+@keyframes fadeSlides {
+    0%, 20% { opacity: 0; }
+    25%, 45% { opacity: 1; }
+    50%, 100% { opacity: 0; }
+}
+
+/* Contenu du header par-dessus */
+.header-content {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: white;
+    text-align: center;
+    z-index: 10;
+    padding: 0 20px;
+}
+
+.header-content h1 {
+    font-size: 3rem;
+    margin-bottom: 1rem;
+}
+
+.header-content p {
+    font-size: 1.5rem;
+}
+
+/* === Slideshow de background (header) === */
 .header {
     position: relative;
     width: 100%;
     height: 100vh;
-    overflow: hidden;
-}
-
-.background-slideshow {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    animation: slideshow 15s infinite ease-in-out;
+    display: flex;
+    flex-direction: column;
+    justify-content: center; /* Centre verticalement */
+    align-items: center; /* Centre horizontalement */
+    text-align: center;
+    color: white;
     z-index: 1;
 }
 
-.background-slideshow img {
+/* Animation douce */
+@keyframes slideshow {
+    0% { background-image: url('Image1.png'); }
+    33% { background-image: url('Image2.png'); }
+    66% { background-image: url('Image3.png'); }
+    100% { background-image: url('Image1.png'); }
+}
+
+/* Pour corriger problème mobile */
+.header::before {
+    content: "";
     position: absolute;
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    opacity: 0;
-    transition: opacity 2s ease-in-out;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.3); /* Léger assombrissement pour lire le texte */
+    z-index: 0;
 }
 
-.background-slideshow img.active {
-    opacity: 1;
-}
-
-.header-content {
+/* Texte du header */
+.header h1, .header p {
     position: relative;
     z-index: 2;
-    text-align: center;
-    color: white;
-    top: 30%;
-    transform: translateY(-30%);
-    padding: 0 20px;
+}
+
+/* Optionnel : si tu veux remonter encore ton texte */
+.header h1 {
+    margin-bottom: 10px;
+    font-size: 2.5rem;
+}
+.header p {
+    font-size: 1.5rem;
+    margin-top: 5px;
 }
