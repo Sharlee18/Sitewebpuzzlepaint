@@ -71,30 +71,74 @@
         <section class="features reveal">
             <div class="container">
                 <h2><span style="color: rgb(32, 172, 123);">A quoi ressemble un atelier?</span></h2>
-                <div id="carousel3" class="carousel">
-                    <div class="carousel-track-container">
-                        <ul class="carousel-track">
-                            <li class="carousel-slide current-slide">
-                                <img src="Atelier1.png" alt="Image 1">
-                            </li>
-                            <li class="carousel-slide">
-                                <img src="materiel fournit.png" alt="Image 2">
-                            </li>
-                            <li class="carousel-slide current-slide">
-                                <img src="anycubic atelier.png" alt="Image 1">
-                            </li>
-                        </ul>
+                <section class="blocs-section">
+                    <div class="bloc">
+                        <span style="color: rgb(32, 172, 123);"> <h3>Atelier Découverte (2h) </h3></span>
+                      <img src="Atelier1.png" alt="CAO et Impression 3D">
+                      <p>Présentation de la modélisation 3D et de l'impression personnalisée.</p>
+                      <button onclick="showDetails('details1')">Détails</button>
+                      <div id="details1" class="modal">
+                        <div class="modal-content">
+                          <span class="close" onclick="hideDetails('details1')">&times;</span>
+                          <p>
+                           <b><u> Conception 3D </b></u><br>
+                            • Présentation d'un outil de CAO open source (Tinkercad)<br>
+                            • Création d'objets personnalisés en 3D <br>
+                            • Génération du 3D en format imprimable (stl)<br><br>
+                            <b><u> Impression 3D </b></u><br>
+                            • Présentation d'une imprimante 3D <br>
+                            • Explications des principes de fonctionnement <br>
+                            • Conseils et astuces d'impression 3D<br>
+                            • Impression de modèle 3D personnalisés <br>
+                            </p>
+                        </div>
+                      </div>
                     </div>
-                    <button class="carousel-btn prev-btn">◀</button>
-                    <button class="carousel-btn next-btn">▶</button>
-                </div>
-                    <p><Br><b><u>Contenu type d’une session</b></u> :<Br>
-                        1. Présentation du projet et des pièces<Br>
-                        2. Assemblage pas à pas de la maquette imprimée en 3D<Br>
-                        3. Peinture, personnalisation, créativité libre<Br>
-                        4. Ajout des composants électroniques<Br>
-                        5. Programmation guidée avec l’aide de l’IA (ChatGPT)<Br>
-                        6. Tests, démonstration, échanges et sourires !<Br><Br>
+                  
+                    <div class="bloc">
+                        <span style="color: rgb(32, 172, 123);">  <h3>Atelier Complet (3h30)</h3></span>
+                      <img src="Atelier1.png" alt="Montage Kit MECA et ELEC">
+                      <p>Montage mécanique et électronique de la maquette.</p>
+                      <button onclick="showDetails('details2')">Détails</button>
+                      <div id="details2" class="modal">
+                        <div class="modal-content">
+                          <span class="close" onclick="hideDetails('details2')">&times;</span>
+                          <p>
+                            <b><u> Montage Kit MECA  </b></u><br>
+                             • Présentation du kit et de ses principes mécaniques<br>
+                             • Montage pas à pas de la maquette <br>
+                             • Test manuel des mécanismes du kit <br>
+                             • T Peinture, Personnalisation ,créativité libre<br><br>
+                             <b><u> Montage Kit ELEC </b></u><br>
+                             • Présentation du boitier ELEC (microcontrôleur…) <br>
+                             • Montage pas à pas du boîtier ELEC  <br>
+                             • Test de la maquette MECA avec boîtier ELEC<br>
+                             </p>
+                        </div>
+                      </div>
+                    </div>
+                  
+                    <div class="bloc">
+                        <span style="color: rgb(32, 172, 123);"> <h3>Atelier 3 Cycles</h3></span>
+                      <img src="Atelier1.png" alt="Programmation Arduino">
+                      <p>Découverte de l’Arduino et programmation assistée.</p>
+                      <button onclick="showDetails('details3')">Détails</button>
+                      <div id="details3" class="modal">
+                        <div class="modal-content">
+                          <span class="close" onclick="hideDetails('details3')">&times;</span>
+                          <p>
+                            <b><u> Programmation Électronique</b></u><br>
+                             • Présentation d'un logiciel de programmation<br>
+                             • Création de programmes simples assisté par l'IA <br>
+                             • Téléversement des programmes sur boîtier ELEC <br><br>
+                             <b><u> Test composants Électroniques </b></u><br>
+                             • Intégration des composants électroniques sur la maquette assemblé <br>
+                             •  Tests des programmes sur la maquette MECA (Contrôle du moteur, gestion des obstacles…) <br>
+                             </p>
+                        </div>
+                      </div>
+                    </div>
+                  </section>
 
                             <b>  <u>Formats proposés :</u></b><Br>
 1-Tout le matériel est fourni<Br>
@@ -169,9 +213,17 @@
             <p>&copy; 2025 Puzzle-Paint. Tous droits réservés.</p>
         </div>
     </footer>
+</script>
+<script>
+    function showDetails(id) {
+      document.getElementById(id).style.display = 'block';
+    }
+  
+    function hideDetails(id) {
+      document.getElementById(id).style.display = 'none';
+    }
+  </script>
 </body>
-</html>
-
 <script>
     const reveals = document.querySelectorAll('.reveal');
     window.addEventListener('scroll', () => {
@@ -185,3 +237,5 @@
         }
     });
 </script>
+</html>
+

@@ -126,26 +126,112 @@
         <section class="features reveal">
             <div class="container">
                 <h2><span style="color: rgb(32, 172, 123);">Ateliers ludiques et pédagogiques</span></h2>
-                <p>Le kit Puzzle-Paint regorge de découvertes modernes : <span style="color: rgb(32, 172, 123);">mécanique, électronique, informatique, IA, impression 3D...</span> Venez les explorer en ateliers accompagnés de coachs passionnés !</p><br>
-        
-                <div id="carousel2" class="carousel">
-                    <div class="carousel-track-container">
-                        <ul class="carousel-track">
-                            <li class="carousel-slide"><img src="curieux.png" alt="Image 2"></li>
-                            <li class="carousel-slide current-slide"><img src="client groupe.png" alt="Image 3"></li>
-                            <li class="carousel-slide current-slide"><img src="Atelier1.png" alt="Image 1"></li>
-                        </ul>
+                <p>Le kit Puzzle-Paint regorge de découvertes modernes : <span style="color: rgb(32, 172, 123);">mécanique, électronique, informatique, IA, impression 3D...</span> Venez les explorer en ateliers accompagnés de coachs passionnés !<span style="color: rgb(32, 172, 123);">Ci-dessous quelques exemples d'activités en atelier.</span></p>
+                <section class="blocs-section">
+                    <div class="bloc">
+                        <span style="color: rgb(32, 172, 123);"> <h3>1. Conception 3D</h3></span>
+                      <img src="etape1.png" alt="CAO et Impression 3D">
+                      <p>Présentation de la modélisation 3D et de l'impression personnalisée.</p>
+                      <button onclick="showDetails('details1')">Détails</button>
+                      <div id="details1" class="modal">
+                        <div class="modal-content">
+                          <span class="close" onclick="hideDetails('details1')">&times;</span>
+                          <p>
+                           <b><u> Conception 3D </b></u><br>
+                            • Présentation d'un outil de CAO open source (Tinkercad)<br>
+                            • Création d'objets personnalisés en 3D <br>
+                            • Génération du 3D en format imprimable (stl)<br><br>
+                            <b><u> Impression 3D </b></u><br>
+                            • Présentation d'une imprimante 3D <br>
+                            • Explications des principes de fonctionnement <br>
+                            • Conseils et astuces d'impression 3D<br>
+                            • Impression de modèle 3D personnalisés <br>
+                            </p>
+                        </div>
+                      </div>
                     </div>
-                    <button class="carousel-btn prev-btn">◀</button>
-                    <button class="carousel-btn next-btn">▶</button>
-                </div><br>
                   
-                    <p><b><u>A qui sont destinés nos ateliers?</b> :  </u><br>
-                        <span style="color: rgb(32, 172, 123);">Enfants curieux, étudiants en sciences, écoles, centres de loisirs, fablabs, bricoleurs passionnés... </span>tout le monde est le bienvenu</span> dans nos ateliers !</p>
-                        <a href="2-History.html" class="btn btn-premium">Découvrez nos ateliers</a><br>
+                    <div class="bloc">
+                        <span style="color: rgb(32, 172, 123);">  <h3>2. Montage du kit</h3></span>
+                      <img src="etape2.png" alt="Montage Kit MECA et ELEC">
+                      <p>Montage mécanique et électronique de la maquette.</p>
+                      <button onclick="showDetails('details2')">Détails</button>
+                      <div id="details2" class="modal">
+                        <div class="modal-content">
+                          <span class="close" onclick="hideDetails('details2')">&times;</span>
+                          <p>
+                            <b><u> Montage Kit MECA  </b></u><br>
+                             • Présentation du kit et de ses principes mécaniques<br>
+                             • Montage pas à pas de la maquette <br>
+                             • Test manuel des mécanismes du kit <br>
+                             • T Peinture, Personnalisation ,créativité libre<br><br>
+                             <b><u> Montage Kit ELEC </b></u><br>
+                             • Présentation du boitier ELEC (microcontrôleur…) <br>
+                             • Montage pas à pas du boîtier ELEC  <br>
+                             • Test de la maquette MECA avec boîtier ELEC<br>
+                             </p>
+                        </div>
+                      </div>
                     </div>
-            </div>
-        </section>
+                  
+                    <div class="bloc">
+                        <span style="color: rgb(32, 172, 123);"> <h3>3. Programmation</h3></span>
+                      <img src="etape3.png" alt="Programmation Arduino">
+                      <p>Découverte de l’Arduino et programmation assistée.</p>
+                      <button onclick="showDetails('details3')">Détails</button>
+                      <div id="details3" class="modal">
+                        <div class="modal-content">
+                          <span class="close" onclick="hideDetails('details3')">&times;</span>
+                          <p>
+                            <b><u> Programmation Électronique</b></u><br>
+                             • Présentation d'un logiciel de programmation<br>
+                             • Création de programmes simples assisté par l'IA <br>
+                             • Téléversement des programmes sur boîtier ELEC <br><br>
+                             <b><u> Test composants Électroniques </b></u><br>
+                             • Intégration des composants électroniques sur la maquette assemblé <br>
+                             •  Tests des programmes sur la maquette MECA (Contrôle du moteur, gestion des obstacles…) <br>
+                             </p>
+                        </div>
+                      </div>
+                    </div>
+                  </section>
+                  
+   
+        <!-- Section Ateliers ludiques -->
+        <section class="features reveal">
+            <div class="container">
+                <h2><span style="color: rgb(32, 172, 123);">A qui sont destinés nos ateliers?</span></h2>
+    
+                <section class="blocs-section">
+                    <div class="bloc">
+                      <h3>Enfants curieux</h3>
+                      <img src="curieux.png" alt="CAO et Impression 3D">
+                      <p>Les enfants curieux et bricoleurs qui aiments savoir de quoi sont constitués les objets (Pourqui ci , pourquoi ça...)</p>
+                      <button onclick="showDetails('details1')">Détails</button>
+                      <div id="details1" class="modal">
+                        <div class="modal-content">
+                          <span class="close" onclick="hideDetails('details1')">&times;</span>
+                          <p>Ici tu peux mettre tout le texte détaillé sur la CAO, le format STL, etc.</p>
+                        </div>
+                      </div>
+                    </div>
+
+                    <div class="bloc">
+                      <h3>Ecoles, Loisirs et Fablab</h3>
+                      <img src="client groupe.png" alt="Montage Kit MECA et ELEC">
+                      <p>Les écoles, universités , centres de loisirs ou Fablabs qui souhaite réaliser des ateliers ludiques et collaboratifs en groupe.</p>
+                      <button onclick="showDetails('details2')">Détails</button>
+                      <div id="details2" class="modal">
+                        <div class="modal-content">
+                          <span class="close" onclick="hideDetails('details2')">&times;</span>
+                          <p>Détaille ici la phase de montage, les pièces, le boîtier ELEC, etc.</p>
+                        </div>
+                      </div>
+                    </div>
+
+                    <a href="2-History.html" class="btn btn-premium">Découvrez nos ateliers</a><br>
+                  </section>
+       
 
         <!-- Section devenir coach -->
         <section class="features reveal">
@@ -224,6 +310,15 @@
             }
         });
     </script>
-
+<script>
+    function showDetails(id) {
+      document.getElementById(id).style.display = 'block';
+    }
+  
+    function hideDetails(id) {
+      document.getElementById(id).style.display = 'none';
+    }
+  </script>
+  
 </body>
 </html>
