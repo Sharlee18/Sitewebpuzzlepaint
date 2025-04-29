@@ -206,12 +206,18 @@
                     <div class="bloc">
                       <h3>Enfants curieux</h3>
                       <img src="curieux.png" alt="CAO et Impression 3D">
-                      <p>Les enfants curieux et bricoleurs qui aiments savoir de quoi sont constitués les objets (Pourqui ci , pourquoi ça...)</p>
-                      <button onclick="showDetails('details1')">Détails</button>
-                      <div id="details1" class="modal">
+                      <p>Enfants ou adultes curieux, bricoleurs aimants savoir de quoi sont constitués les objets du quotidien...</p>
+                      <button onclick="showDetails('details4')">Détails</button>
+                      <div id="details4" class="modal">
                         <div class="modal-content">
-                          <span class="close" onclick="hideDetails('details1')">&times;</span>
-                          <p>Ici tu peux mettre tout le texte détaillé sur la CAO, le format STL, etc.</p>
+                          <span class="close" onclick="hideDetails('details4')">&times;</span>
+                          <p>Que vous soyez enfants, Ado, étudiant(e)s et même adulte: <br> 
+                            - Si vous êtes de nature curieuse<br> 
+                            - Si vous aimez savoir comment marche les choses <br> 
+                            - Si vous êtes passionné par la technologies modernes (Impression 3D, IA, CAO...) <br> 
+                            - Si vous aimez les activités artistiques (assemblage, peinture...) <br> 
+                            <b>Alors ces ateliers "Puzzle-Paint" sont faits pour vous</b>
+                        </p>
                         </div>
                       </div>
                     </div>
@@ -219,12 +225,15 @@
                     <div class="bloc">
                       <h3>Ecoles, Loisirs et Fablab</h3>
                       <img src="client groupe.png" alt="Montage Kit MECA et ELEC">
-                      <p>Les écoles, universités , centres de loisirs ou Fablabs qui souhaite réaliser des ateliers ludiques et collaboratifs en groupe.</p>
-                      <button onclick="showDetails('details2')">Détails</button>
-                      <div id="details2" class="modal">
+                      <p>Ecoles, universités , centres de loisirs ou Fablabs souhaitant réaliser des ateliers ludiques et collaboratifs en groupe.</p>
+                      <button onclick="showDetails('details5')">Détails</button>
+                      <div id="details5" class="modal">
                         <div class="modal-content">
-                          <span class="close" onclick="hideDetails('details2')">&times;</span>
-                          <p>Détaille ici la phase de montage, les pièces, le boîtier ELEC, etc.</p><br>
+                          <span class="close" onclick="hideDetails('details5')">&times;</span>
+                          <p> Que vous soyez une école, une université , un centres de loisirs , un Fablabs ou une entreprise: <br> 
+                        Si vous rechercher des activités ludiques , créatifs et collaboratifs (Ex:  type STEM: Sciences Technology Engineering Math ) <br> 
+                        <b>Alors ces ateliers "Puzzle-Paint" sont faits pour vous</b><br> 
+                        </p><br>
                         </div>
                       </div>
                     </div>
@@ -313,13 +322,16 @@
     </script>
 <script>
     function showDetails(id) {
-      document.getElementById(id).style.display = 'block';
+      const modal = document.getElementById(id);
+      modal.style.display = 'block';
+      modal.scrollIntoView({ behavior: 'smooth', block: 'center' }); // Ajout pour scroll
     }
-  
+
     function hideDetails(id) {
       document.getElementById(id).style.display = 'none';
     }
-  </script>
+</script>
+
   
 </body>
 </html>

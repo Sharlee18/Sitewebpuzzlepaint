@@ -1,129 +1,150 @@
-<!DOCTYPE html>
-<html lang="fr">
+<!DOCTYPE html><html lang="fr">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Puzzle-Paint Kit</title>
     <link rel="stylesheet" href="CSS.css">
-    <!-- Intégration de la police Google Fonts -->
+    <link rel="stylesheet" href="produits.css">
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
     <script src="script.js" defer></script>
     <script src="cart.js" defer></script>
+    <script src="produits.js" defer></script>
 </head>
-<body>-
-
-        <!-- Topbar : Menu Burger + Panier -->
-        <div class="topbar">
-            <div class="left-header">
-                <button id="menu-toggle" class="menu-icon">&#9776;</button>
-            </div>
-            <div class="right-header">
-                <div id="cart-icon" class="cart">
-                    🛒<span id="cart-count">0</span>
-                </div>
+<body>
+    <!-- Topbar : Menu Burger + Panier -->
+    <div class="topbar">
+        <div class="left-header">
+            <button id="menu-toggle" class="menu-icon">&#9776;</button>
+        </div>
+        <div class="right-header">
+            <div id="cart-icon" class="cart">
+                🛒<span id="cart-count">0</span>
             </div>
         </div>
-
-    <!-- Header avec image en arrière-plan -->
-    <header class="header" style="background-image: url('Arduino\ 1.png');">
-        <div class="container">
-            <h1>Nos Produits</h1>
-            <p>Découvrez nos produits</p>
-        </div>
-    </header>
-
-    <main>
-
-        <div id="overlay"></div>
-
-        <!-- Sidebar du menu -->
-        <nav id="sidebar" class="sidebar">
-            <button id="close-menu" class="close-btn">&times;</button>
-            <ul>
-                <li><a href="index.html">Accueil</a></li>
-                <li><a href="2-History.html">Nos ateliers</a></li>
-                <li><a href="produits.html">Notre boutique</a></li>
-                <li><a href="5-Blog.html">Devenir coach</a></li>
-                <li><a href="3-APropos.html">À-propos</a></li>
-                <li><a href="4-Contact.html">Contact</a></li>
-            </ul>
-        </nav>
-
-          <!-- Nos produits -->
-   <section class="features">
+    </div><!-- Header avec image en arrière-plan -->
+<header class="header" style="background-image: url('Arduino 1.png');">
     <div class="container">
-    <h2><span style="color: rgb(0, 0, 0);">Commandez votre kit et vivez l’expérience Puzzle-Paint à la maison !</span></h2>
+        <h1>Nos Produits</h1>
+        <p>Découvrez nos produits</p>
+    </div>
+</header>
+
+<main>
+    <div id="overlay"></div>
+    <!-- Sidebar du menu -->
+    <nav id="sidebar" class="sidebar">
+        <button id="close-menu" class="close-btn">&times;</button>
+        <ul>
+            <li><a href="index.html">Accueil</a></li>
+            <li><a href="2-History.html">Nos ateliers</a></li>
+            <li><a href="produits.html">Notre boutique</a></li>
+            <li><a href="5-Blog.html">Devenir coach</a></li>
+            <li><a href="3-APropos.html">À-propos</a></li>
+            <li><a href="4-Contact.html">Contact</a></li>
+        </ul>
+    </nav>
+
+    <!-- Nos produits -->
+    <section class="features">
+        <div class="container">
+            <h2><span style="color: rgb(32, 172, 123);">Commandez votre kit et vivez l'expérience Puzzle-Paint à la maison !</span></h2>
+            <p>Vous voulez offrir une expérience unique à vos enfants ?<br>
+                Vous cherchez une activité éducative et créative à faire en famille ?<br>
+                Commandez votre kit Puzzle-Paint directement depuis notre boutique, et profitez de toutes les ressources pour l'assembler, le décorer et le rendre intelligent.
+            </p>
         </div>
-                <p>Vous voulez offrir une expérience unique à vos enfants ?<br>
-                    Vous cherchez une activité éducative et créative à faire en famille ?<br>
-                    Commandez votre kit Puzzle-Paint directement depuis notre boutique, et profitez de toutes les ressources pour l’assembler, le décorer et le rendre intelligent.<br><br>
-                </p>
+    </section>
 
     <section class="features">
-            <h2><span style="color: rgb(32, 172, 123);">Nos kits Vendus</span></h2>
+        <div class="container">
+            <h2><span style="color: rgb(32, 172, 123);">Nos kits vendus</span></h2>
+        </div>
+        <div class="product-gallery">
+            <div class="product" data-id="1" data-name="Kit auto" data-price="49.99">
+                <img src="boxkit.png" alt="Produit 1">
+                <h3>Kit Auto</h3>
+                <p>Une maquette ludique à animer avec un kit électronique</p>
+                <p><strong>Prix : €49.99</strong></p>
+                <div class="btn-container">
+                    <button class="btn add-to-cart-btn">Ajouter au panier</button>
+                    <button class="btn detail-btn" onclick="openPopup('Détails du Kit Auto...')">Détail produit</button>
                 </div>
-            <main class="product-gallery">
-                <!-- Produit Kit Auto -->
-                <div class="product" data-id="1" data-name="Kit auto" data-price="49.99">
-                    <img src="boxkit.png" alt="Produit 1">
-                    <h3>Kit Auto</h3>
-                    <p>Une maquette ludique à animer avec un kit électronique</p>
-                    <p><strong>Prix : €49.99</strong></p>
-    
-                    <!-- Conteneur pour les boutons -->
-                    <div class="btn-container">
-                        <button class="btn add-to-cart-btn">Ajouter au panier</button>
-                        <button class="btn detail-btn" data-id="1">Détail produit</button>
-                    </div>
-                </div>
-    
-                <!-- Produit Kit Manuel -->
-                <div class="product" data-id="2" data-name="Kit manuel" data-price="39.99">
-                    <img src="boxkit2.png" alt="Produit 2">
-                    <h3>Kit Manuel</h3>
-                    <p>Une maquette ludique à animer avec une petite manivelle</p>
-                    <p><strong>Prix : €39.99</strong></p>
-    
-                    <!-- Conteneur pour les boutons -->
-                    <div class="btn-container">
-                        <button class="btn add-to-cart-btn">Ajouter au panier</button>
-                        <button class="btn detail-btn" data-id="2">Détail produit</button>
-                    </div>
-                </div>
+            </div>
 
-                <!-- Produit Kit Manuel -->
+
+<!-- Popup pour Kit Auto -->
+<div id="popup-kit-auto" class="popup">
+    <span class="close-btn" onclick="closePopup('popup-kit-auto')">&times;</span>
+    <div class="popup-content">
+      <div class="carousel" id="carousel-kit-auto">
+        <img id="carousel-image-kit-auto" src="kitauto1.png" alt="Kit Auto">
+        <p id="carousel-text-kit-auto">Description Kit Auto - Image 1</p>
+        <div class="carousel-controls">
+          <button onclick="prevImage('kit-auto')">◀</button>
+          <button onclick="nextImage('kit-auto')">▶</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+
+
             <div class="product" data-id="2" data-name="Kit manuel" data-price="39.99">
                 <img src="boxkit2.png" alt="Produit 2">
                 <h3>Kit Manuel</h3>
                 <p>Une maquette ludique à animer avec une petite manivelle</p>
                 <p><strong>Prix : €39.99</strong></p>
-
-                <!-- Conteneur pour les boutons -->
                 <div class="btn-container">
                     <button class="btn add-to-cart-btn">Ajouter au panier</button>
-                    <button class="btn detail-btn" data-id="2">Détail produit</button>
+                    <button class="btn detail-btn" onclick="openPopup('Détails du Kit Manuel...')">Détail produit</button>
                 </div>
             </div>
-            </main>
-        
-    </main>
-
-      <!-- Footer -->
-      <footer class="footer">
-        <div class="container">
-            <nav>
-                <ul>
-                    <li><a href="3-APropos.html">À propos</a></li>
-                    <li><a href="produits.html">Produits</a></li>
-                    <li><a href="5-Blog.html">Blog</a></li>
-                    <li><a href="4-Contact.html">Contact</a></li>
-                </ul>
-            </nav>
-            <p>&copy; 2025 Puzzle-Paint. Tous droits réservés.</p>
         </div>
-    </footer>
-    <script src="cart.js"defer></script>
-    <script src="produits.js"defer></script> 
+    </section>
+
+<!-- Popup pour Kit Manuel -->
+<div id="popup-kit-manuel" class="popup">
+    <span class="close-btn" onclick="closePopup('popup-kit-manuel')">&times;</span>
+    <div class="popup-content">
+      <div class="carousel" id="carousel-kit-manuel">
+        <img id="carousel-image-kit-manuel" src="kitmanuel1.png" alt="Kit Manuel">
+        <p id="carousel-text-kit-manuel">Description Kit Manuel - Image 1</p>
+        <div class="carousel-controls">
+          <button onclick="prevImage('kit-manuel')">◀</button>
+          <button onclick="nextImage('kit-manuel')">▶</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+
+</main>
+
+<footer class="footer">
+    <div class="container">
+        <nav>
+            <ul>
+                <li><a href="3-APropos.html">À propos</a></li>
+                <li><a href="produits.html">Produits</a></li>
+                <li><a href="5-Blog.html">Blog</a></li>
+                <li><a href="4-Contact.html">Contact</a></li>
+            </ul>
+        </nav>
+        <p>&copy; 2025 Puzzle-Paint. Tous droits réservés.</p>
+    </div>
+</footer>
+
+<script>
+    function openPopup(text) {
+        document.getElementById("popup-text").innerText = text;
+        document.getElementById("popup").style.display = "block";
+        window.scrollTo({ top: 0, behavior: "smooth" });
+    }
+
+    function closePopup() {
+        document.getElementById("popup").style.display = "none";
+    }
+</script>
+
 </body>
 </html>
-
