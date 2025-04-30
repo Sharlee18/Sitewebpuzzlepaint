@@ -1,150 +1,178 @@
-<!DOCTYPE html><html lang="fr">
+<!DOCTYPE html>
+<html lang="fr">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Puzzle-Paint Kit</title>
-    <link rel="stylesheet" href="CSS.css">
-    <link rel="stylesheet" href="produits.css">
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
-    <script src="script.js" defer></script>
-    <script src="cart.js" defer></script>
-    <script src="produits.js" defer></script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Puzzle-Paint Kit</title>
+  <link rel="stylesheet" href="CSS.css">
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+  <script src="script.js" defer></script>
+  <script src="cart.js" defer></script>
 </head>
-<body>
-    <!-- Topbar : Menu Burger + Panier -->
-    <div class="topbar">
-        <div class="left-header">
-            <button id="menu-toggle" class="menu-icon">&#9776;</button>
-        </div>
-        <div class="right-header">
-            <div id="cart-icon" class="cart">
-                🛒<span id="cart-count">0</span>
-            </div>
-        </div>
-    </div><!-- Header avec image en arrière-plan -->
-<header class="header" style="background-image: url('Arduino 1.png');">
-    <div class="container">
-        <h1>Nos Produits</h1>
-        <p>Découvrez nos produits</p>
-    </div>
-</header>
 
-<main>
+<body>
+  <!-- Topbar -->
+  <div class="topbar">
+    <div class="left-header">
+      <button id="menu-toggle" class="menu-icon">&#9776;</button>
+    </div>
+    <div class="right-header">
+      <div id="cart-icon" class="cart">
+        🛒<span id="cart-count">0</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Header -->
+  <header class="header" style="background-image: url('Arduino 1.png');">
+    <div class="container">
+      <h1>Nos Produits</h1>
+      <p>Découvrez nos produits</p>
+    </div>
+  </header>
+
+  <main>
     <div id="overlay"></div>
-    <!-- Sidebar du menu -->
+
+    <!-- Sidebar -->
     <nav id="sidebar" class="sidebar">
-        <button id="close-menu" class="close-btn">&times;</button>
-        <ul>
-            <li><a href="index.html">Accueil</a></li>
-            <li><a href="2-History.html">Nos ateliers</a></li>
-            <li><a href="produits.html">Notre boutique</a></li>
-            <li><a href="5-Blog.html">Devenir coach</a></li>
-            <li><a href="3-APropos.html">À-propos</a></li>
-            <li><a href="4-Contact.html">Contact</a></li>
-        </ul>
+      <button id="close-menu" class="close-btn">&times;</button>
+      <ul>
+        <li><a href="index.html">Accueil</a></li>
+        <li><a href="2-History.html">Nos ateliers</a></li>
+        <li><a href="produits.html">Notre boutique</a></li>
+        <li><a href="5-Blog.html">Devenir coach</a></li>
+        <li><a href="3-APropos.html">À-propos</a></li>
+        <li><a href="4-Contact.html">Contact</a></li>
+      </ul>
     </nav>
 
-    <!-- Nos produits -->
+    <!-- Introduction -->
     <section class="features">
-        <div class="container">
-            <h2><span style="color: rgb(32, 172, 123);">Commandez votre kit et vivez l'expérience Puzzle-Paint à la maison !</span></h2>
-            <p>Vous voulez offrir une expérience unique à vos enfants ?<br>
-                Vous cherchez une activité éducative et créative à faire en famille ?<br>
-                Commandez votre kit Puzzle-Paint directement depuis notre boutique, et profitez de toutes les ressources pour l'assembler, le décorer et le rendre intelligent.
-            </p>
-        </div>
+      <div class="container">
+        <h2><span style="color: rgb(32, 172, 123);">Commandez votre kit et vivez l'expérience Puzzle-Paint à la maison !</span></h2>
+        <p>Vous voulez offrir une expérience unique à vos enfants ?<br>
+          Vous cherchez une activité éducative et créative à faire en famille ?<br>
+          Commandez votre kit Puzzle-Paint directement depuis notre boutique, et profitez de toutes les ressources pour l'assembler, le décorer et le rendre intelligent.
+        </p>
+      </div>
     </section>
 
+    <!-- Produits -->
     <section class="features">
-        <div class="container">
-            <h2><span style="color: rgb(32, 172, 123);">Nos kits vendus</span></h2>
+      <div class="container">
+        <h2><span style="color: rgb(32, 172, 123);">Nos kits vendus</span></h2>
+      </div>
+
+      <div class="product-gallery">
+        <!-- Produit 1 -->
+        <div class="product" data-id="1" data-name="Kit auto" data-price="49.99">
+          <img src="boxkit.png" alt="Produit 1">
+          <h3>Kit Auto</h3>
+          <p>Une maquette ludique à animer avec un kit électronique</p>
+          <p><strong>Prix : €49.99</strong></p>
+          <div class="btn-container">
+            <button class="btn add-to-cart-btn">Ajouter au panier</button>
+            <button class="btn detail-btn">Détail produit</button>
+          </div>
         </div>
-        <div class="product-gallery">
-            <div class="product" data-id="1" data-name="Kit auto" data-price="49.99">
-                <img src="boxkit.png" alt="Produit 1">
-                <h3>Kit Auto</h3>
-                <p>Une maquette ludique à animer avec un kit électronique</p>
-                <p><strong>Prix : €49.99</strong></p>
+
+        <!-- Produit 2 -->
+        <div class="product" data-id="2" data-name="Kit manuel" data-price="39.99">
+          <img src="boxkit2.png" alt="Produit 2">
+          <h3>Kit Manuel</h3>
+          <p>Une maquette ludique à animer avec une petite manivelle</p>
+          <p><strong>Prix : €39.99</strong></p>
+          <div class="btn-container">
+            <button class="btn add-to-cart-btn">Ajouter au panier</button>
+            <button class="btn detail-btn">Détail produit</button>
+          </div>
+        </div>
+      </div>
+
+            <!-- Produit 3 -->
+            <div class="product" data-id="3" data-name="Kit ELEC" data-price="29.99">
+                <img src="packagingelec.png" alt="Produit 3">
+                <h3>Kit ELEC</h3>
+                <p>Boitier constitué de composants électroniques (Joystick, servomoteur, capteur à ultrason...) pour contrôler les réactions de votre Kit MECA</p>
+                <p><strong>Prix : €29.99</strong></p>
                 <div class="btn-container">
-                    <button class="btn add-to-cart-btn">Ajouter au panier</button>
-                    <button class="btn detail-btn" onclick="openPopup('Détails du Kit Auto...')">Détail produit</button>
+                  <button class="btn add-to-cart-btn">Ajouter au panier</button>
+                  <button class="btn detail-btn">Détail produit</button>
                 </div>
+              </div>
             </div>
+          </section>
 
-
-<!-- Popup pour Kit Auto -->
-<div id="popup-kit-auto" class="popup">
-    <span class="close-btn" onclick="closePopup('popup-kit-auto')">&times;</span>
-    <div class="popup-content">
-      <div class="carousel" id="carousel-kit-auto">
-        <img id="carousel-image-kit-auto" src="kitauto1.png" alt="Kit Auto">
-        <p id="carousel-text-kit-auto">Description Kit Auto - Image 1</p>
-        <div class="carousel-controls">
-          <button onclick="prevImage('kit-auto')">◀</button>
-          <button onclick="nextImage('kit-auto')">▶</button>
+    <!-- Popup Kit Auto -->
+    <div id="popup-kit-auto" class="popup">
+      <span class="close-btn">&times;</span>
+      <div class="popup-content">
+        <div class="carousel" id="carousel-kit-auto" data-carousel="kit-auto">
+          <img src="PLA PARTS.png" alt="Kit Auto" data-text="+60 pièces en PLA imprimées en 3D à assembler pas à pas pour apprendre de nombreux mécanismes">
+          <img src="peintureacry.png" alt="Kit Auto" data-text="Un kit de peinteure fournit dans la boite pour vous permettre de personnaliser la maquette à votre guise">
+          <img src="pinceaux.png" alt="Kit Auto" data-text="2 pinceaux (brosse mince et brosse épaisse) également fournit pour appliquer la peinture">
+          <img src="manuel.png" alt="Kit Auto" data-text="Un manuel détaillé pour vous guider pas à pas dans les différentes étapes d'assemblage">
+          <img src="kitelectrique.png" alt="Kit Auto" data-text="Un kit electrique constitués d'un boitier à pile, d'un régulateur de vitesse et d'un servomoteur pour contrôler automatiquement les mouvements du moteur">
+          <div class="carousel-text">Kit Auto - Image 1</div>
+          <div class="carousel-controls">
+            <button class="prev-btn">◀</button>
+            <button class="next-btn">▶</button>
+          </div>
         </div>
       </div>
     </div>
-  </div>
-  
 
-
-            <div class="product" data-id="2" data-name="Kit manuel" data-price="39.99">
-                <img src="boxkit2.png" alt="Produit 2">
-                <h3>Kit Manuel</h3>
-                <p>Une maquette ludique à animer avec une petite manivelle</p>
-                <p><strong>Prix : €39.99</strong></p>
-                <div class="btn-container">
-                    <button class="btn add-to-cart-btn">Ajouter au panier</button>
-                    <button class="btn detail-btn" onclick="openPopup('Détails du Kit Manuel...')">Détail produit</button>
-                </div>
-            </div>
-        </div>
-    </section>
-
-<!-- Popup pour Kit Manuel -->
-<div id="popup-kit-manuel" class="popup">
-    <span class="close-btn" onclick="closePopup('popup-kit-manuel')">&times;</span>
-    <div class="popup-content">
-      <div class="carousel" id="carousel-kit-manuel">
-        <img id="carousel-image-kit-manuel" src="kitmanuel1.png" alt="Kit Manuel">
-        <p id="carousel-text-kit-manuel">Description Kit Manuel - Image 1</p>
-        <div class="carousel-controls">
-          <button onclick="prevImage('kit-manuel')">◀</button>
-          <button onclick="nextImage('kit-manuel')">▶</button>
+    <!-- Popup Kit Manuel -->
+    <div id="popup-kit-manuel" class="popup">
+      <span class="close-btn">&times;</span>
+      <div class="popup-content">
+        <div class="carousel" id="carousel-kit-manuel" data-carousel="kit-manuel">
+            <img src="PLA PARTS.png" alt="Kit manuel" data-text="+60 pièces en PLA imprimées en 3D à assembler pas à pas pour apprendre de nombreux mécanismes">
+            <img src="peintureacry.png" alt="Kit manuel" data-text="Un kit de peinteure fournit dans la boite pour vous permettre de personnaliser la maquette à votre guise">
+            <img src="pinceaux.png" alt="Kit manuel" data-text="2 pinceaux (brosse mince et brosse épaisse) également fournit pour appliquer la peinture">
+            <img src="manuel.png" alt="Kit manuel" data-text="Un manuel détaillé pour vous guider pas à pas dans les différentes étapes d'assemblage">
+            <img src="kitelectriquenon.png" alt="Kit manuel" data-text=" kit electrique non fournit : Le mouvement du moteur se fait manuellement grâce a une manivelle inclut au Kit">
+          <div class="carousel-text">Kit Manuel - Image 1</div>
+          <div class="carousel-controls">
+            <button class="prev-btn">◀</button>
+            <button class="next-btn">▶</button>
+          </div>
         </div>
       </div>
     </div>
-  </div>
-  
+  </main>
 
-</main>
+      <!-- Popup Kit ELEC -->
+      <div id="popup-kit-elec" class="popup">
+        <span class="close-btn">&times;</span>
+        <div class="popup-content">
+          <div class="carousel" id="carousel-kit-elec" data-carousel="kit-elec">
+            <img src="KITELEC1.png" alt="Kit elec" data-text="Un microcontrôleur (ESP32) sur lequel connecter de nombreux composants électroniques :
+            2 servomoteurs (pour contrôler la vitesse du moteur et les changements de rapport), 1 ecran OLED (pour afficher les infos en temps réel: Vitesse, rapports, message d'alerte...), un Buzzer (pour biper en cas d'obstacle proche), un Joystick">
+            <img src="KITELEC2.png" alt="Kit elec" data-text="La possibilité de charger de nouveau programme sur le microcontroleur via ARDUINO et de contrôler les composants électroniques via le joystick ou avec un smartphone (BLYNK)">
+            <div class="carousel-text">Kit Auto - Image 1</div>
+            <div class="carousel-controls">
+              <button class="prev-btn">◀</button>
+              <button class="next-btn">▶</button>
+            </div>
+          </div>
+        </div>
+      </div>
 
-<footer class="footer">
+  <!-- Footer -->
+  <footer class="footer">
     <div class="container">
-        <nav>
-            <ul>
-                <li><a href="3-APropos.html">À propos</a></li>
-                <li><a href="produits.html">Produits</a></li>
-                <li><a href="5-Blog.html">Blog</a></li>
-                <li><a href="4-Contact.html">Contact</a></li>
-            </ul>
-        </nav>
-        <p>&copy; 2025 Puzzle-Paint. Tous droits réservés.</p>
+      <nav>
+        <ul>
+          <li><a href="3-APropos.html">À propos</a></li>
+          <li><a href="produits.html">Produits</a></li>
+          <li><a href="5-Blog.html">Blog</a></li>
+          <li><a href="4-Contact.html">Contact</a></li>
+        </ul>
+      </nav>
+      <p>&copy; 2025 Puzzle-Paint. Tous droits réservés.</p>
     </div>
-</footer>
-
-<script>
-    function openPopup(text) {
-        document.getElementById("popup-text").innerText = text;
-        document.getElementById("popup").style.display = "block";
-        window.scrollTo({ top: 0, behavior: "smooth" });
-    }
-
-    function closePopup() {
-        document.getElementById("popup").style.display = "none";
-    }
-</script>
-
+  </footer>
 </body>
 </html>

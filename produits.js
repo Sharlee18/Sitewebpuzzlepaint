@@ -1,6 +1,7 @@
 // produits.js : Gestion des popups et carrousels pour produits.html
 
 // Données des carrousels (images et textes)
+document.addEventListener("DOMContentLoaded", () => {
 const carousels = {
     "kit-auto": [
       { src: "kitauto1.png", text: "Le Kit Auto - Vue de dessus" },

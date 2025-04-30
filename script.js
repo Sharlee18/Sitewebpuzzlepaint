@@ -1,80 +1,120 @@
-function initializeCarousel(carousel) {
-    const track = carousel.querySelector('.carousel-track'); // La bande contenant toutes les images
-    const slides = Array.from(track.children); // Toutes les slides
-    const prevButton = carousel.querySelector('.prev-btn'); // Bouton précédent
-    const nextButton = carousel.querySelector('.next-btn'); // Bouton suivant
-    const slideWidth = slides[0].getBoundingClientRect().width; // Largeur d'une slide
+document.addEventListener('DOMContentLoaded', () => {
+    // ===== MENU BURGER =====
+    const menuToggle = document.getElementById('menu-toggle');
+    const sidebar = document.getElementById('sidebar');
+    const overlay = document.getElementById('overlay');
+    const closeMenu = document.getElementById('close-menu');
 
-    // Positionner toutes les slides côte à côte
-    slides.forEach((slide, index) => {
-        slide.style.left = `${slideWidth * index}px`;
-    });
+    if (menuToggle && sidebar && overlay && closeMenu) {
+        menuToggle.addEventListener('click', () => {
+            sidebar.classList.add('active');
+            overlay.classList.add('active');
+        });
 
-    // Fonction pour bouger vers une slide spécifique
-    const moveToSlide = (track, currentSlide, targetSlide) => {
-        const targetLeft = parseFloat(targetSlide.style.left); // On récupère juste le nombre sans "px"
-        track.style.transform = `translateX(-${targetLeft}px)`; // Déplacer la bande
-        currentSlide.classList.remove('current-slide'); // Retire la classe active de l'ancienne slide
-        targetSlide.classList.add('current-slide'); // Ajoute la classe active à la nouvelle slide
-    };
+        closeMenu.addEventListener('click', () => {
+            sidebar.classList.remove('active');
+            overlay.classList.remove('active');
+        });
 
-    // Clic sur "Suivant"
-    nextButton.addEventListener('click', () => {
-        const currentSlide = track.querySelector('.current-slide');
-        const nextSlide = currentSlide.nextElementSibling;
-        if (nextSlide) {
-            moveToSlide(track, currentSlide, nextSlide);
-        }
-    });
-
-    // Clic sur "Précédent"
-    prevButton.addEventListener('click', () => {
-        const currentSlide = track.querySelector('.current-slide');
-        const prevSlide = currentSlide.previousElementSibling;
-        if (prevSlide) {
-            moveToSlide(track, currentSlide, prevSlide);
-        }
-    });
-}
-
-// Initialiser tous les carrousels de la page
-document.querySelectorAll('.carousel').forEach(carousel => {
-    initializeCarousel(carousel);
-});
-
-const menuToggle = document.getElementById('menu-toggle');
-const sidebar = document.getElementById('sidebar');
-const overlay = document.getElementById('overlay');
-const closeMenu = document.getElementById('close-menu');
-
-// Ouvrir le menu
-menuToggle.addEventListener('click', () => {
-    sidebar.classList.add('active');
-    overlay.classList.add('active');
-});
-
-// Fermer le menu
-closeMenu.addEventListener('click', () => {
-    sidebar.classList.remove('active');
-    overlay.classList.remove('active');
-});
-
-// Cliquer sur l'overlay ferme aussi
-overlay.addEventListener('click', () => {
-    sidebar.classList.remove('active');
-    overlay.classList.remove('active');
-});
-
-document.addEventListener('DOMContentLoaded', function() {
-    let slides = document.querySelectorAll('.background-slideshow img');
-    let currentSlide = 0;
-
-    function showNextSlide() {
-        slides[currentSlide].classList.remove('active');
-        currentSlide = (currentSlide + 1) % slides.length;
-        slides[currentSlide].classList.add('active');
+        overlay.addEventListener('click', () => {
+            sidebar.classList.remove('active');
+            overlay.classList.remove('active');
+        });
     }
 
-    setInterval(showNextSlide, 5000); // toutes les 5 secondes
+ // ===== CAROUSEL avec swipe =====
+document.querySelectorAll('.carousel').forEach(carousel => {
+    const images = Array.from(carousel.querySelectorAll('img'));
+    const textBox = carousel.querySelector('.carousel-text');
+    let currentIndex = 0;
+
+    const showImage = index => {
+        images.forEach((img, i) => {
+            img.classList.toggle('active', i === index);
+        });
+        if (textBox) {
+            textBox.textContent = images[index].dataset.text || '';
+        }
+    };
+
+    showImage(currentIndex);
+
+    carousel.querySelector('.prev-btn').addEventListener('click', () => {
+        currentIndex = (currentIndex - 1 + images.length) % images.length;
+        showImage(currentIndex);
+    });
+
+    carousel.querySelector('.next-btn').addEventListener('click', () => {
+        currentIndex = (currentIndex + 1) % images.length;
+        showImage(currentIndex);
+    });
+
+    // Swipe tactile (mobile)
+    let startX = 0;
+
+    carousel.addEventListener('touchstart', e => {
+        startX = e.touches[0].clientX;
+    });
+
+    carousel.addEventListener('touchend', e => {
+        const endX = e.changedTouches[0].clientX;
+        const diffX = endX - startX;
+
+        if (Math.abs(diffX) > 50) {
+            if (diffX > 0) {
+                currentIndex = (currentIndex - 1 + images.length) % images.length;
+            } else {
+                currentIndex = (currentIndex + 1) % images.length;
+            }
+            showImage(currentIndex);
+        }
+    });
 });
+
+
+        // Initialisation
+        images.forEach((img, index) => {
+            img.style.display = index === 0 ? 'block' : 'none';
+        });
+        if (textBox) {
+            textBox.textContent = images[0].dataset.text || '';
+        }
+
+        carousel.querySelector('.prev-btn').addEventListener('click', () => {
+            images[currentIndex].style.display = 'none';
+            currentIndex = (currentIndex - 1 + images.length) % images.length;
+            images[currentIndex].style.display = 'block';
+            if (textBox) textBox.textContent = images[currentIndex].dataset.text || '';
+        });
+
+        carousel.querySelector('.next-btn').addEventListener('click', () => {
+            images[currentIndex].style.display = 'none';
+            currentIndex = (currentIndex + 1) % images.length;
+            images[currentIndex].style.display = 'block';
+            if (textBox) textBox.textContent = images[currentIndex].dataset.text || '';
+        });
+    });
+
+    // ===== POPUPS PRODUITS =====
+    document.querySelectorAll('.detail-btn').forEach(button => {
+        button.addEventListener('click', () => {
+            const product = button.closest('.product');
+            const productId = product.dataset.id;
+
+            const popupId = `popup-kit-${productId === "1" ? "auto" : productId === "2" ? "manuel" : "elec"}`;
+            const popup = document.getElementById(popupId);
+
+            if (popup) {
+                popup.style.display = 'block';
+                window.scrollTo({ top: 0, behavior: "smooth" });
+            }
+        });
+    });
+
+    // ===== FERMETURE DES POPUPS =====
+    document.querySelectorAll('.close-btn').forEach(btn => {
+        btn.addEventListener('click', () => {
+            btn.closest('.popup').style.display = 'none';
+        });
+    });
 
