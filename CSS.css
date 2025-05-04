@@ -1727,22 +1727,10 @@ main {
 }
 
 .popup {
-    display: none; /* Masquer au chargement */
-    position: fixed;
-    top: 10%;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 90%;
-    max-width: 600px;
-    background: white;
-    border: 2px solid #20ac7b;
-    border-radius: 1rem;
-    padding: 1.5rem;
-    box-shadow: 0 0 15px rgba(0,0,0,0.3);
-    z-index: 1000;
-    overflow-y: auto;
-    max-height: 90vh;
-  }
+    overflow-x: auto; /* Active le scroll horizontal si besoin */
+    max-width: 95vw; /* Ne dépasse pas l'écran */
+    box-sizing: border-box;
+  }  
   
 
 .popup-content {
