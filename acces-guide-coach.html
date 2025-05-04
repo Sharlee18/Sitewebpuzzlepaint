@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <title>Accès Guide Coach</title>
+  <style>
+    body {
+      font-family: sans-serif;
+      padding: 2rem;
+      text-align: center;
+    }
+
+    .access-box {
+      max-width: 400px;
+      margin: auto;
+      border: 2px solid #20ac7b;
+      border-radius: 10px;
+      padding: 2rem;
+    }
+
+    input[type="password"] {
+      padding: 10px;
+      width: 80%;
+      margin-bottom: 1rem;
+    }
+
+    button {
+      padding: 10px 20px;
+      background: #20ac7b;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      font-weight: bold;
+      cursor: pointer;
+    }
+
+    .error {
+      color: red;
+      margin-top: 1rem;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="access-box" id="auth-box">
+    <h2>Accès réservé aux coachs</h2>
+    <p>Veuillez entrer le code d'accès :</p>
+    <input type="password" id="access-code" placeholder="Code secret">
+    <br>
+    <button onclick="checkAccess()">Valider</button>
+    <div id="error-message" class="error"></div>
+  </div>
+
+  <script>
+    const CODE = "PZP1";
+    const STORAGE_KEY = "pzp_access";
+
+    // Redirection si l’accès a déjà été validé
+    if (localStorage.getItem(STORAGE_KEY) === CODE) {
+      window.location.href = "Guide-coach.html";
+    }
+
+    function checkAccess() {
+      const code = document.getElementById("access-code").value.trim();
+      if (code === CODE) {
+        localStorage.setItem(STORAGE_KEY, CODE);
+        window.location.href = "Guide-coach.html";
+      } else {
+        document.getElementById("error-message").textContent = "Code incorrect. Veuillez réessayer.";
+      }
+    }
+  </script>
+
+</body>
+</html>

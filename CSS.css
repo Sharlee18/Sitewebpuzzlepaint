@@ -92,6 +92,21 @@ header p {
     cursor: pointer;
 }
 
+sidebar .submenu {
+    display: none;
+    list-style: none;
+    padding-left: 1rem;
+    margin-top: 0.5rem;
+  }
+  
+  .sidebar .has-submenu.open .submenu {
+    display: block;
+  }
+  
+  .sidebar .has-submenu > a {
+    cursor: pointer;
+  }
+  
 /* Panier */
 .cart {
     position: relative;

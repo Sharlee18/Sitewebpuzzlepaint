@@ -22,6 +22,13 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
+    function toggleSubMenu(event) {
+        event.preventDefault();
+        const parent = event.target.closest('.has-submenu');
+        parent.classList.toggle('open');
+      }
+      
+
  // ===== CAROUSEL avec swipe =====
 document.querySelectorAll('.carousel').forEach(carousel => {
     const images = Array.from(carousel.querySelectorAll('img'));

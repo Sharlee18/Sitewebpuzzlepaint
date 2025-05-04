@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Puzzle-Paint Kit</title>
+    <link rel="stylesheet" href="CSS.css">
+    <!-- Intégration de la police Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <script>
+        const CODE = "PZP1";
+        if (localStorage.getItem("pzp_access") !== CODE) {
+          window.location.href = "guide-coach.html";
+        }
+      </script>
+    
+    <script src="script.js" defer></script>
+    <script src="cart.js" defer></script>
+</head>
+<body>
+        <!-- Topbar : Menu Burger + Panier -->
+        <div class="topbar">
+            <div class="left-header">
+                <button id="menu-toggle" class="menu-icon">&#9776;</button>
+            </div>
+            <div class="right-header">
+                <div id="cart-icon" class="cart">
+                    🛒<span id="cart-count">0</span>
+                </div>
+            </div>
+        </div>
+
+    <!-- Header avec image en arrière-plan -->
+    <header class="header" style="background-image: url('famille3.png');">
+        <div class="container">
+            <h1>Guide coach</h1>
+            <p>Retrouvez ici tous les infos de coachs</p>
+        </div>
+    </header>
+
+    <main>
+        <div id="overlay"></div>
+
+        <!-- Sidebar du menu -->
+        <nav id="sidebar" class="sidebar">
+            <button id="close-menu" class="close-btn">&times;</button>
+            <ul>
+                <li><a href="index.html">Accueil</a></li>
+                <li><a href="2-History.html">Nos ateliers</a></li>
+                <li><a href="produits.html">Notre boutique</a></li>
+                <li><a href="5-Blog.html">Devenir coach</a></li>
+                <li><a href="3-APropos.html">À-propos</a></li>
+                <li><a href="4-Contact.html">Contact</a></li>
+            </ul>
+        </nav>
+
+        <!-- Notre Histoire -->
+        <section class="reveal-section">
+            <div class="reveal-container">
+              <div class="image-side">
+                <img src="famille2.png" alt="Illustration coach Puzzle-Paint" />
+              </div>
+              <div class="text-side">
+                <h2>Préparer un atelier étape par étape</h2>
+                <p>
+                  Retrouvez les bons réflexes pour animer votre atelier : accueillir, organiser le matériel, guider les participants et personnaliser l’expérience.
+                </p>
+              </div>
+            </div>
+          </section>
+          
+                  <!-- Notre Histoire -->
+        <section class="reveal-section">
+            <div class="reveal-container">
+              <div class="image-side">
+                <img src="famille2.png" alt="Illustration coach Puzzle-Paint" />
+              </div>
+              <div class="text-side">
+                <h2>Préparer un atelier étape par étape</h2>
+                <p>
+                  Retrouvez les bons réflexes pour animer votre atelier : accueillir, organiser le matériel, guider les participants et personnaliser l’expérience.
+                </p>
+              </div>
+            </div>
+          </section>
+
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <nav>
+                <ul>
+                    <li><a href="3-APropos.html">À propos</a></li>
+                    <li><a href="produits.html">Produits</a></li>
+                    <li><a href="5-Blog.html">Blog</a></li>
+                    <li><a href="4-Contact.html">Contact</a></li>
+                </ul>
+            </nav>
+            <p>&copy; 2025 Puzzle-Paint. Tous droits réservés.</p>
+        </div>
+    </footer>
+</body>
+</html>
