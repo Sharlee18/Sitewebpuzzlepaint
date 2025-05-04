@@ -34,18 +34,24 @@
   <main>
     <div id="overlay"></div>
 
-    <!-- Sidebar -->
-    <nav id="sidebar" class="sidebar">
-      <button id="close-menu" class="close-btn">&times;</button>
-      <ul>
-        <li><a href="index.html">Accueil</a></li>
-        <li><a href="2-History.html">Nos ateliers</a></li>
-        <li><a href="produits.html">Notre boutique</a></li>
-        <li><a href="5-Blog.html">Devenir coach</a></li>
-        <li><a href="3-APropos.html">À-propos</a></li>
-        <li><a href="4-Contact.html">Contact</a></li>
-      </ul>
-    </nav>
+       <!-- Sidebar du menu -->
+       <nav id="sidebar" class="sidebar">
+        <button id="close-menu" class="close-btn">&times;</button>
+        <ul>
+          <li><a href="index.html">Accueil</a></li>
+          <li><a href="2-History.html">Nos ateliers</a></li>
+          <li><a href="produits.html">Notre boutique</a></li>
+          <li><a href="3-APropos.html">À-propos</a></li>
+          <li><a href="4-Contact.html">Contact</a></li>6
+          <li class="has-submenu">
+        <button class="menu-toggle">Section Coach</button>
+            <ul class="submenu hidden">
+              <li><a href="5-Blog.html">Devenir Coach</a></li>
+              <li><a href="acces-guide-coach.html">Guide Coach</a></li>
+            </ul>
+          </li>
+        </ul>
+      </nav>
 
     <!-- Introduction -->
     <section class="features">
@@ -174,5 +180,30 @@
       <p>&copy; 2025 Puzzle-Paint. Tous droits réservés.</p>
     </div>
   </footer>
+  
+<script>
+    const reveals = document.querySelectorAll('.reveal');
+    window.addEventListener('scroll', () => {
+        for (let i = 0; i < reveals.length; i++) {
+            const windowHeight = window.innerHeight;
+            const revealTop = reveals[i].getBoundingClientRect().top;
+            const revealPoint = 100;
+            if (revealTop < windowHeight - revealPoint) {
+                reveals[i].classList.add('active');
+            }
+        }
+    });
+</script>
+<script src="script.js" defer></script>
+<script src="cart.js" defer></script>
+<script>
+    document.querySelectorAll('.menu-toggle').forEach(toggle => {
+      toggle.addEventListener('click', () => {
+        const submenu = toggle.nextElementSibling;
+        submenu.classList.toggle('hidden');
+        toggle.classList.toggle('rotate-90'); // facultatif si tu veux faire pivoter la flèche
+      });
+    });
+  </script>
 </body>
 </html>

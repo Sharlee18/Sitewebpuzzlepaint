@@ -36,18 +36,24 @@
 
         <div id="overlay"></div>
 
-        <!-- Sidebar du menu -->
-        <nav id="sidebar" class="sidebar">
-            <button id="close-menu" class="close-btn">&times;</button>
-            <ul>
-                <li><a href="index.html">Accueil</a></li>
-                <li><a href="2-History.html">Nos ateliers</a></li>
-                <li><a href="produits.html">Notre boutique</a></li>
-                <li><a href="5-Blog.html">Devenir coach</a></li>
-                <li><a href="3-APropos.html">À-propos</a></li>
-                <li><a href="4-Contact.html">Contact</a></li>
+       <!-- Sidebar du menu -->
+       <nav id="sidebar" class="sidebar">
+        <button id="close-menu" class="close-btn">&times;</button>
+        <ul>
+          <li><a href="index.html">Accueil</a></li>
+          <li><a href="2-History.html">Nos ateliers</a></li>
+          <li><a href="produits.html">Notre boutique</a></li>
+          <li><a href="3-APropos.html">À-propos</a></li>
+          <li><a href="4-Contact.html">Contact</a></li>6
+          <li class="has-submenu">
+        <button class="menu-toggle">Section Coach</button>
+            <ul class="submenu hidden">
+              <li><a href="5-Blog.html">Devenir Coach</a></li>
+              <li><a href="acces-guide-coach.html">Guide Coach</a></li>
             </ul>
-        </nav>
+          </li>
+        </ul>
+      </nav>
 
         <!-- Intro Ateliers -->
         <section class="features reveal">
@@ -72,46 +78,33 @@
             <div class="container">
                 <h2><span style="color: rgb(32, 172, 123);">A quoi ressemble un atelier?</span></h2>
                 <section class="blocs-section">
+
                     <div class="bloc">
                         <span style="color: rgb(32, 172, 123);"> <h3>Atelier Découverte (2h) </h3></span>
                       <img src="Atelier1.png" alt="CAO et Impression 3D">
                       <p>Ateliers pour découvrir <b>"sans manipulation approfondie"</b> différents domaines technologiques (CAO, impression 3D ,Mécanique ,  électronique)  <br>
                         <span style="color: rgb(32, 172, 123);"><b>Prix </b> = 25€ / Participant</span>
                     </p>
-                      <button onclick="showDetails('details1')">Détails</button>
-                      <div id="details1" class="modal">
-                        <div class="modal-content">
-                          <span class="close" onclick="hideDetails('details1')">&times;</span>
-                          <p>
-                           <b><u> Conception 3D </b></u><br>
-                            • Présentation d'un outil de CAO open source (Tinkercad)<br>
-                            • Création d'objets personnalisés en 3D <br>
-                            • Génération du 3D en format imprimable (stl)<br><br>
-                            <b><u> Impression 3D </b></u><br>
-                            • Présentation d'une imprimante 3D <br>
-                            • Explications des principes de fonctionnement <br>
-                            • Conseils et astuces d'impression 3D<br>
-                            • Impression de modèle 3D personnalisés <br><br>
-                            <b><u> Montage Kit MECA  </b></u><br>
-                            • Présentation du kit et de ses principes mécaniques<br>
-                            • Montage pas à pas de la maquette <br>
-                            • Test manuel des mécanismes du kit <br>
-                            • T Peinture, Personnalisation ,créativité libre<br><br>
-                            <b><u> Montage Kit ELEC </b></u><br>
-                            • Présentation du boitier ELEC (microcontrôleur…) <br>
-                            • Montage pas à pas du boîtier ELEC  <br>
-                            • Test de la maquette MECA avec boîtier ELEC<br><br>
-                            <b><u> Programmation Électronique</b></u><br>
-                            • Présentation d'un logiciel de programmation<br>
-                            • Création de programmes simples assisté par l'IA <br>
-                            • Téléversement des programmes sur boîtier ELEC <br><br>
-                            <b><u> Test composants Électroniques </b></u><br>
-                            • Intégration des composants électroniques sur la maquette <br>
-                            •  Tests des programmes sur la maquette MECA (Contrôle du moteur, gestion des obstacles…) <br>
-                            </p>
-                        </div>
-                      </div>
-                    </div>
+                    <button onclick="openPanel(
+                        `<img src='Atelierdecouverte.png' alt='Atelier' style='width:100%; border-radius:10px; margin-bottom:10px;'>
+                        <p>
+                        <strong><span style='color:green;'>Initiez-vous au monde fascinant de la 3D, de l’électronique et de la programmation en famille ou entre amis !</span></strong><br>
+                        Participez à un atelier découverte Puzzle-Paint et vivez une expérience ludique et accessible, sans prérequis.<br><br>
+                        <span style='text-decoration:underline;'>Au programme :</span><br>
+                        1 - Découverte de la modélisation 3D<br>
+                        2 - Démonstration d'impression 3D<br>
+                        3 - Montage d'une maquette mécanique<br>
+                        4 - Premiers tests de composants électroniques<br>
+                        5 - Créativité et personnalisation libre<br><br>
+                        <span style='text-decoration:underline;'>Durée :</span> 1h30 à 2h<br>
+                        <span style='text-decoration:underline;'>Public :</span> dès 10 ans, ados, adultes – en solo ou en duo parent/enfant.<br>
+                        <strong><span style='color:green;'> Un moment créatif et inspirant à partager, pour éveiller la curiosité et la passion !</span>
+                        </p>`
+                        )">
+                          Détails
+                        </button> 
+                </div>
+        
                   
                     <div class="bloc">
                         <span style="color: rgb(32, 172, 123);">  <h3>Atelier Complet (4h)</h3></span>
@@ -119,39 +112,26 @@
                       <p>Ateliers pour découvrir <b>"avec manipulation approfondie"</b> différents domaines technologiques (CAO, impression 3D ,Mécanique ,  électronique)   <br>
                         <span style="color: rgb(32, 172, 123);"><b>Prix </b> = 35€ / Participant</span>
                     </p>
-                      <button onclick="showDetails('details2')">Détails</button>
-                      <div id="details2" class="modal">
-                        <div class="modal-content">
-                          <span class="close" onclick="hideDetails('details2')">&times;</span>
-                          <p>
-                            <b><u> Conception 3D </b></u><br>
-                             • Présentation d'un outil de CAO open source (Tinkercad)<br>
-                             • Création d'objets personnalisés en 3D <br>
-                             • Génération du 3D en format imprimable (stl)<br><br>
-                             <b><u> Impression 3D </b></u><br>
-                             • Présentation d'une imprimante 3D <br>
-                             • Explications des principes de fonctionnement <br>
-                             • Conseils et astuces d'impression 3D<br>
-                             • Impression de modèle 3D personnalisés <br><br>
-                             <b><u> Montage Kit MECA  </b></u><br>
-                             • Présentation du kit et de ses principes mécaniques<br>
-                             • Montage pas à pas de la maquette <br>
-                             • Test manuel des mécanismes du kit <br>
-                             • T Peinture, Personnalisation ,créativité libre<br><br>
-                             <b><u> Montage Kit ELEC </b></u><br>
-                             • Présentation du boitier ELEC (microcontrôleur…) <br>
-                             • Montage pas à pas du boîtier ELEC  <br>
-                             • Test de la maquette MECA avec boîtier ELEC<br><br>
-                             <b><u> Programmation Électronique</b></u><br>
-                             • Présentation d'un logiciel de programmation<br>
-                             • Création de programmes simples assisté par l'IA <br>
-                             • Téléversement des programmes sur boîtier ELEC <br><br>
-                             <b><u> Test composants Électroniques </b></u><br>
-                             • Intégration des composants électroniques sur la maquette <br>
-                             •  Tests des programmes sur la maquette MECA (Contrôle du moteur, gestion des obstacles…) <br>
-                             </p>
-                        </div>
-                      </div>
+                    <button onclick="openPanel(
+                        `<img src='Ateliercomplet.png' alt='Atelier' style='width:100%; border-radius:10px; margin-bottom:10px;'>
+                        <p>
+                            <strong><span style='color:green;'>'Plongez dans l’univers Puzzle-Paint et réalisez votre propre maquette intelligente, de A à Z </span></strong><br>
+                            Concevez, imprimez, assemblez et programmez une voiture pédagogique unique, que vous emporterez à la fin de l’atelier.<br><br>
+                        <span style='text-decoration:underline;'>Ce que vous apprendrez :</span><br>
+                        1 - Création 3D personnalisée (Tinkercad)<br>
+                        2 - Montage mécanique (Moteur, volant, engrenages...)<br>
+                        3 - Montage d'une maquette mécanique<br>
+                        4 - Intégration d’un kit électronique (ESP32, capteurs, OLED…) <br>
+                        5 - Programmation avec Arduino (guidée par l'IA)
+                        <br><br>
+                        <span style='text-decoration:underline;'>Durée :</span> 3h à 6h (suivant niveau)<br>
+                        <span style='text-decoration:underline;'>Public :</span> dès 12 ans – jeunes, adultes, familles ou passionnés<br>
+                        <strong><span style='color:green;'>  Une expérience complète, éducative et créative à vivre en atelier ou à offrir.
+                        </span>
+                        </p>`
+                        )">
+                          Détails
+                        </button>
                     </div>
                   
                     <div class="bloc">
@@ -159,39 +139,26 @@
                       <img src="Atelier1.png" alt="Programmation Arduino">
                       <p>Approche <b>progressive et approfondie</b> mêlant théorie, pratique et créativité <b>déroulé sur 3 jours sur une période à définir</b> ensemble</p><br>
                       <span style="color: rgb(32, 172, 123);"><b>Prix </b> = 90€ / Participant</span>  </p>
-                      <button onclick="showDetails('details3')">Détails</button>
-                      <div id="details3" class="modal">
-                        <div class="modal-content">
-                          <span class="close" onclick="hideDetails('details3')">&times;</span>
-                          <p>
-                            <b><u> Conception 3D </b></u><br>
-                             • Présentation d'un outil de CAO open source (Tinkercad)<br>
-                             • Création d'objets personnalisés en 3D <br>
-                             • Génération du 3D en format imprimable (stl)<br><br>
-                             <b><u> Impression 3D </b></u><br>
-                             • Présentation d'une imprimante 3D <br>
-                             • Explications des principes de fonctionnement <br>
-                             • Conseils et astuces d'impression 3D<br>
-                             • Impression de modèle 3D personnalisés <br><br>
-                             <b><u> Montage Kit MECA  </b></u><br>
-                             • Présentation du kit et de ses principes mécaniques<br>
-                             • Montage pas à pas de la maquette <br>
-                             • Test manuel des mécanismes du kit <br>
-                             • T Peinture, Personnalisation ,créativité libre<br><br>
-                             <b><u> Montage Kit ELEC </b></u><br>
-                             • Présentation du boitier ELEC (microcontrôleur…) <br>
-                             • Montage pas à pas du boîtier ELEC  <br>
-                             • Test de la maquette MECA avec boîtier ELEC<br><br>
-                             <b><u> Programmation Électronique</b></u><br>
-                             • Présentation d'un logiciel de programmation<br>
-                             • Création de programmes simples assisté par l'IA <br>
-                             • Téléversement des programmes sur boîtier ELEC <br><br>
-                             <b><u> Test composants Électroniques </b></u><br>
-                             • Intégration des composants électroniques sur la maquette <br>
-                             •  Tests des programmes sur la maquette MECA (Contrôle du moteur, gestion des obstacles…) <br>
-                             </p>
-                        </div>
-                      </div>
+                      <button onclick="openPanel(
+                        `<img src='Ateliercomplet.png' alt='Atelier' style='width:100%; border-radius:10px; margin-bottom:10px;'>
+                        <p>
+                            <strong><span style='color:green;'>'Plongez dans l’univers Puzzle-Paint et réalisez votre propre maquette intelligente, de A à Z </span></strong><br>
+                            Concevez, imprimez, assemblez et programmez une voiture pédagogique unique, que vous emporterez à la fin de l’atelier.<br><br>
+                        <span style='text-decoration:underline;'>Ce que vous apprendrez :</span><br>
+                        1 - Création 3D personnalisée (Tinkercad)<br>
+                        2 - Montage mécanique (Moteur, volant, engrenages...)<br>
+                        3 - Montage d'une maquette mécanique<br>
+                        4 - Intégration d’un kit électronique (ESP32, capteurs, OLED…) <br>
+                        5 - Programmation avec Arduino (guidée par l'IA)
+                        <br><br>
+                        <span style='text-decoration:underline;'>Durée :</span> 9h (3x3h) sur 3 jours selon période à définir<br>
+                        <span style='text-decoration:underline;'>Public :</span> dès 12 ans – jeunes, adultes, familles ou passionnés<br>
+                        <strong><span style='color:green;'>  Une expérience complète, éducative et créative à vivre en atelier ou à offrir.
+                        </span>
+                        </p>`
+                        )">
+                          Détails
+                        </button>
                     </div>
                   </section>
 
@@ -201,39 +168,29 @@
                   <p>Activité clé en main adaptée aux classes ou centres de loisirs.<br>
                     Activité intéractive et collaborative <b>adaptée également pour les évènements publics/privés des entreprises (Team building...)</b> <br>
                   <span style="color: rgb(32, 172, 123);"><b>Prix </b> = Devis personnalisé</span>  </p>
-                  <button onclick="showDetails('details3')">Détails</button>
-                  <div id="details3" class="modal">
-                    <div class="modal-content">
-                      <span class="close" onclick="hideDetails('details3')">&times;</span>
-                      <p>
-                        <b><u> Conception 3D </b></u><br>
-                         • Présentation d'un outil de CAO open source (Tinkercad)<br>
-                         • Création d'objets personnalisés en 3D <br>
-                         • Génération du 3D en format imprimable (stl)<br><br>
-                         <b><u> Impression 3D </b></u><br>
-                         • Présentation d'une imprimante 3D <br>
-                         • Explications des principes de fonctionnement <br>
-                         • Conseils et astuces d'impression 3D<br>
-                         • Impression de modèle 3D personnalisés <br><br>
-                         <b><u> Montage Kit MECA  </b></u><br>
-                         • Présentation du kit et de ses principes mécaniques<br>
-                         • Montage pas à pas de la maquette <br>
-                         • Test manuel des mécanismes du kit <br>
-                         • T Peinture, Personnalisation ,créativité libre<br><br>
-                         <b><u> Montage Kit ELEC </b></u><br>
-                         • Présentation du boitier ELEC (microcontrôleur…) <br>
-                         • Montage pas à pas du boîtier ELEC  <br>
-                         • Test de la maquette MECA avec boîtier ELEC<br><br>
-                         <b><u> Programmation Électronique</b></u><br>
-                         • Présentation d'un logiciel de programmation<br>
-                         • Création de programmes simples assisté par l'IA <br>
-                         • Téléversement des programmes sur boîtier ELEC <br><br>
-                         <b><u> Test composants Électroniques </b></u><br>
-                         • Intégration des composants électroniques sur la maquette <br>
-                         •  Tests des programmes sur la maquette MECA (Contrôle du moteur, gestion des obstacles…) <br>
-                         </p>
-                    </div>
-                  </div>
+                  <button onclick="openPanel(
+                    `<img src='Atelierecoles.png' alt='Atelier' style='width:100%; border-radius:10px; margin-bottom:10px;'>
+                    <p>
+                    <strong><span style='color:green;'Découvrez les ateliers Puzzle-Paint à destination des collèges
+                         <br> Offrez à vos élèves une expérience unique qui combine créativité, technologie et logique.</span></strong><br>
+                         Avec Puzzle-Paint, les jeunes de 12 à 15 ans découvrent le monde de la 3D, du montage mécanique, de l’électronique et de la programmation, tout en s’amusant !<br><br>
+                    <span style='text-decoration:underline;'>Un atelier, plusieurs compétences mobilisées :</span><br>
+                    1 - Conception 3D personnalisée sur ordinateur<br>
+                    2 - Démonstration d'impression 3D <br>
+                    3 - Montage d'une maquette mécanique<br>
+                    4 - Ajout d’un boîtier électronique (capteurs, servomoteurs, écran OLED...)<br>
+                    5 - Programmation simple avec Arduino, guidée pas à pas<br><br>
+                    <span style='text-decoration:underline;'>Objectifs pédagogiques :</span><br>
+                    Développer la créativité, la motricité fine, la logique algorithmique et le travail collaboratif, dans un cadre ludique et valorisant.<br>
+                    <span style='text-decoration:underline;'>L'atelier est clé en main :</span><br>
+                    nous fournissons tout le matériel et intervenons dans votre établissement avec un coach expérimenté.<br>
+                    <span style='text-decoration:underline;'>Durée :</span> 3h à 4h<br>
+                    <span style='text-decoration:underline;'>Public :</span> dès 10 ans, ados, adultes – en solo ou en duo parent/enfant.<br>
+                    <strong><span style='color:green;'> Un moment créatif et inspirant pour éveiller la curiosité et la passion !</span>
+                    </p>`
+                    )">
+                      Détails
+                    </button>
                 </div>
               </section>
 
@@ -300,6 +257,22 @@
         }
     });
 </script>
+<script src="script.js" defer></script>
+<script src="cart.js" defer></script>
+<script>
+    document.querySelectorAll('.menu-toggle').forEach(toggle => {
+      toggle.addEventListener('click', () => {
+        const submenu = toggle.nextElementSibling;
+        submenu.classList.toggle('hidden');
+        toggle.classList.toggle('rotate-90'); // facultatif si tu veux faire pivoter la flèche
+      });
+    });
+  </script>
+<div id="info-panel" class="info-panel">
+    <button class="close-panel" onclick="closePanel()">×</button>
+    <div id="info-content"></div>
+  </div>
+  
 </body>
 </html>
 

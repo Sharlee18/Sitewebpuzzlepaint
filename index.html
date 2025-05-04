@@ -41,25 +41,25 @@
 
         <div id="overlay"></div>
 
-        <!-- Sidebar du menu -->
-        <nav id="sidebar" class="sidebar">
-            <button id="close-menu" class="close-btn">&times;</button>
-            <ul>
-                <li><a href="index.html">Accueil</a></li>
-                <li><a href="2-History.html">Nos ateliers</a></li>
-                <li><a href="produits.html">Notre boutique</a></li>
-                <li class="has-submenu">
-                    <a href="#" onclick="toggleSubMenu(event)">Section Coach ▾</a>
-                    <ul class="submenu">
-                      <li><a href="5-Blog.html">Devenir Coach</a></li>
-                      <li><a href="acces-guide-coach.html">Guide Coach</a></li>
-                    </ul>
-                  </li>
-                  
-                <li><a href="3-APropos.html">À-propos</a></li>
-                <li><a href="4-Contact.html">Contact</a></li>
-            </ul>
-        </nav>
+       <!-- Sidebar du menu -->
+<nav id="sidebar" class="sidebar">
+    <button id="close-menu" class="close-btn">&times;</button>
+    <ul>
+      <li><a href="index.html">Accueil</a></li>
+      <li><a href="2-History.html">Nos ateliers</a></li>
+      <li><a href="produits.html">Notre boutique</a></li>
+      <li><a href="3-APropos.html">À-propos</a></li>
+      <li><a href="4-Contact.html">Contact</a></li>6
+      <li class="has-submenu">
+    <button class="menu-toggle">Section Coach</button>
+        <ul class="submenu hidden">
+          <li><a href="5-Blog.html">Devenir Coach</a></li>
+          <li><a href="acces-guide-coach.html">Guide Coach</a></li>
+        </ul>
+      </li>
+    </ul>
+  </nav>
+  
 
         <!-- Section aventure éducative -->
         <section class="features reveal">
@@ -69,7 +69,7 @@
                     <div class="carousel-track-container">
                         <ul class="carousel-track">
                             <li class="carousel-slide current-slide"><img src="Famille1.png" alt="Image 1"></li>
-                            <li class="carousel-slide current-slide"><img src="intro-image.png" alt="Image 1"></li>
+                            <li class="carousel-slide"><img src="intro-image.png" alt="Image 1"></li>
                             <li class="carousel-slide"><img src="carroussel3.png" alt="Image 2"></li>
                             <li class="carousel-slide"><img src="carroussel1.png" alt="Image 3"></li>
                         </ul>
@@ -91,10 +91,10 @@
                 <div id="carousel2" class="carousel">
                     <div class="carousel-track-container">
                         <ul class="carousel-track">
-                            <li class="carousel-slide current-slide"><img src="all mecanisme.png" alt="Image 1"></li>
+                            <li class="carousel-slide current-slide"><img src="all mecanisme2.png" alt="Image 1"></li>
                             <li class="carousel-slide"><img src="default-image.jpg.png" alt="Image 2"></li>
-                            <li class="carousel-slide current-slide"><img src="mecanismeskit.png" alt="Image 3"></li>
-                            <li class="carousel-slide current-slide"><img src="Endtoend mecaelec.png" alt="Image 4"></li>
+                            <li class="carousel-slide"><img src="mecanismeskit.png" alt="Image 3"></li>
+                            <li class="carousel-slide"><img src="Endtoend mecaelec.png" alt="Image 4"></li>
                             <li class="carousel-slide"><img src="imageKIT.png" alt="Image 5"></li>
                         </ul>
                     </div>
@@ -135,11 +135,11 @@
         <section class="features reveal">
             <div class="container">
                 <h2><span style="color: rgb(32, 172, 123);">Ateliers ludiques et pédagogiques</span></h2>
-                <div id="carousel2" class="carousel">
+                <div id="carousel3" class="carousel">
                     <div class="carousel-track-container">
                         <ul class="carousel-track">
                             <li class="carousel-slide current-slide"><img src="formuleAtelier2.png" alt="Image 1"></li>
-                            <li class="carousel-slide current-slide"><img src="formuleAtelier.png" alt="Image 1"></li>
+                            <li class="carousel-slide"><img src="formuleAtelier.png" alt="Image 1"></li>
                         </ul>
                     </div>
                     <button class="carousel-btn prev-btn">◀</button>
@@ -266,12 +266,12 @@
         <section class="features reveal">
             <div class="container">
                 <h2><span style="color: rgb(32, 172, 123);">Vous aimez transmettre ?</span></h2>
-                <div id="carousel5" class="carousel">
+                <div id="carousel4" class="carousel">
                     <div class="carousel-track-container">
                         <ul class="carousel-track">
                             <li class="carousel-slide current-slide"><img src="atelier5.png" alt="Image 1"></li>
-                            <li class="carousel-slide current-slide"><img src="coach1.png" alt="Image 2"></li>
-                            <li class="carousel-slide current-slide"><img src="coach2.png" alt="Image 3"></li>
+                            <li class="carousel-slide "><img src="coach1.png" alt="Image 2"></li>
+                            <li class="carousel-slide"><img src="coach2.png" alt="Image 3"></li>
                         </ul>
                     </div>
                     <button class="carousel-btn prev-btn">◀</button>
@@ -325,7 +325,15 @@
 
     <script src="script.js" defer></script>
     <script src="cart.js" defer></script>
-
+    <script>
+        document.querySelectorAll('.menu-toggle').forEach(toggle => {
+          toggle.addEventListener('click', () => {
+            const submenu = toggle.nextElementSibling;
+            submenu.classList.toggle('hidden');
+            toggle.classList.toggle('rotate-90'); // facultatif si tu veux faire pivoter la flèche
+          });
+        });
+      </script> 
     <script>
         const reveals = document.querySelectorAll('.reveal');
         window.addEventListener('scroll', () => {
@@ -350,7 +358,6 @@
       document.getElementById(id).style.display = 'none';
     }
 </script>
-
   
 </body>
 </html>

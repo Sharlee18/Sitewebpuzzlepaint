@@ -125,3 +125,12 @@ document.querySelectorAll('.carousel').forEach(carousel => {
         });
     });
 
+    function openPanel(htmlContent) {
+        document.getElementById('info-content').innerHTML = htmlContent;
+        document.getElementById('info-panel').classList.add('active');
+      }
+      
+      function closePanel() {
+        document.getElementById('info-panel').classList.remove('active');
+      }
+      

@@ -36,18 +36,24 @@
     <main>
      <div id="overlay"></div>
 
-        <!-- Sidebar du menu -->
-        <nav id="sidebar" class="sidebar">
-            <button id="close-menu" class="close-btn">&times;</button>
-            <ul>
-                <li><a href="index.html">Accueil</a></li>
-                <li><a href="2-History.html">Nos ateliers</a></li>
-                <li><a href="produits.html">Notre boutique</a></li>
-                <li><a href="5-Blog.html">Devenir coach</a></li>
-                <li><a href="3-APropos.html">À-propos</a></li>
-                <li><a href="4-Contact.html">Contact</a></li>
+       <!-- Sidebar du menu -->
+       <nav id="sidebar" class="sidebar">
+        <button id="close-menu" class="close-btn">&times;</button>
+        <ul>
+          <li><a href="index.html">Accueil</a></li>
+          <li><a href="2-History.html">Nos ateliers</a></li>
+          <li><a href="produits.html">Notre boutique</a></li>
+          <li><a href="3-APropos.html">À-propos</a></li>
+          <li><a href="4-Contact.html">Contact</a></li>6
+          <li class="has-submenu">
+        <button class="menu-toggle">Section Coach</button>
+            <ul class="submenu hidden">
+              <li><a href="5-Blog.html">Devenir Coach</a></li>
+              <li><a href="acces-guide-coach.html">Guide Coach</a></li>
             </ul>
-        </nav>
+          </li>
+        </ul>
+      </nav>
 
         <!-- Notre Mission -->
         <section class="features">
@@ -56,7 +62,7 @@
                     </div>
                     <p>Chez Puzzle-Paint, nous croyons que l’éducation par la pratique est la clé pour révéler les talents de demain.<Br>
                         Nous avons créé un kit unique pour apprendre en construisant, en manipulant, en testant, en s’amusant.<Br>
-                        Le projet est né d’une passion pour :la mécanique, l’électronique, l’impression 3D, et la transmission du savoir.<Br> 
+                        Le projet est né d’une passion pour : la mécanique, l’électronique, l’impression 3D, et la transmission du savoir.<Br> 
                         <Br><Br></p>
                 <h2><span style="color: rgb(32, 172, 123);">Qui sommes-nous</span></h2>
                 <p>Une équipe passionnée par l'éducation et l'innovation.
@@ -92,5 +98,16 @@
             <p>&copy; 2025 Puzzle-Paint. Tous droits réservés.</p>
         </div>
     </footer>
+    <script src="script.js" defer></script>
+    <script src="cart.js" defer></script>
+    <script>
+        document.querySelectorAll('.menu-toggle').forEach(toggle => {
+          toggle.addEventListener('click', () => {
+            const submenu = toggle.nextElementSibling;
+            submenu.classList.toggle('hidden');
+            toggle.classList.toggle('rotate-90'); // facultatif si tu veux faire pivoter la flèche
+          });
+        });
+      </script>
 </body>
 </html>

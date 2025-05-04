@@ -41,50 +41,114 @@
     <main>
         <div id="overlay"></div>
 
-        <!-- Sidebar du menu -->
-        <nav id="sidebar" class="sidebar">
-            <button id="close-menu" class="close-btn">&times;</button>
-            <ul>
-                <li><a href="index.html">Accueil</a></li>
-                <li><a href="2-History.html">Nos ateliers</a></li>
-                <li><a href="produits.html">Notre boutique</a></li>
-                <li><a href="5-Blog.html">Devenir coach</a></li>
-                <li><a href="3-APropos.html">À-propos</a></li>
-                <li><a href="4-Contact.html">Contact</a></li>
+       <!-- Sidebar du menu -->
+       <nav id="sidebar" class="sidebar">
+        <button id="close-menu" class="close-btn">&times;</button>
+        <ul>
+          <li><a href="index.html">Accueil</a></li>
+          <li><a href="2-History.html">Nos ateliers</a></li>
+          <li><a href="produits.html">Notre boutique</a></li>
+          <li><a href="3-APropos.html">À-propos</a></li>
+          <li><a href="4-Contact.html">Contact</a></li>6
+          <li class="has-submenu">
+        <button class="menu-toggle">Section Coach</button>
+            <ul class="submenu hidden">
+              <li><a href="5-Blog.html">Devenir Coach</a></li>
+              <li><a href="acces-guide-coach.html">Guide Coach</a></li>
             </ul>
-        </nav>
+          </li>
+        </ul>
+      </nav>
 
-        <!-- Notre Histoire -->
+        <!-- Objectif du Guide -->
         <section class="reveal-section">
-            <div class="reveal-container">
+            <div class="reveal-container horizontal-layout">
               <div class="image-side">
-                <img src="famille2.png" alt="Illustration coach Puzzle-Paint" />
+                <img src="objectifguide.png" alt="Illustration coach Puzzle-Paint" />
               </div>
               <div class="text-side">
-                <h2>Préparer un atelier étape par étape</h2>
+                <h2>Objectif du Guide d'animation</h2>
                 <p>
-                  Retrouvez les bons réflexes pour animer votre atelier : accueillir, organiser le matériel, guider les participants et personnaliser l’expérience.
-                </p>
-              </div>
-            </div>
-          </section>
-          
-                  <!-- Notre Histoire -->
-        <section class="reveal-section">
-            <div class="reveal-container">
-              <div class="image-side">
-                <img src="famille2.png" alt="Illustration coach Puzzle-Paint" />
-              </div>
-              <div class="text-side">
-                <h2>Préparer un atelier étape par étape</h2>
-                <p>
-                  Retrouvez les bons réflexes pour animer votre atelier : accueillir, organiser le matériel, guider les participants et personnaliser l’expérience.
+                  Ce document est destiné aux coachs Puzzle-Paint pour les aider à animer un atelier complet, de la conception à la programmation, en passant par le montage et la personnalisation du kit.
                 </p>
               </div>
             </div>
           </section>
 
+                  <!-- Conseil coach -->
+        <section class="reveal-section">
+            <div class="reveal-container horizontal-layout">
+              <div class="image-side">
+                <img src="tipscoach.png" alt="Illustration coach Puzzle-Paint" />
+              </div>
+              <div class="text-side">
+                <h2>Conseils Coach (Tips)</h2>
+                <p>
+                    - Adapter la durée à l'âge des participants<br>
+                    - Mettre l'accent sur la créativité et l'autonomie<br>
+                    - Alterner les temps techniques et les moments ludiques<br>
+                    <b>Ce document peut être adapté selon les niveaux (initiation, perfectionnement, ateliers longs ou courts).</b><br>
+                    <button onclick="openPanel(
+                        `<img src='tipscoach.png' alt='Atelier' style='width:100%; border-radius:10px; margin-bottom:10px;'>
+                        <p>
+                        <strong><span style='color:green;'Découvrez les ateliers Puzzle-Paint à destination des collèges
+                             <br> Offrez à vos élèves une expérience unique qui combine créativité, technologie et logique.</span></strong><br>
+                             Avec Puzzle-Paint, les jeunes de 12 à 15 ans découvrent le monde de la 3D, du montage mécanique, de l’électronique et de la programmation, tout en s’amusant !<br><br>
+                        <span style='text-decoration:underline;'>Un atelier, plusieurs compétences mobilisées :</span><br>
+                        1 - Conception 3D personnalisée sur ordinateur<br>
+                        2 - Démonstration d'impression 3D <br>
+                        3 - Montage d'une maquette mécanique<br>
+                        4 - Ajout d’un boîtier électronique (capteurs, servomoteurs, écran OLED...)<br>
+                        5 - Programmation simple avec Arduino, guidée pas à pas<br><br>
+                        <span style='text-decoration:underline;'>Objectifs pédagogiques :</span><br>
+                        Développer la créativité, la motricité fine, la logique algorithmique et le travail collaboratif, dans un cadre ludique et valorisant.<br>
+                        <span style='text-decoration:underline;'>L'atelier est clé en main :</span><br>
+                        nous fournissons tout le matériel et intervenons dans votre établissement avec un coach expérimenté.<br>
+                        <span style='text-decoration:underline;'>Durée :</span> 3h à 4h<br>
+                        <span style='text-decoration:underline;'>Public :</span> dès 10 ans, ados, adultes – en solo ou en duo parent/enfant.<br>
+                        <strong><span style='color:green;'> Un moment créatif et inspirant pour éveiller la curiosité et la passion !</span>
+                        </p>`
+                        )">
+                          Détails
+                        </button>   
+                </div>
+            </div>
+          </section>
 
+                  <!-- Vue d'ensemble atelier -->
+        <section class="reveal-section">
+            <div class="reveal-container horizontal-layout">
+              <div class="image-side">
+                <img src="formuleAtelier2.png" alt="Illustration coach Puzzle-Paint" />
+              </div>
+              <div class="text-side">
+                <h2>Vue d'ensemble de l'atelier</h2>
+                <p>
+                    <b>Un parcours complet, ludique et éducatif pour créer sa voiture intelligente !</b><br>
+                    L’atelier Puzzle-Paint se déroule en 5 grandes étapes progressives, pensées pour stimuler à la fois la créativité, la logique, la coordination manuelle et la curiosité technologique :<br>
+                    
+                    1. Conception 3D (CAO)<br>
+                    Les participants conçoivent leurs propres pièces personnalisées à l’aide d’un logiciel simple et intuitif (Tinkercad).<br><br>
+                    
+                    2. Impression 3D<br>
+                    Ils découvrent une imprimante 3D en fonctionnement et impriment leurs modèles, pièce par pièce.<br><br>
+                    
+                    3. Montage et personnalisation de la maquette MECA<br>
+                    Ils assemblent leur voiture mécanique à partir des pièces imprimées, testent les mouvements, puis la décorent à leur goût.<br><br>
+                    
+                    4. Intégration du boîtier électronique (ELEC)<br>
+                    Ils ajoutent les composants électroniques (capteurs, microcontrôleur, écran OLED...) pour rendre leur maquette interactive.<br><br>
+                    
+                    5. Programmation (Arduino)<br>
+                    Enfin, ils programment leur voiture avec des consignes simples, guidés par l’IA ou l’animateur, et testent les réactions en direct.<br><br>
+                    
+                    <b>> Une aventure technologique et artistique accessible à tous, de la modélisation à l’objet connecté.
+                    Chaque étape est accompagnée, personnalisée et adaptée au niveau des participants.</b>
+                    
+                </p>
+              </div>
+            </div>
+          </section>
     </main>
 
     <!-- Footer -->
@@ -101,5 +165,34 @@
             <p>&copy; 2025 Puzzle-Paint. Tous droits réservés.</p>
         </div>
     </footer>
+    <div id="info-panel" class="info-panel">
+        <button class="close-panel" onclick="closePanel()">×</button>
+        <div id="info-content"></div>
+      </div>   
+      
+<script>
+    const reveals = document.querySelectorAll('.reveal');
+    window.addEventListener('scroll', () => {
+        for (let i = 0; i < reveals.length; i++) {
+            const windowHeight = window.innerHeight;
+            const revealTop = reveals[i].getBoundingClientRect().top;
+            const revealPoint = 100;
+            if (revealTop < windowHeight - revealPoint) {
+                reveals[i].classList.add('active');
+            }
+        }
+    });
+</script>
+<script src="script.js" defer></script>
+<script src="cart.js" defer></script>
+<script>
+    document.querySelectorAll('.menu-toggle').forEach(toggle => {
+      toggle.addEventListener('click', () => {
+        const submenu = toggle.nextElementSibling;
+        submenu.classList.toggle('hidden');
+        toggle.classList.toggle('rotate-90'); // facultatif si tu veux faire pivoter la flèche
+      });
+    });
+  </script>   
 </body>
 </html>

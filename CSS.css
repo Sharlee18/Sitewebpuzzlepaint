@@ -1928,4 +1928,139 @@ main {
       font-size: 1.5rem;
     }
   }
+
+.image-side img {
+  width: 100%;
+  max-width: 500px;
+  border-radius: 1rem;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+}
+
+.text-side {
+  max-width: 500px;
+}
+
+.text-side h2 {
+  font-size: 2rem;
+  color: #20ac7b;
+  margin-bottom: 1rem;
+}
+
+.text-side p {
+  font-size: 1.1rem;
+  line-height: 1.6;
+  color: #333;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .reveal-container {
+    flex-direction: column;
+  }
+}
+
+.info-panel {
+    display: none;
+    position: fixed;
+    right: 0;
+    top: 0;
+    height: 100%;
+    width: 400px;
+    background: white;
+    box-shadow: -4px 0 15px rgba(0,0,0,0.3);
+    padding: 2rem;
+    z-index: 2000;
+    overflow-y: auto;
+  }
+  
+  .info-panel.active {
+    display: block;
+    animation: slideIn 0.4s ease forwards;
+  }
+  
+  @keyframes slideIn {
+    from { right: -400px; }
+    to { right: 0; }
+  }
+  
+  .close-panel {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    background: none;
+    border: none;
+    font-size: 2rem;
+    color: #20ac7b;
+    cursor: pointer;
+  }
+  
+  #info-content p {
+    margin-bottom: 1rem;
+  }
+  
+  .sidebar {
+    overflow-y: auto;
+    max-height: 100vh; /* ou une autre valeur fixe si besoin */
+  }
+  
+  .hidden {
+    display: none;
+  }
+  
+  .submenu {
+    padding-left: 20px;
+  }
+  .hidden {
+    display: none;
+  }
+  .menu-toggle {
+    background: none;
+    border: none;
+    color: white; /* ou la même couleur que tes <a> */
+    font-size: 1.2em; /* adapte selon tes autres liens */
+    text-align: left;
+    padding: 10px 20px;
+    margin: 0;
+    display: block;
+    width: 100%;
+    font-weight: bold;
+    cursor: pointer;
+      
+  }
+  .menu-toggle.rotate::before {
+    content: "▾ ";
+  }
+  .menu-toggle::before {
+    content: "▸ ";
+  }
+  
+/* Harmonise tous les éléments du menu */
+.sidebar ul li {
+    padding: 10px 20px;
+    list-style: none;
+  }
+  
+  .reveal-container.horizontal-layout {
+    display: flex;
+    align-items: center;
+    gap: 30px;
+    flex-wrap: wrap; /* pour rester responsive */
+    margin: 30px auto;
+    padding: 20px;
+    background-color: #f9f9f9;
+    border-radius: 12px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+  }
+  
+  .image-side img {
+    max-width: 300px;
+    width: 100%;
+    border-radius: 8px;
+  }
+  
+  .text-side {
+    flex: 1;
+    min-width: 250px;
+  }
+  
   
