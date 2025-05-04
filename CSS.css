@@ -2063,4 +2063,29 @@ main {
     min-width: 250px;
   }
   
+  @media (max-width: 600px) {
+    .popup {
+      top: 5%;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 95%;
+      height: auto;
+      max-height: 90vh; /* limite la hauteur à 90% de l’écran */
+      overflow-y: auto; /* permet de scroller si le contenu dépasse */
+      padding: 1rem;
+    }
+  
+    .popup-content {
+      padding-top: 2rem;
+      position: relative;
+    }
+  
+    .close-btn {
+      top: 10px;
+      right: 15px;
+      font-size: 1.8rem;
+      position: absolute;
+      z-index: 100;
+    }
+  }
   
