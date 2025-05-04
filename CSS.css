@@ -1740,6 +1740,8 @@ main {
     padding: 1.5rem;
     box-shadow: 0 0 15px rgba(0,0,0,0.3);
     z-index: 1000;
+    overflow-y: auto;
+    max-height: 90vh;
   }
   
 
@@ -2088,4 +2090,3 @@ main {
       z-index: 100;
     }
   }
-  
