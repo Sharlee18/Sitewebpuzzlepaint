@@ -79,7 +79,7 @@
                 </div>
                 <div class="text-zone">
                     <p>Le Kit Puzzle-Paint, c'est <span style="color: rgb(32, 172, 123);">une expérience éducative complète mêlant mécanique, électronique, programmation et créativité.</span></p>
-                    Construis ta propre voiture intelligente à partir d’un kit imprimé en 3D, peins-la à ton goût, connecte les composants électroniques (Capteur à ultrason, servomoteurs, Joystick, écran...), et programme ses réactions !
+                    Construis ta propre voiture intelligente à partir d’un kit imprimé en 3D, peins-la à ton goût, connecte les composants électroniques et programme ses réactions !
                     <span style="color: rgb(32, 172, 123);">En plus, tout ça sans aucune colle, aucun outil complexe : tout se clipse et s'assemble facilement</span><br>
             </div>
         </section>
@@ -104,7 +104,7 @@
                 <div class="text-zone">
                     <p><span style="color: rgb(32, 172, 123);">Manipuler plus de 50 pièces en mouvement</span> dans des mécanismes de voitures (moteur, boîte de vitesses, volant, essuie-glaces...)<br>
                     <span style="color: rgb(32, 172, 123);">Apprenez l’électronique de base</span> en connectant des capteurs, servomoteurs, écrans, etc.<br>
-                    <span style="color: rgb(32, 172, 123);">Initiez-vous à la programmation Arduino</span> simple et ludique.<br>
+                    <span style="color: rgb(32, 172, 123);">Initiez-vous à la programmation C++ (Arduino) </span> de manière simple et ludique.<br>
                     <span style="color: rgb(32, 172, 123);">Contrôlez votre voiture intelligente</span> par joystick ou smartphone.</p>
                 </div>
             </div>
@@ -123,11 +123,20 @@
                 <button class="carousel-btn prev-btn">◀</button>
                 <button class="carousel-btn next-btn">▶</button>
             </div><br>
-        <span style="color: rgb(32, 172, 123);">1-Contrôle la vitesse du moteur</span> et observe bouger ses composants  (Pistons, bielles...)<br>
-        <span style="color: rgb(32, 172, 123);">2-Contrôle le passage des rapports de vitesses</span>  et observe les changements d'engrenages <br> 
-        <span style="color: rgb(32, 172, 123);">3-Contrôle les obstacles</span> à l'avant de la voiture à l'aide du capteur à ultrason <br> 
-        <span style="color: rgb(32, 172, 123);">4-Déclenche des alertes automatiques</span> (Ex: Bip progressif du buzzer quand un obstacle s'approche ) <br> 
-        <span style="color: rgb(32, 172, 123);">5-Gère l'affichage d'information</span> sur l'écran (vitesse en Km/h, rapport de vitesse, distance obstacles...) <br> <br>
+<p> Grâce à l'intégration de composants électroniques (capteur, servomoteurs...) sur la maquette physique, <br>
+    <span style="color: rgb(32, 172, 123);"> il est possible repliquer pleins de comportement qu'on trouve aujourd'hui dans nos voitures</p>
+        <button onclick="openPanel(
+            `<img src='etape3.png' alt='Atelier' style='width:100%; border-radius:10px; margin-bottom:10px;'>
+            <p>
+            1-Contrôle la vitesse du moteur et observe bouger ses composants  (Pistons, bielles...)<br>
+            2-Contrôle le passage des rapports de vitesses et observe les changements d'engrenages <br> 
+           3-Contrôle les obstaclesà l'avant de la voiture à l'aide du capteur à ultrason <br> 
+            4-Déclenche des alertes automatiques</span> (Ex: Bip progressif du buzzer quand un obstacle s'approche ) <br> 
+            5-Gère l'affichage d'information</span> sur l'écran (vitesse en Km/h, rapport de vitesse, distance obstacles...) <br> <br>
+            </p>`
+            )">
+              Détails
+            </button> 
     </div>
 </section>
 
@@ -232,9 +241,9 @@
                           <span class="close" onclick="hideDetails('details4')">&times;</span>
                           <p>Que vous soyez enfants, Ado, étudiant(e)s et même adulte: <br> 
                             - Si vous êtes de nature curieuse<br> 
-                            - Si vous aimez savoir comment marche les choses <br> 
                             - Si vous êtes passionné par la technologies modernes (Impression 3D, IA, CAO...) <br> 
                             - Si vous aimez les activités artistiques (assemblage, peinture...) <br> 
+                            - Si vous souhaitez réaliser un produit complexe mais que vous ne savez pas par où commencer <br> 
                             <b>Alors ces ateliers "Puzzle-Paint" sont faits pour vous</b>
                         </p>
                         </div>
@@ -358,6 +367,19 @@
       document.getElementById(id).style.display = 'none';
     }
 </script>
+<script>
+    document.querySelectorAll('.menu-toggle').forEach(toggle => {
+      toggle.addEventListener('click', () => {
+        const submenu = toggle.nextElementSibling;
+        submenu.classList.toggle('hidden');
+        toggle.classList.toggle('rotate-90'); // facultatif si tu veux faire pivoter la flèche
+      });
+    });
+  </script>
+<div id="info-panel" class="info-panel">
+    <button class="close-panel" onclick="closePanel()">×</button>
+    <div id="info-content"></div>
+  </div>
   
 </body>
 </html>
