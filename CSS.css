@@ -1880,11 +1880,11 @@ main {
     }
   
     .popup-content {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 1rem;
-    }
+        width: 100%;
+        box-sizing: border-box;
+        overflow-wrap: break-word;
+      }
+      
   
     .popup img {
       max-width: 100%;
