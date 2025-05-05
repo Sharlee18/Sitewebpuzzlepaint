@@ -78,7 +78,6 @@ document.querySelectorAll('.carousel').forEach(carousel => {
     });
 });
 
-
         // Initialisation
         images.forEach((img, index) => {
             img.style.display = index === 0 ? 'block' : 'none';
@@ -132,5 +131,46 @@ document.querySelectorAll('.carousel').forEach(carousel => {
       
       function closePanel() {
         document.getElementById('info-panel').classList.remove('active');
+      }     
+
+      function showAtelier1Details() {
+        openPanel(`
+          <img src='famille3.png' alt='Atelier' style='width:100%; border-radius:10px; margin-bottom:10px;'>
+                <p>
+            <span style="color:green;"><b>1-Contrôle la vitesse du moteur </span></b>et observe bouger ses composants(Pistons, bielles...)<br><br>
+            <span style="color:green;"><b>1-Contrôle la vitesse du moteur et observe bouger ses composants</span></b>(Pistons, bielles...)<br><br>
+            <span style="color:green;"><b>2-Contrôle le passage des rapports de vitesses </span></b>et observe les changements d'engrenages <br> <br>
+            <span style="color:green;"><b>3-Contrôle les obstacles </span></b> à l'avant de la voiture à l'aide du capteur à ultrason <br> <br>
+            <span style="color:green;"><b>4-Déclenche des alertes automatiques</span></b> (Ex: Bip progressif du buzzer quand un obstacle s'approche ) <br><br> 
+            <span style="color:green;"><b>5-Gère l'affichage d'information</span></b> sur l'écran (vitesse en Km/h, rapport de vitesse, distance obstacles...) <br> <br>
+          </p>
+        `);
       }
       
+
+      function showAtelier2Details() {
+        openPanel(`
+          <img src='formuleAtelier2.png' alt='Atelier' style='width:100%; border-radius:10px; margin-bottom:10px;'>
+          <p><span style="color:green;"><b>Un parcours complet, ludique et éducatif pour créer sa voiture intelligente !</b><br></span><br>
+          L'atelier Puzzle-Paint se déroule en  <span style="color:green;"><b>5 grandes étapes progressives</b></span>, pensées pour stimuler à la fois la créativité, la logique, la coordination manuelle et la curiosité technologique :<br><br>
+          
+          <span style="color:green;"><b><u>1. Conception 3D (CAO)</u></b></span><br>
+          Les participants conçoivent leurs propres pièces personnalisées à l'aide d'un logiciel simple et intuitif (Tinkercad).<br><br>
+          
+          <span style="color:green;"><b><u>2. Impression 3D</u></b></span><br>
+          Ils découvrent une imprimante 3D en fonctionnement et impriment leurs modèles, pièce par pièce.<br><br>
+           
+          <span style="color:green;"><b><u>3. Montage et personnalisation de la maquette MECA</u></b></span><br>
+          Ils assemblent leur voiture mécanique à partir des pièces imprimées, testent les mouvements, puis la décorent à leur goût.<br><br>
+          
+           <span style="color:green;"><b><u>4. Intégration du boîtier électronique (ELEC)</u></b></span><br>
+          Ils ajoutent les composants électroniques (capteurs, microcontrôleur, écran OLED...) pour rendre leur maquette interactive.<br><br>
+          
+           <span style="color:green;"><b><u>5. Programmation (Arduino)</u></b></span><br>
+          Enfin, ils programment leur voiture avec des consignes simples, guidés par l'IA ou l'animateur, et testent les réactions en direct.<br><br>
+          <b>
+          <p><span style="color:green;"> Une aventure technologique et artistique accessible à tous, de la modélisation à l'objet connecté.<br>
+          Chaque étape est accompagnée, personnalisée et adaptée au niveau des participants.</span></b>
+          </p>
+        `);
+      }

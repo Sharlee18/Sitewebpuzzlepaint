@@ -1726,6 +1726,39 @@ main {
     background-color: #0056b3;
 }
 
+.popup {
+    display: none; /* Masquer au chargement */
+    position: fixed;
+    top: 10%;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 90%;
+    max-width: 600px;
+    background: white;
+    border: 2px solid #20ac7b;
+    border-radius: 1rem;
+    padding: 1.5rem;
+    box-shadow: 0 0 15px rgba(0,0,0,0.3);
+    z-index: 1000;
+  }
+  
+
+.popup-content {
+    position: relative; /* Clé pour que .close-btn soit bien positionnée */
+}
+
+.close-btn {
+    position: absolute;
+    top: 15px;
+    right: 20px;
+    font-size: 2rem;
+    cursor: pointer;
+    color: #20ac7b;
+    z-index: 10; /* S’assurer qu’elle est bien au-dessus du contenu */
+    background: none;
+    border: none;
+}
+
 
 /* --------- CAROUSEL CONTROLS --------- */
 .carousel-controls {
@@ -1846,6 +1879,28 @@ main {
     position: relative;
     padding: 2rem 1rem 1rem;
 }
+
+@media (max-width: 600px) {
+    .popup {
+      width: 95%;
+      padding: 1rem;
+      top: 5%;
+      left: 50%;
+      transform: translateX(-50%);
+    }
+  
+    .popup-content {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 1rem;
+    }
+  
+    .popup img {
+      max-width: 100%;
+      max-height: 200px;
+      object-fit: contain;
+    }
   
     .carousel-text {
       font-size: 0.9rem;
@@ -1872,7 +1927,7 @@ main {
       right: 10px;
       font-size: 1.5rem;
     }
-
+  }
 
 .image-side img {
   width: 100%;
@@ -2008,66 +2063,29 @@ main {
     min-width: 250px;
   }
   
-  /* Style général du popup */
-.popup {
-    position: fixed;
-    top: 10%;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 90vw; /* prend max 90% de la largeur écran */
-    max-height: 80vh; /* évite le débordement vertical */
-    overflow-y: auto;
-    overflow-x: hidden;
-    background: white;
-    border: 2px solid #20ac7b;
-    border-radius: 1rem;
-    padding: 1.5rem;
-    box-shadow: 0 0 15px rgba(0,0,0,0.3);
-    z-index: 1000;
-    box-sizing: border-box;
-  }
-  
-  /* Contenu interne */
-  .popup-content {
-    position: relative;
-    width: 100%;
-    overflow-wrap: break-word;
-    text-align: left;
-  }
-  
-  /* Bouton de fermeture */
-  .close-btn {
-    position: absolute;
-    top: 10px;
-    right: 15px;
-    font-size: 1.8rem;
-    background: none;
-    border: none;
-    color: #20ac7b;
-    cursor: pointer;
-    z-index: 1001;
-  }
-  
-  /* Mobile portrait spécifique */
-  @media screen and (max-width: 600px) {
+  @media (max-width: 600px) {
     .popup {
       top: 5%;
       left: 50%;
       transform: translateX(-50%);
-      width: 95vw;
-      max-height: 85vh;
+      width: 95%;
+      height: auto;
+      max-height: 90vh; /* limite la hauteur à 90% de l’écran */
+      overflow-y: auto; /* permet de scroller si le contenu dépasse */
       padding: 1rem;
-      border-radius: 0.7rem;
     }
   
     .popup-content {
-      font-size: 1rem;
+      padding-top: 2rem;
+      position: relative;
     }
   
     .close-btn {
-      top: 5px;
-      right: 10px;
-      font-size: 1.5rem;
+      top: 10px;
+      right: 15px;
+      font-size: 1.8rem;
+      position: absolute;
+      z-index: 100;
     }
   }
   
