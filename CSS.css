@@ -1711,41 +1711,6 @@ main {
   }
 }
 
-.info-panel {
-    display: none;
-    position: fixed;/
-    right: 0;
-    top: 0;
-    height: 100%;
-    width: 400px;
-    background: white;
-    box-shadow: -4px 0 15px rgba(0,0,0,0.3);
-    padding: 2rem;
-    z-index: 2000;
-    overflow-y: auto;
-  }
-  
-  .info-panel.active {
-    display: block;
-    animation: slideIn 0.4s ease forwards;
-  }
-  
-  @keyframes slideIn {
-    from { right: -400px; }
-    to { right: 0; }
-  }
-  
-  .close-panel {
-    position: absolute;
-    top: 10px;
-    left: 10px;
-    background: none;
-    border: none;
-    font-size: 2rem;
-    color: #20ac7b;
-    cursor: pointer;
-  }
-  
   #info-content p {
     margin-bottom: 1rem;
   }
@@ -1952,23 +1917,64 @@ main {
     }
   }
   
+
+  /* STYLE GENERAL DE LA POP-UP LATERALE */
+.info-panel {
+    display: none;
+    position: fixed;
+    top: 10%;
+    right: 0;
+    width: 400px;
+    height: 80%;
+    background: white;
+    box-shadow: -4px 0 15px rgba(0,0,0,0.3);
+    padding: 2rem;
+    z-index: 2000;
+    overflow-y: auto;
+    border-radius: 10px 0 0 10px;
+  }
+  
+  /* Animation slide in */
+  .info-panel.active {
+    display: block;
+    animation: slideIn 0.4s ease forwards;
+  }
+  
+  @keyframes slideIn {
+    from { right: -400px; }
+    to { right: 0; }
+  }
+  
+  /* CROIX DE FERMETURE EN HAUT À DROITE */
+  .close-panel {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    font-size: 2rem;
+    background: none;
+    border: none;
+    color: #20ac7b;
+    cursor: pointer;
+    z-index: 10;
+  }
+  
+  /* RESPONSIVE MOBILE */
   @media (max-width: 600px) {
     .info-panel {
-      width: 95% !important;       /* prend presque tout l'écran */
-      left: 50% !important;
-      right: auto !important;
-      transform: translateX(-50%) !important;
-      border-radius: 10px;
-      top: 5%;
+      width: 95%;
       height: 90vh;
-      overflow-y: auto;
-      box-shadow: 0 0 15px rgba(0, 0, 0, 0.3);
+      left: 50%;
+      right: auto;
+      top: 5%;
+      transform: translateX(-50%);
+      border-radius: 15px;
+      padding: 1rem;
     }
   
-    .info-panel .close-panel {
-      left: auto;
+    .close-panel {
+      top: 10px;
       right: 15px;
-      top: 15px;
+      font-size: 1.8rem;
     }
   }
   
