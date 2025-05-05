@@ -1940,11 +1940,10 @@ main {
     background-color: white;
   }
   
-  /* === Responsive === */
   @media (max-width: 768px) {
     .carousel {
-        height: auto; /* Laisse la hauteur s’adapter à l’image */
-      }
+      height: auto; /* on remplace la hauteur fixe par auto */
+    }
   
     .carousel-btn {
       padding: 8px;
@@ -1952,14 +1951,9 @@ main {
     }
   
     .carousel-track img {
+      max-height: 250px; /* on ajoute ça */
       object-fit: contain;
-    }
-  }  
-
-    .carousel img {
-      max-height: 250px; /* adapte selon tes besoins */
-      object-fit: contain;
-      width: 100%;
+      width: 100%; /* on s’assure que l’image remplit le conteneur */
     }
   
     .carousel-slide {
@@ -1967,5 +1961,7 @@ main {
       justify-content: center;
       align-items: center;
     }
+  }
+   
 
   
