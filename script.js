@@ -138,7 +138,6 @@ document.querySelectorAll('.carousel').forEach(carousel => {
           <img src='famille3.png' alt='Atelier' style='width:100%; border-radius:10px; margin-bottom:10px;'>
                 <p>
             <span style="color:green;"><b>1-Contrôle la vitesse du moteur </span></b>et observe bouger ses composants(Pistons, bielles...)<br><br>
-            <span style="color:green;"><b>1-Contrôle la vitesse du moteur et observe bouger ses composants</span></b>(Pistons, bielles...)<br><br>
             <span style="color:green;"><b>2-Contrôle le passage des rapports de vitesses </span></b>et observe les changements d'engrenages <br> <br>
             <span style="color:green;"><b>3-Contrôle les obstacles </span></b> à l'avant de la voiture à l'aide du capteur à ultrason <br> <br>
             <span style="color:green;"><b>4-Déclenche des alertes automatiques</span></b> (Ex: Bip progressif du buzzer quand un obstacle s'approche ) <br><br> 
@@ -180,10 +179,60 @@ document.querySelectorAll('.carousel').forEach(carousel => {
         openPanel(`
           <img src='all mecanisme2.png' alt='Atelier' style='width:100%; border-radius:10px; margin-bottom:10px;'>
                 <p>
-            <span style="color:green;"><b>1-Manipuler plus de 50 pièces en mouvement</span></b> issues de vrai mécanismes présents dans nos voitures (moteur, boîte de vitesses, volant, essuie-glaces...)<br><br>
-            <span style="color:green;"><b>2-Apprenez l’électronique de base</span></b>en connectant des capteurs, servomoteurs, écrans, etc.<br> <br>
+            <span style="color:green;"><b>1-Manipuler plus de 50 pièces en mouvement issues de vrai mécanismes</span></b> présents dans nos voitures (moteur, boîte de vitesses, volant, essuie-glaces...)<br><br>
+            <span style="color:green;"><b>2-Apprenez l’électronique de base</span></b> en connectant des capteurs, servomoteurs, écrans, etc.<br> <br>
             <span style="color:green;"><b>3-Initiez-vous à la programmation C++ (Arduino) </span></b>  de manière simple et ludique. <br> <br>
             <span style="color:green;"><b>4-Contrôlez votre voiture intelligente</span></b> par joystick ou smartphone.<br><br> 
           </p>
         `);
       }
+
+      // ===== CAROUSEL =====
+document.querySelectorAll('.carousel').forEach(carousel => {
+    const track = carousel.querySelector('.carousel-track');
+    const slides = Array.from(track.children);
+    const prevBtn = carousel.querySelector('.prev-btn');
+    const nextBtn = carousel.querySelector('.next-btn');
+
+    let currentIndex = 0;
+
+    function updateSlidePosition() {
+        const slideWidth = slides[0].offsetWidth;
+        track.style.transform = `translateX(-${currentIndex * slideWidth}px)`;
+    }
+
+    nextBtn.addEventListener('click', () => {
+        if (currentIndex < slides.length - 1) {
+            currentIndex++;
+            updateSlidePosition();
+        }
+    });
+
+    prevBtn.addEventListener('click', () => {
+        if (currentIndex > 0) {
+            currentIndex--;
+            updateSlidePosition();
+        }
+    });
+
+    // Swipe tactile (mobile)
+    let startX = 0;
+    carousel.addEventListener('touchstart', e => {
+        startX = e.touches[0].clientX;
+    });
+    carousel.addEventListener('touchend', e => {
+        const endX = e.changedTouches[0].clientX;
+        const diffX = endX - startX;
+        if (Math.abs(diffX) > 50) {
+            if (diffX > 0 && currentIndex > 0) {
+                currentIndex--;
+            } else if (diffX < 0 && currentIndex < slides.length - 1) {
+                currentIndex++;
+            }
+            updateSlidePosition();
+        }
+    });
+
+    window.addEventListener('resize', updateSlidePosition);
+    updateSlidePosition();
+});

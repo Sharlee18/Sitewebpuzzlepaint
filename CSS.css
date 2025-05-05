@@ -1029,254 +1029,6 @@ body {
     cursor: pointer;
 }
 
-/* Conteneur du carrousel */
-.carousel {
-    width: 600px; /* ou 700px si tu veux encore plus grand */
-    height: 400px;
-    margin: auto;
-    overflow: hidden;
-    border-radius: 10px; /* coins arrondis sympa */
-    background: #ffffff; /* pour éviter un fond vide */
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-
-/* Conteneur des images */
-.carousel-images {
-    display: flex; /* Les images sont alignées en ligne */
-    animation: slide 20s infinite; /* Animation de défilement */
-}
-
-/* Chaque image */
-.carousel-images img {
-    width: 100%; /* Chaque image occupe toute la largeur du conteneur */
-    flex-shrink: 0; /* Empêche les images de se réduire */
-}
-
-.carousel {
-    position: relative;
-    max-width: 600px;
-    margin: auto;
-    overflow: hidden;
-}
-
-.carousel-track-container {
-    position: relative;
-    overflow: hidden;
-}
-
-.carousel-track {
-    display: flex;
-    transition: transform 0.5s ease-in-out;
-    list-style: none;
-    padding: 0;
-    margin: 0;
-}
-
-.carousel-slide {
-    min-width: 100%; /* Chaque image occupe 100% de la largeur visible */
-}
-
-.carousel img {
-    width: 100%; /* Ajuste la largeur au conteneur */
-    height: auto; /* Maintient le ratio d'aspect */
-    max-height: 300px; /* Limite la hauteur maximale */
-    object-fit: cover; /* Remplit le conteneur sans déformer l'image */
-}
-
-.carousel-nav {
-    position: absolute;
-    top: 50%;
-    width: 100%;
-    display: flex;
-    justify-content: space-between;
-    transform: translateY(-50%);
-}
-
-.carousel-btn {
-    background-color: rgba(0, 0, 0, 0.5);
-    color: white;
-    border: none;
-    padding: 10px;
-    cursor: pointer;
-    font-size: 18px;
-    border-radius: 50%;
-}
-
-.carousel-btn:hover {
-    background-color: rgba(0, 0, 0, 0.7);
-}
-
-.carousel-indicators {
-    position: absolute;
-    bottom: 10px;
-    display: flex;
-    justify-content: center;
-    width: 100%;
-}
-
-.indicator {
-    height: 10px;
-    width: 10px;
-    margin: 0 5px;
-    background-color: rgba(0, 0, 0, 0.5);
-    border-radius: 50%;
-    border: none;
-    cursor: pointer;
-}
-
-.current-indicator {
-    background-color: white;
-}
-
-/* Adapter le carrousel */
-    .carousel {
-        max-width: 100%; /* Adapte la largeur au téléphone */
-    }
-
-    .carousel img {
-        max-height: 200px; /* Limite la hauteur des images */
-        object-fit: cover; /* Garde une bonne proportion sans déformer */
-    }
-
-.carousel img {
-    width: 100%; /* L'image occupe toute la largeur */
-    height: auto; /* Respecte les proportions */
-    object-fit: cover; /* Empêche les déformations */
-}
-
-/* Conteneur principal pour le carrousel */
-.carousel {
-    position: relative;
-    width: 100%;
-    max-width: 600px; /* Largeur maximale pour limiter la taille */
-    margin: auto;
-    overflow: hidden; /* Masque les débordements */
-    background: #f9f9f9; /* Fond de sécurité pour les transitions */
-    border-radius: 10px; /* Coins arrondis pour un design moderne */
-}
-
-/* Conteneur pour les images */
-.carousel-track {
-    display: flex;
-    transition: transform 0.5s ease-in-out; /* Transition fluide */
-    list-style: none;
-    padding: 0;
-    margin: 0;
-}
-
-/* Images des carrousels */
-.carousel-track img {
-    width: 100%; /* L'image occupe toute la largeur */
-    height: 100%; /* S'adapte à la hauteur définie */
-    object-fit: contain; /* Maintient les proportions sans couper l'image */
-    flex-shrink: 0; /* Empêche les images de rétrécir */
-}
-
-/* Fixer la hauteur du conteneur */
-.carousel {
-    height: 300px; /* Hauteur fixe du carrousel */
-}
-
-/* Navigation - Boutons précédent/suivant */
-.carousel-btn {
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
-    background-color: rgba(0, 0, 0, 0.5);
-    color: white;
-    border: none;
-    cursor: pointer;
-    padding: 10px;
-    font-size: 18px;
-    border-radius: 50%;
-    z-index: 10;
-}
-
-.carousel-btn.prev-btn {
-    left: 10px;
-}
-
-.carousel-btn.next-btn {
-    right: 10px;
-}
-
-.carousel-btn:hover {
-    background-color: rgba(0, 0, 0, 0.7);
-}
-
-/* Indicateurs */
-.carousel-indicators {
-    position: absolute;
-    bottom: 10px;
-    display: flex;
-    justify-content: center;
-    width: 100%;
-}
-
-.indicator {
-    height: 10px;
-    width: 10px;
-    margin: 0 5px;
-    background-color: rgba(0, 0, 0, 0.5);
-    border-radius: 50%;
-    border: none;
-    cursor: pointer;
-}
-
-.current-indicator {
-    background-color: white;
-}
-
-/* Responsive design */
-@media (max-width: 768px) {
-    .carousel {
-        max-width: 100%; /* Adapte la largeur au téléphone */
-        height: 200px; /* Réduit la hauteur sur les petits écrans */
-    }
-
-    .carousel-track img {
-        object-fit: contain; /* Priorité au maintien des proportions */
-    }
-
-    .carousel-btn {
-        padding: 8px;
-        font-size: 16px;
-    }
-}
-
-/* ======= Ajustement des images du carrousel ======= */
-.carousel-track img {
-    width: 100%; /* L'image s'ajuste à la largeur du conteneur */
-    height: 100%; /* Ajuste la hauteur */
-    object-fit: contain; /* Assure que toute l’image soit visible sans la couper */
-    flex-shrink: 0;
-    display: block;
-    background-color: rgb(255, 255, 255); /* Optionnel : pour éviter un fond blanc derrière */
-}
-
-.carousel {
-    display: flex;
-    justify-content: center; /* Centre l’image horizontalement */
-    align-items: center; /* Centre verticalement */
-    width: 100%;
-    height: auto; /* La hauteur s'adapte à l'image */
-    overflow: hidden; /* Évite les débordements */
-}
-
-.carousel-track {
-    display: flex;
-    align-items: center; /* Centre les images verticalement */
-}
-
-.carousel-track img {
-    width: 100%; /* L’image prend toute la largeur */
-    height: auto; /* Garde les proportions originales */
-    object-fit: contain; /* L’image s’adapte sans être coupée */
-}
-
 /* Animation douce au scroll (sans casser ton code existant) */
 .reveal {
     opacity: 0;
@@ -1961,7 +1713,7 @@ main {
 
 .info-panel {
     display: none;
-    position: fixed;
+    position: fixed;/
     right: 0;
     top: 0;
     height: 100%;
@@ -2089,3 +1841,117 @@ main {
     }
   }
   
+
+ /* === Conteneur principal du carrousel === */
+.carousel {
+    position: relative;
+    max-width: 600px;
+    width: 100%;
+    height: 300px;
+    margin: auto;
+    overflow: hidden;
+    background: #fff;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  /* === Conteneur de la piste d'images === */
+  .carousel-track-container {
+    overflow: hidden;
+    width: 100%;
+    height: 100%;
+  }
+  
+  .carousel-track {
+    display: flex;
+    transition: transform 0.5s ease-in-out;
+    height: 100%;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+  
+  /* === Slide individuel === */
+  .carousel-slide {
+    min-width: 100%;
+    flex-shrink: 0;
+  }
+  
+  /* === Images === */
+  .carousel img,
+  .carousel-track img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    display: block;
+    background-color: white;
+    border-radius: 8px;
+  }
+  
+  /* === Boutons de navigation === */
+  .carousel-btn {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: rgba(0, 0, 0, 0.5);
+    color: white;
+    border: none;
+    padding: 10px;
+    cursor: pointer;
+    font-size: 18px;
+    border-radius: 50%;
+    z-index: 10;
+  }
+  
+  .carousel-btn.prev-btn {
+    left: 10px;
+  }
+  
+  .carousel-btn.next-btn {
+    right: 10px;
+  }
+  
+  .carousel-btn:hover {
+    background-color: rgba(0, 0, 0, 0.7);
+  }
+  
+  /* === Indicateurs === */
+  .carousel-indicators {
+    position: absolute;
+    bottom: 10px;
+    display: flex;
+    justify-content: center;
+    width: 100%;
+  }
+  
+  .indicator {
+    height: 10px;
+    width: 10px;
+    margin: 0 5px;
+    background-color: rgba(0, 0, 0, 0.5);
+    border-radius: 50%;
+    cursor: pointer;
+    border: none;
+  }
+  
+  .current-indicator {
+    background-color: white;
+  }
+  
+  /* === Responsive === */
+  @media (max-width: 768px) {
+    .carousel {
+      height: 200px;
+    }
+  
+    .carousel-btn {
+      padding: 8px;
+      font-size: 16px;
+    }
+  
+    .carousel-track img {
+      object-fit: contain;
+    }
+  }  
