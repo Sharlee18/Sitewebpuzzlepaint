@@ -1952,3 +1952,23 @@ main {
     }
   }
   
+  @media (max-width: 600px) {
+    .info-panel {
+      width: 95% !important;       /* prend presque tout l'écran */
+      left: 50% !important;
+      right: auto !important;
+      transform: translateX(-50%) !important;
+      border-radius: 10px;
+      top: 5%;
+      height: 90vh;
+      overflow-y: auto;
+      box-shadow: 0 0 15px rgba(0, 0, 0, 0.3);
+    }
+  
+    .info-panel .close-panel {
+      left: auto;
+      right: 15px;
+      top: 15px;
+    }
+  }
+  
