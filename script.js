@@ -242,6 +242,40 @@ document.querySelectorAll('.carousel').forEach(carousel => {
         `);
       }
 
+      function showAtelier7Details() {
+        openPanel(`
+          <img src='tipscoach.png' alt='Atelier' style='width:50%; border-radius:10px; margin-bottom:10px;'>
+                <p>
+   <span style="color:green;"><b>1. Adapter la durée à l'âge des participants<br></b></span>
+Les <b>enfants plus jeunes (6–9 ans) </b> ont une capacité d’attention plus courte. Il est donc recommandé de proposer des séances de <b> 45 minutes à 1h maximum </b>, avec des temps de pause ou de jeu.<br>
+<b>Pour les adolescents ou les adultes</b>, on peut aller jusqu’à <b>1h30 ou 2h</b>, en incluant des moments de discussion, d’approfondissement ou de personnalisation du projet.<br><br>
+L’objectif est d’éviter la lassitude et de garder l’enthousiasme intact tout au long de l’atelier.<br><br>
+
+
+  <span style="color:green;"><b>2. Mettre l'accent sur la créativité et l'autonomie<br></b></span>
+Encourage les participants à <b>personnaliser leurs créations :</b> couleurs, motifs, ajout de pièces, noms, etc. Cela développe leur implication et leur fierté du résultat.<br><br>
+<b>Laisse-leur prendre des décisions</b> (ordre de montage, choix de la déco, réglages des composants...). Même si ce n’est pas toujours "parfait", c’est formateur.<br>
+Rappelle-toi que l’objectif n’est pas la performance technique, mais l’expérience d’apprentissage et de découverte.<br><br>
+
+  <span style="color:green;"><b>3. Alterner les temps techniques et les moments ludiques<br></b></span>
+L’atelier peut devenir trop "scolaire" si on enchaîne des séquences trop techniques. Il est <b>essentiel d’insérer des moments de jeu, d’échange ou de démonstration.</b><br><br>
+
+<u><b>Exemples :<br></b></u>
+-Faire tester une pièce ou un mécanisme en groupe.<br>
+-Organiser une mini-présentation en fin d’étape.<br>
+-Lancer un petit défi : "Qui monte la roue le plus rapidement ?"<br>
+Cela dynamise le groupe et favorise l’entraide.<br>
+
+<u><b>Note :<br></b></u>
+</b>Ce document peut être adapté</b> selon :<br>
+<b>le niveau</b> des participants (initiation, perfectionnement)<br>
+<b>le format</b> (atelier court d’1h ou parcours long sur plusieurs jours)<br>
+
+          </p>
+        `);
+      }
+
+
 
       // ===== CAROUSEL =====
 document.querySelectorAll('.carousel').forEach(carousel => {

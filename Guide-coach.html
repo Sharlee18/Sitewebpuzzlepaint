@@ -88,29 +88,7 @@
                     - Mettre l'accent sur la créativité et l'autonomie<br>
                     - Alterner les temps techniques et les moments ludiques<br>
                     <b>Ce document peut être adapté selon les niveaux (initiation, perfectionnement, ateliers longs ou courts).</b><br>
-                    <button class="btn btn-premium" onclick="openPanel(
-                        `<img src='tipscoach.png' alt='Atelier' style='width:100%; border-radius:10px; margin-bottom:10px;'>
-                        <p>
-                        <strong><span style='color:green;'Découvrez les ateliers Puzzle-Paint à destination des collèges
-                             <br> Offrez à vos élèves une expérience unique qui combine créativité, technologie et logique.</span></strong><br>
-                             Avec Puzzle-Paint, les jeunes de 12 à 15 ans découvrent le monde de la 3D, du montage mécanique, de l’électronique et de la programmation, tout en s’amusant !<br><br>
-                        <span style='text-decoration:underline;'>Un atelier, plusieurs compétences mobilisées :</span><br>
-                        1 - Conception 3D personnalisée sur ordinateur<br>
-                        2 - Démonstration d'impression 3D <br>
-                        3 - Montage d'une maquette mécanique<br>
-                        4 - Ajout d’un boîtier électronique (capteurs, servomoteurs, écran OLED...)<br>
-                        5 - Programmation simple avec Arduino, guidée pas à pas<br><br>
-                        <span style='text-decoration:underline;'>Objectifs pédagogiques :</span><br>
-                        Développer la créativité, la motricité fine, la logique algorithmique et le travail collaboratif, dans un cadre ludique et valorisant.<br>
-                        <span style='text-decoration:underline;'>L'atelier est clé en main :</span><br>
-                        nous fournissons tout le matériel et intervenons dans votre établissement avec un coach expérimenté.<br>
-                        <span style='text-decoration:underline;'>Durée :</span> 3h à 4h<br>
-                        <span style='text-decoration:underline;'>Public :</span> dès 10 ans, ados, adultes – en solo ou en duo parent/enfant.<br>
-                        <strong><span style='color:green;'> Un moment créatif et inspirant pour éveiller la curiosité et la passion !</span>
-                        </p>`
-                        )">
-                          Détails
-                        </button>   
+                    <button class="btn btn-premium" onclick="showAtelier7Details()">Détails</button>
                 </div>
             </div>
           </section>
@@ -196,5 +174,9 @@
       });
     });
   </script>   
+  <div id="info-panel" class="info-panel">
+    <button class="close-panel" onclick="closePanel()">×</button>
+    <div id="info-content"></div>
+  </div>
 </body>
 </html>
