@@ -174,3 +174,16 @@ document.querySelectorAll('.carousel').forEach(carousel => {
           </p>
         `);
       }
+
+      
+      function showAtelier3Details() {
+        openPanel(`
+          <img src='all mecanisme2.png' alt='Atelier' style='width:100%; border-radius:10px; margin-bottom:10px;'>
+                <p>
+            <span style="color:green;"><b>1-Manipuler plus de 50 pièces en mouvement</span></b> issues de vrai mécanismes présents dans nos voitures (moteur, boîte de vitesses, volant, essuie-glaces...)<br><br>
+            <span style="color:green;"><b>2-Apprenez l’électronique de base</span></b>en connectant des capteurs, servomoteurs, écrans, etc.<br> <br>
+            <span style="color:green;"><b>3-Initiez-vous à la programmation C++ (Arduino) </span></b>  de manière simple et ludique. <br> <br>
+            <span style="color:green;"><b>4-Contrôlez votre voiture intelligente</span></b> par joystick ou smartphone.<br><br> 
+          </p>
+        `);
+      }
