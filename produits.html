@@ -79,7 +79,7 @@
           <p><strong>Prix : €49.99</strong></p>
           <div class="btn-container">
             <button class="btn add-to-cart-btn">Ajouter au panier</button>
-            <button class="btn detail-btn">Détail produit</button>
+            <button class="btn btn-premium" onclick="showAtelier5Details()">Détails produit</button>
           </div>
         </div>
 
@@ -91,80 +91,24 @@
           <p><strong>Prix : €39.99</strong></p>
           <div class="btn-container">
             <button class="btn add-to-cart-btn">Ajouter au panier</button>
-            <button class="btn detail-btn">Détail produit</button>
+            <button class="btn btn-premium" onclick="showAtelier4Details()">Détails produit</button>
           </div>
         </div>
       </div>
 
-            <!-- Produit 3 -->
-            <div class="product" data-id="3" data-name="Kit ELEC" data-price="29.99">
-                <img src="packagingelec.png" alt="Produit 3">
-                <h3>Kit ELEC</h3>
-                <p>Boitier constitué de composants électroniques (Joystick, servomoteur, capteur à ultrason...) pour contrôler les réactions de votre Kit MECA</p>
-                <p><strong>Prix : €29.99</strong></p>
-                <div class="btn-container">
-                  <button class="btn add-to-cart-btn">Ajouter au panier</button>
-                  <button class="btn detail-btn">Détail produit</button>
+                  <!-- Produit 3 -->
+                  <div class="product" data-id="3" data-name="Kit ELEC" data-price="29.99">
+                    <img src="packagingelec.png" alt="Produit 3">
+                    <h3>Kit ELEC</h3>
+                    <p>Boitier constitué de composants électroniques (Joystick, servomoteur, capteur à ultrason...) pour contrôler les réactions de votre Kit MECA</p>
+                    <p><strong>Prix : €29.99</strong></p>
+                    <div class="btn-container">
+                      <button class="btn add-to-cart-btn">Ajouter au panier</button>
+                      <button class="btn btn-premium" onclick="showAtelier6Details()">Détails produit</button>
+                    </div>
+                  </div>
                 </div>
-              </div>
-            </div>
-          </section>
-
-    <!-- Popup Kit Auto -->
-    <div id="popup-kit-auto" class="popup">
-      <span class="close-btn">&times;</span>
-      <div class="popup-content">
-        <div class="carousel" id="carousel-kit-auto" data-carousel="kit-auto">
-          <img src="PLA PARTS.png" alt="Kit Auto" data-text="+60 pièces en PLA imprimées en 3D à assembler pas à pas pour apprendre de nombreux mécanismes">
-          <img src="peintureacry.png" alt="Kit Auto" data-text="Un kit de peinteure fournit dans la boite pour vous permettre de personnaliser la maquette à votre guise">
-          <img src="pinceaux.png" alt="Kit Auto" data-text="2 pinceaux (brosse mince et brosse épaisse) également fournit pour appliquer la peinture">
-          <img src="manuel.png" alt="Kit Auto" data-text="Un manuel détaillé pour vous guider pas à pas dans les différentes étapes d'assemblage">
-          <img src="kitelectrique.png" alt="Kit Auto" data-text="Un kit electrique constitués d'un boitier à pile, d'un régulateur de vitesse et d'un servomoteur pour contrôler automatiquement les mouvements du moteur">
-          <div class="carousel-text">Kit Auto - Image 1</div>
-          <div class="carousel-controls">
-            <button class="prev-btn">◀</button>
-            <button class="next-btn">▶</button>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <!-- Popup Kit Manuel -->
-    <div id="popup-kit-manuel" class="popup">
-      <span class="close-btn">&times;</span>
-      <div class="popup-content">
-        <div class="carousel" id="carousel-kit-manuel" data-carousel="kit-manuel">
-            <img src="PLA PARTS.png" alt="Kit manuel" data-text="+60 pièces en PLA imprimées en 3D à assembler pas à pas pour apprendre de nombreux mécanismes">
-            <img src="peintureacry.png" alt="Kit manuel" data-text="Un kit de peinteure fournit dans la boite pour vous permettre de personnaliser la maquette à votre guise">
-            <img src="pinceaux.png" alt="Kit manuel" data-text="2 pinceaux (brosse mince et brosse épaisse) également fournit pour appliquer la peinture">
-            <img src="manuel.png" alt="Kit manuel" data-text="Un manuel détaillé pour vous guider pas à pas dans les différentes étapes d'assemblage">
-            <img src="kitelectriquenon.png" alt="Kit manuel" data-text=" kit electrique non fournit : Le mouvement du moteur se fait manuellement grâce a une manivelle inclut au Kit">
-          <div class="carousel-text">Kit Manuel - Image 1</div>
-          <div class="carousel-controls">
-            <button class="prev-btn">◀</button>
-            <button class="next-btn">▶</button>
-          </div>
-        </div>
-      </div>
-    </div>
-  </main>
-
-      <!-- Popup Kit ELEC -->
-      <div id="popup-kit-elec" class="popup">
-        <span class="close-btn">&times;</span>
-        <div class="popup-content">
-          <div class="carousel" id="carousel-kit-elec" data-carousel="kit-elec">
-            <img src="KITELEC1.png" alt="Kit elec" data-text="Un microcontrôleur (ESP32) sur lequel connecter de nombreux composants électroniques :
-            2 servomoteurs (pour contrôler la vitesse du moteur et les changements de rapport), 1 ecran OLED (pour afficher les infos en temps réel: Vitesse, rapports, message d'alerte...), un Buzzer (pour biper en cas d'obstacle proche), un Joystick">
-            <img src="KITELEC2.png" alt="Kit elec" data-text="La possibilité de charger de nouveau programme sur le microcontroleur via ARDUINO et de contrôler les composants électroniques via le joystick ou avec un smartphone (BLYNK)">
-            <div class="carousel-text">Kit Auto - Image 1</div>
-            <div class="carousel-controls">
-              <button class="prev-btn">◀</button>
-              <button class="next-btn">▶</button>
-            </div>
-          </div>
-        </div>
-      </div>
+              </section>
 
   <!-- Footer -->
   <footer class="footer">
@@ -205,5 +149,9 @@
       });
     });
   </script>
+  <div id="info-panel" class="info-panel">
+    <button class="close-panel" onclick="closePanel()">×</button>
+    <div id="info-content"></div>
+  </div>
 </body>
 </html>

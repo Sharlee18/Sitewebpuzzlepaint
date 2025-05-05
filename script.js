@@ -177,7 +177,7 @@ document.querySelectorAll('.carousel').forEach(carousel => {
       
       function showAtelier3Details() {
         openPanel(`
-          <img src='all mecanisme2.png' alt='Atelier' style='width:100%; border-radius:10px; margin-bottom:10px;'>
+          <img src='LESMECANISMES.png' alt='Atelier' style='width:100%; border-radius:10px; margin-bottom:10px;'>
                 <p>
             <span style="color:green;"><b>1-Manipuler plus de 50 pièces en mouvement issues de vrai mécanismes</span></b> présents dans nos voitures (moteur, boîte de vitesses, volant, essuie-glaces...)<br><br>
             <span style="color:green;"><b>2-Apprenez l’électronique de base</span></b> en connectant des capteurs, servomoteurs, écrans, etc.<br> <br>
@@ -186,6 +186,62 @@ document.querySelectorAll('.carousel').forEach(carousel => {
           </p>
         `);
       }
+
+      function showAtelier4Details() {
+        openPanel(`
+          <img src='PLAPARTS.png' alt='Atelier' style='width:50%; border-radius:10px; margin-bottom:10px;'> <p>
+            <span style="color:green;"><b>+60 pièces en PLA imprimées en 3D</span></b>  à assembler pas à pas pour apprendre de nombreux mécanismes<br>
+
+             <img src='peintureacry.png' alt='Atelier' style='width:50%; border-radius:10px; margin-bottom:10px;'>
+           <span style="color:green;"><b>Un kit de peinture fournit dans la boite</span></b>  pour vous permettre de personnaliser la maquette à votre guise<br>
+
+            <img src='pinceaux.png' alt='Atelier' style='width:50%; border-radius:10px; margin-bottom:10px;'>
+           <span style="color:green;"><b>2 pinceaux (brosse mince et brosse épaisse) également fournit</span></b>  pour appliquer la peinture<br>
+
+            <img src='manuel.png' alt='Atelier' style='width:50%; border-radius:10px; margin-bottom:10px;'>
+            <span style="color:green;"><b>Un manuel détaillé pour vous guider</span></b>  pas à pas dans les différentes étapes d'assemblage<br> 
+
+             <img src='kitelectrique.png' alt='Atelier' style='width:50%; border-radius:10px; margin-bottom:10px;'>
+            <span style="color:green;"><b>Un kit electrique constitués d'un boitier à pile, d'un régulateur de vitesse et d'un servomoteur</span></b>  pour contrôler automatiquement les mouvements du moteur <br>
+          </p>
+        `);
+      }
+
+      function showAtelier5Details() {
+        openPanel(`
+          <img src='PLAPARTS.png' alt='Atelier' style='width:50%; border-radius:10px; margin-bottom:10px;'> <p>
+            <span style="color:green;"><b>+60 pièces en PLA imprimées en 3D</span></b>  à assembler pas à pas pour apprendre de nombreux mécanismes<br>
+
+             <img src='peintureacry.png' alt='Atelier' style='width:50%; border-radius:10px; margin-bottom:10px;'>
+           <span style="color:green;"><b>Un kit de peinture fournit dans la boite</span></b>  pour vous permettre de personnaliser la maquette à votre guise<br>
+
+            <img src='pinceaux.png' alt='Atelier' style='width:50%; border-radius:10px; margin-bottom:10px;'>
+           <span style="color:green;"><b>2 pinceaux (brosse mince et brosse épaisse) également fournit</span></b>  pour appliquer la peinture<br>
+
+            <img src='manuel.png' alt='Atelier' style='width:50%; border-radius:10px; margin-bottom:10px;'>
+            <span style="color:green;"><b>Un manuel détaillé pour vous guider</span></b>  pas à pas dans les différentes étapes d'assemblage<br> 
+
+             <img src='kitelectriquenon.png' alt='Atelier' style='width:50%; border-radius:10px; margin-bottom:10px;'>
+            <span style="color:red;"><b>kit electrique non fournit :</span></b> Le mouvement du moteur se fait manuellement grâce a une manivelle inclut au Kit<br>
+          </p>
+        `);
+      }
+
+      function showAtelier6Details() {
+        openPanel(`
+          <img src='KITELEC1.png' alt='Atelier' style='width:100%; border-radius:10px; margin-bottom:10px;'>
+                <p>
+            <span style="color:green;"><b>Un microcontrôleur (ESP32) sur lequel connecter de nombreux composants électroniques :</b></span><br>
+            <span style="color:green;">- 2 servomoteurs</span> (pour contrôler la vitesse du moteur et les changements de rapport) <br>
+            <span style="color:green;">- 1 ecran OLED </span>(pour afficher les infos en temps réel: Vitesse, rapports, message d'alerte...)<br>
+            <span style="color:green;">- 1 Buzzer</span> (pour biper en cas d'obstacle proche)<br>
+            <span style="color:green;">- 1 Joystick</span> (pour controler les 2 servomoteurs) <br>
+         <img src='KITELEC2.png' alt='Atelier' style='width:100%; border-radius:10px; margin-bottom:10px;'>
+            <span style="color:green;"><b>La possibilité de charger de nouveau programme sur le microcontroleur via ARDUINO</span></b> et de contrôler les composants électroniques via le joystick ou avec un smartphone (BLYNK) <p>
+          </p>
+        `);
+      }
+
 
       // ===== CAROUSEL =====
 document.querySelectorAll('.carousel').forEach(carousel => {
