@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Puzzle-Paint Kit</title>
+    <link rel="stylesheet" href="CSS.css">
+    <!-- Intégration de la police Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <script>
+        const CODE = "PZP1";
+        if (localStorage.getItem("pzp_access") !== CODE) {
+          window.location.href = "Step1Tinkercad.html";
+        }
+      </script>
+    
+    <script src="script.js" defer></script>
+    <script src="cart.js" defer></script>
+</head>
+<body>
+        <!-- Topbar : Menu Burger + Panier -->
+        <div class="topbar">
+            <div class="left-header">
+                <button id="menu-toggle" class="menu-icon">&#9776;</button>
+            </div>
+            <div class="right-header">
+                <div id="cart-icon" class="cart">
+                    🛒<span id="cart-count">0</span>
+                </div>
+            </div>
+        </div>
+
+    <!-- Header avec image en arrière-plan -->
+    <header class="header" style="background-image: url('famille3.png');">
+        <div class="container">
+            <h1>Details CAO Tinkercad</h1>
+            <p>Retrouvez ici tous les infos sur l'introduction à Tinkercad</p>
+        </div>
+    </header>
+
+    <main>
+        <div id="overlay"></div>
+
+       <!-- Sidebar du menu -->
+       <nav id="sidebar" class="sidebar">
+        <button id="close-menu" class="close-btn">&times;</button>
+        <ul>
+          <li><a href="index.html">Accueil</a></li>
+          <li><a href="2-History.html">Nos ateliers</a></li>
+          <li><a href="produits.html">Notre boutique</a></li>
+          <li><a href="3-APropos.html">À-propos</a></li>
+          <li><a href="4-Contact.html">Contact</a></li>6
+          <li class="has-submenu">
+        <button class="menu-toggle">Section Coach</button>
+            <ul class="submenu hidden">
+              <li><a href="5-Blog.html">Devenir Coach</a></li>
+              <li><a href="acces-guide-coach.html">Guide Coach</a></li>
+            </ul>
+          </li>
+        </ul>
+      </nav>
+
+      <!-- Section Introduction Tinkercad -->
+      <section class="features reveal">
+        <div class="container">
+            <h2><span style="color: rgb(32, 172, 123);">Initialisation à la CAO (Tinkercad)</span></h2>
+                <div class="image-wrapper">
+                    <img src="interftinkercad.png" 
+                    alt="Illustration éducative" 
+                    width="600"
+                    height="400"
+                    class="intro-image">
+                    </div>
+                    <div style="text-align: left;">
+                    <p style="text-align: left;">
+                <span style="color: rgb(32, 172, 123);"><br><u><b>Objectif :</b></u></span>Faire découvrir la modélisation 3D avec “Tinkercad” de manière simple et ludique, en créant une pièce personnalisée portant le prénom du participant.<br>
+                <span style="color: rgb(32, 172, 123);"><u><b>Durée estimée</b></u></span> : 30 à 45 min<br>
+                <span style="color: rgb(32, 172, 123);"><u><b>Compétences mobilisées : </b></u></span>logique spatiale, créativité, autonomie numérique<br>
+                <span style="color: rgb(32, 172, 123);"><u><b>Matériel :</b></u></span> Un PC ou une tablette par participant pour la manipulation (si Atelier “COMPLET”). Dans le cas d’un atelier “DÉCOUVERTE”, le coach fera toute la manipulatio (Démo) avec un seul support (PC/tablette)<br><br>
+               
+                <span style="color: rgb(32, 172, 123);"><u><b>Définitions importantes:</b></u><br></span>
+                   <b><u>CAO (Conception Assistée par Ordinateur) :</u><br></b> 
+                    Ensemble de logiciels permettant de modéliser des objets en 2D ou 3D sur ordinateur, en vue de leur fabrication.<br>
+                    <b><u>Tinkercad :</u><br></b> 
+                    Logiciel gratuit en ligne, développé par Autodesk, qui permet de créer facilement des objets 3D à partir de formes simples. Il est très utilisé pour l’initiation à la modélisation.<br>
+                    <b><u>Format STL (.stl) :</u><br></b> 
+                    Format de fichier utilisé en impression 3D. Il décrit la forme 3D d’un objet à partir de sa surface triangulée.<br><br>
+                    
+                    <span style="color: rgb(32, 172, 123);"><u><b>Déroulé de l'activité :</U></b><br></span>
+
+                    <b><u>Introduction à la modélisation 3D</u><br></b>
+                    On explique ce qu’est la CAO et son rôle dans la fabrication d’objets. Tinkercad est présenté comme un outil gratuit, en ligne, simple à prendre en main.<br><br>
+
+                    <b><u>Prise en main de Tinkercad</u><br></b>
+                    <ul style="margin-left: 20px;">
+                        <span style="color: rgb(32, 172, 123);"><li>1-Création d’un compte sur Tinkercad</li></span>
+                        <span style="color: rgb(32, 172, 123);"><li>2-Connexion à Tinkercad</li></span>
+                        <span style="color: rgb(32, 172, 123);"><li>3-Présentation de l’interface Tinkercad:</li></span>
+                    <ul style="margin-left: 20px;">
+                        <li>3.a : Zone de travail, formes de base (cube, cylindre, texte…)</li>
+                        <li>3.b : Outils : déplacer, redimensionner, grouper, aligner</li>
+                    </ul>
+                    <li><span style="color: rgb(32, 172, 123);">4-Création d'une plaque prénom personnalisée (petite plaque rectangulaire avec son prénom en relief )</li></span>
+                    <ul style="margin-left: 20px;">    
+                        <li> 4.a: Ajout d’un parallélépipède (plaque)</li>
+                        <li> 4.b: Insertion du mot (texte 3D)</li>
+                        <li> 4.c: Réglage de la hauteur, de la position et centrage</li>
+                        <li> 4.d: Groupement des objets</li>
+                    </ul>
+                    <li><span style="color: rgb(32, 172, 123);">5-Préparation à l’impression 3D avec Cura</li></span>
+                    <ul style="margin-left: 20px;">
+                        <li> 5.a: Définition des paramètres d’impression 3D</li>
+                        <li> 5.b: Export  au format .STL pour pouvoir être imprimée.</li>
+                    </ul>
+                    </ul>
+
+                </p>
+        </div>
+    </div>
+    </section>
+
+    <!-- Section Introduction Tinkercad -->
+    <section class="features reveal">
+        <div class="container">
+            <h2><span style="color: rgb(32, 172, 123);">ETAPE #1: Création du compte Tinkercad </span></h2><br>
+                <p style="text-align: left;">
+                    Afin de gagner du temps le jour-J <span style="color: rgb(32, 172, 123);">il est recommandé de proposer à chaque participant de créer son compte Tinkercad avant le jour de l’atelier
+                        Dans ce cas, vous pourrez envoyer par email la démarche ci-dessous pour leur inscription<br><br></span>
+                        
+                       <u>Note:</u>Si un participant ne peut créer son compte par ses propres moyens, vous devrez attendre le jour-J pour le faire et prendre en compte ce temps en plus pendant l'atelier<br><br>
+                        
+                        <span style="color: rgb(32, 172, 123);"><u>Voilà la démarche pour l’inscription des participants:</u><br></span>
+                        <div class="image-wrapper">
+                            <img src="stepim1Tinkercad.png" 
+                            alt="Illustration éducative" 
+                            width="700"
+                            height="500"
+                            class="intro-image">
+                            </div>
+                        <div class="text-zone">
+                        1-<span style="color: rgb(32, 172, 123);"><b>Ouvrir un navigateur web</b></span> et aller sur : Rejoindre - Tinkercad<br>
+                        2-Cliquez sur <span style="color: rgb(32, 172, 123);"><b>Créer un compte personnel</b></span><br>
+                        3-<span style="color: rgb(32, 172, 123);"><b>S’inscrire</b></span> avec l’option : “S’inscrire avec une adresse email”<br>
+                        4-<span style="color: rgb(32, 172, 123);"><b>Entrer les informations du compte</b></span> (Pays et, Date de naissance)<br>
+                        5-<span style="color: rgb(32, 172, 123);"><b>Entrer votre adresse email et un mot de passe</b></span> respectant les critères de sécurité<br>
+                        6-Cliquez sur <span style="color: rgb(32, 172, 123);"><b>“Créer un compte”</b></span><br>
+                        7-Cliquez sur <span style="color: rgb(32, 172, 123);"><b>“Terminé”</b></span><br>
+                        8-<span style="color: rgb(32, 172, 123);"><b>Vous arriverez directement sur l’interface principale de Tinkercad</b></span><br>
+                    </p>
+                </div>
+            </section>
+
+            <!-- Section Introduction Tinkercad -->
+    <section class="features reveal">
+        <div class="container">
+            <h2><span style="color: rgb(32, 172, 123);">ETAPE #2: Connexion à Tinkercad </span></h2><br>
+                <p style="text-align: left;">
+                    Afin de gagner du temps le jour-J <span style="color: rgb(32, 172, 123);">il est recommandé de proposer à chaque participant de créer son compte Tinkercad avant le jour de l’atelier
+                        Dans ce cas, vous pourrez envoyer par email la démarche ci-dessous pour leur inscription<br><br></span>
+                        
+                       <u>Note:</u>Si un participant ne peut créer son compte par ses propres moyens, vous devrez attendre le jour-J pour le faire et prendre en compte ce temps en plus pendant l'atelier<br><br>
+                        
+                        <span style="color: rgb(32, 172, 123);"><u>Voilà la démarche pour l’inscription des participants:</u><br></span>
+                        <div class="image-wrapper">
+                            <img src="stepim1Tinkercad.png" 
+                            alt="Illustration éducative" 
+                            width="700"
+                            height="500"
+                            class="intro-image">
+                            </div>
+                        <div class="text-zone">
+                        1-<span style="color: rgb(32, 172, 123);"><b>Ouvrir un navigateur web</b></span> et aller sur : Rejoindre - Tinkercad<br>
+                        2-Cliquez sur <span style="color: rgb(32, 172, 123);"><b>Créer un compte personnel</b></span><br>
+                        3-<span style="color: rgb(32, 172, 123);"><b>S’inscrire</b></span> avec l’option : “S’inscrire avec une adresse email”<br>
+                        4-<span style="color: rgb(32, 172, 123);"><b>Entrer les informations du compte</b></span> (Pays et, Date de naissance)<br>
+                        5-<span style="color: rgb(32, 172, 123);"><b>Entrer votre adresse email et un mot de passe</b></span> respectant les critères de sécurité<br>
+                        6-Cliquez sur <span style="color: rgb(32, 172, 123);"><b>“Créer un compte”</b></span><br>
+                        7-Cliquez sur <span style="color: rgb(32, 172, 123);"><b>“Terminé”</b></span><br>
+                        8-<span style="color: rgb(32, 172, 123);"><b>Vous arriverez directement sur l’interface principale de Tinkercad</b></span><br>
+                    </p>
+                </div>
+            </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <nav>
+                <ul>
+                    <li><a href="3-APropos.html">À propos</a></li>
+                    <li><a href="produits.html">Produits</a></li>
+                    <li><a href="5-Blog.html">Blog</a></li>
+                    <li><a href="4-Contact.html">Contact</a></li>
+                </ul>
+            </nav>
+            <p>&copy; 2025 Puzzle-Paint. Tous droits réservés.</p>
+        </div>
+    </footer>
+    <div id="info-panel" class="info-panel">
+        <button class="close-panel" onclick="closePanel()">×</button>
+        <div id="info-content"></div>
+      </div>   
+      
+<script>
+    const reveals = document.querySelectorAll('.reveal');
+    window.addEventListener('scroll', () => {
+        for (let i = 0; i < reveals.length; i++) {
+            const windowHeight = window.innerHeight;
+            const revealTop = reveals[i].getBoundingClientRect().top;
+            const revealPoint = 100;
+            if (revealTop < windowHeight - revealPoint) {
+                reveals[i].classList.add('active');
+            }
+        }
+    });
+</script>
+<script src="script.js" defer></script>
+<script src="cart.js" defer></script>
+<script>
+    document.querySelectorAll('.menu-toggle').forEach(toggle => {
+      toggle.addEventListener('click', () => {
+        const submenu = toggle.nextElementSibling;
+        submenu.classList.toggle('hidden');
+        toggle.classList.toggle('rotate-90'); // facultatif si tu veux faire pivoter la flèche
+      });
+    });
+  </script>   
+  <div id="info-panel" class="info-panel">
+    <button class="close-panel" onclick="closePanel()">×</button>
+    <div id="info-content"></div>
+  </div>
+</body>
+</html>
