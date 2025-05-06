@@ -1066,8 +1066,8 @@ body {
 
 /* Zone de texte confortable */
 .text-zone {
-    max-width: 800px; /* Largeur maximale de la zone de lecture */
-    margin: 40px auto; /* Centre horizontalement + marge haut/bas */
+    max-width: 650px; /* Largeur maximale de la zone de lecture */
+    margin: 10px auto; /* Centre horizontalement + marge haut/bas */
     padding: 20px 30px; /* Respiration intérieure */
     background: rgba(255, 255, 255, 0.95); /* Fond blanc léger */
     border-radius: 10px; /* Coins arrondis */

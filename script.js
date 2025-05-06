@@ -201,8 +201,8 @@ document.querySelectorAll('.carousel').forEach(carousel => {
             <img src='manuel.png' alt='Atelier' style='width:50%; border-radius:10px; margin-bottom:10px;'>
             <span style="color:green;"><b>Un manuel détaillé pour vous guider</span></b>  pas à pas dans les différentes étapes d'assemblage<br> 
 
-             <img src='kitelectrique.png' alt='Atelier' style='width:50%; border-radius:10px; margin-bottom:10px;'>
-            <span style="color:green;"><b>Un kit electrique constitués d'un boitier à pile, d'un régulateur de vitesse et d'un servomoteur</span></b>  pour contrôler automatiquement les mouvements du moteur <br>
+             <img src='kitelectriquenon.png' alt='Atelier' style='width:50%; border-radius:10px; margin-bottom:10px;'>
+              <span style="color:red;"><b>kit electrique non fournit :</span></b> Le mouvement du moteur se fait manuellement grâce a une manivelle inclut au Kit<br>
           </p>
         `);
       }
@@ -221,8 +221,8 @@ document.querySelectorAll('.carousel').forEach(carousel => {
             <img src='manuel.png' alt='Atelier' style='width:50%; border-radius:10px; margin-bottom:10px;'>
             <span style="color:green;"><b>Un manuel détaillé pour vous guider</span></b>  pas à pas dans les différentes étapes d'assemblage<br> 
 
-             <img src='kitelectriquenon.png' alt='Atelier' style='width:50%; border-radius:10px; margin-bottom:10px;'>
-            <span style="color:red;"><b>kit electrique non fournit :</span></b> Le mouvement du moteur se fait manuellement grâce a une manivelle inclut au Kit<br>
+             <img src='kitelectrique.png' alt='Atelier' style='width:50%; border-radius:10px; margin-bottom:10px;'>
+             <span style="color:green;"><b>Un kit electrique constitués d'un boitier à pile, d'un régulateur de vitesse et d'un servomoteur</span></b>  pour contrôler automatiquement les mouvements du moteur <br>
           </p>
         `);
       }
