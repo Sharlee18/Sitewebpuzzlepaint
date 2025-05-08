@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Puzzle-Paint Kit</title>
+    <link rel="stylesheet" href="CSS.css">
+    <!-- Intégration de la police Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <script>
+        const CODE = "PZP1";
+        if (localStorage.getItem("pzp_access") !== CODE) {
+          window.location.href = "Step1Tinkercad.html";
+        }
+      </script>
+    
+    <script src="script.js" defer></script>
+    <script src="cart.js" defer></script>
+</head>
+<body>
+        <!-- Topbar : Menu Burger + Panier -->
+        <div class="topbar">
+            <div class="left-header">
+                <button id="menu-toggle" class="menu-icon">&#9776;</button>
+            </div>
+            <div class="right-header">
+                <div id="cart-icon" class="cart">
+                    🛒<span id="cart-count">0</span>
+                </div>
+            </div>
+        </div>
+
+    <!-- Header avec image en arrière-plan -->
+    <header class="header" style="background-image: url('famille3.png');">
+        <div class="container">
+            <h1>Details Programmation Arduino</h1>
+            <p>Retrouvez ici tous les infos sur l'introduction à Arduino IDE</p>
+        </div>
+    </header>
+
+    <main>
+        <div id="overlay"></div>
+
+       <!-- Sidebar du menu -->
+       <nav id="sidebar" class="sidebar">
+        <button id="close-menu" class="close-btn">&times;</button>
+        <ul>
+          <li><a href="index.html">Accueil</a></li>
+          <li><a href="2-History.html">Nos ateliers</a></li>
+          <li><a href="produits.html">Notre boutique</a></li>
+          <li><a href="3-APropos.html">À-propos</a></li>
+          <li><a href="4-Contact.html">Contact</a></li>6
+          <li class="has-submenu">
+        <button class="menu-toggle">Section Coach</button>
+            <ul class="submenu hidden">
+              <li><a href="5-Blog.html">Devenir Coach</a></li>
+              <li><a href="acces-guide-coach.html">Guide Coach</a></li>
+            </ul>
+          </li>
+        </ul>
+      </nav>
+
+      <!-- Section Introduction Tinkercad -->
+      <section class="features reveal">
+        <div class="container">
+            <h2><span style="color: rgb(32, 172, 123);">Introduction à Arduino IDE</span></h2>
+            <div class="image-wrapper">
+                <img src="arduinostep4.png" 
+                alt="Illustration éducative" 
+                width="600"
+                height="400"
+                class="arduinostep4">
+                </div>
+            <div style="text-align: left;">    
+                    <p style="text-align: left;">
+                <span style="color: rgb(32, 172, 123);"><br><u><b>Objectif :</b></u></span>L’objectif est d’adapter le code existant de la maquette afin de changer les réactions
+                de l’ESP32 en cas de détection d’obstacle par le capteur à ultrasons. Cela inclut
+                l’action sur le servo, le buzzer et l’écran OLED.
+            <br>
+                <span style="color: rgb(32, 172, 123);"><u><b>Durée estimée</b></u></span> : 30 min<br>
+                <span style="color: rgb(32, 172, 123);"><u><b>Compétences mobilisées : </b></u></span><br>
+                -Comprendre le fonctionnement d'Arduino IDE<br>
+                -S'initier à la programmation en C++ assisté par l'Intelligence Artificielle<br>               
+                <span style="color: rgb(32, 172, 123);"><u><b>Matériel :</b></u></span> Un PC , le kit ELEC (assemblé) et le Kit MECA (maquette de voiture) assemblé <br>
+                <span style="color: rgb(32, 172, 123);"><u><b>Prérequis :</b></u></span> Avoir participé à l’atelier de montage du kit ELEC
+                <br><br>
+        
+
+                <span style="color: rgb(32, 172, 123);"><u><b>Définitions importantes:</b></u><br></span>
+                <b><u>ESP32:</u><br></b> 
+                Microcontrôleur (carte programmable) très puissant et connecté, utilisé pour piloter les capteurs et moteurs de la maquette. Il possède le WiFi et le Bluetooth intégrés.<br>
+                 <b><u>Capteur à ultrason (HC-SR04) : </u><br></b> 
+                 Composant qui mesure la distance à un obstacle en émettant un signal sonore inaudible (ultrason) et en mesurant le temps de retour.<br>
+                 <b><u>Servomoteur: </u><br></b> 
+                 Petit moteur capable de se positionner avec précision sur un angle donné. Utilisé pour faire bouger un bras, une trappe ou le volant<br>
+                 <b><u>Ecran OLED: </u><br></b> 
+                 Mini-écran très lisible même sans rétroéclairage, utilisé pour afficher des messages, des distances, des vitesses, etc.<br>
+                 <b><u>Buzzer : </u><br></b> 
+                 Petit haut-parleur qui émet un son pour signaler une alerte ou un événement.<br>
+                 <b><u>Arduino IDE</u><br></b> 
+                 Logiciel gratuit utilisé pour écrire, vérifier et envoyer du code vers une carte Arduino. Il permet de programmer facilement des composants électroniques (LED, moteurs, capteurs...) en utilisant un langage simplifié (C/C++), avec l’aide de bibliothèques intégrées<br>
+                 <b><u>Les Biliothèques (Arduino IDE): </u><br></b>
+                 Une bibliothèque est un ensemble de fichiers contenant du code réutilisable (fonctions, classes) qui facilite la programmation de composants ou capteurs spécifiques.<br>
+                 Exemple :<br>
+                 -La bibliothèque Servo.h permet de contrôler un servomoteur sans devoir écrire tout le code bas-niveau.<br>
+                 -La bibliothèque Adafruit_SSD1306 permet de gérer un écran OLED.<br>
+                 <b><u>Le joystick </u><br></b> 
+                 capteur d’entrée analogique utilisé pour détecter des mouvements dans deux directions : X (gauche/droite) et Y (haut/bas), comme un mini-levier de manette de jeu.<br>
+                 Certains modèles possèdent aussi un bouton-poussoir intégré (pression verticale).<br><br> 
+             </p>
+            </div>
+        </div>
+        </section>
+
+
+                 <!-- Section Programmation Arduino-->
+      <section class="features reveal">
+        <div class="container">
+            <h2><span style="color: rgb(32, 172, 123);">Déroulé de l'activité :</span></h2>
+                    <div style="text-align: left;">
+                        <p style="text-align: left;">
+                            <div class="container" style="text-align: left;">
+                                Synthèse de l’activité : programmation avancée avec l’ESP32 :<br><br>
+                              
+                                <span style="color: rgb(32, 172, 123);"><u><b>Objectif 1 : Modifier le comportement initial de la maquette de voiture</u><br></b></span>
+                                <p>
+                                  L’objectif est d’adapter le code existant de la maquette afin de changer les réactions
+                                  de l’ESP32 en cas de détection d’obstacle par le capteur à ultrasons. Cela inclut
+                                  l’action sur le servo, le buzzer et l’écran OLED.
+                                </p><br>
+                              
+                            <b><u>Étapes :</b></u>
+                            <ol>
+                              <b><li>Repérer dans le code la fonction <code>readDistance()</code> qui mesure la distance via le capteur HC-SR04 :</li></b>
+                              <pre><code>long readDistance() {
+                            digitalWrite(TRIG_PIN, LOW);
+                            delayMicroseconds(2);
+                            digitalWrite(TRIG_PIN, HIGH);
+                            delayMicroseconds(10);
+                            digitalWrite(TRIG_PIN, LOW);
+                            long duration = pulseIn(ECHO_PIN, HIGH);
+                            return duration * 0.034 / 2;
+                          }</code></pre>
+                          
+                          <b><li>Identifier la condition de réaction dans le <code>loop()</code> :</li></b>
+                              <pre><code>if (distance &lt; 10) {
+                            servo1.write(90);
+                            tone(BUZZER_PIN, 1000);
+                            display.clearDisplay();
+                            display.setCursor(0,0);
+                            display.println("FREINAGE AUTO");
+                            display.display();
+                          }</code></pre>
+                          
+                          <b><li>Remplacer ce bloc par une réaction plus complète :</li></b>
+                              <pre><code>if (distance &lt; 10) {
+                            servo1.write(0); // Évitement
+                            delay(1000);
+                            servo1.write(90);
+                          
+                            int frequency = map(distance, 2, 10, 3000, 500);
+                            tone(BUZZER_PIN, frequency);
+                          
+                            display.clearDisplay();
+                            display.setCursor(0, 0);
+                            display.println("Obstacle detecte !");
+                            display.setCursor(0, 10);
+                            display.print("Distance : ");
+                            display.print(distance);
+                            display.println(" cm");
+                            display.setCursor(0, 20);
+                            display.println("Evitement en cours");
+                            display.display();
+                          } else {
+                            noTone(BUZZER_PIN);
+                            display.clearDisplay();
+                            display.setCursor(0, 0);
+                            display.println("OK");
+                            display.setCursor(0, 10);
+                            display.print("Distance : ");
+                            display.print(distance);
+                            display.println(" cm");
+                            display.display();
+                          }</code></pre>
+                            </ol>
+                          
+                            <hr>
+                          
+                            <br><span style="color: rgb(32, 172, 123);"><u><b> Objectif 2 : Créer un nouveau programme simple avec 2 ou 3 composants</u><br></b></span><br>
+                            <p>
+                              Ce second exercice consiste à écrire un programme à partir de zéro pour interagir avec plusieurs composants.
+                              Exemple : jouer la mélodie <i>“Joyeux anniversaire”</i> avec le buzzer dès qu’une main est détectée devant le capteur à ultrasons.
+                              Plus la main est proche, plus la musique est rapide.
+                            </p>
+                          
+                            Étapes :
+                            <ol>
+                              <li>Initialiser les composants : buzzer, capteur HC-SR04</li>
+                              <li>Lire la distance avec <code>readDistance()</code></li>
+                              <li>Si distance &lt; 10 cm : jouer la mélodie sur le buzzer, avec une vitesse qui dépend de la distance</li>
+                            </ol>
+                          
+                            Exemple de code :
+                            <pre><code>#include &lt;Ultrasonic.h&gt;
+                          
+                          #define TRIG_PIN 26
+                          #define ECHO_PIN 25
+                          #define BUZZER_PIN 18
+                          
+                          Ultrasonic ultrasonic(TRIG_PIN, ECHO_PIN);
+                          int melody[] = {262, 294, 330, 349, 392, 440, 494, 523};
+                          int duration = 500;
+                          
+                          void setup() {
+                            pinMode(BUZZER_PIN, OUTPUT);
+                            Serial.begin(9600);
+                          }
+                          
+                          void loop() {
+                            long distance = ultrasonic.read();
+                            Serial.print("Distance: ");
+                            Serial.println(distance);
+                          
+                            if (distance &lt; 10) {
+                              for (int i = 0; i &lt; 8; i++) {
+                                tone(BUZZER_PIN, melody[i], duration);
+                                delay(duration);
+                                duration = map(distance, 0, 10, 100, 500);
+                              }
+                            } else {
+                              noTone(BUZZER_PIN);
+                            }
+                          }</code></pre>
+                          
+                            <p>
+                              Cette activité permet d’aborder des notions fondamentales de la programmation embarquée :
+                              logique conditionnelle, mapping de valeurs, interaction capteur-actionneur.
+                            </p>
+                          </div>                          
+
+        </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <nav>
+                <ul>
+                    <li><a href="3-APropos.html">À propos</a></li>
+                    <li><a href="produits.html">Produits</a></li>
+                    <li><a href="5-Blog.html">Blog</a></li>
+                    <li><a href="4-Contact.html">Contact</a></li>
+                </ul>
+            </nav>
+            <p>&copy; 2025 Puzzle-Paint. Tous droits réservés.</p>
+        </div>
+    </footer>
+    <div id="info-panel" class="info-panel">
+        <button class="close-panel" onclick="closePanel()">×</button>
+        <div id="info-content"></div>
+      </div>   
+      
+<script>
+    const reveals = document.querySelectorAll('.reveal');
+    window.addEventListener('scroll', () => {
+        for (let i = 0; i < reveals.length; i++) {
+            const windowHeight = window.innerHeight;
+            const revealTop = reveals[i].getBoundingClientRect().top;
+            const revealPoint = 100;
+            if (revealTop < windowHeight - revealPoint) {
+                reveals[i].classList.add('active');
+            }
+        }
+    });
+</script>
+<script src="script.js" defer></script>
+<script src="cart.js" defer></script>
+<script>
+    document.querySelectorAll('.menu-toggle').forEach(toggle => {
+      toggle.addEventListener('click', () => {
+        const submenu = toggle.nextElementSibling;
+        submenu.classList.toggle('hidden');
+        toggle.classList.toggle('rotate-90'); // facultatif si tu veux faire pivoter la flèche
+      });
+    });
+  </script>   
+  <div id="info-panel" class="info-panel">
+    <button class="close-panel" onclick="closePanel()">×</button>
+    <div id="info-content"></div>
+  </div>
+</body>
+</html>
