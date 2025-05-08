@@ -126,7 +126,7 @@
                         alt="Illustration éducative" 
                         width="600"
                         height="400"
-                        class="gauche">
+                        class="downloadarduinoide">
                         </div>
                         <p style="text-align: left;">
                     Un programme de base est  installé sur le microcontrôleur ESP32 ce qui permet de jouer avec la maquette sans avoir à modifier du code.<br>
@@ -140,7 +140,7 @@
                         alt="Illustration éducative" 
                         width="500"
                         height="300"
-                        class="gauche">
+                        class="montageesp32">
                         </div>
                         <p style="text-align: left;">
                     Le montage du microcontrôleur sur sa carte d'extension est très simple:<br>
@@ -149,15 +149,97 @@
 
                     <span style="color: rgb(32, 172, 123);"><b><u>3.Assemblage des fils sur les composants</u><br></b></span></p>
                     <div class="image-wrapper">
-                        <img src="montageesp32_schema.png" 
+                        <img src="montageesp32.png" 
                         alt="Illustration éducative" 
                         width="500"
                         height="300"
-                        class="gauche">
+                        class="montageesp32">
                         </div>
                         <p style="text-align: left;">
-                    Pour réaliser l'assemblage des fils, il faut suivre le schéma de cablage ci-dessus.
+                    Pour réaliser l'assemblage des fils, il faut suivre le schéma ci-dessus
                 </p>
+                <div class="container" style="text-align: left;">
+
+                <br><u>Synthèse des branchements électroniques – Kit ESP32</u><br>
+                  
+                    <span style="color: rgb(32, 172, 123);"><b><u>1. Comprendre les broches</u><br></b></span></p><br>
+                    <table border="1" cellpadding="5" cellspacing="0">
+                      <tr><th>Broche</th><th>Fonction</th></tr>
+                      <tr><td>VCC / 3.3V / 5V</td><td>Alimentation (+) du composant</td></tr>
+                      <tr><td>GND</td><td>Masse (–), nécessaire pour fermer le circuit</td></tr>
+                      <tr><td>SDA</td><td>Données série (bus I2C)</td></tr>
+                      <tr><td>SCL</td><td>Horloge série (bus I2C)</td></tr>
+                      <tr><td>Trig / Echo</td><td>Broches du capteur à ultrasons (émission/réception)</td></tr>
+                      <tr><td>Signal / Data / IN</td><td>Entrée ou sortie logique (servos, joystick...)</td></tr>
+                    </table>
+                  
+                    <br><span style="color: rgb(32, 172, 123);"><b><u>1. 2. Détail des composants et branchements</u><br></b></span></p><br>
+                  
+                    <h4>A. Servomoteurs SG90 (x2)</h4>
+                    <ul>
+                      <li><b>Rouge (VCC)</b> → 5V</li>
+                      <li><b>Marron (GND)</b> → GND</li>
+                      <li><b>Orange (Signal)</b> :
+                        <ul>
+                          <li>Servo 1 → GPIO 14</li>
+                          <li>Servo 2 → GPIO 27</li>
+                        </ul>
+                      </li>
+                    </ul>
+                    <p><i>Utilisés pour générer des mouvements mécaniques selon les commandes envoyées par l’ESP32.</i></p>
+                  
+                    <h4>B. Capteur à ultrasons HC-SR04</h4>
+                    <ul>
+                      <li>VCC → 5V</li>
+                      <li>GND → GND</li>
+                      <li>Trig → GPIO 26</li>
+                      <li>Echo → GPIO 25</li>
+                    </ul>
+                    <p><i>Mesure la distance en envoyant un signal ultrasonore et en analysant le temps de retour.</i></p>
+                  
+                    <h4>C. Écran OLED (I2C)</h4>
+                    <ul>
+                      <li>VCC → 3.3V</li>
+                      <li>GND → GND</li>
+                      <li>SCL → GPIO 22</li>
+                      <li>SDA → GPIO 21</li>
+                    </ul>
+                    <p><i>Affiche les informations comme la vitesse, la distance ou les messages d’alerte.</i></p>
+                  
+                    <h4>D. Joystick analogique</h4>
+                    <ul>
+                      <li>+5V ou VCC → 3.3V ou 5V</li>
+                      <li>GND → GND</li>
+                      <li>VRx (axe X) → GPIO 35</li>
+                      <li>VRy (axe Y) → GPIO 34</li>
+                    </ul>
+                    <p><i>Permet de contrôler la vitesse ou la direction via les mouvements du joystick.</i></p>
+                  
+                    <h4>E. Buzzer</h4>
+                    <ul>
+                      <li>+ → GPIO 18</li>
+                      <li>- → GND</li>
+                    </ul>
+                    <p><i>Produit un son ou un bip pour les alertes ou les changements d’état.</i></p>
+                  
+                    <span style="color: rgb(32, 172, 123);"><b><u><br>3. Récapitulatif des broches ESP32 utilisées</u><br></b></span></p><br>
+                    <table border="1" cellpadding="5" cellspacing="0">
+                      <tr><th>Composant</th><th>Broche ESP32</th></tr>
+                      <tr><td>Servo 1</td><td>GPIO 14</td></tr>
+                      <tr><td>Servo 2</td><td>GPIO 27</td></tr>
+                      <tr><td>Capteur Trig</td><td>GPIO 26</td></tr>
+                      <tr><td>Capteur Echo</td><td>GPIO 25</td></tr>
+                      <tr><td>OLED SDA</td><td>GPIO 21</td></tr>
+                      <tr><td>OLED SCL</td><td>GPIO 22</td></tr>
+                      <tr><td>Joystick X</td><td>GPIO 35</td></tr>
+                      <tr><td>Joystick Y</td><td>GPIO 34</td></tr>
+                      <tr><td>Buzzer</td><td>GPIO 18</td></tr>
+                    </table>
+                  
+                    <p><b>Conseil :</b> commence toujours par relier tous les GND ensemble, et vérifie que chaque module est bien compatible 3.3V ou 5V avant de l’alimenter.</p>
+                  
+                  </div>
+                  
         </div>
     </div>
     </section>
