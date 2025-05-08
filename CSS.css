@@ -2055,3 +2055,16 @@ main {
     text-align: left;
   }
   
+
+  pre {
+    max-width: 100%;
+    overflow-x: auto;
+    background-color: #f4f4f4;
+    padding: 10px;
+    border-radius: 5px;
+    font-size: 14px;
+    white-space: pre-wrap;     /* Permet le retour à la ligne */
+    word-wrap: break-word;     /* Coupe les longues chaînes si besoin */
+    box-sizing: border-box;
+  }
+  
