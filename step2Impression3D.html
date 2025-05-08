@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Puzzle-Paint Kit</title>
+    <link rel="stylesheet" href="CSS.css">
+    <!-- Intégration de la police Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <script>
+        const CODE = "PZP1";
+        if (localStorage.getItem("pzp_access") !== CODE) {
+          window.location.href = "Step1Tinkercad.html";
+        }
+      </script>
+    
+    <script src="script.js" defer></script>
+    <script src="cart.js" defer></script>
+</head>
+<body>
+        <!-- Topbar : Menu Burger + Panier -->
+        <div class="topbar">
+            <div class="left-header">
+                <button id="menu-toggle" class="menu-icon">&#9776;</button>
+            </div>
+            <div class="right-header">
+                <div id="cart-icon" class="cart">
+                    🛒<span id="cart-count">0</span>
+                </div>
+            </div>
+        </div>
+
+    <!-- Header avec image en arrière-plan -->
+    <header class="header" style="background-image: url('famille3.png');">
+        <div class="container">
+            <h1>Details Impression 3D</h1>
+            <p>Retrouvez ici tous les infos sur l'introduction à l'impression 3D</p>
+        </div>
+    </header>
+
+    <main>
+        <div id="overlay"></div>
+
+       <!-- Sidebar du menu -->
+       <nav id="sidebar" class="sidebar">
+        <button id="close-menu" class="close-btn">&times;</button>
+        <ul>
+          <li><a href="index.html">Accueil</a></li>
+          <li><a href="2-History.html">Nos ateliers</a></li>
+          <li><a href="produits.html">Notre boutique</a></li>
+          <li><a href="3-APropos.html">À-propos</a></li>
+          <li><a href="4-Contact.html">Contact</a></li>6
+          <li class="has-submenu">
+        <button class="menu-toggle">Section Coach</button>
+            <ul class="submenu hidden">
+              <li><a href="5-Blog.html">Devenir Coach</a></li>
+              <li><a href="acces-guide-coach.html">Guide Coach</a></li>
+            </ul>
+          </li>
+        </ul>
+      </nav>
+
+      <!-- Section Introduction Tinkercad -->
+      <section class="features reveal">
+        <div class="container">
+            <h2><span style="color: rgb(32, 172, 123);">Introduction à l'impression 3D</span></h2>
+            <div style="text-align: left;">    
+                    <p style="text-align: left;">
+                <span style="color: rgb(32, 172, 123);"><br><u><b>Objectif :</b></u></span>Découvrir comment une création numérique devient une pièce physique grâce à l'impression 3D. À la fin de l'atelier, chaque participant verra sa plaque personnalisée imprimée sous ses yeux.<br>
+                <span style="color: rgb(32, 172, 123);"><u><b>Durée estimée</b></u></span> : 15 min<br>
+                <span style="color: rgb(32, 172, 123);"><u><b>Compétences mobilisées : </b></u></span><br>
+                -Comprendre le fonctionnement d’une imprimante 3D FDM<br>
+                -Apprendre les étapes de préparation et de lancement d’une impression<br>
+                -Identifier les éléments techniques d’une imprimante<br>
+                -Savoir comment retirer une pièce imprimée en toute sécurité<br>                
+                <span style="color: rgb(32, 172, 123);"><u><b>Matériel :</b></u></span> Une imprimante 3D , du filament (ex: PLA), Une clé usb, une spatule (Optionnel) <br>
+                <span style="color: rgb(32, 172, 123);"><u><b>Prérequis :</b></u></span> Avoir participé à l’atelier de modélisation 3D (création d’une plaque personnalisée sur Tinkercad)
+                <br><br>
+        
+
+                <span style="color: rgb(32, 172, 123);"><u><b>Définitions importantes:</b></u><br></span>
+                   <b><u>L'Impression 3D (FDM):</u><br></b> 
+                   Technique de fabrication additive où un objet est construit couche par couche à partir d’un filament plastique fondu.<br>
+                    <b><u>FDM (Fused Deposition Modeling) : </u><br></b> 
+                    Technologie d’impression 3D la plus répandue, utilisant du filament thermoplastique fondu et déposé selon un tracé précis.<br>
+                    <b><u>Le Filament PLA : </u><br></b> 
+                    Plastique biosourcé utilisé en impression 3D FDM. Il est issu de l’amidon de maïs ou de canne à sucre, biodégradable, sans odeur, et idéal pour l’apprentissage<br>
+                    <b><u>La Buse: </u><br></b> 
+                    Petit embout métallique chauffé à environ 200°C, par lequel le plastique fondu est extrudé. Le diamètre de la buse influence la précision et la vitesse d’impression.<br>
+                    <b><u>Le Plateau : </u><br></b> 
+                    Surface sur laquelle la pièce est imprimée. Il peut être chauffant pour améliorer l’adhérence de la première couche.<br>
+                    <b><u>Les moteurs pas à pas: </u><br></b> 
+                    Petits moteurs qui déplacent avec précision la buse ou le plateau selon les coordonnées du fichier d’impression.<br>
+                    <b><u>Les capteurs de fin de course (butée): </u><br></b> 
+                    Petits interrupteurs placés aux extrémités des axes X, Y et Z. Ils indiquent à l’imprimante quand un axe est à son point de départ (0).
+                    <br><br>
+
+                    
+                </p>
+            </div>
+        </div>
+        </section>
+
+
+                 <!-- Section Introduction Tinkercad -->
+      <section class="features reveal">
+        <div class="container">
+            <h2><span style="color: rgb(32, 172, 123);">Déroulé de l'activité :</span></h2>
+                    <div style="text-align: left;">
+                        <span style="color: rgb(32, 172, 123);"><u><b>1. Présentation de l’imprimante 3D – (5 min)</u><br></b></span>
+                    <div class="image-wrapper">
+                        <img src="Impre3D1.png" 
+                        alt="Illustration éducative" 
+                        width="300"
+                        height="200"
+                        class="Impre3D1">
+                        </div>
+                        <p style="text-align: left;">
+                    Ce que dit le coach :<br>
+                   Montrer physiquement l’imprimante 3D utilisée (monofilament ou multifilament).<br>
+                   Expliquer le principe du FDM (Fused Deposition Modeling) : “L’imprimante dépose du plastique fondu couche par couche, comme un mille-feuille, pour construire l’objet.<br>
+                   <u>Présenter les composants:</u><br>
+                      -Le filament PLA (écologique, biodégradable, facile à imprimer)<br>
+                      -Le plateau chauffant (accueil de la pièce)<br>
+                      -La buse (sortie du plastique fondu)<br>
+                      -Les axes X, Y, Z (mouvements)<br>
+                      -Les capteurs de fin de course (limites de déplacement)<br>
+                    Définir chaque élément en s’appuyant sur la section "Définitions" ci-dessous.<br><br>
+              
+
+                    <span style="color: rgb(32, 172, 123);"><b><u>2. Lancement de l’impression – (5 min)</u><br></b></span></p>
+                    <div class="image-wrapper">
+                        <img src="Impre3D2.png" 
+                        alt="Illustration éducative" 
+                        width="300"
+                        height="200"
+                        class="Impre3D2">
+                        </div>
+                        <p style="text-align: left;">
+                    Ce que dit le coach :<br>
+                    “Nous avons transformé votre création en fichier STL, puis utilisé un logiciel appelé slicer (comme Cura) pour traduire cela en instructions pour l’imprimante.”<br>
+                    Montrer comment insérer la clé USB dans l’imprimante.<br>
+                    Ouvrir le fichier sur l’écran de la machine, vérifier les réglages de base (température, support, position…).<br>
+                    Expliquer ce que fait l’imprimante au moment du démarrage : préchauffe, calibration, premiers dépôts.<br><br>
+
+                    <span style="color: rgb(32, 172, 123);"><b><u>3. Fin de l’impression et retrait de la pièce – (5 min)</u><br></b></p></span>
+                    <div class="image-wrapper">
+                        <img src="Impre3D3.png" 
+                        alt="Illustration éducative" 
+                        width="300"
+                        height="200"
+                        class="Impre3D3">
+                        </div>
+                        <p style="text-align: left;">
+                        Ce que dit le coach :<br>
+                        “Lorsque l’impression est terminée, il faut laisser le plateau refroidir. Si on essaie de retirer la pièce trop tôt, on risque de la déformer ou de se brûler.”<br>
+                        Montrer les gestes pour décoller doucement la pièce (avec spatule ou main).<br>
+                        Montrer comment retirer les supports d’impression s’il y en a (en les cassant doucement ou en les détachant).<br>
+                </p>
+        </div>
+    </div>
+    </section>
+
+        </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <nav>
+                <ul>
+                    <li><a href="3-APropos.html">À propos</a></li>
+                    <li><a href="produits.html">Produits</a></li>
+                    <li><a href="5-Blog.html">Blog</a></li>
+                    <li><a href="4-Contact.html">Contact</a></li>
+                </ul>
+            </nav>
+            <p>&copy; 2025 Puzzle-Paint. Tous droits réservés.</p>
+        </div>
+    </footer>
+    <div id="info-panel" class="info-panel">
+        <button class="close-panel" onclick="closePanel()">×</button>
+        <div id="info-content"></div>
+      </div>   
+      
+<script>
+    const reveals = document.querySelectorAll('.reveal');
+    window.addEventListener('scroll', () => {
+        for (let i = 0; i < reveals.length; i++) {
+            const windowHeight = window.innerHeight;
+            const revealTop = reveals[i].getBoundingClientRect().top;
+            const revealPoint = 100;
+            if (revealTop < windowHeight - revealPoint) {
+                reveals[i].classList.add('active');
+            }
+        }
+    });
+</script>
+<script src="script.js" defer></script>
+<script src="cart.js" defer></script>
+<script>
+    document.querySelectorAll('.menu-toggle').forEach(toggle => {
+      toggle.addEventListener('click', () => {
+        const submenu = toggle.nextElementSibling;
+        submenu.classList.toggle('hidden');
+        toggle.classList.toggle('rotate-90'); // facultatif si tu veux faire pivoter la flèche
+      });
+    });
+  </script>   
+  <div id="info-panel" class="info-panel">
+    <button class="close-panel" onclick="closePanel()">×</button>
+    <div id="info-content"></div>
+  </div>
+</body>
+</html>

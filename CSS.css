@@ -1978,3 +1978,69 @@ main {
     }
   }
   
+  /*ALIGNEMENT A GAUCHE DE CERTAINES IMAGES */
+  .cura1 {
+    display: block;
+    margin: 0 auto 10px 0;
+    text-align: left;
+  }
+  .cura2 {
+    display: block;
+    margin: 0 auto 10px 0;
+    text-align: left;
+  }
+  .cura3 {
+    display: block;
+    margin: 0 auto 10px 0;
+    text-align: left;
+  }
+  .plaque1 {
+    display: block;
+    margin: 0 auto 10px 0;
+    text-align: left;
+  }
+  .plaque2 {
+    display: block;
+    margin: 0 auto 10px 0;
+    text-align: left;
+  }
+  .plaque3 {
+    display: block;
+    margin: 0 auto 10px 0;
+    text-align: left;
+  }
+  .plaque4 {
+    display: block;
+    margin: 0 auto 10px 0;
+    text-align: left;
+  }
+  .plaque5{
+    display: block;
+    margin: 0 auto 10px 0;
+    text-align: left;
+  }
+  .stepim1Tinkercad{
+    display: block;
+    margin: 0 auto 10px 0;
+    text-align: left;
+  }
+  .interfconception3d{
+    display: block;
+    margin: 0 auto 10px 0;
+    text-align: left;
+  }
+  .Impre3D1{
+    display: block;
+    margin: 0 auto 10px 0;
+    text-align: left;
+  }
+  .Impre3D2{
+    display: block;
+    margin: 0 auto 10px 0;
+    text-align: left;
+  }
+  .Impre3D3{
+    display: block;
+    margin: 0 auto 10px 0;
+    text-align: left;
+  }
