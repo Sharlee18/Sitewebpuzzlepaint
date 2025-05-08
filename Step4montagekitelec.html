@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Puzzle-Paint Kit</title>
+    <link rel="stylesheet" href="CSS.css">
+    <!-- Intégration de la police Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <script>
+        const CODE = "PZP1";
+        if (localStorage.getItem("pzp_access") !== CODE) {
+          window.location.href = "Step1Tinkercad.html";
+        }
+      </script>
+    
+    <script src="script.js" defer></script>
+    <script src="cart.js" defer></script>
+</head>
+<body>
+        <!-- Topbar : Menu Burger + Panier -->
+        <div class="topbar">
+            <div class="left-header">
+                <button id="menu-toggle" class="menu-icon">&#9776;</button>
+            </div>
+            <div class="right-header">
+                <div id="cart-icon" class="cart">
+                    🛒<span id="cart-count">0</span>
+                </div>
+            </div>
+        </div>
+
+    <!-- Header avec image en arrière-plan -->
+    <header class="header" style="background-image: url('famille3.png');">
+        <div class="container">
+            <h1>Details Montage Kit ELEC</h1>
+            <p>Retrouvez ici tous les infos sur le montage du kit ELEC</p>
+        </div>
+    </header>
+
+    <main>
+        <div id="overlay"></div>
+
+       <!-- Sidebar du menu -->
+       <nav id="sidebar" class="sidebar">
+        <button id="close-menu" class="close-btn">&times;</button>
+        <ul>
+          <li><a href="index.html">Accueil</a></li>
+          <li><a href="2-History.html">Nos ateliers</a></li>
+          <li><a href="produits.html">Notre boutique</a></li>
+          <li><a href="3-APropos.html">À-propos</a></li>
+          <li><a href="4-Contact.html">Contact</a></li>6
+          <li class="has-submenu">
+        <button class="menu-toggle">Section Coach</button>
+            <ul class="submenu hidden">
+              <li><a href="5-Blog.html">Devenir Coach</a></li>
+              <li><a href="acces-guide-coach.html">Guide Coach</a></li>
+            </ul>
+          </li>
+        </ul>
+      </nav>
+
+      <!-- Section Introduction Tinkercad -->
+      <section class="features reveal">
+        <div class="container">
+            <h2><span style="color: rgb(32, 172, 123);">Introduction au Kit ELEC</span></h2>
+            <div class="image-wrapper">
+                <img src="KITELEC1.png" 
+                alt="Illustration éducative" 
+                width="550"
+                height="350"
+                class="KITELEC1">
+                </div>
+            <div style="text-align: left;">    
+                    <p style="text-align: left;">
+                <span style="color: rgb(32, 172, 123);"><br><u><b>Objectif :</b></u></span>Ajouter des composants électroniques pour rendre la maquette interactive et intelligente<br>
+                <span style="color: rgb(32, 172, 123);"><u><b>Durée estimée</b></u></span> : 30-45 min<br>
+                <span style="color: rgb(32, 172, 123);"><u><b>Compétences mobilisées : </b></u></span>logique, rigueur, découverte électronique<br>               
+                <span style="color: rgb(32, 172, 123);"><u><b>Matériel :</b></u></span> <br>
+                -Le boitier et son couvercle<br>
+                -Le microcontrôleur ESP32<br>
+                -La carte d'extension de l'ESP32<br>
+                -Des fils de branchements pour chaque composant électronique<br>
+                -Les composants électroniques: 2 servomoteurs, un buzzer, un capteur à ultrason, un écran OLED et un joystick tous les 2 déjà fixés sur le couvercle du boitier. <br>        
+                <span style="color: rgb(32, 172, 123);"><u><b>Prérequis :</b></u></span> Avoir participé à l’atelier de montage du kit MECA (maquette de la voiture)
+                <br><br>
+        
+
+                <span style="color: rgb(32, 172, 123);"><u><b>Définitions importantes:</b></u><br></span>
+                   <b><u>ESP32:</u><br></b> 
+                   Microcontrôleur (carte programmable) très puissant et connecté, utilisé pour piloter les capteurs et moteurs de la maquette. Il possède le WiFi et le Bluetooth intégrés.<br>
+                    <b><u>Capteur à ultrason (HC-SR04) : </u><br></b> 
+                    Composant qui mesure la distance à un obstacle en émettant un signal sonore inaudible (ultrason) et en mesurant le temps de retour.<br>
+                    <b><u>Servomoteur: </u><br></b> 
+                    Petit moteur capable de se positionner avec précision sur un angle donné. Utilisé pour faire bouger un bras, une trappe ou le volant<br>
+                    <b><u>Ecran OLED: </u><br></b> 
+                    Mini-écran très lisible même sans rétroéclairage, utilisé pour afficher des messages, des distances, des vitesses, etc.<br>
+                    <b><u>Buzzer : </u><br></b> 
+                    Petit haut-parleur qui émet un son pour signaler une alerte ou un événement.<br>
+                    <b><u>Arduino IDE</u><br></b> 
+                    Logiciel gratuit utilisé pour écrire, vérifier et envoyer du code vers une carte Arduino. Il permet de programmer facilement des composants électroniques (LED, moteurs, capteurs...) en utilisant un langage simplifié (C/C++), avec l’aide de bibliothèques intégrées<br>
+                    <b><u>Les Biliothèques (Arduino IDE): </u><br></b>
+                    Une bibliothèque est un ensemble de fichiers contenant du code réutilisable (fonctions, classes) qui facilite la programmation de composants ou capteurs spécifiques.<br>
+                    Exemple :<br>
+                    -La bibliothèque Servo.h permet de contrôler un servomoteur sans devoir écrire tout le code bas-niveau.<br>
+                    -La bibliothèque Adafruit_SSD1306 permet de gérer un écran OLED.<br>
+                    <b><u>Le joystick </u><br></b> 
+                    capteur d’entrée analogique utilisé pour détecter des mouvements dans deux directions : X (gauche/droite) et Y (haut/bas), comme un mini-levier de manette de jeu.<br>
+                    Certains modèles possèdent aussi un bouton-poussoir intégré (pression verticale).<br><br>
+
+                    
+                </p>
+            </div>
+        </div>
+        </section>
+
+
+                 <!-- Section Montage kit ELEC -->
+      <section class="features reveal">
+        <div class="container">
+            <h2><span style="color: rgb(32, 172, 123);">Déroulé de l'activité :</span></h2>
+                    <div style="text-align: left;">
+                        <span style="color: rgb(32, 172, 123);"><u><b>1. installation Arduino IDE et gestion des bibliothèques</u><br></b></span>
+                    <div class="image-wrapper">
+                        <img src="downloadarduinoide.png" 
+                        alt="Illustration éducative" 
+                        width="600"
+                        height="400"
+                        class="gauche">
+                        </div>
+                        <p style="text-align: left;">
+                    Un programme de base est  installé sur le microcontrôleur ESP32 ce qui permet de jouer avec la maquette sans avoir à modifier du code.<br>
+                    Cependant, <b>si on souhaite modifier le code source pour changer les réacitions de la maquette alors il faudra installer l'application Arduino IDE ainsi qu'un cerains nombre de bibliothèques</b><br> 
+                    La procédure compléte se trouve dans ce document : <a href="Guide_Coach_Arduino_Kit_ELEC_PuzzlePaint.docx" download>Télécharger le guide d'installation de Arduino IDE</a>.<br><br>
+              
+
+                    <span style="color: rgb(32, 172, 123);"><b><u>2.Montage du microcontrôleur sur sa carte d'extension</u><br></b></span></p>
+                    <div class="image-wrapper">
+                        <img src="montageesp32.png" 
+                        alt="Illustration éducative" 
+                        width="500"
+                        height="300"
+                        class="gauche">
+                        </div>
+                        <p style="text-align: left;">
+                    Le montage du microcontrôleur sur sa carte d'extension est très simple:<br>
+                    <b>1-Positionner les 2 composants</b> l'un à côté de l'autre<br>
+                    <b>2-Clipser le l'ESP2 sur sa carte d'extension</b> comme indiqué sur l'image du dessus.<br><br>
+
+                    <span style="color: rgb(32, 172, 123);"><b><u>3.Assemblage des fils sur les composants</u><br></b></span></p>
+                    <div class="image-wrapper">
+                        <img src="montageesp32_schema.png" 
+                        alt="Illustration éducative" 
+                        width="500"
+                        height="300"
+                        class="gauche">
+                        </div>
+                        <p style="text-align: left;">
+                    Pour réaliser l'assemblage des fils, il faut suivre le schéma de cablage ci-dessus.
+                </p>
+        </div>
+    </div>
+    </section>
+
+        </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <nav>
+                <ul>
+                    <li><a href="3-APropos.html">À propos</a></li>
+                    <li><a href="produits.html">Produits</a></li>
+                    <li><a href="5-Blog.html">Blog</a></li>
+                    <li><a href="4-Contact.html">Contact</a></li>
+                </ul>
+            </nav>
+            <p>&copy; 2025 Puzzle-Paint. Tous droits réservés.</p>
+        </div>
+    </footer>
+    <div id="info-panel" class="info-panel">
+        <button class="close-panel" onclick="closePanel()">×</button>
+        <div id="info-content"></div>
+      </div>   
+      
+<script>
+    const reveals = document.querySelectorAll('.reveal');
+    window.addEventListener('scroll', () => {
+        for (let i = 0; i < reveals.length; i++) {
+            const windowHeight = window.innerHeight;
+            const revealTop = reveals[i].getBoundingClientRect().top;
+            const revealPoint = 100;
+            if (revealTop < windowHeight - revealPoint) {
+                reveals[i].classList.add('active');
+            }
+        }
+    });
+</script>
+<script src="script.js" defer></script>
+<script src="cart.js" defer></script>
+<script>
+    document.querySelectorAll('.menu-toggle').forEach(toggle => {
+      toggle.addEventListener('click', () => {
+        const submenu = toggle.nextElementSibling;
+        submenu.classList.toggle('hidden');
+        toggle.classList.toggle('rotate-90'); // facultatif si tu veux faire pivoter la flèche
+      });
+    });
+  </script>   
+  <div id="info-panel" class="info-panel">
+    <button class="close-panel" onclick="closePanel()">×</button>
+    <div id="info-content"></div>
+  </div>
+</body>
+</html>

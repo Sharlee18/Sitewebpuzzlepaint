@@ -1979,7 +1979,7 @@ main {
   }
   
   /*ALIGNEMENT A GAUCHE DE CERTAINES IMAGES */
-  .cura1 {
+  .gauche {
     display: block;
     margin: 0 auto 10px 0;
     text-align: left;
@@ -2044,3 +2044,14 @@ main {
     margin: 0 auto 10px 0;
     text-align: left;
   }
+  .downloadarduinoide{
+    display: block;
+    margin: 0 auto 10px 0;
+    text-align: left;
+  }
+  .montageesp32{
+    display: block;
+    margin: 0 auto 10px 0;
+    text-align: left;
+  }
+  
