@@ -34,7 +34,7 @@
     <header class="header" style="background-image: url('famille3.png');">
         <div class="container">
             <h1>Details Montage Kit ELEC</h1>
-            <p>Retrouvez ici tous les infos sur le montage du kit ELEC</p>
+            <p>Retrouvez ici toutes les infos sur le montage du kit ELEC</p>
         </div>
     </header>
 
@@ -149,7 +149,7 @@
 
                     <span style="color: rgb(32, 172, 123);"><b><u>3.Assemblage des fils sur les composants</u><br></b></span></p>
                     <div class="image-wrapper">
-                        <img src="montageesp32.png" 
+                        <img src="cablageesp32.png" 
                         alt="Illustration éducative" 
                         width="500"
                         height="300"
@@ -176,6 +176,13 @@
                     <br><span style="color: rgb(32, 172, 123);"><b><u>1. 2. Détail des composants et branchements</u><br></b></span></p><br>
                   
                     <h4>A. Servomoteurs SG90 (x2)</h4>
+                    <div class="image-wrapper">
+                      <img src="servomoteur.png" 
+                      alt="Illustration éducative" 
+                      width="150"
+                      height="50"
+                      class="montageesp32">
+                      </div>
                     <ul>
                       <li><b>Rouge (VCC)</b> → 5V</li>
                       <li><b>Marron (GND)</b> → GND</li>
@@ -188,7 +195,14 @@
                     </ul>
                     <p><i>Utilisés pour générer des mouvements mécaniques selon les commandes envoyées par l’ESP32.</i></p>
                   
-                    <h4>B. Capteur à ultrasons HC-SR04</h4>
+                    <br><h4>B. Capteur à ultrasons HC-SR04</h4>
+                    <div class="image-wrapper">
+                      <img src="capteuraultrason.png" 
+                      alt="Illustration éducative" 
+                      width="150"
+                      height="50"
+                      class="montageesp32">
+                      </div>
                     <ul>
                       <li>VCC → 5V</li>
                       <li>GND → GND</li>
@@ -197,25 +211,47 @@
                     </ul>
                     <p><i>Mesure la distance en envoyant un signal ultrasonore et en analysant le temps de retour.</i></p>
                   
-                    <h4>C. Écran OLED (I2C)</h4>
+                    <br><h4>C. Écran OLED (I2C)</h4>
+                    <div class="image-wrapper">
+                      <img src="ecranoled.png" 
+                      alt="Illustration éducative" 
+                      width="150"
+                      height="50"
+                      class="montageesp32">
+                      </div>
                     <ul>
                       <li>VCC → 3.3V</li>
                       <li>GND → GND</li>
-                      <li>SCL → GPIO 22</li>
-                      <li>SDA → GPIO 21</li>
+                      <li>SCL → GPIO 21</li>
+                      <li>SDA → GPIO 22</li>
                     </ul>
                     <p><i>Affiche les informations comme la vitesse, la distance ou les messages d’alerte.</i></p>
                   
-                    <h4>D. Joystick analogique</h4>
+                   <br> <h4>D. Joystick analogique</h4>
+                   <div class="image-wrapper">
+                    <img src="joystick.png" 
+                    alt="Illustration éducative" 
+                    width="150"
+                    height="50"
+                    class="montageesp32">
+                    </div>
                     <ul>
                       <li>+5V ou VCC → 3.3V ou 5V</li>
                       <li>GND → GND</li>
                       <li>VRx (axe X) → GPIO 35</li>
                       <li>VRy (axe Y) → GPIO 34</li>
+                      <li>SW (axe centrale) → GPIO 32</li>
                     </ul>
                     <p><i>Permet de contrôler la vitesse ou la direction via les mouvements du joystick.</i></p>
                   
-                    <h4>E. Buzzer</h4>
+                    <br><h4>E. Buzzer</h4>
+                    <div class="image-wrapper">
+                      <img src="buzzer.png" 
+                      alt="Illustration éducative" 
+                      width="150"
+                      height="50"
+                      class="montageesp32">
+                      </div>
                     <ul>
                       <li>+ → GPIO 18</li>
                       <li>- → GND</li>
@@ -229,10 +265,11 @@
                       <tr><td>Servo 2</td><td>GPIO 27</td></tr>
                       <tr><td>Capteur Trig</td><td>GPIO 26</td></tr>
                       <tr><td>Capteur Echo</td><td>GPIO 25</td></tr>
-                      <tr><td>OLED SDA</td><td>GPIO 21</td></tr>
-                      <tr><td>OLED SCL</td><td>GPIO 22</td></tr>
+                      <tr><td>OLED SDA</td><td>GPIO 22</td></tr>
+                      <tr><td>OLED SCL</td><td>GPIO 21</td></tr>
                       <tr><td>Joystick X</td><td>GPIO 35</td></tr>
                       <tr><td>Joystick Y</td><td>GPIO 34</td></tr>
+                      <tr><td>Joystick SW</td><td>GPIO 32</td></tr>
                       <tr><td>Buzzer</td><td>GPIO 18</td></tr>
                     </table>
                   
