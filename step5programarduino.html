@@ -113,25 +113,23 @@
         </section>
 
 
-                 <!-- Section Programmation Arduino-->
+        
+      <!-- Section Introduction Tinkercad -->
       <section class="features reveal">
         <div class="container">
-            <h2><span style="color: rgb(32, 172, 123);">Déroulé de l'activité :</span></h2>
-                    
-                        <p style="text-align: left;">
-                            <div class="container" style="text-align: left;">
-                                Synthèse de l’activité : programmation avancée avec l’ESP32 :<br><br>
-                              
+            <h2><span style="color: rgb(32, 172, 123);">Déroulé de l'activité</span></h2>
+            <div style="text-align: left;">    
+                    <p style="text-align: left;">
+<br>
                                 <span style="color: rgb(32, 172, 123);"><u><b>Objectif 1 : Modifier le comportement initial de la maquette de voiture</u><br></b></span>
-                                <p>
                                   L’objectif est d’adapter le code existant de la maquette afin de changer les réactions
                                   de l’ESP32 en cas de détection d’obstacle par le capteur à ultrasons. Cela inclut
                                   l’action sur le servo, le buzzer et l’écran OLED.
-                                </p><br>
-                              
-                            <b><u>Étapes :</b></u>
+                                <br> </p><br>
+                            
+                                <b><u>Étapes :</b></u></p>
                             <ol>
-                              <b><li>Repérer dans le code la fonction <code>readDistance()</code> qui mesure la distance via le capteur HC-SR04 :</li></b>
+                              <b><li>Repérer dans le code la fonction <code>readDistance()</code> qui mesure la distance via le capteur HC-SR04 :</li></b></p>
                               <pre><code>long readDistance() {
                             digitalWrite(TRIG_PIN, LOW);
                             delayMicroseconds(2);
@@ -191,16 +189,16 @@
                               Ce second exercice consiste à écrire un programme à partir de zéro pour interagir avec plusieurs composants.
                               Exemple : jouer la mélodie <i>“Joyeux anniversaire”</i> avec le buzzer dès qu’une main est détectée devant le capteur à ultrasons.
                               Plus la main est proche, plus la musique est rapide.
-                            </p>
+                            </p><br>
                           
-                            Étapes :
+                           <u><b>Étapes :</u></b> 
                             <ol>
-                              <li>Initialiser les composants : buzzer, capteur HC-SR04</li>
-                              <li>Lire la distance avec <code>readDistance()</code></li>
-                              <li>Si distance &lt; 10 cm : jouer la mélodie sur le buzzer, avec une vitesse qui dépend de la distance</li>
-                            </ol>
+                              <li><b>Initialiser les composants : </b>buzzer, capteur HC-SR04</li>
+                              <li><b>Lire la distance </b>avec <code>readDistance()</code></li>
+                              <li><b>Si distance &lt; 10 cm : </b>jouer la mélodie sur le buzzer, avec une vitesse qui dépend de la distance</li>
+                            </ol><br>
                           
-                            Exemple de code :
+                            <u>Exemple de code :</u>
                             <pre><code>#include &lt;Ultrasonic.h&gt;
                           
                           #define TRIG_PIN 26
@@ -236,7 +234,9 @@
                               Cette activité permet d’aborder des notions fondamentales de la programmation embarquée :
                               logique conditionnelle, mapping de valeurs, interaction capteur-actionneur.
                             </p>
-                          </div>                          
+                          </div>  
+        </div>
+        </section>
 
         </main>
 
