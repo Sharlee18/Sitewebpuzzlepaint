@@ -2055,6 +2055,11 @@ main {
     text-align: left;
   }
   
+    .codearduino1{
+    display: block;
+    margin: 0 auto 10px 0;
+    text-align: left;
+  }
 
   pre {
     max-width: 100%;

@@ -1,0 +1,365 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <title>Guide ESP32 Complet</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    body { font-family: sans-serif; padding: 2rem; line-height: 1.6; background: #f8f9fa; color: #212529; }
+    h1 { font-size: 2em; border-bottom: 2px solid #007bff; padding-bottom: 0.5rem; margin-top: 2rem; }
+    h2 { font-size: 1.5em; border-left: 4px solid #007bff; padding-left: 0.5rem; margin-top: 1.5rem; }
+    p { margin: 1rem 0; }
+    code { display: block; background: #eee; padding: 1rem; margin: 1rem 0; border-left: 4px solid #007bff; white-space: pre-wrap; }
+    footer { margin-top: 4rem; text-align: center; font-size: 0.8em; color: #888; }
+  </style>
+</head>
+<body>
+<h1>Guide ESP32 Complet – HTML Exporté</h1>
+<p>Guide technique du code Arduino ESP32 – Modes 1 à 4</p>
+<p>Ce document contient à la fois une explication technique complète du code Arduino utilisé pour piloter une maquette ESP32, ainsi que le code source complet commenté. Il est conçu pour aider les coachs non développeurs à comprendre, adapter et expliquer chaque composant du projet.</p>
+<h1>Table des matières</h1>
+<p>1. Structure générale du programme</p>
+<p>2. Explication détaillée par blocs de code</p>
+<p>3. Code complet commenté</p>
+<h1>1. Structure générale du programme</h1>
+<p>Le programme Arduino est structuré comme suit :
+- Inclusion des bibliothèques
+- Définition des broches et variables globales
+- Initialisation dans setup()
+- Boucle principale loop() qui gère les entrées/sorties et exécute un des 4 modes
+- Fonctions pour chaque mode (handleMode1 à handleMode4)
+- Fonctions annexes : joystick, distance, buzzer, OLED, etc.</p>
+<h1>2. Explication détaillée par blocs</h1>
+<h2>Bibliothèques et identifiants Blynk</h2>
+<p>On commence par déclarer les bibliothèques essentielles. Blynk permet la communication avec un smartphone. Les bibliothèques Adafruit permettent de piloter l'écran OLED. ESP32Servo permet le contrôle fluide des moteurs.</p>
+<h2>Définition des broches (GPIO)</h2>
+<p>On assigne chaque composant à une broche GPIO de l’ESP32 (servo1, servo2, capteur à ultrasons, buzzer, joystick, etc.).</p>
+<h2>Variables globales</h2>
+<p>Elles contiennent l’état de l’ensemble du système : vitesse, distance mesurée, mode actif, rapport engagé, message affiché, etc.</p>
+<h2>Fonction setup()</h2>
+<p>C’est la fonction exécutée une seule fois au démarrage : elle configure les broches, initialise les composants, démarre l’écran et le WiFi.</p>
+<h2>Fonction loop()</h2>
+<p>C’est la boucle principale. Elle :
+- met à jour la distance mesurée,
+- gère les sons,
+- vérifie s’il y a un obstacle à freiner,
+- appelle la fonction du mode actif (1 à 4),
+- met à jour l’écran OLED.
+Elle s’exécute indéfiniment en arrière-plan.</p>
+<h2>Fonctions des modes (handleModeX)</h2>
+<p>- Mode 1 : Manuel via joystick uniquement.
+- Mode 2 : Manuel contrôlé via smartphone Blynk.
+- Mode 3 : Automatique, changement de rapport en fonction de la vitesse.
+- Mode 4 : Autonome, accélération et changement de vitesse entièrement pilotés par le programme.</p>
+<h2>Gestion du joystick</h2>
+<p>L’axe Y permet de monter/descendre la vitesse.
+L’appui court permet de changer de rapport (PM ↔ 1re ↔ 2e).
+L’appui long (>3 sec) change de mode (1 → 2 → 3 → 4 → 1).</p>
+<h2>Gestion du capteur HC-SR04</h2>
+<p>Le capteur mesure la distance à l’obstacle. Si <10 cm, il arrête le système et redémarre l’ESP32. Entre 10 et 25 cm, un bip sonore progressif est déclenché.</p>
+<h2>Buzzer</h2>
+<p>Le buzzer fonctionne avec PWM. Le son devient plus rapide lorsque l’obstacle approche. Sous 10 cm, arrêt total.</p>
+<h2>OLED</h2>
+<p>L’écran OLED affiche :
+- mode actif,
+- vitesse en km/h,
+- distance à l’obstacle,
+- message temporaire,
+- barre de progression de la vitesse.</p>
+<h1>3. Code complet commenté</h1>
+<p>Le code suivant correspond à la version intégrale incluant les 4 modes et tous les composants du projet.</p>
+<p>Le code est tronqué ici pour l'exemple. Dans le document final, il sera inséré en intégralité sous forme de blocs lisibles.</p>
+<h2>Code complet commenté</h2>
+<code>// === Blynk et bibliothèques ===</code>
+<code>#define BLYNK_TEMPLATE_ID "TMPL5sDzAbqzR"  // Identifiant du projet Blynk</code>
+<code>#define BLYNK_TEMPLATE_NAME "ESP32 PZP"</code>
+<code>#define BLYNK_AUTH_TOKEN "xxx"  // Clé d’authentification pour Blynk</code>
+<code>#include <WiFi.h>  // WiFi pour ESP32</code>
+<code>#include <Wire.h>  // I2C pour OLED</code>
+<code>#include <Adafruit_GFX.h>  // Graphisme OLED</code>
+<code>#include <Adafruit_SSD1306.h>  // Écran OLED</code>
+<code>#include <ESP32Servo.h>  // Contrôle des servos</code>
+<code>#include <BlynkSimpleEsp32.h>  // Liaison avec Blynk</code>
+<code>// === Connexion WiFi ===</code>
+<code>char ssid[] = "Votre_SSID";</code>
+<code>char pass[] = "Votre_MotDePasse";</code>
+<code>// === Broches utilisées ===</code>
+<code>#define SERVO1_PIN 14  // Servo moteur principal</code>
+<code>#define SERVO2_PIN 27  // Servo pour changement de rapport</code>
+<code>#define TRIG_PIN 26    // Ultrason - déclencheur</code>
+<code>#define ECHO_PIN 25    // Ultrason - écho</code>
+<code>#define BUZZER_PIN 18  // Buzzer</code>
+<code>#define JOY_X 35       // Axe X joystick (non utilisé ici)</code>
+<code>#define JOY_Y 34       // Axe Y joystick</code>
+<code>#define JOY_BUTTON 32  // Bouton central du joystick</code>
+<code>#define OLED_RESET -1  // Reset écran OLED (non connecté)</code>
+<code>#define BUZZER_CHANNEL 4  // Canal PWM pour le buzzer</code>
+<code>// === Objets ===</code>
+<code>Adafruit_SSD1306 display(128, 64, &Wire, OLED_RESET);</code>
+<code>Servo servo1, servo2;</code>
+<code>// === Variables générales ===</code>
+<code>int mode = 1;  // Mode actif : 1 à 4</code>
+<code>int rapport = 0;  // Rapport actuel : 0 = PM, 1 = 1re, 2 = 2e</code>
+<code>int vitesse = 0;  // Valeur de consigne de vitesse (servo)</code>
+<code>int kmh = 0;  // Vitesse simulée en km/h</code>
+<code>long distance = 300;  // Distance obstacle (par défaut très loin)</code>
+<code>long lastSentDistance = -1;</code>
+<code>bool buzzerState = false;</code>
+<code>bool btnPressed = false;</code>
+<code>unsigned long btnStart = 0;</code>
+<code>unsigned long lastJoyMove = 0;</code>
+<code>unsigned long lastBeep = 0;</code>
+<code>unsigned long messageTimer = 0;</code>
+<code>String message = "";</code>
+<code>unsigned long debut = 0;</code>
+<code>bool capteurPret = false;</code>
+<code>// === Variables Blynk ===</code>
+<code>int vitesseBlynk = 90;</code>
+<code>int positionBlynk = 0;</code>
+<code>// === Fonction setup() ===</code>
+<code>void setup() {</code>
+<code>Serial.begin(115200);</code>
+<code>Blynk.begin(BLYNK_AUTH_TOKEN, ssid, pass);</code>
+<code>pinMode(TRIG_PIN, OUTPUT);</code>
+<code>pinMode(ECHO_PIN, INPUT);</code>
+<code>pinMode(BUZZER_PIN, OUTPUT);</code>
+<code>pinMode(JOY_X, INPUT);</code>
+<code>pinMode(JOY_Y, INPUT);</code>
+<code>pinMode(JOY_BUTTON, INPUT_PULLUP);</code>
+<code>ledcSetup(BUZZER_CHANNEL, 2000, 8);</code>
+<code>ledcAttachPin(BUZZER_PIN, BUZZER_CHANNEL);</code>
+<code>digitalWrite(BUZZER_PIN, LOW);</code>
+<code>servo1.attach(SERVO1_PIN);</code>
+<code>servo2.attach(SERVO2_PIN);</code>
+<code>Wire.begin();</code>
+<code>if (!display.begin(SSD1306_SWITCHCAPVCC, 0x3C)) {</code>
+<code>Serial.println("Erreur OLED");</code>
+<code>while (1);</code>
+<code>}</code>
+<code>afficherOLED("Bienvenue Charles\nLe moteur demarre...\nMode 1 - Manuel\nBlynk : Non");</code>
+<code>delay(3000);</code>
+<code>display.clearDisplay();</code>
+<code>debut = millis();</code>
+<code>}</code>
+<code>// === Fonction loop() ===</code>
+<code>void loop() {</code>
+<code>Blynk.run();</code>
+<code>checkJoystickButton();</code>
+<code>if (!capteurPret && millis() - debut < 2000) return;</code>
+<code>capteurPret = true;</code>
+<code>distance = lireDistance();</code>
+<code>if (distance <= 0 || distance > 300) distance = 300;</code>
+<code>if (distance != lastSentDistance) {</code>
+<code>Blynk.virtualWrite(V4, distance);</code>
+<code>lastSentDistance = distance;</code>
+<code>}</code>
+<code>handleBuzzer(distance);</code>
+<code>if (distance < 10) stopSystem();</code>
+<code>switch (mode) {</code>
+<code>case 1: handleMode1(); break;</code>
+<code>case 2: handleMode2(); break;</code>
+<code>case 3: handleMode3(); break;</code>
+<code>case 4: handleMode4(); break;</code>
+<code>}</code>
+<code>updateOLED();</code>
+<code>}</code>
+<code>// === Mode 1 : Manuel sans Blynk ===</code>
+<code>void handleMode1() {</code>
+<code>int y = analogRead(JOY_Y);</code>
+<code>if (y < 1000 && millis() - lastJoyMove > 150) {</code>
+<code>vitesse = min(180, vitesse + 5);</code>
+<code>lastJoyMove = millis();</code>
+<code>} else if (y > 3800 && millis() - lastJoyMove > 150) {</code>
+<code>vitesse = max(0, vitesse - 5);</code>
+<code>lastJoyMove = millis();</code>
+<code>}</code>
+<code>if (rapport == 0) kmh = 0;</code>
+<code>else if (rapport == 1) kmh = map(vitesse, 0, 180, 0, 20);</code>
+<code>else if (rapport == 2) kmh = map(vitesse, 0, 180, 20, 40);</code>
+<code>servo1.write(map(vitesse, 0, 180, 90, 180));</code>
+<code>switch (rapport) {</code>
+<code>case 0: servo2.write(90); break;</code>
+<code>case 1: servo2.write(45); break;</code>
+<code>case 2: servo2.write(135); break;</code>
+<code>}</code>
+<code>if (rapport == 1 && kmh >= 18 && kmh <= 20) {</code>
+<code>message = "Changer de rapport";</code>
+<code>messageTimer = millis();</code>
+<code>}</code>
+<code>if (rapport == 2 && kmh >= 20 && kmh <= 23) {</code>
+<code>message = "Retrograder la vitesse";</code>
+<code>messageTimer = millis();</code>
+<code>}</code>
+<code>}</code>
+<code>// === Mode 2 : Contrôle Blynk ===</code>
+<code>void handleMode2() {</code>
+<code>int angle = map(vitesseBlynk, 0, 180, 90, 180);</code>
+<code>if (distance >= 10) servo1.write(angle);</code>
+<code>else servo1.write(90);</code>
+<code>if (positionBlynk == -45) rapport = 2;</code>
+<code>else if (positionBlynk == 0) rapport = 0;</code>
+<code>else if (positionBlynk == 45) rapport = 1;</code>
+<code>switch (rapport) {</code>
+<code>case 0: servo2.write(90); break;</code>
+<code>case 1: servo2.write(45); break;</code>
+<code>case 2: servo2.write(135); break;</code>
+<code>}</code>
+<code>}</code>
+<code>// === Mode 3 : Automatique (joystick + rapport auto) ===</code>
+<code>void handleMode3() {</code>
+<code>int y = analogRead(JOY_Y);</code>
+<code>if (y < 1000 && millis() - lastJoyMove > 150) {</code>
+<code>vitesse = min(180, vitesse + 5);</code>
+<code>lastJoyMove = millis();</code>
+<code>} else if (y > 3800 && millis() - lastJoyMove > 150) {</code>
+<code>vitesse = max(0, vitesse - 5);</code>
+<code>lastJoyMove = millis();</code>
+<code>}</code>
+<code>if (rapport == 0) kmh = 0;</code>
+<code>else if (rapport == 1) kmh = map(vitesse, 0, 180, 0, 20);</code>
+<code>else if (rapport == 2) kmh = map(vitesse, 0, 180, 20, 40);</code>
+<code>servo1.write(map(vitesse, 0, 180, 90, 180));</code>
+<code>if (rapport == 0 && vitesse > 10) {</code>
+<code>rapport = 1;</code>
+<code>servo2.write(45);</code>
+<code>message = "1ere vitesse auto";</code>
+<code>messageTimer = millis();</code>
+<code>} else if (rapport == 1 && kmh >= 18) {</code>
+<code>rapport = 2;</code>
+<code>vitesse = map(25, 20, 40, 0, 180);</code>
+<code>servo2.write(135);</code>
+<code>message = "Passage auto en 2e";</code>
+<code>messageTimer = millis();</code>
+<code>} else if (rapport == 2 && kmh <= 23) {</code>
+<code>rapport = 1;</code>
+<code>vitesse = map(17, 0, 20, 0, 180);</code>
+<code>servo2.write(45);</code>
+<code>message = "Retour auto en 1ere";</code>
+<code>messageTimer = millis();</code>
+<code>}</code>
+<code>if (rapport == 0) servo2.write(90);</code>
+<code>}</code>
+<code>// === Mode 4 : Autonome (tout automatique) ===</code>
+<code>void handleMode4() {</code>
+<code>static int autoSpeed = 0;</code>
+<code>static int direction = 1;</code>
+<code>if (millis() - lastJoyMove > 250) {</code>
+<code>autoSpeed += direction * 5;</code>
+<code>if (autoSpeed >= 180) { autoSpeed = 180; direction = -1; }</code>
+<code>else if (autoSpeed <= 0) { autoSpeed = 0; direction = 1; }</code>
+<code>lastJoyMove = millis();</code>
+<code>}</code>
+<code>servo1.write(map(autoSpeed, 0, 180, 90, 180));</code>
+<code>kmh = (autoSpeed < 90) ? map(autoSpeed, 0, 90, 0, 20) : map(autoSpeed, 90, 180, 20, 40);</code>
+<code>if (autoSpeed < 90) { rapport = 1; servo2.write(45); }</code>
+<code>else { rapport = 2; servo2.write(135); }</code>
+<code>}</code>
+<code>// === Fonction afficherOLED() : Affiche un texte sur l'écran OLED ===</code>
+<code>void afficherOLED(String texte) {</code>
+<code>display.clearDisplay();</code>
+<code>display.setCursor(0, 0);</code>
+<code>display.setTextSize(1);</code>
+<code>display.setTextColor(WHITE);</code>
+<code>display.println(texte);</code>
+<code>display.display();</code>
+<code>}</code>
+<code>// === Fonction updateOLED() : Affiche infos dynamiques + jauge ===</code>
+<code>void updateOLED() {</code>
+<code>display.clearDisplay();</code>
+<code>display.setCursor(0, 0);</code>
+<code>display.setTextSize(1);</code>
+<code>display.setTextColor(WHITE);</code>
+<code>display.print("Mode ");</code>
+<code>switch(mode) {</code>
+<code>case 1: display.println("1 - Manuel"); break;</code>
+<code>case 2: display.println("2 - Blynk"); break;</code>
+<code>case 3: display.println("3 - Auto"); break;</code>
+<code>case 4: display.println("4 - Autonome"); break;</code>
+<code>}</code>
+<code>display.print("Vitesse: "); display.print(kmh); display.println(" km/h");</code>
+<code>display.print("Rapport: ");</code>
+<code>if (rapport == 0) display.println("PM");</code>
+<code>else if (rapport == 1) display.println("1ere");</code>
+<code>else display.println("2e");</code>
+<code>display.print("Obstacle: "); display.print(distance); display.println(" cm");</code>
+<code>if (millis() - messageTimer < 3000 && message != "") display.println(message);</code>
+<code>int barreMax = 100, barreH = 8, barreX = 14, barreY = 50;</code>
+<code>int valBarre = map(kmh, 0, 40, 0, barreMax);</code>
+<code>display.drawRect(barreX, barreY, barreMax, barreH, WHITE);</code>
+<code>display.fillRect(barreX, barreY, valBarre, barreH, WHITE);</code>
+<code>display.display();</code>
+<code>}</code>
+<code>// === Fonction checkJoystickButton() : Gère appuis courts et longs ===</code>
+<code>void checkJoystickButton() {</code>
+<code>bool pressed = digitalRead(JOY_BUTTON) == LOW;</code>
+<code>if (pressed && !btnPressed) {</code>
+<code>btnStart = millis();</code>
+<code>btnPressed = true;</code>
+<code>}</code>
+<code>if (!pressed && btnPressed) {</code>
+<code>btnPressed = false;</code>
+<code>unsigned long duration = millis() - btnStart;</code>
+<code>if (duration >= 3000) {</code>
+<code>mode++; if (mode > 4) mode = 1;</code>
+<code>message = "Mode " + String(mode) + " active";</code>
+<code>} else if (duration >= 50 && mode == 1) {</code>
+<code>if (rapport == 0) {</code>
+<code>rapport = 1; message = "1ere vitesse";</code>
+<code>} else if (rapport == 1) {</code>
+<code>if (kmh < 18) message = "Vitesse trop faible";</code>
+<code>else { rapport = 2; vitesse = map(25, 20, 40, 0, 180); message = "Passage en 2e"; }</code>
+<code>} else if (rapport == 2) {</code>
+<code>if (kmh > 22) message = "Vitesse trop elevee";</code>
+<code>else { rapport = 1; vitesse = map(17, 0, 20, 0, 180); message = "Retour en 1ere"; }</code>
+<code>}</code>
+<code>}</code>
+<code>messageTimer = millis();</code>
+<code>}</code>
+<code>}</code>
+<code>// === Fonction lireDistance() : Distance avec capteur HC-SR04 ===</code>
+<code>long lireDistance() {</code>
+<code>digitalWrite(TRIG_PIN, LOW); delayMicroseconds(2);</code>
+<code>digitalWrite(TRIG_PIN, HIGH); delayMicroseconds(10);</code>
+<code>digitalWrite(TRIG_PIN, LOW);</code>
+<code>long duration = pulseIn(ECHO_PIN, HIGH, 30000);</code>
+<code>return duration * 0.034 / 2;</code>
+<code>}</code>
+<code>// === Fonction handleBuzzer() : Bips selon distance ===</code>
+<code>void handleBuzzer(long dist) {</code>
+<code>if (dist <= 25 && dist > 10) {</code>
+<code>int interval = map(dist, 25, 10, 600, 100);</code>
+<code>if (millis() - lastBeep > interval) {</code>
+<code>buzzerState = !buzzerState;</code>
+<code>if (buzzerState) {</code>
+<code>ledcWriteTone(BUZZER_CHANNEL, 500);</code>
+<code>ledcWrite(BUZZER_CHANNEL, 30);</code>
+<code>} else {</code>
+<code>ledcWriteTone(BUZZER_CHANNEL, 0);</code>
+<code>ledcWrite(BUZZER_CHANNEL, 0);</code>
+<code>}</code>
+<code>lastBeep = millis();</code>
+<code>}</code>
+<code>} else {</code>
+<code>ledcWriteTone(BUZZER_CHANNEL, 0);</code>
+<code>ledcWrite(BUZZER_CHANNEL, 0);</code>
+<code>buzzerState = false;</code>
+<code>}</code>
+<code>}</code>
+<code>// === Fonction stopSystem() : Stop + reboot si obstacle < 10cm ===</code>
+<code>void stopSystem() {</code>
+<code>servo1.write(90);</code>
+<code>servo2.write(90);</code>
+<code>ledcWriteTone(BUZZER_CHANNEL, 400);</code>
+<code>ledcWrite(BUZZER_CHANNEL, 40);</code>
+<code>afficherOLED("ARRET : OBSTACLE <10cm");</code>
+<code>delay(1000);</code>
+<code>ledcWriteTone(BUZZER_CHANNEL, 0);</code>
+<code>ledcWrite(BUZZER_CHANNEL, 0);</code>
+<code>ESP.restart();</code>
+<code>}</code>
+<code>// === Réception des valeurs depuis Blynk ===</code>
+<code>BLYNK_WRITE(V1) { vitesseBlynk = param.asInt(); }</code>
+<code>BLYNK_WRITE(V2) { positionBlynk = param.asInt(); }</code>
+<footer>&copy; 2025 - Guide pédagogique ESP32</footer>
+</body>
+</html>

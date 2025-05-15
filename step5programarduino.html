@@ -73,6 +73,9 @@
                 </div>
             <div style="text-align: left;">    
                     <p style="text-align: left;">
+                      <span style="color: rgb(32, 172, 123);"><u><b>Prérequis :</b></u></span> Pour cette activité, il est <b>important de bien comprendre le rôle des fonctions utilisées dans le code Arduino</b> : <br>
+                - Les <b>fonctions qui contrôlent les composants électroniques à distance via l'application "BLYNK IOT"</b> --  Doc a lire accessible <a href="Guide_Coach_Blynk_ESP32.docx.pdf" download>ici</a>.<br>
+                - Les <b>fonctions qui contrôlent les composants électroniques depuis le boitier ELEC</b> -- Doc à lire accessible <a href="Guideepse32complet.html" ici>ici</a>.<br>
                 <span style="color: rgb(32, 172, 123);"><br><u><b>Objectif :</b></u></span>L’objectif est d’adapter le code existant de la maquette afin de changer les réactions
                 de l’ESP32 en cas de détection d’obstacle par le capteur à ultrasons. Cela inclut
                 l’action sur le servo, le buzzer et l’écran OLED.
@@ -82,7 +85,6 @@
                 -Comprendre le fonctionnement d'Arduino IDE<br>
                 -S'initier à la programmation en C++ assisté par l'Intelligence Artificielle<br>               
                 <span style="color: rgb(32, 172, 123);"><u><b>Matériel :</b></u></span> Un PC , le kit ELEC (assemblé) et le Kit MECA (maquette de voiture) assemblé <br>
-                <span style="color: rgb(32, 172, 123);"><u><b>Prérequis :</b></u></span> Avoir participé à l’atelier de montage du kit ELEC et avoir lu de <b>"Guide Blynk"</b> accessisble ici <a href="Guide_Coach_Blynk_ESP32.docx.pdf" download>Télécharger le Guide Blynk</a>.
                 <br><br>
         
 
@@ -122,118 +124,127 @@
                     <p style="text-align: left;">
 <br>
                                 <span style="color: rgb(32, 172, 123);"><u><b>Objectif 1 : Modifier le comportement initial de la maquette de voiture</u><br></b></span>
-                                  L’objectif est d’adapter le code existant de la maquette afin de changer les réactions
-                                  de l’ESP32 en cas de détection d’obstacle par le capteur à ultrasons. Cela inclut
-                                  l’action sur le servo, le buzzer et l’écran OLED.
-                                <br> </p><br>
+                                  L’objectif est d’adapter le code existant de la maquette afin de changer les réactions. Pour cela nous allons voir comment modifier certains paramètres du code en lien avec certains comoposants (écran, le buzzer ou le capteur à ultrason).
+                                  <br> </p><br>
                             
-                                <b><u>Étapes :</b></u></p>
+                                <b><u>Étapes 1: Changement du <span style="color: rgb(32, 172, 123);">message de bienvenue au démarrage</span></b></u></p>
+                                 <div class="image-wrapper">
+                <img src="codearduino1.png" 
+                alt="Illustration éducative" 
+                width="600"
+                height="400"
+                class="codearduino1">
+                </div>
                             <ol>
-                              <b><li>Repérer dans le code la fonction <code>readDistance()</code> qui mesure la distance via le capteur HC-SR04 :</li></b></p>
-                              <pre><code>long readDistance() {
-                            digitalWrite(TRIG_PIN, LOW);
-                            delayMicroseconds(2);
-                            digitalWrite(TRIG_PIN, HIGH);
-                            delayMicroseconds(10);
-                            digitalWrite(TRIG_PIN, LOW);
-                            long duration = pulseIn(ECHO_PIN, HIGH);
-                            return duration * 0.034 / 2;
-                          }</code></pre>
+                              <b><li>Repérer dans le code la fonction <code>AfficherOLED</code> qui indique le message au démarrage "Bienvenue...:</li></b></p>
+                              <pre><code> afficherOLED("<span style="color: rgb(32, 172, 123);"><b>Bienvenue Charles</b></span>\nLe moteur demarre...\nMode 1 - Manuel\nBlynk : Non");
+  delay(3000);
+  display.clearDisplay();
+                          </code></pre>
                           
-                          <b><li>Identifier la condition de réaction dans le <code>loop()</code> :</li></b>
-                              <pre><code>if (distance &lt; 10) {
-                            servo1.write(90);
-                            tone(BUZZER_PIN, 1000);
-                            display.clearDisplay();
-                            display.setCursor(0,0);
-                            display.println("FREINAGE AUTO");
-                            display.display();
-                          }</code></pre>
+                          <b><li>Modifier le message en mettant <b>"Welcome Votre prénom"</b> :</li></b>
+                        <pre><code> afficherOLED("<span style="color: rgb(32, 172, 123);"><b>Welcome Edouard</b></span>\nLe moteur demarre...\nMode 1 - Manuel\nBlynk : Non");
+  delay(3000);
+  display.clearDisplay();
+                          </code></pre>
+                            </ol>
                           
-                          <b><li>Remplacer ce bloc par une réaction plus complète :</li></b>
-                              <pre><code>if (distance &lt; 10) {
-                            servo1.write(0); // Évitement
-                            delay(1000);
-                            servo1.write(90);
+                            <hr><br>
+
+                              <b><u>Étapes 2: Modification des <span style="color: rgb(32, 172, 123);">intervalles de changement de rapport de vitesses</span></b></u></p>
+
+               <div class="image-wrapper">
+                <img src="codearduino2.png" 
+                alt="Illustration éducative" 
+                width="600"
+                height="400"
+                class="codearduino1">
+                </div>
+                            <ol>
+                              <b><li>Repérer dans le code la condition <code> if (rapport == 1 && kmh >= 18 && kmh <= 20)</code> qui indique a quel intervalle de vitesse il faut changer (monter/descendre) de rapport de vitesses</li></b></p>
+                              <pre><code>   if (mode == 1) {
+    <span style="color: rgb(32, 172, 123);"><b>if (rapport == 1 && kmh >= 18 && kmh <= 20)</b></span> display.println("Changer de rapport");
+    <span style="color: rgb(32, 172, 123);"><b>if (rapport == 2 && kmh >= 20 && kmh <= 22)</b> </span>display.println("Retrograder la vitesse");
+  }
+                          </code></pre>
+                         <b><li>Modifier les intervalles <b>18-20 et 20-22 pour avoir 16-20 et 20-24 </b> :</li></b> 
+                        <pre><code>   if (mode == 1) {
+    <span style="color: rgb(32, 172, 123);"><b>if (rapport == 1 && kmh >= 16 && kmh <= 20)</b></span> display.println("Changer de rapport");
+    <span style="color: rgb(32, 172, 123);"><b>if (rapport == 2 && kmh >= 20 && kmh <= 24)</b> </span>display.println("Retrograder la vitesse");
+  }
+                          </code></pre>
+                            </ol>
                           
-                            int frequency = map(distance, 2, 10, 3000, 500);
-                            tone(BUZZER_PIN, frequency);
-                          
-                            display.clearDisplay();
-                            display.setCursor(0, 0);
-                            display.println("Obstacle detecte !");
-                            display.setCursor(0, 10);
-                            display.print("Distance : ");
-                            display.print(distance);
-                            display.println(" cm");
-                            display.setCursor(0, 20);
-                            display.println("Evitement en cours");
-                            display.display();
-                          } else {
-                            noTone(BUZZER_PIN);
-                            display.clearDisplay();
-                            display.setCursor(0, 0);
-                            display.println("OK");
-                            display.setCursor(0, 10);
-                            display.print("Distance : ");
-                            display.print(distance);
-                            display.println(" cm");
-                            display.display();
-                          }</code></pre>
+                            <hr><br>
+
+                              <b><u>Étapes 3: Changement de <span style="color: rgb(32, 172, 123);">l'intervalle d'alerte d'obstacle</span></b></u></p>
+
+               <div class="image-wrapper">
+                <img src="codearduino3.png" 
+                alt="Illustration éducative" 
+                width="400"
+                height="200"
+                class="codearduino1">
+                </div>
+                            <ol>
+                              <b><li>Repérer dans le code la condition <code>void handleBuzzer(long dist)</code> qui indique a quel intervalle (distance min/max) le buzzer bip.</li></b></p>
+                              <pre><code>   // === Buzzer progressif
+void handleBuzzer(long dist) {
+ <span style="color: rgb(32, 172, 123);"><b> if (dist <= 25 && dist > 10)</span> </b>{
+int interval = map(dist, 25, 10, 600, 100);
+                          </code></pre>
+                         <b><li>Modifier les intervalles <b>18-20 et 20-22 pour avoir 16-20 et 20-24 </b> :</li></b> 
+                        <pre><code>   // === Buzzer progressif
+void handleBuzzer(long dist) {
+ <span style="color: rgb(32, 172, 123);"><b> if (dist <= 20 && dist > 5)</span> </b>{
+int interval = map(dist, 25, 10, 600, 100);
+                          </code></pre>
                             </ol>
                           
                             <hr>
                           
-                            <br><span style="color: rgb(32, 172, 123);"><u><b> Objectif 2 : Créer un nouveau programme simple avec 2 ou 3 composants</u><br></b></span><br>
+                            <br><span style="color: rgb(32, 172, 123);"><u><b> Objectif 2 : Changer les widgets du Dashboard Blynk pour les contrôles à distance</u><br></b></span><br>
                             <p>
-                              Ce second exercice consiste à écrire un programme à partir de zéro pour interagir avec plusieurs composants.
-                              Exemple : jouer la mélodie <i>“Joyeux anniversaire”</i> avec le buzzer dès qu’une main est détectée devant le capteur à ultrasons.
-                              Plus la main est proche, plus la musique est rapide.
+                              Ce second exercice consiste à modifier les widgets (slider, gauge, boutons...) affichés dans le tableau de bor Blynk lors du contrôle à distance des composants. 
                             </p><br>
                           
-                           <u><b>Étapes :</u></b> 
-                            <ol>
-                              <li><b>Initialiser les composants : </b>buzzer, capteur HC-SR04</li>
-                              <li><b>Lire la distance </b>avec <code>readDistance()</code></li>
-                              <li><b>Si distance &lt; 10 cm : </b>jouer la mélodie sur le buzzer, avec une vitesse qui dépend de la distance</li>
-                            </ol><br>
-                          
-                            <u>Exemple de code :</u>
-                            <pre><code>#include &lt;Ultrasonic.h&gt;
-                          
-                          #define TRIG_PIN 26
-                          #define ECHO_PIN 25
-                          #define BUZZER_PIN 18
-                          
-                          Ultrasonic ultrasonic(TRIG_PIN, ECHO_PIN);
-                          int melody[] = {262, 294, 330, 349, 392, 440, 494, 523};
-                          int duration = 500;
-                          
-                          void setup() {
-                            pinMode(BUZZER_PIN, OUTPUT);
-                            Serial.begin(9600);
-                          }
-                          
-                          void loop() {
-                            long distance = ultrasonic.read();
-                            Serial.print("Distance: ");
-                            Serial.println(distance);
-                          
-                            if (distance &lt; 10) {
-                              for (int i = 0; i &lt; 8; i++) {
-                                tone(BUZZER_PIN, melody[i], duration);
-                                delay(duration);
-                                duration = map(distance, 0, 10, 100, 500);
-                              }
-                            } else {
-                              noTone(BUZZER_PIN);
-                            }
-                          }</code></pre>
-                          
-                            <p>
-                              Cette activité permet d’aborder des notions fondamentales de la programmation embarquée :
-                              logique conditionnelle, mapping de valeurs, interaction capteur-actionneur.
+                           <u><b>Étapes 1: Ouverture du Dashboard Blynk et suppression widget</u></b> 
+                            
+                                   <div class="image-wrapper">
+                <img src="suppwidget.png" 
+                alt="Illustration éducative" 
+                width="600"
+                height="400"
+                class="codearduino1">
+                </div>
+                <p>
+                            1-Lancer l'app "Blynk" sur votre téléphone <br>
+                            2-Ouvrir votre Dashboard<br>
+                            3-Sélectionner la commander de Modification <br>
+                            4-Supprimer le widget 'Slider' (en le maintenant puis glisser/deposer dans poubelle)
+                            5-Le widget est alors supprimé du Dashboard Blynk
+
                             </p>
+
+                               <br> <u><b>Étapes 2: Ajout d'un nouveau widget (Joystick)</u></b> 
+                            
+                                   <div class="image-wrapper">
+                <img src="ajoutwidget.png" 
+                alt="Illustration éducative" 
+               width="600"
+                height="400"
+                class="codearduino1">
+                </div>
+                <p>
+                            1-Ouvrir la bibliothèque de widgets<br>
+                            2-Sélectionner le widget "Joystick"<br>
+                            3-Le joystick sera rajouté au Dashboard (mais pas encore relier à un "Flux de données") <br>
+                            4-Editer le joystick  et dans "Y datastream" , sélectionner le flux de donnée qui contrôle la vitesse du moteur (Exemple: V1)<br>
+                            5-Dans l'onglet "Design", définir les propriétes de votre joystick (Couleur, titre...)<br>
+                            6-Vous pouvez enfin tester le moteur en mode 2 (avec BLynk) et contrôler la vitesse avec le joystick Y (Haut/Bas) <br>
+
+                            </p>
+
                           </div>  
         </div>
         </section>
