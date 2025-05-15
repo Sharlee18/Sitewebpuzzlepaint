@@ -73,9 +73,9 @@
                 </div>
             <div style="text-align: left;">    
                     <p style="text-align: left;">
-                      <span style="color: rgb(32, 172, 123);"><u><b>Prérequis :</b></u></span> Pour cette activité, il est <b>important de bien comprendre le rôle des fonctions utilisées dans le code Arduino</b> : <br>
-                - Les <b>fonctions qui contrôlent les composants électroniques à distance via l'application "BLYNK IOT"</b> --  Doc a lire accessible <a href="Guide_Coach_Blynk_ESP32.docx.pdf" download>ici</a>.<br>
-                - Les <b>fonctions qui contrôlent les composants électroniques depuis le boitier ELEC</b> -- Doc à lire accessible <a href="Guideepse32complet.html" ici>ici</a>.<br>
+                     <br> <span style="color: rgb(32, 172, 123);"><u><b>Prérequis :</b></u></span> Pour cette activité, il est  <span style="color: rgb(32, 172, 123);">important de bien comprendre le rôle des fonctions utilisées dans le code Arduino</span> : <br>
+                - Les fonctions <span style="color: rgb(32, 172, 123);"> qui contrôlent les composants électroniques à distance via l'application "BLYNK IOT"</span> --  Doc a lire accessible <a href="Guide_Coach_Blynk_ESP32.docx.pdf" download>ici</a>.<br>
+                - Les fonctions <span style="color: rgb(32, 172, 123);"> qui contrôlent les composants électroniques depuis le boitier ELEC</span> -- Doc à lire accessible <a href="Guideepse32complet.html" ici>ici</a>.<br>
                 <span style="color: rgb(32, 172, 123);"><br><u><b>Objectif :</b></u></span>L’objectif est d’adapter le code existant de la maquette afin de changer les réactions
                 de l’ESP32 en cas de détection d’obstacle par le capteur à ultrasons. Cela inclut
                 l’action sur le servo, le buzzer et l’écran OLED.
@@ -205,7 +205,7 @@ int interval = map(dist, 25, 10, 600, 100);
                           
                             <br><span style="color: rgb(32, 172, 123);"><u><b> Objectif 2 : Changer les widgets du Dashboard Blynk pour les contrôles à distance</u><br></b></span><br>
                             <p>
-                              Ce second exercice consiste à modifier les widgets (slider, gauge, boutons...) affichés dans le tableau de bor Blynk lors du contrôle à distance des composants. 
+                              Ce second exercice consiste à modifier les widgets (slider, gauge, boutons...) affichés dans le tableau de bord Blynk lors du contrôle à distance des composants. 
                             </p><br>
                           
                            <u><b>Étapes 1: Ouverture du Dashboard Blynk et suppression widget</u></b> 
@@ -221,9 +221,8 @@ int interval = map(dist, 25, 10, 600, 100);
                             1-Lancer l'app "Blynk" sur votre téléphone <br>
                             2-Ouvrir votre Dashboard<br>
                             3-Sélectionner la commander de Modification <br>
-                            4-Supprimer le widget 'Slider' (en le maintenant puis glisser/deposer dans poubelle)
-                            5-Le widget est alors supprimé du Dashboard Blynk
-
+                            4-Supprimer le widget 'Slider' (en le maintenant puis glisser/deposer dans poubelle)<br>
+                            5-Le widget est alors supprimé du Dashboard Blynk<br>
                             </p>
 
                                <br> <u><b>Étapes 2: Ajout d'un nouveau widget (Joystick)</u></b> 
@@ -241,7 +240,7 @@ int interval = map(dist, 25, 10, 600, 100);
                             3-Le joystick sera rajouté au Dashboard (mais pas encore relier à un "Flux de données") <br>
                             4-Editer le joystick  et dans "Y datastream" , sélectionner le flux de donnée qui contrôle la vitesse du moteur (Exemple: V1)<br>
                             5-Dans l'onglet "Design", définir les propriétes de votre joystick (Couleur, titre...)<br>
-                            6-Vous pouvez enfin tester le moteur en mode 2 (avec BLynk) et contrôler la vitesse avec le joystick Y (Haut/Bas) <br>
+                            6-Vous pouvez enfin tester le moteur en mode 2 (avec Blynk) et contrôler la vitesse avec le joystick Y (Haut/Bas) <br>
 
                             </p>
 
