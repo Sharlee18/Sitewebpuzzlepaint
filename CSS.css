@@ -8,9 +8,10 @@
 }
 
 body {
-  background-color: #f9fafb;
-  background-image: url('https://www.toptal.com/designers/subtlepatterns/patterns/pw_maze_white.png');
+  background: linear-gradient(120deg, #f0f4f8, #e0ecf9);
+  backdrop-filter: blur(5px);
 }
+
 /* Conteneur principal pour limiter la largeur */
 .container {
     width: 90%; /* Utilise 90% de la largeur de l'écran */
