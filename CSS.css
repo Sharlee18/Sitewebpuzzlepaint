@@ -2182,3 +2182,18 @@ body {
   border: none;
   cursor: pointer;
 }
+
+.video-wrapper {
+  position: relative;
+  padding: 0;
+  height: auto;
+  overflow: visible;
+}
+
+.video-wrapper video {
+  width: 100%;
+  height: auto;
+  display: block;
+  border-radius: 10px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+}
