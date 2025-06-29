@@ -2217,3 +2217,50 @@ p {
   font-size: 0.8rem; /* ou 0.95rem */
 }
 
+/* Fond noir et texte blanc par défaut */
+.section-noir {
+  background-color: #000;
+  color: #fff;
+}
+
+/* Forcer texte blanc sur les titres et paragraphes "hors blocs" */
+.section-noir h1,
+.section-noir h2,
+.section-noir h3,
+.section-noir p,
+.section-noir li {
+  color: #fff;
+}
+
+/* Exception: les blocs blancs à l'intérieur */
+.section-noir .text-zone,
+.section-noir .video-card,
+.section-noir .video-wrapper {
+  background-color: #fff;
+  color: #333; /* Texte noir */
+  border-radius: 8px;
+}
+
+/* Et les textes de ces blocs */
+.section-noir .text-zone h2,
+.section-noir .text-zone h3,
+.section-noir .text-zone p,
+.section-noir .video-card h3,
+.section-noir .video-card p,
+.section-noir .video-wrapper h3,
+.section-noir .video-wrapper p {
+  color: #333;
+}
+
+/* Quand .bloc est dans .section-noir, remettre texte noir */
+.section-noir .bloc {
+  background: #fff; /* ou #f8f8f8 si tu préfères légèrement gris */
+  color: #333;
+}
+
+/* Idem pour les titres et paragraphes de .bloc */
+.section-noir .bloc h3,
+.section-noir .bloc p,
+.section-noir .bloc li {
+  color: #333;
+}
