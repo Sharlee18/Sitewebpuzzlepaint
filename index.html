@@ -186,18 +186,20 @@
             <img src="curieux.png" alt="CAO et Impression 3D">
             <p>Enfants ou adultes curieux aimant découvrir comment fonctionnent les objets du quotidien.</p>
             <button class="btn btn-premium" onclick="showDetails('details4')">Détails</button>
-            <div id="details4" class="modal">
-              <div class="modal-content">
-                <span class="close" onclick="hideDetails('details4')">&times;</span>
-                <p>
+
+<div id="details4" class="details-panel hidden">
+  <div class="details-content">
+    <button class="close-details" onclick="hideDetails('details4')">&times;</button>
+      <p>
                   Que vous soyez enfants, ado, étudiants ou adultes :
                   <br>- Curieux et passionnés par la technologie moderne
                   <br>- Amateurs d'activités artistiques et créatives
                   <br><b>Ces ateliers sont faits pour vous.</b>
                 </p>
-              </div>
-            </div>
-          </div>
+  </div>
+</div>
+
+
 
           <!-- Bloc 2 -->
           <div class="bloc">
@@ -283,13 +285,18 @@
 
   <script>
     function showDetails(id) {
-      const modal = document.getElementById(id);
-      modal.style.display = 'block';
-      modal.scrollIntoView({ behavior: 'smooth', block: 'center' });
-    }
-    function hideDetails(id) {
-      document.getElementById(id).style.display = 'none';
-    }
+  const panel = document.getElementById(id);
+  if (panel) {
+    panel.classList.add('active');
+  }
+}
+
+function hideDetails(id) {
+  const panel = document.getElementById(id);
+  if (panel) {
+    panel.classList.remove('active');
+  }
+}
   </script>
 
   <div id="info-panel" class="info-panel">

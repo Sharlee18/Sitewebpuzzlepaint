@@ -2150,3 +2150,35 @@ main {
   border: none;
   border-radius: 10px;
 }
+
+body {
+  overflow-x: hidden;
+}
+
+.details-panel {
+  display: none;
+  background: #fff;
+  border: 2px solid #20ac7b;
+  border-radius: 10px;
+  padding: 20px;
+  margin: 20px 0;   /* Pour bien séparer */
+  box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+}
+
+.details-panel.active {
+  display: block;
+}
+
+.details-content {
+  position: relative;
+}
+
+.close-details {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  font-size: 1.5rem;
+  background: none;
+  border: none;
+  cursor: pointer;
+}
