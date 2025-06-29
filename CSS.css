@@ -2151,7 +2151,7 @@ main {
   border-radius: 10px;
 }
 
-body {
+html, body {
   overflow-x: hidden;
 }
 
