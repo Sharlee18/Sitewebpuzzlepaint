@@ -8,8 +8,7 @@
 }
 
 body {
-  background: linear-gradient(120deg, #f0f4f8, #e0ecf9);
-  backdrop-filter: blur(5px);
+  background-color:#ffffff; /*Fond blanc*/
 }
 
 /* Conteneur principal pour limiter la largeur */
