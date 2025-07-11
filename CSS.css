@@ -2281,3 +2281,14 @@ p {
   color: #333;
 }
 
+@media screen and (max-width: 768px) {
+  .logo {
+    height: 40px !important; /* ou 30px si encore trop grand */
+  }
+
+  .left-header {
+    gap: 5px; /* réduit l'espacement menu <-> logo */
+  }
+}
+
+
