@@ -151,7 +151,7 @@ document.querySelectorAll('.carousel').forEach(carousel => {
         openPanel(`
           <img src='formuleAtelier2.png' alt='Atelier' style='width:100%; border-radius:10px; margin-bottom:10px;'>
           <p><span style="color:green;"><b>Un parcours complet, ludique et éducatif pour créer sa voiture intelligente !</b><br></span><br>
-          L'atelier Puzzle-Paint se déroule en  <span style="color:green;"><b>5 grandes étapes progressives</b></span>, pensées pour stimuler à la fois la créativité, la logique, la coordination manuelle et la curiosité technologique :<br><br>
+          L'atelier Puzzle-Tech se déroule en  <span style="color:green;"><b>5 grandes étapes progressives</b></span>, pensées pour stimuler à la fois la créativité, la logique, la coordination manuelle et la curiosité technologique :<br><br>
           
           <span style="color:green;"><b><u>1. Conception 3D (CAO)</u></b></span><br>
           Les participants conçoivent leurs propres pièces personnalisées à l'aide d'un logiciel simple et intuitif (Tinkercad).<br><br>
