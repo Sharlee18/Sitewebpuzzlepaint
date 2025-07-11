@@ -53,18 +53,35 @@ header p {
 
 
 .topbar {
-    display: flex;
-    justify-content: space-between; /* Sépare la gauche et la droite */
-    align-items: center;
-    background-color: #000;
-    padding: 10px 20px;
-    height: 60px;
-    color: white;
-    position: fixed;
-    top: 0;
-    width: 100%;
-    z-index: 1001;
-    box-shadow: 0 2px 5px rgba(0,0,0,0.3);
+  background-color: #000;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 8px 20px;
+  position: relative;
+  height: 60px;
+}
+
+.left-header {
+  display: flex;
+  align-items: center;
+  gap: 10px; /* espace entre menu et logo */
+}
+
+.logo-left {
+  height: 50px;  /* ajuste selon ton besoin */
+  width: auto;
+}
+
+.logo {
+  height: 55px;
+  width: auto;
+}
+
+/* Optionnel : styles pour les autres éléments */
+.left-header,
+.right-header {
+  z-index: 1; /* S'assurer que ces zones passent au-dessus du logo si chevauchement */
 }
 
 /* Zone du bouton menu */
@@ -2263,3 +2280,4 @@ p {
 .section-noir .bloc li {
   color: #333;
 }
+
