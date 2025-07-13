@@ -2270,7 +2270,7 @@ p {
 
 /* Quand .bloc est dans .section-noir, remettre texte noir */
 .section-noir .bloc {
-  background: linear-gradient(135deg, #e8fdf2, #b5f9e6); /* ou #f8f8f8 si tu préfères légèrement gris */
+  background: linear-gradient(135deg, #fbfffd, #dff9f1); /* ou #f8f8f8 si tu préfères légèrement gris */
   color: #333;
 }
 
