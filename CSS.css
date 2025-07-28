@@ -1357,12 +1357,12 @@ main {
   }
   
   .bloc {
-    background: #f8f8f8;
+    background: #130101;
     border-radius: 12px;
     padding: 20px;
     width: 300px;
     text-align: center;
-    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.233);
   }
   
   .bloc img {
@@ -2211,7 +2211,7 @@ html, body {
   height: auto;
   display: block;
   border-radius: 10px;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+  box-shadow: 0 2px 8px rgba(233, 228, 228, 0.15);
 }
 
 .video-wrapper.youtube-video {
@@ -2278,7 +2278,7 @@ p {
 .section-noir .bloc h3,
 .section-noir .bloc p,
 .section-noir .bloc li {
-  color: #333;
+  color: #eee6e6;
 }
 
 @media screen and (max-width: 768px) {
@@ -2291,4 +2291,50 @@ p {
   }
 }
 
+/* Fond noir et texte blanc par défaut */
+.section-blanche {
+  background-color: #f7f5f5;
+  color: #0d0101;
+}
 
+/* Forcer texte blanc sur les titres et paragraphes "hors blocs" */
+.section-blanche h1,
+.section-blanche h2,
+.section-blanche h3,
+.section-blanche p,
+.section-blanche li {
+  color: #1c0202;
+}
+
+/* Exception: les blocs blancs à l'intérieur */
+.section-blanche .text-zone,
+.section-blanche .video-card,
+.section-blanche .video-wrapper {
+  background-color: #fff;
+  color: #333; /* Texte noir */
+  border-radius: 8px;
+}
+
+/* Et les textes de ces blocs */
+.section-blanche .text-zone h2,
+.section-blanche .text-zone h3,
+.section-blanche .text-zone p,
+.section-blanche .video-card h3,
+.section-blanche .video-card p,
+.section-blanche .video-wrapper h3,
+.section-blanche .video-wrapper p {
+  color: #333;
+}
+
+/* Quand .bloc est dans .section-noir, remettre texte noir */
+.section-blanche .bloc {
+  background: linear ( #e8fdf2); /* ou #f8f8f8 si tu préfères légèrement gris */
+  color: #333;
+}
+
+/* Idem pour les titres et paragraphes de .bloc */
+.section-blanche .bloc h3,
+.section-blanche .bloc p,
+.section-blanche .bloc li {
+  color: #f9f8f8;
+}
