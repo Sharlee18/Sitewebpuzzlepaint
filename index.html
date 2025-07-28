@@ -340,5 +340,21 @@ function hideDetails(id) {
     <button class="close-panel" onclick="closePanel()">×</button>
     <div id="info-content"></div>
   </div>
+  <script>
+  const blocs = document.querySelectorAll('.bloc');
+
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+        observer.unobserve(entry.target); // pour éviter de le réanimer à chaque scroll
+      }
+    });
+  }, {
+    threshold: 0.1
+  });
+
+  blocs.forEach(bloc => observer.observe(bloc));
+</script>
 </body>
 </html>

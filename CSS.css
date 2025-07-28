@@ -1357,13 +1357,21 @@ main {
   }
   
   .bloc {
-    background: #130101;
+    background: #01130b;
     border-radius: 12px;
     padding: 20px;
     width: 300px;
     text-align: center;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.233);
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.8s ease-out, transform 0.8s ease-out;
   }
+
+  .bloc.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
   
   .bloc img {
     width: 100%;
@@ -1384,6 +1392,12 @@ main {
   .bloc button:hover {
     background: #188c64;
   }
+
+  .bloc:hover {
+  transform: translateY(-5px) scale(1.02);
+  box-shadow: 0 8px 20px rgba(46, 246, 219, 0.3); /* vert lumineux léger */
+  transition: all 0.3s ease;
+}
   
   /* Modale */
   .modal {
