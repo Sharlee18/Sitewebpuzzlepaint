@@ -2245,14 +2245,32 @@ html, body {
   position: relative;
 }
 
+
 .close-details {
   position: absolute;
   top: 10px;
   right: 10px;
-  font-size: 1.5rem;
+  font-size: 1.8rem;
+  color: #20ac7b;
+  cursor: pointer;
+  z-index: 10;
+  line-height: 1;
   background: none;
   border: none;
-  cursor: pointer;
+  padding: 0;
+  margin: 0;
+  width: auto;
+  height: auto;
+  border-radius: 0;
+  font-family: Arial, sans-serif;
+}
+
+.close-icon {
+  font-size: 1.8rem;
+  color: #20ac7b;
+  line-height: 1;
+  font-family: Arial, sans-serif;
+  pointer-events: none; /* Évite de capter des clics par erreur */
 }
 
 .video-wrapper {

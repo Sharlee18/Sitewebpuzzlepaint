@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <title>Formulaire Coach Puzzle-Tech</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f0f4f2;
+      padding: 2rem;
+      color: #222;
+    }
+
+    h1 {
+      text-align: center;
+      color: #20ac7b;
+    }
+
+    form {
+      max-width: 600px;
+      margin: auto;
+      background: #ffffff;
+      padding: 2rem;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    }
+
+    label {
+      display: block;
+      margin-top: 1rem;
+      font-weight: bold;
+      color: #333;
+    }
+
+    input, textarea, select {
+      width: 100%;
+      padding: 0.8rem;
+      margin-top: 0.3rem;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+      font-size: 1rem;
+    }
+
+    button {
+      margin-top: 2rem;
+      background-color: #20ac7b;
+      color: white;
+      padding: 1rem 2rem;
+      border: none;
+      border-radius: 6px;
+      font-size: 1.1rem;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background-color: #1a9066;
+    }
+
+    .note {
+      font-size: 0.9rem;
+      color: #666;
+      margin-top: 1rem;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Devenir Coach Puzzle-Tech</h1>
+
+  <form>
+    <label for="prenom">Prénom</label>
+    <input type="text" id="prenom" name="prenom" required>
+
+    <label for="nom">Nom</label>
+    <input type="text" id="nom" name="nom" required>
+
+    <label for="email">Adresse email</label>
+    <input type="email" id="email" name="email" required>
+
+    <label for="ville">Ville</label>
+    <input type="text" id="ville" name="ville">
+
+    <label for="experience">Votre expérience en animation / éducation / technique</label>
+    <textarea id="experience" name="experience" rows="5" placeholder="Décrivez en quelques lignes votre profil et vos expériences passées"></textarea>
+
+    <label for="disponibilite">Vos disponibilités (jours ou périodes)</label>
+    <textarea id="disponibilite" name="disponibilite" rows="3"></textarea>
+
+    <label for="motivation">Pourquoi souhaitez-vous devenir coach Puzzle-Tech ?</label>
+    <textarea id="motivation" name="motivation" rows="4"></textarea>
+
+    <button type="submit">Envoyer</button>
+
+    <div class="note">📌 Remarque : ce formulaire est à titre indicatif et ne transmet aucune donnée. Vous pouvez le copier ou imprimer pour nous le transmettre manuellement.</div>
+  </form>
+
+</body>
+</html>
