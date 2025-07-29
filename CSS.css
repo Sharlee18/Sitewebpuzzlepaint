@@ -1385,11 +1385,11 @@ main {
 
 @media (max-width: 768px) {
   .bloc {
-    transform: scale(0.7) translateY(40px);
+    transform: scale(0.95) translateY(20px);
   }
 
   .bloc.visible {
-    transform: scale(0.5) translateY(0);
+    transform: scale(1) translateY(0);
   }
 }
 
@@ -1397,7 +1397,7 @@ main {
 /* Style global */
 .bloc {
   width: 300px;
-  margin: 20px auto;
+  margin: 16px auto;
   /* autres propriétés... */
 }
 
@@ -1406,7 +1406,7 @@ main {
   .bloc {
     width: 90%;
     max-width: 400px;
-    margin: 16px auto;
+    margin: 10px auto;
     transform: scale(0.9) translateY(30px);
   }
 
