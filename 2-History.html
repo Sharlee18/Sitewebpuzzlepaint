@@ -111,7 +111,7 @@
         
                   
                     <div class="bloc">
-                        <span style="color: rgb(32, 172, 123);">  <h3>Atelier Complet (4h)</h3></span>
+                        <h3> Atelier Complet (4h)</h3>
                       <img src="Atelier1.png" alt="Montage Kit MECA et ELEC">
                       <p>Ateliers pour découvrir <b>"avec manipulation approfondie"</b> différents domaines technologiques (CAO, impression 3D ,Mécanique ,  électronique)   <br>
                         <span style="color: rgb(32, 172, 123);"><b>Prix </b> = 35€ / Participant</span>
@@ -139,7 +139,7 @@
                     </div>
                   
                     <div class="bloc">
-                        <span style="color: rgb(32, 172, 123);"> <h3>Atelier 3 Cycles (3*3h)</h3></span>
+                        <h3>Atelier 3 Cycles (3*3h)</h3>
                       <img src="Atelier1.png" alt="Programmation Arduino">
                       <p>Approche <b>progressive et approfondie</b> mêlant théorie, pratique et créativité <b>déroulé sur 3 jours sur une période à définir</b> ensemble</p><br>
                       <span style="color: rgb(32, 172, 123);"><b>Prix </b> = 90€ / Participant</span>  </p>
@@ -277,6 +277,22 @@
     <button class="close-panel" onclick="closePanel()">×</button>
     <div id="info-content"></div>
   </div>
+    <script>
+  const blocs = document.querySelectorAll('.bloc');
+
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+        observer.unobserve(entry.target); // pour éviter de le réanimer à chaque scroll
+      }
+    });
+  }, {
+    threshold: 0.1
+  });
+
+  blocs.forEach(bloc => observer.observe(bloc));
+</script>
   
 </body>
 </html>
