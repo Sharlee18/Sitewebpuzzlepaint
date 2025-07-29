@@ -1394,6 +1394,27 @@ main {
 }
 
   
+/* Style global */
+.bloc {
+  width: 300px;
+  margin: 20px auto;
+  /* autres propriétés... */
+}
+
+/* Adaptation mobile */
+@media (max-width: 768px) {
+  .bloc {
+    width: 90%;
+    max-width: 400px;
+    margin: 16px auto;
+    transform: scale(0.9) translateY(30px);
+  }
+
+  .bloc.visible {
+    transform: scale(1) translateY(0);
+  }
+}
+
   .bloc img {
     width: 100%;
     height: auto;
