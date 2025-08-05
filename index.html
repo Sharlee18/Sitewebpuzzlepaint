@@ -76,6 +76,20 @@ Accompagné d’un coach passionné et pédagogue, vous explorerez les bases de 
               <h3><span style="color: rgb(53, 204, 149);">Conception 3D </span>(CAO)</h3>
               <img src="IM_CAO.png" alt="CAO et Impression 3D">
               <p>✅ <span style="color: rgb(53, 204, 149);">Apprenez à Concevoir des pièces et assemblages en 3D</span>, grâce à des logiciels accessibles et intuitifs, même si vous débutez.</p>
+              <!-- Bouton Détails -->
+<button onclick="openPopup()">Détails</button>
+
+<!-- Pop-up modale -->
+<div id="videoModal" class="modal">
+  <div class="modal-content">
+    <span class="close" onclick="closePopup()">&times;</span>
+    <video controls>
+      <source src="VIDEOCAO.mp4" type="video/mp4">
+      Votre navigateur ne supporte pas la vidéo.
+    </video>
+  </div>
+</div>
+
   </div>
 
 
@@ -85,6 +99,19 @@ Accompagné d’un coach passionné et pédagogue, vous explorerez les bases de 
               <h3><span style="color: rgb(53, 204, 149);">Impression 3D</span> (3D Printing) </h3>
               <img src="IM_IMP3D.png" alt="CAO et Impression 3D">
               <p>✅  <span style="color: rgb(53, 204, 149);">Imprimer vos prototypes en haute qualité avec des astuces concrètes</span> pour gagner du temps et réussir des pièces complexes, petites ou multicolores.</p>
+                            <!-- Bouton Détails -->
+<button onclick="openPopup()">Détails</button>
+
+<!-- Pop-up modale -->
+<div id="videoModal" class="modal">
+  <div class="modal-content">
+    <span class="close" onclick="closePopup()">&times;</span>
+    <video controls>
+      <source src="VIDEOCAO.mp4" type="video/mp4">
+      Votre navigateur ne supporte pas la vidéo.
+    </video>
+  </div>
+</div>
   </div>
 
 
@@ -93,6 +120,19 @@ Accompagné d’un coach passionné et pédagogue, vous explorerez les bases de 
               <h3><span style="color: rgb(53, 204, 149);">Electronique </span> et <span style="color: rgb(53, 204, 149);">informatique </span></h3>
               <img src="IM_ELEC.png" alt="CAO et Impression 3D">
               <p>✅ <span style="color: rgb(53, 204, 149);">Programmer des composants électroniques</span> (capteurs, moteurs, LEDs…) et automatiser vos créations, jusqu’au pilotage à distance depuis votre smartphone.</p>
+                            <!-- Bouton Détails -->
+<button onclick="openPopup()">Détails</button>
+
+<!-- Pop-up modale -->
+<div id="videoModal" class="modal">
+  <div class="modal-content">
+    <span class="close" onclick="closePopup()">&times;</span>
+    <video controls>
+      <source src="VIDEOCAO.mp4" type="video/mp4">
+      Votre navigateur ne supporte pas la vidéo.
+    </video>
+  </div>
+</div>
   </div>
                   </div>
                             <div class="button-group" style="margin-top: 20px;">
@@ -353,6 +393,27 @@ function hideDetails(id) {
   });
 
   blocs.forEach(bloc => observer.observe(bloc));
+</script>
+<script>
+function openPopup() {
+  document.getElementById("videoModal").style.display = "block";
+}
+
+function closePopup() {
+  var modal = document.getElementById("videoModal");
+  modal.style.display = "none";
+  // Pause vidéo à la fermeture
+  var video = modal.querySelector("video");
+  if (video) video.pause();
+}
+
+// Ferme la modale en cliquant à l'extérieur du contenu
+window.onclick = function(event) {
+  var modal = document.getElementById("videoModal");
+  if (event.target == modal) {
+    closePopup();
+  }
+}
 </script>
 </body>
 </html>
