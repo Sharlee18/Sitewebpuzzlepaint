@@ -69,7 +69,7 @@
 
  <span style="color: rgb(53, 204, 149);"><b>mais il vous manque encore quelques clés ? </b></span><br>
 <span style="color: rgb(53, 204, 149);"><b>Les ateliers Puzzle-Tech sont faits pour vous !</b></span><br><br>
-Accompagné d’un coach passionné et pédagogue, vous explorerez les bases de la conception ( <span style="color: rgb(53, 204, 149);"><b>CAO</b></span>), du prototypage (<span style="color: rgb(53, 204, 149);"><b>impression 3D</b></span>) et de <span style="color: rgb(53, 204, 149);"><b>l'électronique</b></span> pour transformer vos idées en projets concrets.
+Accompagné d’un coach passionné et pédagogue, vous explorerez les bases de la conception 3D ( <span style="color: rgb(53, 204, 149);"><b>CAO</b></span>), du prototypage (<span style="color: rgb(53, 204, 149);"><b>impression 3D</b></span>) et de <span style="color: rgb(53, 204, 149);"><b>l'électronique</b></span> pour transformer vos idées en projets concrets.
 </p>
             <!-- Bloc 1 -->
             <div class="bloc">
@@ -77,12 +77,12 @@ Accompagné d’un coach passionné et pédagogue, vous explorerez les bases de 
               <img src="IM_CAO.png" alt="CAO et Impression 3D">
               <p>✅ <span style="color: rgb(53, 204, 149);">Apprenez à Concevoir des pièces et assemblages en 3D</span>, grâce à des logiciels accessibles et intuitifs, même si vous débutez.</p>
               <!-- Bouton Détails -->
-<button onclick="openPopup()">Détails</button>
+<button onclick="openPopup('popup1')">Détails</button>
 
 <!-- Pop-up modale -->
-<div id="videoModal" class="modal">
+<div id="popup1" class="modal">
   <div class="modal-content">
-    <span class="close" onclick="closePopup()">&times;</span>
+    <span class="close" onclick="closePopup('popup1')">&times;</span>
     <video controls>
       <source src="VIDEOCAO.mp4" type="video/mp4">
       Votre navigateur ne supporte pas la vidéo.
@@ -100,14 +100,14 @@ Accompagné d’un coach passionné et pédagogue, vous explorerez les bases de 
               <img src="IM_IMP3D.png" alt="CAO et Impression 3D">
               <p>✅  <span style="color: rgb(53, 204, 149);">Imprimer vos prototypes en haute qualité avec des astuces concrètes</span> pour gagner du temps et réussir des pièces complexes, petites ou multicolores.</p>
                             <!-- Bouton Détails -->
-<button onclick="openPopup()">Détails</button>
+<button onclick="openPopup('popup2')">Détails</button>
 
 <!-- Pop-up modale -->
-<div id="videoModal" class="modal">
+<div id="popup2" class="modal">
   <div class="modal-content">
-    <span class="close" onclick="closePopup()">&times;</span>
+    <span class="close" onclick="closePopup('popup2')">&times;</span>
     <video controls>
-      <source src="VIDEOCAO.mp4" type="video/mp4">
+      <source src="Videoimpression3d.mp4" type="video/mp4">
       Votre navigateur ne supporte pas la vidéo.
     </video>
   </div>
@@ -121,12 +121,12 @@ Accompagné d’un coach passionné et pédagogue, vous explorerez les bases de 
               <img src="IM_ELEC.png" alt="CAO et Impression 3D">
               <p>✅ <span style="color: rgb(53, 204, 149);">Programmer des composants électroniques</span> (capteurs, moteurs, LEDs…) et automatiser vos créations, jusqu’au pilotage à distance depuis votre smartphone.</p>
                             <!-- Bouton Détails -->
-<button onclick="openPopup()">Détails</button>
+<button onclick="openPopup('popup3')">Détails</button>
 
 <!-- Pop-up modale -->
-<div id="videoModal" class="modal">
+<div id="popup3" class="modal">
   <div class="modal-content">
-    <span class="close" onclick="closePopup()">&times;</span>
+    <span class="close" onclick="closePopup('popup3')">&times;</span>
     <video controls>
       <source src="VIDEOCAO.mp4" type="video/mp4">
       Votre navigateur ne supporte pas la vidéo.
@@ -333,7 +333,7 @@ Accompagné d’un coach passionné et pédagogue, vous explorerez les bases de 
     </div>
   </footer>
 
-  <!-- Scripts -->
+<!-- Scripts -->
   <script>
     document.querySelectorAll('.menu-toggle').forEach(toggle => {
       toggle.addEventListener('click', () => {
@@ -395,25 +395,28 @@ function hideDetails(id) {
   blocs.forEach(bloc => observer.observe(bloc));
 </script>
 <script>
-function openPopup() {
-  document.getElementById("videoModal").style.display = "block";
+function openPopup(popupId) {
+  document.getElementById(popupId).style.display = "block";
 }
 
-function closePopup() {
-  var modal = document.getElementById("videoModal");
+function closePopup(popupId) {
+  const modal = document.getElementById(popupId);
   modal.style.display = "none";
-  // Pause vidéo à la fermeture
-  var video = modal.querySelector("video");
+  const video = modal.querySelector("video");
   if (video) video.pause();
 }
 
-// Ferme la modale en cliquant à l'extérieur du contenu
+// Fermer si clic en dehors du contenu
 window.onclick = function(event) {
-  var modal = document.getElementById("videoModal");
-  if (event.target == modal) {
-    closePopup();
-  }
-}
+  document.querySelectorAll('.modal').forEach(modal => {
+    if (event.target === modal) {
+      modal.style.display = "none";
+      const video = modal.querySelector("video");
+      if (video) video.pause();
+    }
+  });
+};
 </script>
+
 </body>
 </html>
