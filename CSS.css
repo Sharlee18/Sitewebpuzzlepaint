@@ -2352,7 +2352,7 @@ p {
 .section-noir .bloc h3,
 .section-noir .bloc p,
 .section-noir .bloc li {
-  color: #eee6e6;
+  color: #ffffff;
 }
 
 @media screen and (max-width: 768px) {
