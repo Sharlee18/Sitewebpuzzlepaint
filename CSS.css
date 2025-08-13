@@ -2455,3 +2455,31 @@ p {
 .close:hover {
   color: red;
 }
+
+.btn-play {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 16px;
+  border: none;
+  border-radius: 999px;
+  background: linear-gradient(135deg, #2ef6db, #74fece);
+  color: #fff;
+  font-weight: 700;
+  letter-spacing: .3px;
+  box-shadow: 0 6px 16px rgba(0,0,0,.15);
+  cursor: pointer;
+  transition: transform .2s ease, box-shadow .2s ease, filter .2s ease;
+}
+.btn-play:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 24px rgba(0,0,0,.22);
+  filter: saturate(1.1);
+}
+.btn-play:active {
+  transform: translateY(0);
+  box-shadow: 0 6px 16px rgba(0,0,0,.15);
+}
+.btn-play svg {
+  flex: 0 0 18px;
+}
