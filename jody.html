@@ -424,6 +424,59 @@
   margin-bottom: 8px;
 }
 
+/* --- Blocs promesses : version contrastée --- */
+.feature.dark {
+  background: linear-gradient(
+    180deg,
+    rgba(15,18,25,.92),
+    rgba(15,18,25,.88)
+  );
+  border-color: rgba(255,255,255,.18);
+}
+
+.feature.dark h3 {
+  color: #ffffff;
+}
+
+.feature.dark p {
+  color: rgba(255,255,255,.78);
+}
+
+.feature.dark .ficon {
+  background: linear-gradient(
+    135deg,
+    rgba(124,58,237,.85),
+    rgba(167,139,250,.85)
+  );
+  color: white;
+  border-color: rgba(255,255,255,.22);
+}
+/* --- Chips contrastées sous images --- */
+.vp-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 14px;
+  border-radius: 999px;
+  background: linear-gradient(
+    180deg,
+    rgba(15,18,25,.95),
+    rgba(15,18,25,.90)
+  );
+  color: #ffffff;
+  font-size: 13px;
+  font-weight: 500;
+  border: 1px solid rgba(255,255,255,.18);
+  box-shadow: 0 8px 24px rgba(0,0,0,.35);
+}
+
+.vp-chip-group {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  margin-top: 12px;
+}
+
   </style>
 </head>
 
@@ -478,9 +531,12 @@
     loading="lazy"
   />
   <figcaption>
-    <span class="tag">🛡️ Sécurisée</span>
-    <span class="tag">⚡ Rapide</span>
-    <span class="tag">🗂️ Centralisée</span><br/>
+  <div class="vp-chip-group">
+  <span class="vp-chip">🛡️ Sécurisée</span>
+  <span class="vp-chip">⚡ Rapide</span>
+  <span class="vp-chip">🗂️ Centralisée</span>
+</div>
+
   </figcaption>
 </figure>
 
