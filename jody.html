@@ -1,0 +1,973 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>VIGIPHARMA-CI — Votre guide de référence pharmaceutique</title>
+  <style>
+    :root{
+      --bg: #0b0f14;
+      --stroke: rgba(255,255,255,.12);
+      --text: rgba(255,255,255,.92);
+      --muted: rgba(255,255,255,.72);
+      --muted2: rgba(255,255,255,.56);
+      --green: #1fd39a;
+      --violet:#8b5cf6;
+      --violet2:#a78bfa;
+      --shadow: 0 12px 40px rgba(0,0,0,.45);
+      --radius: 18px;
+      --radius2: 26px;
+      --focus: 0 0 0 3px rgba(31,211,154,.35), 0 0 0 6px rgba(139,92,246,.22);
+    }
+
+    *{ box-sizing:border-box; }
+    html,body{ height:100%; }
+    body{
+      margin:0;
+      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial;
+      background:
+        radial-gradient(1200px 600px at 15% 10%, rgba(31,211,154,.18), transparent 55%),
+        radial-gradient(900px 500px at 80% 20%, rgba(139,92,246,.18), transparent 55%),
+        radial-gradient(900px 600px at 60% 95%, rgba(167,139,250,.12), transparent 55%),
+        var(--bg);
+      color: var(--text);
+    }
+    a{ color:inherit; text-decoration:none; }
+    button, input, textarea { font: inherit; }
+
+    .app{ min-height: 100vh; display:grid; grid-template-columns: 280px 1fr; }
+
+    .sidebar{
+      position: sticky; top:0; height:100vh;
+      padding: 22px 18px;
+      border-right: 1px solid var(--stroke);
+      background: linear-gradient(180deg, rgba(255,255,255,.04), rgba(255,255,255,.02));
+      backdrop-filter: blur(10px);
+    }
+
+    .brand{ display:flex; gap:12px; align-items:center; padding: 10px 10px 14px; border-radius: var(--radius); }
+    .logo{
+      width:42px; height:42px; border-radius: 14px;
+      background: linear-gradient(135deg, rgba(31,211,154,.95), rgba(139,92,246,.95));
+      box-shadow: 0 10px 26px rgba(0,0,0,.35);
+      position: relative; overflow:hidden;
+    }
+    .logo:before{
+      content:""; position:absolute; inset:-40%;
+      background: radial-gradient(circle at 30% 30%, rgba(255,255,255,.55), transparent 45%);
+      transform: rotate(20deg);
+    }
+    .brand h1{ font-size: 15px; margin:0; letter-spacing:.5px; line-height:1.1; }
+    .brand p{ margin:2px 0 0; font-size: 12px; color: var(--muted2); }
+
+    .nav{ margin-top: 14px; display:flex; flex-direction:column; gap:8px; }
+    .nav button{
+      width:100%; text-align:left;
+      border:1px solid transparent;
+      background: transparent;
+      color: var(--text);
+      padding: 12px 12px;
+      border-radius: 14px;
+      cursor:pointer;
+      display:flex; align-items:center; gap:10px;
+      transition: .18s ease;
+    }
+    .nav button:hover{ background: rgba(255,255,255,.06); border-color: rgba(255,255,255,.10); }
+    .nav button.active{
+      background: linear-gradient(135deg, rgba(31,211,154,.18), rgba(139,92,246,.16));
+      border-color: rgba(255,255,255,.14);
+      box-shadow: 0 10px 24px rgba(0,0,0,.22);
+    }
+    .nav .ico{
+      width:30px; height:30px; border-radius: 12px;
+      display:grid; place-items:center;
+      background: rgba(255,255,255,.06);
+      border:1px solid rgba(255,255,255,.10);
+      color: var(--muted);
+      flex:0 0 auto;
+    }
+    .nav .label{ display:flex; flex-direction:column; gap:2px; }
+    .nav .label strong{ font-size: 13px; font-weight: 650; letter-spacing:.2px; }
+    .nav .label span{ font-size: 12px; color: var(--muted2); }
+
+    .main{ padding: 22px; }
+
+    .topbar{
+      display:flex; justify-content:space-between; gap: 14px; align-items:center;
+      margin-bottom: 18px;
+    }
+    .crumb{ display:flex; flex-direction:column; gap:4px; }
+    .crumb .title{ font-size: 18px; font-weight: 760; letter-spacing:.3px; }
+    .crumb .subtitle{ font-size: 12px; color: var(--muted2); }
+
+    .actions{ display:flex; gap:10px; align-items:center; flex-wrap: wrap; justify-content:flex-end; }
+    .chip{
+      border:1px solid rgba(255,255,255,.12);
+      background: rgba(255,255,255,.05);
+      color: var(--text);
+      padding: 10px 12px;
+      border-radius: 999px;
+      cursor:pointer;
+      transition:.18s ease;
+    }
+    .chip:hover{ background: rgba(255,255,255,.08); }
+    .chip.primary{ border-color: rgba(31,211,154,.35); background: rgba(31,211,154,.12); }
+    .chip.danger{ background: rgba(255,255,255,.05); color: var(--muted); }
+
+    .grid{ display:grid; grid-template-columns: 1.25fr .9fr; gap: 16px; align-items:start; }
+    @media (max-width: 980px){
+      .app{ grid-template-columns: 1fr; }
+      .sidebar{ position: relative; height:auto; }
+      .grid{ grid-template-columns: 1fr; }
+      .main{ padding: 16px; }
+    }
+
+    .card{
+      border: 1px solid var(--stroke);
+      background: linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.04));
+      border-radius: var(--radius2);
+      box-shadow: var(--shadow);
+      padding: 18px;
+    }
+    .card h2{ margin:0 0 10px; font-size: 18px; letter-spacing:.2px; }
+    .card p{ margin: 10px 0; color: var(--muted); line-height: 1.55; }
+
+    .hero{ position:relative; overflow:hidden; }
+    .hero:before{
+      content:""; position:absolute; inset:-1px;
+      background:
+        radial-gradient(700px 260px at 25% 0%, rgba(31,211,154,.20), transparent 60%),
+        radial-gradient(700px 260px at 85% 10%, rgba(139,92,246,.22), transparent 60%);
+      pointer-events:none;
+    }
+    .hero > *{ position:relative; z-index:1; }
+
+    .badge{
+      display:inline-flex; align-items:center; gap:10px;
+      padding: 8px 12px;
+      border-radius: 999px;
+      border: 1px solid rgba(255,255,255,.14);
+      background: rgba(255,255,255,.06);
+      color: var(--muted);
+      font-size: 12px;
+      margin-bottom: 10px;
+    }
+    .dot{
+      width:10px; height:10px; border-radius:999px;
+      background: linear-gradient(135deg, var(--green), var(--violet));
+      box-shadow: 0 0 0 3px rgba(31,211,154,.18);
+    }
+
+    .ctaRow{ display:flex; gap: 10px; flex-wrap: wrap; margin-top: 14px; }
+    .btn{
+      border:1px solid rgba(255,255,255,.14);
+      background: rgba(255,255,255,.06);
+      color: var(--text);
+      padding: 11px 14px;
+      border-radius: 14px;
+      cursor:pointer;
+      transition:.18s ease;
+      display:inline-flex; align-items:center; gap:10px;
+    }
+    .btn:hover{ background: rgba(255,255,255,.10); }
+    .btn.primary{
+      border-color: rgba(31,211,154,.35);
+      background: linear-gradient(135deg, rgba(31,211,154,.16), rgba(139,92,246,.12));
+    }
+
+    .features{ display:grid; grid-template-columns: 1fr; gap: 12px; margin-top: 14px; }
+    .feature{
+      border:1px solid rgba(255,255,255,.12);
+      background: rgba(255,255,255,.05);
+      border-radius: 18px;
+      padding: 14px;
+      display:flex; gap: 12px; align-items:flex-start;
+    }
+    .feature .ficon{
+      width:40px; height:40px; border-radius: 16px;
+      display:grid; place-items:center;
+      background: linear-gradient(135deg, rgba(31,211,154,.18), rgba(139,92,246,.14));
+      border:1px solid rgba(255,255,255,.14);
+      flex: 0 0 auto;
+    }
+    .feature h3{ margin:0 0 4px; font-size: 14px; letter-spacing:.2px; }
+    .feature p{ margin:0; font-size: 13px; color: var(--muted); line-height: 1.5; }
+
+    .searchWrap{ display:flex; flex-direction:column; gap:10px; margin-top: 8px; }
+    .searchBar{
+      display:flex; gap:10px; align-items:center;
+      padding: 10px;
+      border-radius: 18px;
+      border:1px solid rgba(255,255,255,.14);
+      background: rgba(0,0,0,.22);
+    }
+    .searchBar input{
+      width:100%; border:0; outline:none;
+      background: transparent; color: var(--text);
+      padding: 10px 8px; font-size: 14px;
+    }
+    .searchBar button{
+      border:1px solid rgba(255,255,255,.14);
+      background: rgba(255,255,255,.06);
+      color: var(--text);
+      border-radius: 14px;
+      padding: 10px 12px;
+      cursor:pointer;
+      transition:.18s ease;
+      white-space:nowrap;
+    }
+    .searchBar button:hover{ background: rgba(255,255,255,.10); }
+    .hint{ color: var(--muted2); font-size: 12.5px; line-height: 1.45; }
+
+    .results{ margin-top: 14px; display:flex; flex-direction:column; gap: 10px; }
+    .resultItem{
+      border:1px solid rgba(255,255,255,.12);
+      background: rgba(255,255,255,.05);
+      border-radius: 18px;
+      padding: 12px;
+      display:flex; justify-content:space-between; gap: 12px; align-items:center;
+    }
+    .resultItem .meta{ display:flex; flex-direction:column; gap:4px; }
+    .resultItem .meta strong{ font-size: 13.5px; }
+    .resultItem .meta span{ font-size: 12px; color: var(--muted2); }
+    .resultItem .open{
+      border:1px solid rgba(31,211,154,.30);
+      background: rgba(31,211,154,.10);
+      padding: 9px 12px;
+      border-radius: 14px;
+      cursor:pointer;
+    }
+    .resultItem .open:hover{ background: rgba(31,211,154,.14); }
+
+    label{ display:block; font-size: 12px; color: var(--muted2); margin: 10px 0 6px; }
+    input[type="email"], input[type="text"], textarea{
+      width:100%;
+      border-radius: 16px;
+      border:1px solid rgba(255,255,255,.14);
+      background: rgba(0,0,0,.22);
+      color: var(--text);
+      padding: 12px;
+      outline:none;
+    }
+    textarea{ min-height: 110px; resize: vertical; }
+    input:focus, textarea:focus{ box-shadow: var(--focus); }
+
+    .scale{ display:flex; gap: 8px; flex-wrap: wrap; margin-top: 6px; }
+    .scale button{
+      width:42px; height:40px;
+      border-radius: 14px;
+      border:1px solid rgba(255,255,255,.14);
+      background: rgba(255,255,255,.05);
+      color: var(--text);
+      cursor:pointer;
+    }
+    .scale button.sel{
+      border-color: rgba(139,92,246,.40);
+      background: rgba(139,92,246,.16);
+    }
+    .smallNote{ font-size: 12px; color: var(--muted2); line-height: 1.45; margin-top: 8px; }
+
+    .footer{
+      margin-top: 16px;
+      padding: 14px 18px;
+      border-radius: var(--radius2);
+      border:1px solid rgba(255,255,255,.12);
+      background: rgba(255,255,255,.04);
+      display:flex; flex-wrap:wrap; align-items:center; justify-content:space-between; gap: 10px;
+      color: var(--muted2); font-size: 12px;
+    }
+    .footer .links{ display:flex; gap: 12px; flex-wrap: wrap; }
+    .footer .links a{
+      color: rgba(255,255,255,.78);
+      text-decoration: underline;
+      text-decoration-color: rgba(255,255,255,.22);
+      text-underline-offset: 3px;
+    }
+    .footer .links a:hover{ text-decoration-color: rgba(31,211,154,.55); }
+
+    .modalBackdrop{
+      position: fixed; inset:0;
+      background: rgba(0,0,0,.55);
+      display:none; align-items:center; justify-content:center;
+      padding: 18px; z-index: 999;
+    }
+    .modal{
+      width: min(760px, 100%);
+      border-radius: 24px;
+      border:1px solid rgba(255,255,255,.14);
+      background: rgba(15,18,25,.92);
+      backdrop-filter: blur(12px);
+      box-shadow: 0 20px 70px rgba(0,0,0,.55);
+      overflow:hidden;
+    }
+    .modalHeader{
+      display:flex; align-items:center; justify-content:space-between; gap: 10px;
+      padding: 14px 16px;
+      border-bottom: 1px solid rgba(255,255,255,.10);
+    }
+    .modalHeader strong{ font-size: 14px; }
+    .closeBtn{
+      border:1px solid rgba(255,255,255,.14);
+      background: rgba(255,255,255,.06);
+      color: var(--text);
+      padding: 8px 10px;
+      border-radius: 14px;
+      cursor:pointer;
+    }
+    .modalBody{ padding: 16px; color: var(--muted); line-height: 1.6; font-size: 14px; }
+
+    .kpiRow{ display:grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-top: 12px; }
+    @media (max-width: 640px){ .kpiRow{ grid-template-columns: 1fr; } }
+    .kpi{
+      border:1px solid rgba(255,255,255,.12);
+      background: rgba(255,255,255,.05);
+      border-radius: 18px;
+      padding: 12px;
+    }
+    .kpi b{ color: rgba(255,255,255,.88); }
+    .pill{
+      display:inline-flex; align-items:center; gap:8px;
+      padding: 6px 10px;
+      border-radius: 999px;
+      border:1px solid rgba(255,255,255,.14);
+      background: rgba(255,255,255,.06);
+      color: var(--muted);
+      font-size: 12px;
+      margin-top: 8px;
+    }
+    /* --- VIGIPHARMA : bloc image marketing --- */
+.vp-media{
+  margin: 14px 0 0;
+  border-radius: 22px;
+  overflow: hidden;
+  border: 1px solid rgba(255,255,255,.12);
+  background: rgba(255,255,255,.04);
+  box-shadow: 0 14px 44px rgba(0,0,0,.45);
+  position: relative;
+}
+
+.vp-media::before{
+  content:"";
+  position:absolute; inset:-2px;
+  background:
+    radial-gradient(500px 220px at 20% 0%, rgba(31,211,154,.22), transparent 60%),
+    radial-gradient(500px 220px at 85% 10%, rgba(139,92,246,.22), transparent 60%);
+  pointer-events:none;
+  opacity:.9;
+}
+
+.vp-media img{
+  position:relative;
+  z-index:1;
+  display:block;
+  width:100%;
+  height:auto;
+
+  /* IMPORTANT : ne plus couper */
+  object-fit: contain;
+
+  /* Comme contain peut laisser des bandes, on met un fond propre */
+  background: rgba(0,0,0,.18);
+
+  /* Optionnel */
+  aspect-ratio: auto; /* enlève le cadre forcé */
+}
+
+
+.vp-media figcaption{
+  position:relative;
+  z-index:1;
+  padding: 10px 12px 12px;
+  color: rgba(255,255,255,.70);
+  font-size: 12.5px;
+  line-height: 1.45;
+  border-top: 1px solid rgba(255,255,255,.10);
+  background: rgba(0,0,0,.18);
+}
+
+.vp-media .tag{
+  display:inline-flex;
+  align-items:center;
+  gap:8px;
+  padding: 6px 10px;
+  border-radius: 999px;
+  border: 1px solid rgba(255,255,255,.14);
+  background: rgba(255,255,255,.06);
+  color: rgba(255,255,255,.78);
+  font-size: 12px;
+  margin-bottom: 8px;
+}
+
+  </style>
+</head>
+
+<body>
+  <div class="app">
+    <aside class="sidebar">
+      <div class="brand" role="banner" aria-label="VIGIPHARMA-CI">
+        <div class="logo" aria-hidden="true"></div>
+        <div>
+          <h1>VIGIPHARMA-CI</h1>
+          <p>Votre guide de référence pharmaceutique en Côte d'ivoire</p>
+        </div>
+      </div>
+
+      <nav class="nav" aria-label="Menu principal">
+        <button class="active" data-page="home"><span class="ico">🏠</span><span class="label"><strong>Accueil</strong><span>Présentation</span></span></button>
+        <button data-page="search"><span class="ico">🧪</span><span class="label"><strong>Consulter un médicament</strong><span>Recherche par DCI</span></span></button>
+        <button data-page="about"><span class="ico">ℹ️</span><span class="label"><strong>À propos</strong><span>Mission & vision</span></span></button>
+        <button data-page="contact"><span class="ico">✉️</span><span class="label"><strong>Contact / Partenariat</strong><span>Nous écrire</span></span></button>
+        <button data-page="legal"><span class="ico">📜</span><span class="label"><strong>Mentions légales</strong><span>Cadre & responsabilité</span></span></button>
+      </nav>
+
+      <div style="margin-top:18px; padding: 12px; border-radius: 18px; border:1px solid rgba(255,255,255,.12); background: rgba(255,255,255,.04);">
+        <div style="font-size:12px; color:var(--muted2); line-height:1.45;">
+          <b style="color:rgba(255,255,255,.88)">Accès réservé :</b> professionnels de santé et étudiants en santé.
+        </div>
+      </div>
+    </aside>
+
+    <main class="main">
+      <div class="topbar">
+        <div class="crumb">
+          <div class="title" id="pageTitle">Accueil</div>
+          <div class="subtitle" id="pageSubtitle">Bienvenue sur VIGIPHARMA-CI</div>
+        </div>
+        <div class="actions" aria-label="Actions">
+          <button class="chip" id="btnHelp">Aide</button>
+          <button class="chip primary" id="btnFeedback">Donnez votre avis</button>
+          <button class="chip danger" id="btnLogout">Déconnexion</button>
+        </div>
+      </div>
+
+      <section id="page-home" class="page">
+        <div class="grid">
+          <div class="card hero">
+            <div class="badge"><span class="dot"></span>Plateforme d’information pharmaceutique — claire, structurée, fiable</div>
+            <h2 style="font-size:26px; margin-top:2px;">VIGIPHARMA-CI<br/><span style="color:var(--muted); font-weight:650;">Votre guide de référence pharmaceutique</span></h2>
+           <figure class="vp-media">
+  <img
+    src="vigipharma-pharmacienne-tablette.png"
+    alt="Pharmacienne présentant une fiche médicament sur la plateforme VIGIPHARMA-CI"
+    loading="lazy"
+  />
+  <figcaption>
+    <span class="tag">🛡️ Sécurisée</span>
+    <span class="tag">⚡ Rapide</span>
+    <span class="tag">🗂️ Centralisée</span><br/>
+  </figcaption>
+</figure>
+
+ <div class="ctaRow">
+              <button class="btn primary" data-goto="search">🧪 Consulter un médicament</button>
+            </div>            
+<p>
+              Parce que chaque décision thérapeutique compte, <b>VIGIPHARMA-CI</b> vous accompagne dans votre quotidien.
+              La plateforme propose une information pharmaceutique fiable, claire et structurée, afin de soutenir une prise de décision éclairée et de renforcer la sécurité médicamenteuse.
+              En s’appuyant sur des contenus pratiques et rigoureux, VIGIPHARMA-CI vise à contribuer à une utilisation plus sûre et plus responsable des médicaments.
+            </p>
+           
+            <div class="features">
+              <div class="feature"><div class="ficon">🧪</div><div><h3>Consulter un médicament</h3><p>Accédez rapidement aux informations essentielles : identifications, indications, posologies et conseils pratiques.</p></div></div>
+              <div class="feature"><div class="ficon">🛡️</div><div><h3>Sécuriser la pratique</h3><p>Identifiez les erreurs fréquentes, les interactions médicamenteuses et les précautions d’emploi importantes.</p></div></div>
+              <div class="feature"><div class="ficon">🎓</div><div><h3>Apprendre et réviser</h3><p>Un outil pédagogique pour accompagner les étudiants et jeunes professionnels de santé.</p></div></div>
+            </div>
+          </div>
+
+          <div class="card">
+            <h2>Pourquoi VIGIPHARMA ?</h2>
+
+
+            <figure class="vp-media">
+  <img
+    src="Doliprane2.png"
+    alt="Recherche rapide d’un médicament par DCI sur VIGIPHARMA-CI"
+    loading="lazy"
+  />
+  <figcaption>
+    <span class="tag">🔎 Recherche par DCI</span>
+    Une information structurée et validée, accessible en quelques secondes.
+  </figcaption>
+</figure>
+
+            <p>La pratique pharmaceutique repose sur des décisions rapides, responsables et souvent prises dans un contexte de temps limité.</p>
+            <p>VIGIPHARMA-CI a été conçu pour centraliser des informations essentielles, claires et validées, afin de faciliter la prise de décision thérapeutique et de renforcer la sécurité médicamenteuse.</p>
+            <p>Outil de référence pratique et pédagogique, contribuant à une utilisation plus sûre, plus rationnelle et plus responsable des médicaments.</p>
+            <div class="pill">⚙️ Prototype : recherche + fiche médicament (démo)</div>
+          </div>
+        </div>
+
+        <div class="footer">
+          <div>© VIGIPHARMA-CI — Dr Johanne Elodie Amichia — Pharmacienne et Fondatrice</div>
+          <div class="links">
+            <a href="#" data-goto="contact">Contact/Partenariat</a>
+            <a href="#" data-goto="about">À propos</a>
+            <a href="#" data-goto="legal">Mentions légales</a>
+          </div>
+        </div>
+      </section>
+
+      <section id="page-search" class="page" style="display:none;">
+        <div class="grid">
+          <div class="card">
+            <h2>Consulter un médicament</h2>
+            <div class="searchWrap">
+              <div class="searchBar" role="search">
+                <span style="opacity:.7;">🔎</span>
+                <input id="q" type="text" placeholder="Rechercher un médicament (DCI)..." autocomplete="off" />
+                <button id="btnSearch">Rechercher</button>
+              </div>
+              <div class="hint">
+                <b>Saisissez la Dénomination Commune Internationale (DCI) du médicament pour accéder à sa fiche.</b><br/>
+                Entrez le nom en DCI du médicament afin de consulter ses indications, posologies et précautions d’emploi.
+              </div>
+              <div class="hint" style="margin-top:6px;">
+                <b>🔎 Pourquoi utiliser la DCI ?</b><br/>
+                La DCI correspond au nom scientifique officiel du principe actif. Elle permet une identification universelle, indépendante des noms commerciaux.
+              </div>
+              <figure class="vp-media">
+  <img
+    src="Doliprane2.png"
+    alt="Pharmacienne présentant une fiche médicament sur la plateforme VIGIPHARMA-CI"
+    loading="lazy"
+  />
+  <figcaption>
+    <span class="tag">🛡️ Sécurisée</span>
+    <span class="tag">⚡ Rapide</span>
+    <span class="tag">🗂️ Centralisée</span><br/>
+  </figcaption>
+</figure>
+
+              <div id="results" class="results" aria-live="polite"></div>
+            </div>
+          </div>
+
+          <div class="card">
+            <h2>Options de recherche</h2>
+            <p style="margin-top:6px;">(Prototype) Idées pour la suite :</p>
+            <ul style="color:var(--muted); line-height:1.55; margin-top:8px;">
+              <li>Filtres : classe thérapeutique, forme galénique, grossesse/allaitement</li>
+              <li>Alertes : interactions majeures, précautions importantes</li>
+              <li>Historique des recherches / favoris</li>
+            </ul>
+            <div class="pill">🔒 Accès : pro & étudiants</div>
+          </div>
+        </div>
+
+        <div class="footer">
+          <div>© VIGIPHARMA-CI — Dr Johanne Elodie Amichia</div>
+          <div class="links">
+            <a href="#" data-goto="contact">Contact/Partenariat</a>
+            <a href="#" data-goto="about">À propos</a>
+            <a href="#" data-goto="legal">Mentions légales</a>
+          </div>
+        </div>
+      </section>
+
+      <section id="page-about" class="page" style="display:none;">
+        <div class="grid">
+          <div class="card">
+            <h2>À propos — VIGIPHARMA-CI</h2>
+
+            <h3 style="margin:14px 0 6px; font-size:14px;">Mission</h3>
+            <figure class="vp-media">
+  <img
+    src="doliprane 1.png"
+    alt="Pharmacienne présentant une fiche médicament sur la plateforme VIGIPHARMA-CI"
+    loading="lazy"
+  />
+  <figcaption>
+    <span class="tag">🛡️ Sécurisée</span>
+    <span class="tag">⚡ Rapide</span>
+    <span class="tag">🗂️ Centralisée</span><br/>
+  </figcaption>
+</figure>
+
+            <p>Rendre accessible une information pharmaceutique fiable, claire et actualisée, afin d’accompagner les professionnels dans des décisions thérapeutiques sûres et responsables.</p>
+
+            <h3 style="margin:14px 0 6px; font-size:14px;">Vision</h3>
+            <p>Devenir la plateforme de référence en information pharmaceutique, reconnue pour sa fiabilité scientifique et son utilité pratique par les professionnels et les étudiants en santé.</p>
+
+            <h3 style="margin:14px 0 6px; font-size:14px;">Valeurs</h3>
+            <ul style="color:var(--muted); line-height:1.6; margin-top:8px;">
+              <li>Sécurité du patient</li><li>Fiabilité scientifique</li><li>Accessibilité</li><li>Indépendance</li><li>Innovation</li>
+            </ul>
+
+            <h3 style="margin:14px 0 6px; font-size:14px;">Public cible</h3>
+            <ul style="color:var(--muted); line-height:1.6; margin-top:8px;">
+              <li>Pharmaciens</li><li>Médecins</li><li>Étudiants en santé</li><li>Structures de soins</li>
+            </ul>
+
+            <div class="ctaRow">
+              <button class="btn primary" data-goto="search">🧪 Consulter un médicament</button>
+              <button class="btn" data-goto="contact">✉️ Nous contacter</button>
+            </div>
+          </div>
+
+          <div class="card">
+            <h2>En bref</h2>
+            <p>Une plateforme pratique et pédagogique pour centraliser l’information pharmaceutique.</p>
+            <div class="kpiRow">
+              <div class="kpi"><b>Objectif</b><br/>Décision thérapeutique plus sûre</div>
+              <div class="kpi"><b>Format</b><br/>Fiches structurées + recherche</div>
+              <div class="kpi"><b>Public</b><br/>Professionnels & étudiants</div>
+              <div class="kpi"><b>Approche</b><br/>Rigueur & clarté</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="footer">
+          <div>© VIGIPHARMA-CI — Dr Johanne Elodie Amichia</div>
+          <div class="links">
+            <a href="#" data-goto="contact">Contact/Partenariat</a>
+            <a href="#" data-goto="about">À propos</a>
+            <a href="#" data-goto="legal">Mentions légales</a>
+          </div>
+        </div>
+      </section>
+
+      <section id="page-contact" class="page" style="display:none;">
+        <div class="grid">
+          <div class="card">
+            <h2>Contact / Partenariat</h2>
+            <p>Vous souhaitez collaborer, proposer un partenariat ou rejoindre le projet <b>VIGIPHARMA-CI</b> ? Contactez-nous.</p>
+
+            <div style="border:1px solid rgba(255,255,255,.12); background: rgba(255,255,255,.05); border-radius: 18px; padding: 14px; margin-top: 12px;">
+              <div style="color:var(--muted2); font-size:12px; margin-bottom:6px;">Adresse électronique</div>
+              <div style="font-size:14px;"><b id="contactMail">contact@vigipharma-ci.example</b> <span style="color:var(--muted2);">(à remplacer)</span></div>
+
+              <div style="color:var(--muted2); font-size:12px; margin:12px 0 6px;">Contact téléphonique</div>
+              <div style="font-size:14px;"><b>+225 XX XX XX XX</b> <span style="color:var(--muted2);">(à remplacer)</span></div>
+
+              <div style="margin-top: 12px; color: var(--muted2); font-size: 12.5px; line-height: 1.45;">
+                Message : Vous souhaitez collaborer, proposer un partenariat ou rejoindre le projet VIGIPHARMA-CI ? Contactez-nous.
+              </div>
+            </div>
+
+            <div class="ctaRow">
+              <button class="btn primary" id="copyMail">📋 Copier l’email</button>
+              <button class="btn" data-goto="home">🏠 Retour accueil</button>
+            </div>
+          </div>
+
+          <div class="card">
+            <h2>Formulaire (prototype)</h2>
+            <p style="margin-top:6px;">(Prototype) À connecter plus tard à un service type Formspree / backend.</p>
+
+            <label for="cName">Nom / Structure</label>
+            <input id="cName" type="text" placeholder="Ex : Clinique X / Dr Y / Étudiant(e)..." />
+
+            <label for="cEmail">Adresse courriel</label>
+            <input id="cEmail" type="email" placeholder="ex: prenom.nom@email.com" />
+
+            <label for="cMsg">Message</label>
+            <textarea id="cMsg" placeholder="Décrivez votre demande (partenariat, contribution, feedback, etc.)"></textarea>
+
+            <div class="ctaRow">
+              <button class="btn primary" id="fakeSend">Envoyer (démo)</button>
+            </div>
+
+            <div class="smallNote" id="sendNote" style="display:none;">
+              ✅ Merci ! (Démo) Votre message a été “enregistré” localement.
+            </div>
+          </div>
+        </div>
+
+        <div class="footer">
+          <div>© VIGIPHARMA-CI — Dr Johanne Elodie Amichia</div>
+          <div class="links">
+            <a href="#" data-goto="contact">Contact/Partenariat</a>
+            <a href="#" data-goto="about">À propos</a>
+            <a href="#" data-goto="legal">Mentions légales</a>
+          </div>
+        </div>
+      </section>
+
+      <section id="page-legal" class="page" style="display:none;">
+        <div class="card">
+          <h2>📜 Mentions légales — VIGIPHARMA-CI</h2>
+
+          <p><b>1️⃣ Éditeur du site</b><br/>
+            Nom du site : VIGIPHARMA-CI<br/>
+            Responsable du site : Dr Johanne Amichia<br/>
+            Qualité : Fondatrice<br/>
+            Contact : [adresse courriel de contact]
+          </p>
+
+          <p><b>2️⃣ Objet du site</b><br/>
+            Plateforme d’information pharmaceutique destinée aux professionnels et aux étudiants en santé.
+            Les contenus ne se substituent pas à l’avis d’un professionnel ni à une prescription médicale.
+          </p>
+
+          <p><b>3️⃣ Responsabilité</b><br/>
+            Informations fournies à titre informatif et pédagogique. L’utilisation se fait sous la responsabilité exclusive de l’utilisateur.
+          </p>
+
+          <p><b>4️⃣ Public concerné</b><br/>
+            Site destiné exclusivement aux professionnels de santé et étudiants. Non destiné au grand public.
+          </p>
+
+          <p><b>5️⃣ Propriété intellectuelle</b><br/>
+            Toute reproduction/diffusion sans autorisation est interdite.
+          </p>
+
+          <p><b>6️⃣ Données personnelles</b><br/>
+            Données utilisées uniquement pour l’amélioration continue. Aucune cession à des tiers.
+          </p>
+
+          <p><b>7️⃣ Liens externes</b><br/>
+            VIGIPHARMA-CI n’est pas responsable du contenu des sites tiers.
+          </p>
+
+          <p><b>8️⃣ Mise à jour des contenus</b><br/>
+            Contenus susceptibles d’être modifiés selon l’évolution des recommandations scientifiques et réglementaires.
+          </p>
+
+          <div class="footer" style="margin-top:18px;">
+            <div>© VIGIPHARMA-CI — Dr Johanne Elodie Amichia</div>
+            <div class="links">
+              <a href="#" data-goto="contact">Contact/Partenariat</a>
+              <a href="#" data-goto="about">À propos</a>
+              <a href="#" data-goto="legal">Mentions légales</a>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <div class="modalBackdrop" id="modalBackdrop" role="dialog" aria-modal="true" aria-hidden="true">
+    <div class="modal" role="document">
+      <div class="modalHeader">
+        <strong id="modalTitle">Titre</strong>
+        <button class="closeBtn" id="modalClose">Fermer</button>
+      </div>
+      <div class="modalBody" id="modalBody"></div>
+    </div>
+  </div>
+
+  <script>
+    const pages = {
+      home:  { title:"Accueil", subtitle:"Bienvenue sur VIGIPHARMA-CI" },
+      search:{ title:"Consulter un médicament", subtitle:"Recherche par DCI (prototype)" },
+      about: { title:"À propos", subtitle:"Mission, vision, valeurs, public cible" },
+      contact:{ title:"Contact / Partenariat", subtitle:"Nous contacter / collaborer" },
+      legal: { title:"Mentions légales", subtitle:"Cadre, responsabilité, données" }
+    };
+
+    const navButtons = Array.from(document.querySelectorAll(".nav button"));
+    const pageTitle = document.getElementById("pageTitle");
+    const pageSubtitle = document.getElementById("pageSubtitle");
+
+    function go(page){
+      document.querySelectorAll(".page").forEach(p => p.style.display="none");
+      document.getElementById("page-"+page).style.display = "";
+      navButtons.forEach(b => b.classList.toggle("active", b.dataset.page===page));
+      pageTitle.textContent = pages[page].title;
+      pageSubtitle.textContent = pages[page].subtitle;
+      location.hash = page;
+      window.scrollTo({top:0, behavior:"smooth"});
+    }
+
+    navButtons.forEach(b => b.addEventListener("click", () => go(b.dataset.page)));
+    document.querySelectorAll("[data-goto]").forEach(el => {
+      el.addEventListener("click", (e) => { e.preventDefault(); go(el.dataset.goto); });
+    });
+
+    const initial = (location.hash || "#home").replace("#","");
+    go(pages[initial] ? initial : "home");
+
+    const backdrop = document.getElementById("modalBackdrop");
+    const modalTitle = document.getElementById("modalTitle");
+    const modalBody  = document.getElementById("modalBody");
+    const modalClose = document.getElementById("modalClose");
+
+    function openModal(title, html){
+      modalTitle.textContent = title;
+      modalBody.innerHTML = html;
+      backdrop.style.display="flex";
+      backdrop.setAttribute("aria-hidden","false");
+    }
+    function closeModal(){
+      backdrop.style.display="none";
+      backdrop.setAttribute("aria-hidden","true");
+    }
+    modalClose.addEventListener("click", closeModal);
+    backdrop.addEventListener("click", (e)=>{ if(e.target===backdrop) closeModal(); });
+
+    document.getElementById("btnHelp").addEventListener("click", ()=>{
+      openModal("Aide", `
+        <p><b>Soutien technique :</b> soutientech@…</p>
+        <p><b>Information générale / professionnelle :</b> info@…</p>
+      `);
+    });
+
+    document.getElementById("btnFeedback").addEventListener("click", ()=>{
+      openModal("Donnez votre avis", `
+        <p>Les informations recueillies seront utilisées exclusivement dans une démarche d’amélioration continue.</p>
+
+        <label for="fbEmail">Entrez votre adresse courriel :</label>
+        <input id="fbEmail" type="email" placeholder="ex: prenom.nom@email.com" />
+
+        <div style="margin-top:12px; color: rgba(255,255,255,.72); font-size: 13px;">
+          <b>Recommanderiez-vous VIGIPHARMA-CI à un ami ou à un collègue ?</b>
+        </div>
+        <div class="smallNote">0 - Pas du tout probable • 5 - Très probable</div>
+        <div class="scale" id="fbScale">
+          ${[0,1,2,3,4,5].map(n=>`<button type="button" data-n="${n}">${n}</button>`).join("")}
+        </div>
+
+        <label for="fbComment">COMMENTAIRE :</label>
+        <textarea id="fbComment" placeholder="Votre retour ici..."></textarea>
+
+        <div style="margin-top:12px; display:flex; gap:10px; flex-wrap:wrap;">
+          <button class="btn primary" id="fbSend">Envoyer (démo)</button>
+          <button class="btn" id="fbCancel">Annuler</button>
+        </div>
+
+        <p class="smallNote" id="fbThanks" style="display:none; margin-top:10px;">
+          ✅ Nous vous remercions d’avoir pris le temps de partager vos réflexions. Votre collaboration est précieuse.
+        </p>
+      `);
+
+      let selected = null;
+      const scale = document.getElementById("fbScale");
+      scale.querySelectorAll("button").forEach(btn=>{
+        btn.addEventListener("click", ()=>{
+          selected = btn.dataset.n;
+          scale.querySelectorAll("button").forEach(b=>b.classList.toggle("sel", b===btn));
+        });
+      });
+
+      document.getElementById("fbCancel").addEventListener("click", closeModal);
+      document.getElementById("fbSend").addEventListener("click", ()=>{
+        const payload = {
+          email: document.getElementById("fbEmail").value || "",
+          score: selected,
+          comment: document.getElementById("fbComment").value || "",
+          at: new Date().toISOString()
+        };
+        try{
+          const key="vigipharma_feedback";
+          const prev = JSON.parse(localStorage.getItem(key) || "[]");
+          prev.push(payload);
+          localStorage.setItem(key, JSON.stringify(prev));
+        }catch(e){}
+        document.getElementById("fbThanks").style.display="";
+      });
+    });
+
+    document.getElementById("btnLogout").addEventListener("click", ()=>{
+      openModal("Déconnexion", `<p>(Prototype) Action de déconnexion.</p><div style="margin-top:12px;"><button class="btn primary" id="doLogout">OK</button></div>`);
+      document.getElementById("doLogout").addEventListener("click", closeModal);
+    });
+
+    document.getElementById("copyMail").addEventListener("click", async ()=>{
+      const mail = document.getElementById("contactMail").textContent.trim();
+      const btn = document.getElementById("copyMail");
+      try{ await navigator.clipboard.writeText(mail); btn.textContent="✅ Email copié"; }
+      catch(e){ btn.textContent="⚠️ Copie impossible"; }
+      setTimeout(()=> btn.textContent="📋 Copier l’email", 1800);
+    });
+
+    document.getElementById("fakeSend").addEventListener("click", ()=>{
+      const payload = {
+        name: document.getElementById("cName").value || "",
+        email: document.getElementById("cEmail").value || "",
+        msg: document.getElementById("cMsg").value || "",
+        at: new Date().toISOString()
+      };
+      try{
+        const key="vigipharma_contact_demo";
+        const prev = JSON.parse(localStorage.getItem(key) || "[]");
+        prev.push(payload);
+        localStorage.setItem(key, JSON.stringify(prev));
+      }catch(e){}
+      const note = document.getElementById("sendNote");
+      note.style.display="";
+      setTimeout(()=>note.style.display="none", 2500);
+    });
+
+    const meds = [
+      {
+        dci: "paracétamol",
+        classe: "Antalgique / antipyrétique",
+        fiche: {
+          identifications: "Principe actif : paracétamol",
+          indications: "Douleur légère à modérée, fièvre.",
+          posologies: "Selon âge/poids. Respecter les doses maximales.",
+          precautions: "Attention hépatotoxicité, alcool, insuffisance hépatique.",
+          interactions: "Anticoagulants (surveillance), alcool, inducteurs enzymatiques."
+        }
+      },
+      {
+        dci: "amoxicilline",
+        classe: "Antibiotique bêta-lactamine",
+        fiche: {
+          identifications: "Principe actif : amoxicilline",
+          indications: "Infections bactériennes sensibles.",
+          posologies: "Selon indication, fonction rénale, protocole.",
+          precautions: "Allergie pénicillines, surveillance digestif/éruption.",
+          interactions: "AVK (surveillance), allopurinol (rash)."
+        }
+      }
+    ];
+
+    const q = document.getElementById("q");
+    const btnSearch = document.getElementById("btnSearch");
+    const results = document.getElementById("results");
+
+    function normalize(s){ return (s||"").toString().trim().toLowerCase(); }
+
+    function renderResults(list, query){
+      results.innerHTML = "";
+      if(!query){
+        results.innerHTML = `<div class="hint">Entrez une DCI pour lancer la recherche.</div>`;
+        return;
+      }
+      if(list.length === 0){
+        results.innerHTML = `
+          <div class="hint" style="border:1px solid rgba(255,255,255,.12); background: rgba(255,255,255,.05); padding: 12px; border-radius: 18px;">
+            <b>Aucun médicament correspondant à cette recherche n’a été trouvé.</b>
+            Vérifiez l’orthographe ou utilisez la Dénomination Commune Internationale (DCI).
+          </div>`;
+        return;
+      }
+
+      list.forEach(item=>{
+        const el = document.createElement("div");
+        el.className = "resultItem";
+        el.innerHTML = `
+          <div class="meta">
+            <strong>${item.dci}</strong>
+            <span>${item.classe}</span>
+          </div>
+          <button class="open" type="button">Ouvrir la fiche</button>
+        `;
+        el.querySelector(".open").addEventListener("click", ()=>{
+          openModal("Fiche médicament (prototype)", `
+            <div class="pill">DCI : <b>${item.dci}</b> • ${item.classe}</div>
+            <p><b>Identifications</b><br/>${item.fiche.identifications}</p>
+            <p><b>Indications</b><br/>${item.fiche.indications}</p>
+            <p><b>Posologies</b><br/>${item.fiche.posologies}</p>
+            <p><b>Précautions d’emploi</b><br/>${item.fiche.precautions}</p>
+            <p><b>Interactions</b><br/>${item.fiche.interactions}</p>
+            <p class="smallNote">⚠️ Prototype : contenu de démonstration. À remplacer par des fiches validées et mises à jour.</p>
+          `);
+        });
+        results.appendChild(el);
+      });
+    }
+
+    function doSearch(){
+      const query = normalize(q.value);
+      const list = meds.filter(m => normalize(m.dci).includes(query));
+      renderResults(list, query);
+    }
+
+    btnSearch.addEventListener("click", doSearch);
+    q.addEventListener("keydown", (e)=>{ if(e.key==="Enter") doSearch(); });
+    renderResults([], "");
+  </script>
+</body>
+</html>
