@@ -1,0 +1,198 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>VIGIPHARMA-CI — Fiche médicament</title>
+  <style>
+    :root{
+      --bg:#f7f8fc; --stroke: rgba(15,23,42,.12);
+      --text:#111827; --muted:#374151; --violet:#7c3aed; --violet2:#a78bfa;
+      --shadow: 0 20px 50px rgba(15,23,42,.12);
+      --radius2: 26px;
+
+      /* 👇 Réglage unique : taille max de l'image */
+      --imgH: 240px; /* ← baisse à 200px si tu veux encore plus petit */
+    }
+
+    body{
+      margin:0; font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial;
+      background:
+        radial-gradient(900px 500px at 10% 0%, rgba(167,139,250,.18), transparent 55%),
+        radial-gradient(900px 500px at 90% 10%, rgba(124,58,237,.14), transparent 55%),
+        var(--bg);
+      color: var(--text);
+    }
+
+    .wrap{ max-width: 980px; margin: 22px auto; padding: 0 16px; }
+
+    .card{
+      border:1px solid var(--stroke);
+      background: rgba(255,255,255,.92);
+      border-radius: var(--radius2);
+      box-shadow: var(--shadow);
+      padding: 18px;
+    }
+
+    .top{
+      display:flex; align-items:center; justify-content:space-between;
+      gap:12px; margin-bottom: 14px;
+    }
+
+    .btn{
+      border:none; cursor:pointer;
+      background: linear-gradient(135deg, var(--violet), var(--violet2));
+      color:#fff; padding: 10px 14px; border-radius: 14px;
+    }
+
+    .title{ margin:0; font-size: 22px; }
+    .sub{ color: var(--muted); margin: 6px 0 0; }
+
+    /* =========================
+       Image fiche médicament
+       ========================= */
+
+    /* On ne force plus l'image en pleine largeur */
+    .media{
+      border:1px solid var(--stroke);
+      border-radius: 18px;
+      overflow: hidden;
+      background: rgba(255,255,255,.85);
+      margin: 14px 0 18px;
+      padding: 14px; /* ✅ encadré */
+    }
+
+    /* L'image est maintenant contrôlée */
+    .media img.med-image{
+      display:block;
+      width: 100%;
+      max-width: 560px;        /* ✅ limite largeur (évite le “plein écran”) */
+      max-height: var(--imgH); /* ✅ limite hauteur */
+      margin: 0 auto;          /* ✅ centré */
+      object-fit: contain;     /* ✅ pas de déformation */
+      background: #fff;
+      border-radius: 14px;
+    }
+
+    .grid{ display:grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+    @media (max-width: 820px){ .grid{ grid-template-columns: 1fr; } }
+
+    .box{
+      border:1px solid var(--stroke);
+      border-radius: 18px;
+      padding: 14px;
+      background: rgba(255,255,255,.80);
+    }
+
+    .box h3{ margin:0 0 8px; font-size: 14px; }
+    .box p{ margin:0; color: var(--muted); line-height: 1.6; }
+
+    .pill{
+      display:inline-flex; gap:8px; align-items:center;
+      padding: 6px 10px; border-radius: 999px;
+      border:1px solid var(--stroke);
+      background: rgba(124,58,237,.10);
+      color: #3b0764;
+      font-size: 12px;
+      margin-top: 10px;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="wrap">
+    <div class="top">
+      <div>
+        <h1 class="title" id="medTitle">Fiche médicament</h1>
+        <div class="sub" id="medMeta">—</div>
+      </div>
+      <button class="btn" onclick="history.back()">← Retour</button>
+    </div>
+
+    <div class="card">
+      <div class="media">
+        <!-- ✅ on ajoute la classe med-image -->
+        <img id="medImg" class="med-image" src="" alt="Image du médicament" />
+      </div>
+
+      <div class="grid">
+        <div class="box">
+          <h3>✅ Indications</h3>
+          <p id="indications"></p>
+        </div>
+        <div class="box">
+          <h3>💊 Posologie / Dosage</h3>
+          <p id="posologie"></p>
+        </div>
+        <div class="box">
+          <h3>⚠️ Précautions / Consignes</h3>
+          <p id="precautions"></p>
+        </div>
+        <div class="box">
+          <h3>🔁 Interactions (prototype)</h3>
+          <p id="interactions"></p>
+        </div>
+      </div>
+
+      <div class="pill">⚙️ Prototype : contenu de démonstration (à remplacer par données validées).</div>
+    </div>
+  </div>
+
+  <script>
+    // 1) Base de données "proto"
+    const FICHES = {
+      doliprane: {
+        nom: "DOLIPRANE",
+        dci: "Paracétamol",
+        classe: "Antalgique / antipyrétique",
+        image: "dolipranemedoc.png",
+        indications: "Douleurs légères à modérées, fièvre.",
+        posologie: "Selon l’âge/poids. Respecter la dose maximale journalière. Espacer les prises.",
+        precautions: "Attention en cas d’insuffisance hépatique, alcool, surdosage. Demander conseil si doute.",
+        interactions: "Anticoagulants (surveillance), alcool (risque hépatique)."
+      },
+      efferalgan: {
+        nom: "EFFERALGAN",
+        dci: "Paracétamol",
+        classe: "Antalgique / antipyrétique",
+        image: "efferalgan.png",
+        indications: "Douleurs légères à modérées, fièvre.",
+        posologie: "Selon l’âge/poids. Espacer les prises. Respecter la dose maximale.",
+        precautions: "Attention aux associations contenant déjà du paracétamol (risque surdosage).",
+        interactions: "Anticoagulants (surveillance), alcool."
+      }
+    };
+
+    // 2) Lire ?med=...
+    const params = new URLSearchParams(location.search);
+    const key = (params.get("med") || "").toLowerCase().trim();
+
+    // 3) Afficher
+    const fiche = FICHES[key];
+
+    const imgEl = document.getElementById("medImg");
+
+    if(!fiche){
+      document.getElementById("medTitle").textContent = "Médicament introuvable (prototype)";
+      document.getElementById("medMeta").textContent = "Essayez : doliprane, efferalgan";
+      imgEl.style.display = "none"; // ✅ cache l'image si pas de fiche
+      document.getElementById("indications").textContent = "Aucune fiche correspondante.";
+      document.getElementById("posologie").textContent = "—";
+      document.getElementById("precautions").textContent = "—";
+      document.getElementById("interactions").textContent = "—";
+    } else {
+      document.getElementById("medTitle").textContent = fiche.nom;
+      document.getElementById("medMeta").textContent = `DCI : ${fiche.dci} • ${fiche.classe}`;
+
+      imgEl.src = fiche.image;
+      imgEl.alt = `Image : ${fiche.nom}`;
+      imgEl.loading = "lazy";
+
+      document.getElementById("indications").textContent = fiche.indications;
+      document.getElementById("posologie").textContent = fiche.posologie;
+      document.getElementById("precautions").textContent = fiche.precautions;
+      document.getElementById("interactions").textContent = fiche.interactions;
+    }
+  </script>
+</body>
+</html>

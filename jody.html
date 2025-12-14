@@ -973,6 +973,11 @@
         }
       }
     ];
+    
+const redirectMap = {
+  "doliprane": "doliprane",
+  "efferalgan": "efferalgan"
+};
 
     const q = document.getElementById("q");
     const btnSearch = document.getElementById("btnSearch");
@@ -1019,12 +1024,20 @@
         results.appendChild(el);
       });
     }
+function doSearch(){
+  const query = normalize(q.value);
 
-    function doSearch(){
-      const query = normalize(q.value);
-      const list = meds.filter(m => normalize(m.dci).includes(query));
-      renderResults(list, query);
-    }
+  // si match exact sur un mot clé, redirection vers fiche.html
+  if(redirectMap[query]){
+    window.location.href = `fiche.html?med=${encodeURIComponent(redirectMap[query])}`;
+    return;
+  }
+
+  // sinon, garder ton comportement actuel (afficher résultats)
+  const list = meds.filter(m => normalize(m.dci).includes(query));
+  renderResults(list, query);
+}
+
 
     btnSearch.addEventListener("click", doSearch);
     q.addEventListener("keydown", (e)=>{ if(e.key==="Enter") doSearch(); });
